@@ -1,0 +1,401 @@
+id,type,title,meaning,example_sentence
+1,Atasözü,Ağaç yaşken eğilir.,İnsanlar küçük yaşta kolayca eğitilirler.,"Çocuğuna yabancı dili şimdi öğretmelisin, sonuçta ağaç yaşken eğilir."
+2,Atasözü,Damlaya damlaya göl olur.,Küçük ve önemsiz şeyler birikerek büyük ve önemli sonuçlar doğurabilir.,"Harcamalarına dikkat et ve kumbarana bozuk paraları at, unutma damlaya damlaya göl olur."
+3,Deyim,Etekleri zil çalmak.,Çok sevinmek ve sevinçle telaş içinde olmak.,Sınavdan yüz aldığını öğrenince etekleri zil çalmaya başladı.
+4,Deyim,Göze girmek.,Davranışları ve yetenekleriyle ilgi ve sevgi kazanmak.,Yeni projeyi hatasız tamamlayarak yöneticisinin gözüne girdi.
+5,Atasözü,Sakla samanı gelir zamanı.,Değersiz gibi görünen bir şey ileride işe yarayabilir.,"Eski kabloları atma bence çekmeceye koy, sakla samanı gelir zamanı."
+6,Atasözü,Abanın kadri yağmurda bilinir.,Bir şeyin değeri ona ihtiyaç duyulduğunda daha iyi anlaşılır.,Şemsiyemi evde unutunca abanın kadri yağmurda bilinir sözünün doğruluğunu anladım.
+7,Deyim,Göze batmak.,Uygunsuz davranışlarıyla başkalarını rahatsız etmek.,Toplantıdaki laubali tavırlarıyla herkesin gözüne battı.
+8,Atasözü,Acele işe şeytan karışır.,Düşünülüp taşınılmadan acele ile yapılan işten iyi sonuç alınmaz.,Projeyi bir günde bitirmeye çalışma acele işe şeytan karışır.
+9,Deyim,Küplere binmek.,Çok öfkelenmek sinirlenmek.,Arabasının çizildiğini görünce adeta küplere bindi.
+10,Atasözü,Aç ayı oynamaz.,İnsanlardan iş bekleniyorsa önce onların karınları doyurulmalıdır.,İşçilere yemek molası verelim sonuçta aç ayı oynamaz.
+11,Deyim,İpe un sermek.,İstenilen işi yapmamak için çeşitli bahaneler uydurmak.,Ödevi yapmamak için yine ipe un seriyor.
+12,Atasözü,Ak akçe kara gün içindir.,Kazanılan para insanın sıkıntılı zamanlarında kullanması içindir.,Maaşından biraz kenara ayır ak akçe kara gün içindir.
+13,Deyim,Çam devirmek.,Farkında olmadan karşısındakini kıracak ya da pot kıracak söz söylemek.,Patronun yanında öyle bir çam devirdi ki herkes şok oldu.
+14,Atasözü,Alma mazlumun ahını çıkar aheste aheste.,Kimseye haksızlık etme yaptığın kötülük gün gelir senden yavaş yavaş çıkar.,Ona haksızlık ettin ama unutma alma mazlumun ahını çıkar aheste aheste.
+15,Deyim,Göz kulak olmak.,Görüp gözetmek korumak bakmak.,Ben yokken kardeşine göz kulak ol lütfen.
+16,Atasözü,Altın yere düşmekle pul olmaz.,Değerli bir kişi bulunduğu yüksek makamdan düşse de değerini yitirmez.,İşten çıkarılması onun değerini düşürmez altın yere düşmekle pul olmaz.
+17,Deyim,Etekleri tutuşmak.,Çok telaşlanmak heyecanlanmak.,Sınavın yarın olduğunu öğrenince etekleri tutuştu.
+18,Atasözü,Aslan yattığı yerden belli olur.,Bir kimsenin karakteri oturduğu yerin temizliğinden ve düzeninden anlaşılır.,Odanı biraz topla aslan yattığı yerden belli olur.
+19,Deyim,Ağzı kulaklarına varmak.,Çok sevinmek.,İstediği oyuncağı alınca ağzı kulaklarına vardı.
+20,Atasözü,Ateş düştüğü yeri yakar.,Bir felaket en çok ona uğrayanları üzer ve etkiler.,Biz ne kadar üzülsek de boş ateş düştüğü yeri yakar.
+21,Deyim,Gözden düşmek.,Eski değerini sevgisini yitirmek.,Son hatalarından sonra yöneticilerin gözünden düştü.
+22,Atasözü,Ayağını yorganına göre uzat.,Harcamalarını gelirine uygun yapmalısın.,Bu ay çok harcama yaptık biraz ayağımızı yorganımıza göre uzatmalıyız.
+23,Deyim,Burnu havada olmak.,Kibirlenmek büyüklenmek.,Terfi aldığından beri burnu havada kimseyi beğenmiyor.
+24,Atasözü,Bal bal demekle ağız tatlanmaz.,Sadece sözünü etmekle güzel bir şey gerçekleşmez eylem gerekir.,Sürekli plan yapıyorsun ama bal bal demekle ağız tatlanmaz icraat lazım.
+25,Deyim,Pabucu dama atılmak.,Kendinden daha üstün birinin gelmesiyle gözden düşmek.,Yeni kardeş doğunca abinin pabucu dama atıldı.
+26,Atasözü,Bakarsan bağ bakmazsan dağ olur.,Bir şeye emek verirsen güzelleşir ilgilenmezsen bozulur.,Bahçeyle ilgilenmezsen kurur gider bakarsan bağ bakmazsan dağ olur.
+27,Deyim,Dişini sıkmak.,Zorluklara sıkıntılara dayanmak katlanmak.,Birkaç ay daha dişini sıkarsan borçların bitecek.
+28,Atasözü,Besle kargayı oysun gözünü.,İyilik yaptığın nankör bir kişi gün gelir sana kötülük yapar.,Ona o kadar yardım ettim bana ihanet etti besle kargayı oysun gözünü.
+29,Deyim,Kulak misafiri olmak.,Yanında konuşulanları belli etmeden dinliyormuş gibi görünmeden dinlemek.,Otobüste iki kişinin konuşmasına kulak misafiri oldum.
+30,Atasözü,Bir elin nesi var iki elin sesi var.,Birlikte çalışmak dayanışma içinde olmak daha büyük başarılar getirir.,Bu işi tek başına yapamazsın gel beraber yapalım bir elin nesi var iki elin sesi var.
+31,Deyim,Eli ayağına dolaşmak.,Şaşkınlıktan veya telaştan ne yapacağını bilememek.,Karşısında onu görünce heyecandan eli ayağına dolaştı.
+32,Atasözü,Can çıkmayınca huy çıkmaz.,İnsanın karakteri ve alışkanlıkları ölene kadar değişmez.,Yıllar geçti ama hala aynı can çıkmayınca huy çıkmaz.
+33,Deyim,Havadan sudan konuşmak.,Önemli olmayan rastgele konulardan bahsetmek.,Kafede oturup saatlerce havadan sudan konuştuk.
+34,Atasözü,Davulun sesi uzaktan hoş gelir.,İşin içinde olmayanlara o işin zorlukları kolay görünür.,Sen o işi kolay sanıyorsun ama davulun sesi uzaktan hoş gelir.
+35,Deyim,Göz atmak.,Kısaca üstünkörü bakmak.,Toplantıdan önce rapora şöyle bir göz attım.
+36,Atasözü,Denize düşen yılana sarılır.,Çok zor durumda kalan kişi kurtulmak için tehlikeli çarelere bile başvurur.,Tefeciden borç almış ama ne yapsın denize düşen yılana sarılır.
+37,Deyim,Kan beynine sıçramak.,Çok öfkelenmek sinir krizine girmek.,Bana yalan söylediğini öğrenince kan beynime sıçradı.
+38,Atasözü,Dikensiz gül olmaz.,Her güzel şeyin mutlaka bir kusuru veya zorluğu vardır.,Yeni evinin bazı eksikleri var ama dikensiz gül olmaz.
+39,Deyim,İğne atsan yere düşmez.,Çok kalabalık adım atacak yer olmayan yerler için kullanılır.,Konser alanı o kadar kalabalıktı ki iğne atsan yere düşmezdi.
+40,Atasözü,Doğru söyleyeni dokuz köyden kovarlar.,Gerçekleri çekinmeden söyleyen kişiler genellikle başkaları tarafından istenmez.,O hep dürüsttür ama doğru söyleyeni dokuz köyden kovarlar işte.
+41,Deyim,Dudak uçuklatmak.,Çok şaşırtmak hayretler içinde bırakmak.,Arabanın fiyatı resmen dudak uçuklatıyor.
+42,Atasözü,Dost kara günde belli olur.,Gerçek dost insanın zor zamanlarında yanında olandır.,Hastalandığımda sadece o aradı dost kara günde belli olurmuş.
+43,Deyim,Nabza göre şerbet vermek.,Karşısındakinin hoşuna gidecek şekilde davranmak.,Müşterileri ikna etmek için nabza göre şerbet vermek gerekir.
+44,Atasözü,El elden üstündür.,Her zaman senden daha yetenekli veya bilgili biri bulunabilir.,Ben çok iyi bilirim deme el elden üstündür.
+45,Deyim,Yüz bulmak.,Gösterilen ilgiden cesaret alarak şımarmak.,Çocuğa biraz güler yüz gösterdik hemen yüz buldu.
+46,Atasözü,Ev alma komşu al.,İyi bir komşu güzel bir evden daha değerlidir.,Ev çok güzel ama komşular kötü ev alma komşu al demişler.
+47,Deyim,Saman altından su yürütmek.,Belli etmeden gizlice iş çevirmek.,O çok kurnazdır saman altından su yürütür.
+48,Atasözü,Fazla mal göz çıkarmaz.,Ne kadar çok malın veya paran olursa olsun zararı dokunmaz.,Bu kazağı da alalım indirimde sonuçta fazla mal göz çıkarmaz.
+49,Deyim,Zıvanadan çıkmak.,Aşırı derecede sinirlenip kontrolünü kaybetmek.,Adamın lafları üzerine iyice zıvanadan çıktı.
+50,Atasözü,Gülü seven dikenine katlanır.,Sevdiği kişi veya iş için karşılaşılan zorluklara katlanmak gerekir.,Bu işin de böyle zorlukları var gülü seven dikenine katlanır.
+51,Atasözü,Ağlamayan çocuğa meme vermezler.,Hakkını arayıp istemeyene kimse yardım etmez.,"İhtiyaçlarını açıkça belirtmelisin, sonuçta ağlamayan çocuğa meme vermezler."
+52,Deyim,Abayı yakmak.,Birine çok aşık olmak tutulmak.,Onu ilk gördüğü günden beri kıza abayı yakmış durumda.
+53,Atasözü,Rüzgar eken fırtına biçer.,Çevresine kötülük yapan kimse sonunda büyük bir felaketle karşılaşır.,İnsanlara bu kadar kötü davranma rüzgar eken fırtına biçer.
+54,Deyim,Ağzında bakla ıslanmamak.,Sır saklayamamak her şeyi hemen başkalarına anlatmak.,Ona hiçbir sırrını verme çünkü ağzında bakla ıslanmaz.
+55,Atasözü,Tatlı dil yılanı deliğinden çıkarır.,Gönül alıcı güzel sözlerle en inatçı kişiler bile ikna edilebilir.,Onunla tartışmak yerine sakin konuş tatlı dil yılanı deliğinden çıkarır.
+56,Deyim,Baltayı taşa vurmak.,Farkında olmadan birine dokunacak veya onu kızdıracak söz söylemek.,Patronun yanında öyle bir konuştu ki resmen baltayı taşa vurdu.
+57,Atasözü,Görünen köy kılavuz istemez.,Açıkça belli olan bir durumu açıklamak için başka kanıta gerek yoktur.,Bu işin sonunun kötü olacağı belliydi görünen köy kılavuz istemez.
+58,Deyim,Bindiği dalı kesmek.,Kendisine yararı dokunan bir şeyi kendi eliyle yok etmek.,O işten ayrılarak aslında bindiği dalı kestiğinin farkında değil.
+59,Atasözü,Minareyi çalan kılıfını hazırlar.,Yolsuzluk yapan kişi yakalanmamak için önceden bahanelerini hazırlar.,O her şeyi kitabına uydurmuştur minareyi çalan kılıfını hazırlar.
+60,Deyim,Çamur atmak.,Birine asılsız suçlamalarda bulunmak iftira atmak.,Rakipleri başarılı olamayınca ona çamur atmaya başladılar.
+61,Atasözü,Ne ekersen onu biçersin.,İnsan nasıl davranırsa karşılığında da öyle muamele görür.,İnsanlara yardım edersen sen de yardım görürsün ne ekersen onu biçersin.
+62,Deyim,Dört gözle beklemek.,Bir şeyi büyük bir özlem ve istekle beklemek.,Tatilin gelmesini dört gözle bekliyorum.
+63,Atasözü,Körle yatan şaşı kalkar.,Kötü huylu biriyle arkadaşlık eden onun kötü huylarını kapar.,O çocukla fazla gezme körle yatan şaşı kalkar demişler.
+64,Deyim,Hapı yutmak.,Kötü bir duruma düşmek başı belaya girmek.,Sınava hiç çalışmadım bu gidişle hapı yuttuk.
+65,Atasözü,Üzüm üzüme baka baka kararır.,Her zaman bir arada bulunan kimseler birbirlerinin huylarını kaparlar.,Kardeşin de senin gibi inatçı olmaya başladı üzüm üzüme baka baka kararır.
+66,Deyim,İçi içine sığmamak.,Sevinçten veya heyecandan çok coşkulu olmak.,Üniversiteyi kazandığını öğrenince içi içine sığmadı.
+67,Atasözü,Komşu komşunun külüne muhtaçtır.,İnsanlar en ufak şeylerde bile komşularının yardımına ihtiyaç duyarlar.,Komşularımızla iyi geçinmeliyiz komşu komşunun külüne muhtaçtır.
+68,Deyim,Karnı zil çalmak.,Çok acıkmak.,Sabahtan beri hiçbir şey yemedim karnım zil çalıyor.
+69,Atasözü,Sütten ağzı yanan yoğurdu üfleyerek yer.,Bir olaydan zarar gören kişi benzer durumlarda çok dikkatli davranır.,Eski ortağından kazık yediği için artık kimseye güvenmiyor sütten ağzı yanan yoğurdu üfleyerek yer.
+70,Deyim,Göz boyamak.,Gösterişle birini kandırmak yanıltmak.,Müşterilerin gözünü boyamak için ambalajı çok şık yapmışlar.
+71,Atasözü,İşleyen demir ışıldar.,Çalışan insan yeteneklerini geliştirir ve daha başarılı olur.,Boş oturmak yerine bir şeyler üretmelisin işleyen demir ışıldar.
+72,Deyim,Nuh deyip peygamber dememek.,Çok inatçı olmak söylenenleri kabul etmemek.,Ne dediysek ikna edemedik adam Nuh diyor peygamber demiyor.
+73,Atasözü,Meyve veren ağaç taşlanır.,Başarılı ve yetenekli kişiler her zaman kıskanılır ve eleştirilir.,Hakkında çıkan dedikodulara üzülme meyve veren ağaç taşlanır.
+74,Deyim,Ocağına incir ağacı dikmek.,Birinin evini barkını dağıtmak büyük zarar vermek.,O tefeci adamın resmen ocağına incir ağacı dikti.
+75,Atasözü,Taşıma su ile değirmen dönmez.,Başkalarının küçük yardımlarıyla sürekli bir iş yürütülemez.,Kendi sermayen olmadan bu işi büyütemezsin taşıma su ile değirmen dönmez.
+76,Deyim,Saçını süpürge etmek.,Biri için çok büyük fedakarlıklarda bulunmak.,Annem bizi okutmak için yıllarca saçını süpürge etti.
+77,Atasözü,Yalancının mumu yatsıya kadar yanar.,Yalan er geç ortaya çıkar.,Bana yalan söylediğin ortaya çıktı yalancının mumu yatsıya kadar yanar.
+78,Deyim,Taşı gediğine koymak.,Söylenmesi gereken sözü tam zamanında ve yerinde söylemek.,Toplantıda öyle bir cevap verdi ki taşı gediğine koydu.
+79,Atasözü,Zorla güzellik olmaz.,Birine zorla bir şey yaptırmak iyi sonuç vermez.,Çocuğu o bölüme gitmesi için zorlama zorla güzellik olmaz.
+80,Deyim,Ucuz atlatmak.,Tehlikeli bir durumu az zararla geçiştirmek.,O kazadan yara almadan kurtulduk çok ucuz atlattık.
+81,Atasözü,Zararın neresinden dönülse kârdır.,Yanlış bir işten ne kadar erken vazgeçilirse o kadar iyidir.,Bu yatırımdan hemen vazgeçelim zararın neresinden dönülse kârdır.
+82,Deyim,Yüz akı.,Birinin veya bir kurumun övünç kaynağı gururu.,O bizim okulumuzun yüz akı öğrencilerinden biridir.
+83,Atasözü,Vakitsiz öten horozun başını keserler.,Yersiz ve zamansız konuşan veya davranan kişi zarar görür.,Her şeye atlama vakitsiz öten horozun başını keserler.
+84,Deyim,Burun kıvırmak.,Bir şeyi beğenmemek küçümsemek.,Önüne konan yemeğe burun kıvırdı.
+85,Atasözü,Keskin sirke küpüne zarar.,Çok öfkeli olmak en çok kişinin kendisine zarar verir.,Bu kadar sinirlenme keskin sirke küpüne zarar.
+86,Deyim,Çamurda debelenmek.,Kötü bir durumdan kurtulamamak çırpındıkça daha da batmak.,Borç batağına düştük resmen çamurda debeleniyoruz.
+87,Atasözü,Kendi düşen ağlamaz.,Kendi hatası yüzünden zarar gören kişinin şikayet etmeye hakkı yoktur.,Seni uyarmıştık ama dinlemedin kendi düşen ağlamaz.
+88,Deyim,Damarına basmak.,Birinin hassas olduğu bir konuda onu kızdıracak şeyler söylemek.,Onun damarına basarsan çok sert tepki verir.
+89,Atasözü,Gün doğmadan neler doğar.,Beklenmedik zamanlarda güzel ve umut verici şeyler olabilir.,Umudunu kaybetme gün doğmadan neler doğar.
+90,Deyim,Elini taşın altına koymak.,Zor ve sorumluluk gerektiren bir işe girişmek.,Bu projeyi bitirmek için hepimiz elimizi taşın altına koymalıyız.
+91,Atasözü,Lafla peynir gemisi yürümez.,Sadece konuşarak hiçbir iş yapılmaz icraat gerekir.,Sürekli plan yapıyorsun ama lafla peynir gemisi yürümez.
+92,Deyim,Gözü yükseklerde olmak.,Çok büyük hedefleri ve hırsları olmak.,Onun gözü hep yükseklerde küçük başarılarla yetinmez.
+93,Atasözü,Mum dibine ışık vermez.,Bilgili ve faydalı kişiler başkalarına yararlı olurken yakınlarına o kadar faydalı olamayabilirler.,Kendi çocuğuna ders çalıştıramıyor mum dibine ışık vermez.
+94,Deyim,Havlu atmak.,Mücadeleden vazgeçmek pes etmek.,Maçın son dakikalarında bizim takım iyice havlu attı.
+95,Atasözü,Öfkeyle kalkan zararla oturur.,Sinirle ve düşünmeden hareket eden kişi sonunda pişman olur.,Karar vermeden önce sakinleş öfkeyle kalkan zararla oturur.
+96,Deyim,İçi kan ağlamak.,Dışarıdan belli etmese de çok büyük bir üzüntü içinde olmak.,Gülümsemeye çalışıyor ama aslında içi kan ağlıyor.
+97,Atasözü,Parayı veren düdüğü çalar.,Parasını veren kişi istediği şeye sahip olur veya istediğini yaptırır.,Kaliteli hizmet istiyorsan ödeme yapmalısın parayı veren düdüğü çalar.
+98,Deyim,Kafeslemek.,Birini tatlı sözlerle veya hileyle kandırarak istediğini yaptırmak.,Adamı kafesleyip bütün parasını elinden almışlar.
+99,Atasözü,Su uyur düşman uyumaz.,Düşmana karşı her zaman uyanık ve tedbirli olunmalıdır.,Rakip firmalara dikkat etmeliyiz su uyur düşman uyumaz.
+100,Deyim,Gözden çıkarmak.,Bir şeyden veya birinden vazgeçmeyi göze almak.,Bu arabayı satmayı artık gözden çıkardım.
+101,Atasözü,Acı patlıcanı kırağı çalmaz.,"Kötü durumlara alışkın olanlar, yeni zorluklardan pek etkilenmezler.","O kadar zorluk çekti ki bu küçük kriz ona vız gelir, acı patlıcanı kırağı çalmaz."
+102,Atasözü,Akıl akıldan üstündür.,Bir kimsenin düşünemediğini bir başkası düşünebilir.,"Bu konuyu bir de ona danışalım, akıl akıldan üstündür."
+103,Atasözü,Armut dibine düşer.,Çocuklar huy ve davranış olarak anne babalarına benzerler.,"Babası gibi o da çok inatçı, armut dibine düşer."
+104,Atasözü,Ava giden avlanır.,"Başkasına kötülük yapmak isteyen kimse, kendi kazdığı kuyuya düşebilir.","Rakiplerini alt etmeye çalışırken kendi şirketi battı, ava giden avlanır."
+105,Atasözü,Balık baştan kokar.,"Bir toplumda veya kurumda bozukluk, yöneticilerden başlar.","Şirketin müdürü rüşvet alıyorsa çalışanlar ne yapsın, balık baştan kokar."
+106,Atasözü,Bedava sirke baldan tatlıdır.,Para verilmeden elde edilen şeyler insana çok hoş gelir.,"Bu promosyon ürünlerini herkes kapış kapış aldı, bedava sirke baldan tatlıdır."
+107,Atasözü,Bin bilsen de bir bilene danış.,"İnsan ne kadar çok şey bilirse bilsin, yine de başkalarının fikrini almalıdır.",Kendi kararlarından eminsin ama bin bilsen de bir bilene danış.
+108,Atasözü,Boş çuval ayakta durmaz.,"Bilgisiz, yeteneksiz veya desteksiz kişi bir işte tutunamaz.","Hiçbir tecrübesi olmadan o pozisyonda kalamazdı, boş çuval ayakta durmaz."
+109,Atasözü,Bugünün işini yarına bırakma.,Yapılması gereken bir işi zamanında yapmak gerekir.,"Ödevini hemen bitir, bugünün işini yarına bırakma."
+110,Atasözü,Büyük lokma ye büyük söz söyleme.,"İnsan başaramayacağı, altından kalkamayacağı konularda kesin konuşmamalıdır.","Asla oraya gitmem diyordun ama bak şimdi oradasın, büyük lokma ye büyük söz söyleme."
+111,Atasözü,Çıkmadık candan umut kesilmez.,"İnsan, en kötü durumlarda bile düzelme umudunu korumalıdır.",Hastanın durumu ağır ama çıkmadık candan umut kesilmez.
+112,Atasözü,Çivi çiviyi söker.,"Zorlu bir durum veya kişi, ancak başka bir zorlu durum veya kişiyle alt edilebilir.","O inatçıysa sen daha inatçı ol, çivi çiviyi söker."
+113,Atasözü,"Dağ dağa kavuşmaz, insan insana kavuşur.","Ne kadar uzak olurlarsa olsunlar, insanlar bir gün bir yerde karşılaşabilirler.",Yıllar sonra onu karşımda görünce dağ dağa kavuşmaz insan insana kavuşur sözünü hatırladım.
+114,Atasözü,Damdan düşen damdan düşenin halinden anlar.,"Bir sıkıntıyı çeken, aynı sıkıntıyı çeken kişinin duygularını daha iyi anlar.","Senin derdini en iyi ben anlarım, damdan düşen damdan düşenin halinden anlar."
+115,Atasözü,Deliye her gün bayram.,"Hiçbir şeyi dert etmeyen, sorumluluk taşımayan kişiler her zaman neşelidir.","Onun umurunda mı dünya, deliye her gün bayram."
+116,Atasözü,"Dert ağlatır, aşk söyletir.","Sıkıntılar insanı üzerken, aşk insanı dertli dertli konuşturur, şiir yazdırır.","Son günlerde hep şiir okuyor, dert ağlatır aşk söyletirmiş."
+117,Atasözü,Doğmadık çocuğa don biçilmez.,"Henüz gerçekleşmemiş, kesinleşmemiş bir iş için hazırlık yapılmaz.","Daha işi almadan arabayı değiştirmeyi düşünüyorsun, doğmadık çocuğa don biçilmez."
+118,Atasözü,Düşenin dostu olmaz.,"İnsan varlıklı ve güçlüyken çevresinde çok kişi olur, ama zor duruma düşünce kimse kalmaz.","İflas edince etrafındaki herkes kayboldu, düşenin dostu olmaz."
+119,Atasözü,"Ecel geldi cihane, baş ağrısı bahane.","Ölüm vakti geldiğinde, basit bir hastalık bile buna sebep gibi görünür.","Adam sapasağlamdı ama aniden kalp krizinden gitti, ecel geldi cihane baş ağrısı bahane."
+120,Atasözü,Eğilen baş kesilmez.,"Hatasını anlayıp özür dileyen, bağışlanma dileyen kişiye ceza verilmez.","Gelip senden af diledi, artık uzatma eğilen baş kesilmez."
+121,Atasözü,El elin eşeğini türkü çağırarak arar.,"İnsan, başkasının derdiyle kendi derdi gibi ilgilenmez.","Kendi işini kendin halletmelisin, el elin eşeğini türkü çağırarak arar."
+122,Atasözü,"El yarası onulur, dil yarası onulmaz.",Fiziksel yaralar iyileşir ama kötü sözün kalpte açtığı yara kolay kolay geçmez.,"Ona öyle ağır laflar ettin ki, el yarası onulur dil yarası onulmaz."
+123,Atasözü,Eski çamlar bardak oldu.,"Devir değişti, eski durumlar ve kurallar geçerliliğini yitirdi.",Sen hala o eski yöntemleri kullanıyorsun ama eski çamlar bardak oldu.
+124,Atasözü,Fare çıktığı deliği bilir.,"Bir kabahat işleyen kişi, yakalanmamak için nereye saklanacağını iyi bilir.","O paraları alıp çoktan kaçmıştır, fare çıktığı deliği bilir."
+125,Atasözü,Fukaranın tavuğu tek tek yumurtlar.,"Fakir veya şanssız kişilerin işleri yavaş ilerler, kazançları az olur.","Bizim işler bir türlü açılmadı, fukaranın tavuğu tek tek yumurtlar."
+126,Atasözü,Garibe acımak sevaptır.,Kimsesiz ve zavallı kişilere yardım etmek büyük bir iyiliktir.,"Sokaktaki o yaşlı adama yardım et, garibe acımak sevaptır."
+127,Atasözü,Gelen gideni aratır.,"Yeni gelen bir kişi veya durum, eskisinin değerini daha iyi anlamamıza neden olur.","Yeni müdür eskisinden de katı çıktı, gelen gideni aratır."
+128,Atasözü,"Göğe direk, denize kapak olmaz.",Gerçekleşmesi imkansız olan şeylerle uğraşmak boşunadır.,"Bu projeyi o bütçeyle yapamazsın, göğe direk denize kapak olmaz."
+129,Atasözü,Göz görmeyince gönül katlanır.,"İnsan, sevdiği birinden uzak kaldığında zamanla bu ayrılığa alışır.","Yurtdışına taşınınca onu unuttu, göz görmeyince gönül katlanır."
+130,Atasözü,Güneş balçıkla sıvanmaz.,Herkesin bildiği gerçekler yalan dolanla gizlenemez.,"Olayın aslı ortaya çıktı, güneş balçıkla sıvanmaz."
+131,Atasözü,Hamama giren terler.,"Bir işe girişen kişi, o işin getireceği zorluklara ve masraflara katlanmak zorundadır.","Bu ihaleye girdik bir kere, hamama giren terler."
+132,Atasözü,"Harman yel ile, düğün el ile olur.",Her işin gerçekleşmesi için gereken uygun koşullar ve yardımlar vardır.,"Bu kadar misafiri tek başına ağırlayamazsın, harman yel ile düğün el ile olur."
+133,Atasözü,Hazıra dağ dayanmaz.,"Sürekli tüketmek, ne kadar çok birikim olursa olsun sonunda onu tüketir.","Çalışmadan babanın parasıyla geçinemezsin, hazıra dağ dayanmaz."
+134,Atasözü,Her koyun kendi bacağından asılır.,Herkes kendi yaptığı işten ve hatalarından kendisi sorumludur.,"O cezasını çekecek, sonuçta her koyun kendi bacağından asılır."
+135,Atasözü,Horozu çok olan köyün sabahı geç olur.,Karışanı ve akıl vereni çok olan işlerde sonuca ulaşmak zorlaşır.,"Herkes bir fikir söylüyor proje ilerlemiyor, horozu çok olan köyün sabahı geç olur."
+136,Atasözü,Irmak kenarına çeşme yapılmaz.,Zaten var olan ve bol bulunan bir şeyin yanına aynısından yapmak gereksizdir.,"Zaten iki araban var, üçüncüyü almak ırmak kenarına çeşme yapmak gibi."
+137,Atasözü,Isıracak köpek dişini göstermez.,"Gerçekten kötülük yapacak kişi, niyetini önceden belli etmez.","O çok bağırıp çağırıyor ama korkma, ısıracak köpek dişini göstermez."
+138,Atasözü,İki cambaz bir ipte oynamaz.,Kurnazlıkta ve hilede eşit olan iki kişi aynı işte birlikte çalışamaz.,"İkisi de çok uyanık, bu ortaklık yürümez, iki cambaz bir ipte oynamaz."
+139,Atasözü,"İyilik yap denize at, balık bilmezse Halik bilir.","İyiliği karşılık beklemeden yapmalısın, kimse bilmese de Allah bilir.","Sen yine de yardım et, iyilik yap denize at balık bilmezse Halik bilir."
+140,Atasözü,Kaçan balık büyük olur.,"Elden kaçırılan fırsatlar, genellikle gözde büyütülür ve daha değerli görünür.","O evi almadığına çok pişman, kaçan balık büyük olurmuş."
+141,Atasözü,Kanaat gibi devlet olmaz.,"Elindekiyle yetinmeyi bilmek, en büyük zenginliktir.","Çok para hırsına kapılma, kanaat gibi devlet olmaz."
+142,Atasözü,Kara haber tez duyulur.,Kötü ve üzücü haberler insanlar arasında çok çabuk yayılır.,"Kaza haberini anında öğrendik, kara haber tez duyulur."
+143,Atasözü,"Kardeş kardeşi bıçaklamış, dönmüş yine kucaklamış.","Kardeşler arasında ne kadar büyük kavgalar olursa olsun, sonunda yine barışırlar.","Onlar bugün kavga eder yarın barışır, kardeş kardeşi bıçaklamış dönmüş yine kucaklamış."
+144,Atasözü,Kaynayan kazan kapak tutmaz.,"İçinde büyük bir coşku veya öfke biriken kişi, duygularını gizleyemez.","O kadar sinirlendi ki sonunda patladı, kaynayan kazan kapak tutmaz."
+145,Atasözü,Kel başa şimşir tarak.,"Duruma veya kişinin konumuna hiç uygun düşmeyen, gereksiz ve lüks şeyler için kullanılır.","Evde yiyecek ekmek yok, sen gidip pahalı telefon alıyorsun, kel başa şimşir tarak."
+146,Atasözü,Kılavuzu karga olanın burnu pislikten çıkmaz.,Kötü ve yetersiz kişilerden akıl alanların başı dertten kurtulmaz.,"Onun aklıyla iş yaparsan batarsın, kılavuzu karga olanın burnu pislikten çıkmaz."
+147,Atasözü,Kır atın yanında duran ya huyundan ya suyundan.,"İnsan, arkadaşlık ettiği kişinin alışkanlıklarından ve huylarından etkilenir.","Sen de onun gibi konuşmaya başladın, kır atın yanında duran ya huyundan ya suyundan."
+148,Atasözü,Kızını dövmeyen dizini döver.,Çocuklarına zamanında gerekli eğitimi ve terbiyeyi vermeyen anne babalar ileride çok pişman olurlar.,"Çocuğu çok şımarttınız, kızını dövmeyen dizini döver."
+149,Atasözü,Korkunun ecele faydası yoktur.,"Başımıza gelecek kötü bir olaydan korkmak, o olayın gerçekleşmesini engellemez.","Cesur ol ve gerçeklerle yüzleş, korkunun ecele faydası yoktur."
+150,Atasözü,Kurt kocayınca köpeklerin maskarası olur.,"Gücünü ve yetkilerini kaybeden kişiler, eskiden kendilerinden çekinenlerin alay konusu olurlar.","Eskiden herkes ondan korkardı şimdi kimse takmıyor, kurt kocayınca köpeklerin maskarası olur."
+151,Deyim,Abuk sabuk konuşmak.,"Düşünmeden, anlamsız ve tutarsız sözler söylemek.",Toplantıda heyecandan abuk sabuk konuştu.
+152,Deyim,Açık kapı bırakmak.,Bir konuda ileride anlaşma veya uzlaşma ihtimalini ortadan kaldırmamak.,"Kararını verirken biraz esnek ol, açık kapı bırak."
+153,Deyim,Adam yerine koymak.,"Birine değer vermek, saygı göstermek.","Beni dinlemiyor bile, adam yerine koyduğu yok."
+154,Deyim,Ağzı var dili yok.,"Çok sessiz, sakin ve kendi halinde olan kimseler için kullanılır.","O kadar uysal bir çocuk ki, ağzı var dili yok sanki."
+155,Deyim,Ağzından bal damlamak.,"Çok tatlı, güzel ve hoşa giden sözler söylemek.","O kadar güzel anlattı ki, adeta ağzından bal damlıyordu."
+156,Deyim,Akla karayı seçmek.,Bir işi başarabilmek için çok büyük zorluklar çekmek.,O raporu bitirene kadar akla karayı seçtim.
+157,Deyim,Alnının akıyla çıkmak.,"Zor bir işi veya durumu başarıyla, lekesiz ve dürüstçe tamamlamak.",Bu zorlu projeden de alnının akıyla çıkmayı başardı.
+158,Deyim,Altından kalkmak.,"Zor bir işi başarıyla sonuçlandırmak, üstesinden gelmek.",Bu kadar borcun altından nasıl kalkacaksın?
+159,Deyim,Aralarından su sızmamak.,"İki kişinin birbirine çok yakın, çok samimi dost olması.","Onlar çok iyi arkadaştır, aralarından su sızmaz."
+160,Deyim,Ateşle oynamak.,"Çok tehlikeli bir işe girişmek, büyük risk almak.",O adamla iş yapmak ateşle oynamaktır.
+161,Deyim,Ayak bağı olmak.,"Birinin işini yapmasına engel olmak, onu yavaşlatmak.",Yanımda gelip bana ayak bağı olma.
+162,Deyim,Ayaklarına kara sular inmek.,Çok yürümekten veya ayakta durmaktan çok yorulmak.,Bütün gün mağazaları gezmekten ayaklarıma kara sular indi.
+163,Deyim,Başı göğe ermek.,Beklenmedik bir başarı veya mutluluk elde ederek çok sevinmek.,Terfi edince başı göğe erdi sanki.
+164,Deyim,Başına çorap örmek.,"Birine gizlice kötülük yapmak, onu tuzağa düşürmek.",Rakipleri onun başına çorap örmek için plan yapıyor.
+165,Deyim,Başından kaynar sular dökülmek.,Kötü ve beklenmedik bir olay karşısında büyük bir şok yaşamak.,Sınavdan kaldığını öğrenince başından kaynar sular döküldü.
+166,Deyim,Bel bağlamak.,"Birine veya bir şeye çok güvenmek, umudunu ona bağlamak.",Sadece onun yardımlarına bel bağlayarak iş yapılmaz.
+167,Deyim,Bıçak kemiğe dayanmak.,Çekilen sıkıntıların veya zorlukların artık dayanılamaz hale gelmesi.,"Artık sabrım kalmadı, bıçak kemiğe dayandı."
+168,Deyim,Boş bulunmak.,Dikkatsiz bir anına denk gelip düşünmeden hareket etmek veya söz söylemek.,Boş bulunup sırrımızı ona da söyledim.
+169,Deyim,Boyun eğmek.,Birinin gücünü veya üstünlüğünü kabul ederek itaat etmek.,Haksızlıklara asla boyun eğmeyeceğiz.
+170,Deyim,Burnundan solumak.,Çok öfkeli ve sinirli olmak.,"Patron bugün çok gergin, burnundan soluyor."
+171,Deyim,Cana yakın.,"Sevimli, sıcakkanlı ve insanlarla kolay anlaşan.",Yeni komşumuz çok cana yakın biri.
+172,Deyim,Can damarına basmak.,"Bir işin en önemli, en hassas noktasına dokunmak.",Eleştirileriyle tam da can damarına bastı.
+173,Deyim,Canını dişine takmak.,Bir işi başarmak için her türlü zorluğu göze alarak var gücüyle çalışmak.,Sınavı kazanmak için canını dişine takıp çalıştı.
+174,Deyim,Çantada keklik.,"Elde edilmesi çok kolay olan, kesin gözüyle bakılan şey.","Bu maçı kazanırız, rakip bizim için çantada keklik."
+175,Deyim,Çileden çıkmak.,Çok sinirlenip kendini kontrol edemez duruma gelmek.,Çocuğun yaramazlıkları onu iyice çileden çıkardı.
+176,Deyim,Çizmeden yukarı çıkmak.,Kendi yetki ve uzmanlık alanını aşarak bilmediği konularda ahkam kesmek.,"Sen bu işlere karışma, çizmeden yukarı çıkıyorsun."
+177,Deyim,Daldan dala konmak.,"Sık sık iş, konu veya düşünce değiştirmek, kararsız olmak.","Bir işte sebat etmiyor, sürekli daldan dala konuyor."
+178,Deyim,Deliye dönmek.,"Çok öfkelenmek, sinirden ne yapacağını bilememek.",Arabasının çalındığını duyunca deliye döndü.
+179,Deyim,Diken üstünde oturmak.,Her an kötü bir şey olacakmış gibi tedirgin ve huzursuz olmak.,Sonuçlar açıklanana kadar diken üstünde oturduk.
+180,Deyim,Dilinde tüy bitmek.,"Aynı şeyi tekrar tekrar söylemekten bıkmak, yorulmak.",Sana odanı topla demekten dilimde tüy bitti.
+181,Deyim,Ecel terleri dökmek.,"Çok korkmak, büyük bir tehlike karşısında heyecanlanmak ve terlemek.",Uçak türbülansa girince hepimiz ecel terleri döktük.
+182,Deyim,El açmak.,Birinden yardım veya para dilenmek.,Gururundan kimseye el açmazdı.
+183,Deyim,El üstünde tutmak.,"Birine çok değer vermek, onu şımartmak ve özen göstermek.",Ailesi onu her zaman el üstünde tutmuştur.
+184,Deyim,Ensesinde boza pişirmek.,"Birini sürekli rahatsız etmek, sıkıştırmak ve zorlamak.",Borcunu ödemesi için adamın ensesinde boza pişirdiler.
+185,Deyim,Eski tas eski hamam.,"Hiçbir şeyin değişmediğini, her şeyin eskisi gibi olduğunu belirtmek için kullanılır.",Yıllar geçti ama o şirkette eski tas eski hamam.
+186,Deyim,Fırsat kollamak.,Bir işi yapmak için en uygun zamanı veya durumu beklemek.,Ondan intikam almak için fırsat kolluyor.
+187,Deyim,Göze almak.,Gelebilecek her türlü zararı veya tehlikeyi önceden kabul etmek.,Bu işin risklerini göze alarak yola çıktık.
+188,Deyim,Gözdağı vermek.,"Birini korkutmak, tehdit etmek.",Rakiplerine gözdağı vermek için büyük bir kampanya başlattı.
+189,Deyim,Gözü dönmek.,Öfkeden veya hırstan ne yaptığını bilemez hale gelmek.,Para hırsından gözü dönmüş durumda.
+190,Deyim,Havanda su dövmek.,"Boşuna uğraşmak, sonuç vermeyecek işlerle vakit kaybetmek.",Bu projeyle aslında havanda su dövüyoruz.
+191,Deyim,İçine dert olmak.,Bir olayın veya durumun kişiye sürekli üzüntü vermesi.,Ona o sözleri söyleyememek içime dert oldu.
+192,Deyim,İğneyle kuyu kazmak.,Yetersiz araçlarla çok zor ve sabır gerektiren bir işi başarmaya çalışmak.,Bu kadar az veriyle bu araştırmayı yapmak iğneyle kuyu kazmak gibi.
+193,Deyim,İpi göğüslemek.,"Bir yarışta veya mücadelede birinci olmak, başarıya ulaşmak.",Zorlu maratonu ipi göğüsleyerek tamamladı.
+194,Deyim,Kabuğuna çekilmek.,"İnsanlardan uzaklaşmak, kendi içine kapanmak.",Emekli olduktan sonra iyice kabuğuna çekildi.
+195,Deyim,Kafadan atmak.,"Bilmediği bir konuda rastgele, tahminen konuşmak.",Sorunun cevabını bilmeyince kafadan attı.
+196,Deyim,Kan kusup kızılcık şerbeti içtim demek.,"Çok büyük sıkıntılar çekmesine rağmen halinden şikayet etmemek, dışarıya belli etmemek.",O kadar zorluk çekti ama hep kan kusup kızılcık şerbeti içtim dedi.
+197,Deyim,Kemerleri sıkmak.,"Harcamaları kısmak, tutumlu davranmaya başlamak.",Ekonomik kriz yüzünden şirket kemerleri sıkma kararı aldı.
+198,Deyim,Kılı kırk yarmak.,"Bir konuyu çok detaylı, ince eleyip sık dokuyarak incelemek.",Sözleşmeyi imzalarken kılı kırk yardı.
+199,Deyim,Kulak asmamak.,"Söylenenlere önem vermemek, dinlememek.",Benim uyarılarıma hiç kulak asmadı.
+200,Deyim,Meydan okumak.,"Birine karşı çıkmak, onu yarışmaya veya kavgaya çağırmak.",Yeni şirket pazarın devlerine meydan okuyor.
+201,Atasözü,Perşembenin gelişi çarşambadan bellidir.,Bir işin sonunun nasıl olacağı şimdiki gidişatından anlaşılır.,"Projenin gecikeceği başından belliydi, perşembenin gelişi çarşambadan bellidir."
+202,Atasözü,Demir tavında dövülür.,Her işin yapılması için en uygun bir zaman vardır.,"Bu teklifi şimdi yapmalıyız, demir tavında dövülür."
+203,Atasözü,Erken kalkan yol alır.,İşine erken başlayan kişi başarıya daha çabuk ulaşır.,"Sabah erkenden çalışmaya başladı, erken kalkan yol alır."
+204,Atasözü,Gün ola harman ola.,"Zamanla her şey yoluna girer, bekleyip görmek lazım.","Şimdiden üzülme, gün ola harman ola."
+205,Atasözü,Her yiğidin bir yoğurt yiyişi vardır.,Herkesin kendine özgü bir çalışma veya iş yapma tarzı vardır.,O işi farklı yapıyor ama her yiğidin bir yoğurt yiyişi vardır.
+206,Atasözü,İyilik eden iyilik bulur.,"Başkalarına yardım eden kişi, gün gelir kendisi de yardım görür.","Sen insanlara yardım etmeye devam et, iyilik eden iyilik bulur."
+207,Atasözü,Sabreden derviş muradına ermiş.,Zorluklara sabreden kişi sonunda istediğine ulaşır.,"Çok bekledi ama sonunda kazandı, sabreden derviş muradına ermiş."
+208,Atasözü,Su testisi su yolunda kırılır.,Bir kişi hangi kötü yola sapmışsa o yolda zarar görür.,"Sürekli tehlikeli işler yapıyordu, su testisi su yolunda kırılır."
+209,Atasözü,Söz gümüşse sükut altındır.,Konuşmak bazen iyi olsa da susmak çoğu zaman daha değerlidir.,"Bazen cevap vermemek en iyisidir, söz gümüşse sükut altındır."
+210,Atasözü,Tok açın halinden anlamaz.,"Sıkıntı çekmeyen kişi, sıkıntı çekenin durumunu kavrayamaz.","Onun bu derdini zenginler bilemez, tok açın halinden anlamaz."
+211,Atasözü,Ummadığın taş baş yarar.,Önemsenmeyen küçük şeyler bazen büyük zararlar verebilir.,"O küçük çocuğu hafife alma, ummadığın taş baş yarar."
+212,Atasözü,Yalancının evi yanmış kimse inanmamış.,"Yalan söylemeyi alışkanlık haline getiren birine, doğru söylese bile kimse inanmaz.",Gerçekten hasta ama yalancının evi yanmış kimse inanmamış işte.
+213,Atasözü,Yalnız taş duvar olmaz.,"İnsan tek başına büyük işler başaramaz, başkalarının yardımına ihtiyaç duyar.","Bu projeyi tek başına bitiremezsin, yalnız taş duvar olmaz."
+214,Atasözü,Yerin kulağı vardır.,Gizli konuşulan şeyler bile bir şekilde başkaları tarafından duyulabilir.,"Burada böyle şeyler konuşma, yerin kulağı vardır."
+215,Atasözü,Yol sormakla bulunur.,Bilmediğin bir şeyi bilene sormak en doğrusudur.,"Kaybolduk diye üzülme, yol sormakla bulunur."
+216,Atasözü,Bana dokunmayan yılan bin yaşasın.,Bana zararı olmayan kötü bir kişi ne yaparsa yapsın umurumda değil.,"Adamın ne yaptığı beni ilgilendirmez, bana dokunmayan yılan bin yaşasın."
+217,Atasözü,Zenginin malı züğürdün çenesini yorar.,"Zengin insanların serveti, fakir insanların sürekli konuştuğu bir konudur.","Onların ne kadar kazandığını konuşmayı bırak, zenginin malı züğürdün çenesini yorar."
+218,Atasözü,Mızrak çuvala sığmaz.,Herkesin bildiği gerçekler gizlenemez.,Olayı örtbas etmeye çalışıyorlar ama mızrak çuvala sığmaz.
+219,Atasözü,Ağaç yaprağıyla gürler.,"İnsan akrabası, yakınları ve dostlarıyla birlikteyken daha güçlüdür.","Ailenin kıymetini bil, ağaç yaprağıyla gürler."
+220,Atasözü,Akıntıya kürek çekilmez.,Olmayacak bir iş için inatla uğraşmak boşunadır.,"Bu işin olmayacağı belli, akıntıya kürek çekilmez."
+221,Atasözü,Altın anahtar her kapıyı açar.,Para veya rüşvetle pek çok zorluğun üstesinden gelinebilir.,"Parasıyla her işini hallediyor, altın anahtar her kapıyı açar."
+222,Atasözü,Araba devrilince yol gösteren çok olur.,İş işten geçtikten sonra akıl veren çok olur.,"Kaza yaptıktan sonra herkes bir şey söyledi, araba devrilince yol gösteren çok olur."
+223,Atasözü,Başa gelen çekilir.,İnsanın elinde olmayan felaketlere katlanmak zorundadır.,"Yapacak bir şey yok, başa gelen çekilir."
+224,Atasözü,Bükemediğin bileği öpeceksin.,Gücünün yetmediği kişiye saygı göstermek ve boyun eğmek gerekir.,"Rakibinin senden üstün olduğunu kabul et, bükemediğin bileği öpeceksin."
+225,Atasözü,Cana gelecek mala gelsin.,Mal kaybı can kaybından daha iyidir.,"Araban hasar gördü ama sen iyisin, cana gelecek mala gelsin."
+226,Deyim,Ağzı açık kalmak.,Çok şaşırmak.,Olayı duyunca herkesin ağzı açık kaldı.
+227,Deyim,Akıntıya kürek çekmek.,Olmayacak bir iş için boşuna çabalamak.,O projeyi kurtarmak için akıntıya kürek çekiyor.
+228,Deyim,Altından çapanoğlu çıkmak.,Bir işin içinde gizli ve tehlikeli bir durum bulunmak.,Bu kadar ucuz olmasının altından çapanoğlu çıkmasın.
+229,Deyim,Avucunu yalamak.,"Beklediğini bulamamak, umduğunu elde edememek.",Mirastan pay alacağını sanıyordu ama avucunu yaladı.
+230,Deyim,Bağrına taş basmak.,"Büyük bir acıya katlanmak, ses çıkarmamak.",Evladını kaybeden anne bağrına taş bastı.
+231,Deyim,Başına devlet kuşu konmak.,Beklenmedik bir şekilde büyük bir şansa veya zenginliğe kavuşmak.,Piyangoyu kazanınca başına devlet kuşu kondu.
+232,Deyim,Burnunda tütmek.,Birini veya bir şeyi çok özlemek.,Memleketim burnumda tütüyor.
+233,Deyim,Cebi delik.,"Elinde avucunda parası olmayan, çok harcayan.","O hep cebi delik gezer, para tutamaz."
+234,Deyim,Çark etmek.,Düşüncesinden veya kararından aniden vazgeçip tersini savunmak.,"Dün destekliyordu, bugün çark etti."
+235,Deyim,Çenesi düşmek.,"Çok konuşmak, susmak bilmemek.","Bugün yine çenesi düştü, susmak bilmedi."
+236,Deyim,Dış kapının dış mandalı.,Bir konuyla veya kişiyle uzaktan yakından ilgisi olmayan kimse.,O aile için sadece dış kapının dış mandalı.
+237,Deyim,Ekmeğine yağ sürmek.,"Birinin işine yarayacak, ona avantaj sağlayacak şekilde davranmak.",Bu yaptığınla sadece rakibinin ekmeğine yağ sürüyorsun.
+238,Deyim,Ensesi kalın.,"Varlıklı, güçlü ve sözü geçen kimse.",Ensesi kalın adamlarla iş yapıyor.
+239,Deyim,Faka basmak.,"Tuzağa düşmek, aldatılmak.",Dolandırıcıların oyununa gelip faka bastı.
+240,Deyim,Gözünü dört açmak.,"Çok dikkatli olmak, uyanık davranmak.",Bu mahallede gözünü dört açmalısın.
+241,Deyim,İçi gitmek.,Bir şeyi çok istemek veya bir şeye çok üzülmek.,Vitrindeki elbiseye içi gitti.
+242,Deyim,İncir çekirdeğini doldurmaz.,"Çok önemsiz, değersiz, küçük şey.",İncir çekirdeğini doldurmayacak meseleler yüzünden kavga ettiler.
+243,Deyim,Kafasına dank etmek.,"Bir gerçeği veya durumu sonradan, geç de olsa anlamak.",Hata yaptığını çok sonra kafasına dank etti.
+244,Deyim,Kanı kaynamak.,Birine birdenbire yakınlık ve sevgi duymak.,O çocuğa ilk görüşte kanım kaynadı.
+245,Deyim,Kulağına küpe olmak.,Başa gelen bir olaydan ders çıkarmak ve unutmamak.,Bu yaşadıkların sana kulağına küpe olsun.
+246,Deyim,Lafa tutmak.,Konuşarak birini işinden alıkoymak.,Beni kapıda lafa tutup geciktirdi.
+247,Deyim,Maskesi düşmek.,"Gerçek yüzü, gizlediği niyeti ortaya çıkmak.",Yalanları ortaya çıkınca maskesi düştü.
+248,Deyim,Ocağına düşmek.,Çaresiz kalarak birinin yardımına muhtaç olmak ve ona sığınmak.,Borç batağına saplanınca babasının ocağına düştü.
+249,Deyim,Ödü kopmak.,Çok korkmak.,Karanlıkta o sesi duyunca ödüm koptu.
+250,Deyim,Püf noktası.,"Bir işin en ince, en önemli ve hassas kısmı.",Bu yemeğin püf noktası baharatında gizlidir.
+251,Atasözü,Rüzgara tüküren kendi yüzüne tükürür.,"Kendinden güçlü birine zarar vermeye çalışan kişi, sonunda kendine zarar verir.",Ona zarar vermek istedin ama rüzgara tüküren kendi yüzüne tükürür.
+252,Atasözü,Mart kapıdan baktırır kazma kürek yaktırır.,"Mart ayında havalar çok soğuk olabilir, hazırlıklı olmak gerekir.","Havaya aldanma, mart kapıdan baktırır kazma kürek yaktırır."
+253,Atasözü,Kedinin boynuna ciğer asılmaz.,Güvenilmeyen birine değerli veya emanet bir şey teslim edilmez.,"O adama para teslim edilir mi, kedinin boynuna ciğer asılmaz."
+254,Atasözü,Ağaç düşse de yakınına yaslanır.,İnsan kötü durumunda bile yakınlarından destek bulur.,"Zor günlerinde ailen yanındaydı, ağaç düşse de yakınına yaslanır."
+255,Atasözü,Altın eşik gümüş eşiğe muhtaç olur.,En zengin ve güçlü kişiler bile gün gelip yoksul birine muhtaç olabilir.,"Kimseyi küçümseme, altın eşik gümüş eşiğe muhtaç olur."
+256,Atasözü,Arı bal alacak çiçeği bilir.,"İşini bilen kişi, nerede ve nasıl kazanç sağlayacağını bilir.","O bu işten kârlı çıkar, arı bal alacak çiçeği bilir."
+257,Atasözü,Baca eğri de olsa dumanı doğru çıkar.,"İyi ve dürüst bir insan, kötü bir çevrede bile dürüstlüğünü korur.","Onun geçmişine bakma, baca eğri de olsa dumanı doğru çıkar."
+258,Atasözü,Bağa bak üzüm olsun yemeye yüzün olsun.,Bir şeyden verim bekliyorsan ona emek vermelisin.,"Tarlayla hiç ilgilenmedin, bağa bak üzüm olsun yemeye yüzün olsun."
+259,Atasözü,Bir çöplükte iki horoz ötmez.,Aynı yerde eşit yetkiye sahip iki kişi anlaşamaz.,"İki müdür sürekli kavga ediyor, bir çöplükte iki horoz ötmez."
+260,Atasözü,Can boğazdan gelir.,İnsanın yaşamak ve güçlenmek için iyi beslenmesi gerekir.,"Yemeğini bitir, can boğazdan gelir."
+261,Atasözü,Çok bilen çok yanılır.,İnsan ne kadar bilgili olursa olsun her şeyi bilemez ve hata yapabilir.,"Kendine bu kadar güvenme, çok bilen çok yanılır."
+262,Atasözü,Dağ ne kadar yüce olsa yol üstünden aşar.,Aşılması imkansız gibi görünen engellerin bile bir çözüm yolu vardır.,"Bu sorunu da çözeceğiz, dağ ne kadar yüce olsa yol üstünden aşar."
+263,Atasözü,"Danışan dağı aşmış, danışmayan düz yolda şaşmış.","Bilmediği şeyi başkalarına soranlar zorlukları aşar, sormayanlar başarısız olur.","Fikir almaktan çekinme, danışan dağı aşmış danışmayan düz yolda şaşmış."
+264,Atasözü,Deveye boynun eğri demişler nerem doğru ki demiş.,Bir kişinin her işi kusurlu ve bozuksa sadece bir hatasını söylemek anlamsızdır.,"O adamın her işi yalan, deveye boynun eğri demişler nerem doğru ki demiş."
+265,Atasözü,Dilin kemiği yoktur.,İnsan her türlü yalanı veya kırıcı sözü kolayca söyleyebilir.,"Onun söylediklerine inanma, dilin kemiği yoktur."
+266,Atasözü,Eşeğe altın semer vursalar eşek yine eşektir.,İnsanın değeri giydiği kıyafetle veya makamla değil karakteriyle ölçülür.,"Zengin oldu ama huyu değişmedi, eşeğe altın semer vursalar eşek yine eşektir."
+267,Atasözü,Gözden ırak olan gönülden de ırak olur.,Görüşülmeyen veya uzakta olan kişilere duyulan sevgi zamanla azalır.,"Uzun zamandır görüşmüyoruz, gözden ırak olan gönülden de ırak olur."
+268,Atasözü,Gülme komşuna gelir başına.,Başkasının kötü durumuna sevinenin başına da aynı şey gelebilir.,"Onunla alay etme, gülme komşuna gelir başına."
+269,Atasözü,Her kuşun eti yenmez.,Herkes kolayca kandırılamaz veya alt edilemez.,Onu da dolandırabileceğini sandı ama her kuşun eti yenmez.
+270,Atasözü,Irmaktan geçerken at değiştirilmez.,Tehlikeli veya kritik bir durumun ortasındayken yöntem veya yönetici değiştirilmez.,"Projenin ortasında ekibi değiştirmeyelim, ırmaktan geçerken at değiştirilmez."
+271,Atasözü,"İnsan beşer, kuldur şaşar.","İnsanlar hata yapmaya meyillidir, kusursuz insan olmaz.","O da bir hata yaptı sonuçta, insan beşer kuldur şaşar."
+272,Atasözü,Kedi uzanamadığı ciğere mundar der.,İnsanlar elde edemedikleri şeyleri kötüleyerek kendilerini avuturlar.,"O arabayı alamayınca kötülemeye başladı, kedi uzanamadığı ciğere mundar der."
+273,Atasözü,Kurunun yanında yaş da yanar.,Suçluların cezalandırıldığı bir durumda bazen masumlar da zarar görür.,"O kavgada suçsuzlar da ceza aldı, kurunun yanında yaş da yanar."
+274,Atasözü,Öfke baldan tatlıdır.,İnsanın sinirlendiğinde bağırıp çağırması ona anlık bir rahatlama verir.,O an sinirle her şeyi söyledi çünkü öfke baldan tatlıdır.
+275,Atasözü,Sakınan göze çöp batar.,"Üzerine çok fazla titrenilen, çok korunan şeylerin başına daha çabuk kaza gelir.","Çocuğu o kadar korudular ama yine hasta oldu, sakınan göze çöp batar."
+276,Deyim,Renk vermemek.,"Duygularını, düşüncelerini veya bildiği bir şeyi belli etmemek.",Olayı biliyordu ama hiç renk vermedi.
+277,Deyim,Saman alevi gibi parlamak.,Birdenbire çok öfkelenip kısa süre sonra sakinleşmek.,"Siniri saman alevi gibi parlar, hemen geçer."
+278,Deyim,Sırra kadem basmak.,"Ortadan kaybolmak, izini kaybettirmek.",Adam paraları alıp sırra kadem bastı.
+279,Deyim,Sinek avlamak.,Müşterisi olmadığı için boş oturmak.,"Bugün dükkan sinek avlıyor, hiç iş yok."
+280,Deyim,Şeytanın bacağını kırmak.,"Uzun süren bir şanssızlığı yenmek, ilk başarıyı elde etmek.",Sonunda o sınavı geçip şeytanın bacağını kırdı.
+281,Deyim,Tahtası eksik.,"Aklı kıt, dengesiz davranışları olan kimse.","Onun söylediklerine bakma, tahtası eksiktir."
+282,Deyim,Tepesi atmak.,Birdenbire çok sinirlenmek.,O lafı duyunca tepesi attı.
+283,Deyim,Tuzu kuru olmak.,"Maddi sıkıntısı olmamak, keyfi yerinde olmak.","Senin tuzun kuru tabii, derdimizi anlamazsın."
+284,Deyim,Ucu ucuna getirmek.,"Bir işi, zamanı veya parayı tam yetecek kadar, zorlukla denkleştirmek.",Bu ay maaşı ucu ucuna getirdik.
+285,Deyim,Üzerine titremek.,"Birine veya bir şeye çok özen göstermek, zarar gelmesinden korkmak.",Annesi o çocuğun üzerine titriyor.
+286,Deyim,Vaktini öldürmek.,Zamanını boş ve yararsız işlerle geçirmek.,Bütün gün oyun oynayarak vaktini öldürdü.
+287,Deyim,Yakayı ele vermek.,Suç işleyip saklanırken yakalanmak.,Hırsızlar sonunda polise yakayı ele verdi.
+288,Deyim,Yarı yolda bırakmak.,Birlikte başlanan bir işte sözünden dönüp arkadaşını yalnız bırakmak.,Ortaklıkta beni yarı yolda bıraktı.
+289,Deyim,Yüz çevirmek.,"İlgisini kesmek, darılıp uzaklaşmak.",Zor günümde bütün dostlarım benden yüz çevirdi.
+290,Deyim,Zılgıt yemek.,"Azarlanmak, sert sözler işitmek.",Babasından fena zılgıt yedi.
+291,Deyim,Aba altından sopa göstermek.,Yumuşak ve sakin görünerek üstü kapalı bir şekilde tehdit etmek.,Adam güya dostça konuşuyor ama aba altından sopa gösteriyor.
+292,Deyim,Afallamak.,Şaşkınlıktan ne yapacağını bilememek.,O soruyu duyunca birden afalladı.
+293,Deyim,Ağzını aramak.,Birinin bir konu hakkındaki düşüncesini kurnazca öğrenmeye çalışmak.,Konu hakkında ne düşündüğünü öğrenmek için ağzını aradı.
+294,Deyim,Aklı kesmemek.,Bir işin olabileceğine inanmamak.,Bu projenin başarılı olacağına aklım kesmiyor.
+295,Deyim,Aklını peynir ekmekle yemek.,"Delice, mantıksızca davranışlarda bulunmak.","Bütün parasını o işe yatırdı, aklını peynir ekmekle yemiş olmalı."
+296,Deyim,Altını üstüne getirmek.,Bir yeri çok dağınık hale getirmek veya her yeri aramak.,Anahtarını bulmak için evin altını üstüne getirdi.
+297,Deyim,Baş tacı etmek.,"Birine çok değer vermek, çok saygı göstermek.",Misafirleri baş tacı ettiler.
+298,Deyim,Boy ölçüşmek.,Biriyle yetenek veya güç bakımından yarışmak.,Onunla bilgi konusunda boy ölçüşemezsin.
+299,Deyim,Can atmak.,Bir şeyi çok fazla istemek.,O konsere gitmek için can atıyor.
+300,Deyim,Çorbada tuzu bulunmak.,Bir işin yapılmasına küçük de olsa bir katkısı olmak.,Bu başarıda bizim de çorbada tuzumuz bulunsun istedik.
+301,Atasözü,Son pişmanlık fayda etmez.,İş işten geçtikten sonra üzülmenin bir yararı yoktur.,"O hatayı yapmadan düşünecektin, son pişmanlık fayda etmez."
+302,Atasözü,Sürüden ayrılanı kurt kapar.,Arkadaşlarından ve toplumdan kopan kişi tehlikelere açık hale gelir.,"Birlikte hareket edelim, sürüden ayrılanı kurt kapar."
+303,Atasözü,Tencere yuvarlanmış kapağını bulmuş.,Kötü huylu veya kusurlu kişilerin birbirine uygun arkadaş veya eş bulması.,"İkisi de aynı kafada, tencere yuvarlanmış kapağını bulmuş."
+304,Atasözü,Terzi kendi söküğünü dikemez.,İnsanlar başkalarına yaptıkları uzmanlık gerektiren işleri kendi ihtiyaçları için yapamazlar.,"Bilgisayarcının kendi bilgisayarı bozuk, terzi kendi söküğünü dikemez işte."
+305,Atasözü,Ucuz etin yahnisi yavan olur.,Ucuza alınan kalitesiz malzemeden iyi bir sonuç elde edilmez.,"Bu kadar ucuz ayakkabı hemen yırtılır, ucuz etin yahnisi yavan olur."
+306,Atasözü,Vakit nakittir.,Zaman çok değerlidir ve para gibi idareli kullanılmalıdır.,"Boş oturma çalış, vakit nakittir."
+307,Atasözü,Yarası olan gocunur.,"Bir kusuru veya kabahati olan kişi, o konuda konuşulduğunda alınır ve tepki gösterir.","Ben isim vermedim ama o hemen savunmaya geçti, yarası olan gocunur."
+308,Atasözü,Yazın başı pişenin kışın aşı pişer.,Gençliğinde veya zamanında çok çalışan kişi ileride rahat eder.,Şimdi yoruluyorsun ama yazın başı pişenin kışın aşı pişer.
+309,Atasözü,Yolcu yolunda gerek.,Yola çıkmış veya bir işe başlamış kişi oyalanmadan hedefine gitmelidir.,"Bize müsaade, yolcu yolunda gerek."
+310,Atasözü,Yuvarlanan taş yosun tutmaz.,Sürekli iş veya yer değiştiren kişi birikim yapamaz ve mal mülk sahibi olamaz.,"O işten bu işe atlıyor, yuvarlanan taş yosun tutmaz."
+311,Atasözü,Zahmetsiz rahmet olmaz.,Sıkıntı ve zorluk çekmeden iyi ve güzel şeylere ulaşılamaz.,"Bu sınavı kazanmak için yorulacaksın, zahmetsiz rahmet olmaz."
+312,Atasözü,Akıl yaşta değil baştadır.,"İnsanın aklı ve olgunluğu yaşıyla değil, zekası ve tecrübesiyle ölçülür.","O genç yaşına rağmen çok mantıklı, akıl yaşta değil baştadır."
+313,Atasözü,Al elmaya taş atan çok olur.,"Değerli, güzel veya başarılı kişilere kıskançlık duyup zarar vermek isteyen çok olur.","Başarını kıskananlar olacak, al elmaya taş atan çok olur."
+314,Atasözü,Altın adını bakır etme.,Sahip olduğun iyi ünü ve saygınlığı yapacağın hatalarla yok etme.,Bu yanlış işlere girip altın adını bakır etme.
+315,Atasözü,Aş taşınca kepçeye paha biçilmez.,Bir şeye çok ihtiyaç duyulduğunda onun değeri kat kat artar.,"O an bir arabaya ihtiyacımız vardı, aş taşınca kepçeye paha biçilmez."
+316,Atasözü,Ayranım ekşi diyen olmaz.,Kimse kendi yaptığı işi veya kendi malını kötülemez.,"Satıcı tabii ki malını övecek, ayranım ekşi diyen olmaz."
+317,Atasözü,"Baba koruk yer, oğlunun dişi kamaşır.",Babanın yaptığı kötü işlerin sıkıntısını çocuğu çeker.,"Adamın borçları yüzünden çocuğu perişan oldu, baba koruk yer oğlunun dişi kamaşır."
+318,Atasözü,Baş dille tartılır.,İnsanın aklı ve değeri söylediği sözlerle belli olur.,"Konuşmadan önce düşün, baş dille tartılır."
+319,Atasözü,Beş parmağın beşi bir olmaz.,Aynı anne babadan doğan çocuklar bile huy ve yetenek bakımından farklıdır.,"Kardeşi çok çalışkan ama o tembel, beş parmağın beşi bir olmaz."
+320,Atasözü,Biri yer biri bakar kıyamet ondan kopar.,Bir şeyden herkesin eşit şekilde yararlanmaması kavga ve huzursuzluk çıkarır.,"Pastayı herkese eşit paylaştır, biri yer biri bakar kıyamet ondan kopar."
+321,Atasözü,Borç yiğidin kamçısıdır.,"Borcu olan kişi, borcunu ödemek için daha çok ve gayretli çalışır.","Borca girmekten korkma çalışıp ödersin, borç yiğidin kamçısıdır."
+322,Atasözü,Bülbülü altın kafese koymuşlar ah vatanım demiş.,İnsan ne kadar rahat bir ortamda olsa da kendi yurdunu ve alıştığı yeri özler.,Yurt dışında çok zengin ama bülbülü altın kafese koymuşlar ah vatanım demiş.
+323,Atasözü,Canı yanan eşek atı geçer.,Can acısıyla veya zor bir durumda kalan kişi normalden çok daha büyük bir güç gösterir.,"O korkuyla nasıl koştuğunu görmeliydin, canı yanan eşek atı geçer."
+324,Atasözü,Çobansız koyunu kurt kapar.,Yöneticisi veya koruyucusu olmayan topluluklar tehlikeye düşer.,"Ekibin başına birini seçmeliyiz, çobansız koyunu kurt kapar."
+325,Atasözü,Çürük tahta çivi tutmaz.,"Özü bozulmuş, işe yaramaz hale gelmiş bir şeyi onarmak veya düzeltmek mümkün değildir.","O adamdan hayır gelmez artık, çürük tahta çivi tutmaz."
+326,Deyim,Çuvallamak.,"Bir işte başarısız olmak, işi eline yüzüne bulaştırmak.",Sınavda heyecandan çuvalladı.
+327,Deyim,Dalavere çevirmek.,"Hile, yalan ve dolanla gizli işler yapmak.",Arkamdan ne dalavereler çevirdiğini biliyorum.
+328,Deyim,Dört elle sarılmak.,"Bir işe büyük bir heves, önem ve gayretle girişmek.",Yeni işine dört elle sarıldı.
+329,Deyim,Dudak bükmek.,"Bir şeyi beğenmemek, küçümsemek.",Önüne konan yemeğe dudak büktü.
+330,Deyim,Eli açık.,"Cömert, parasını esirgemeyen.","Çok eli açık biridir, herkese yardım eder."
+331,Deyim,Fevri davranmak.,"Düşünmeden, aniden ve öfkeyle hareket etmek.",Fevri davranıp herkesi kırdı.
+332,Deyim,Gözü tok.,"Mala mülke açgözlülük etmeyen, elindekiyle yetinen.",O çok gözü tok bir insandır.
+333,Deyim,Hayal kırıklığına uğramak.,Beklediği sonucu alamayınca çok üzülmek.,Sınav sonucunu görünce hayal kırıklığına uğradı.
+334,Deyim,İçi cız etmek.,"Birdenbire çok üzülmek, acımak.",O zavallı çocuğu görünce içim cız etti.
+335,Deyim,Kafayı yemek.,"Delirmek, aklını kaçıracak duruma gelmek.",Bu gürültüden kafayı yiyeceğim.
+336,Deyim,Kan kusmak.,Çok büyük acılar ve sıkıntılar çekmek.,O işte çalışırken adeta kan kustu.
+337,Deyim,Kendini naza çekmek.,İstediği halde istemiyormuş gibi davranıp yalvartmak.,"Hemen kabul etmedi, biraz kendini naza çekti."
+338,Deyim,Kök söktürmek.,"Birine çok eziyet etmek, büyük zorluklar çıkarmak.",Yeni müdür çalışanlara kök söktürüyor.
+339,Deyim,Kulak kabartmak.,Belli etmemeye çalışarak dinlemek.,Yan masadaki konuşmalara kulak kabarttı.
+340,Deyim,Midesi bulanmak.,"Birinden veya bir şeyden iğrenmek, tiksinmek.",O adamın yalanlarından artık midem bulanıyor.
+341,Deyim,Nabız yoklamak.,Birinin bir konudaki niyetini ve düşüncesini anlamaya çalışmak.,Konuyu açmadan önce biraz nabız yokladı.
+342,Deyim,Omuz silkme.,"Umursamamak, önem vermemek.",Uyarılarıma sadece omuz silkti.
+343,Deyim,Ödü patlamak.,Çok korkmak.,Aniden karşıma çıkınca ödüm patladı.
+344,Deyim,Paçayı kurtarmak.,Tehlikeli veya zor bir durumdan kurtulmak.,O kazadan zor paçayı kurtardık.
+345,Deyim,Renkden renge girmek.,"Utanç, korku veya heyecandan yüzünün rengi değişmek.",Yalanı ortaya çıkınca renkten renge girdi.
+346,Deyim,Saç baş yoldurmak.,"Birini çok sinirlendirmek, çileden çıkarmak.",Bu çocuğun yaramazlıkları bana saç baş yolduruyor.
+347,Deyim,Tası tarağı toplamak.,Bütün eşyalarını toplayıp bulunduğu yerden ayrılmak.,İşten kovulunca tası tarağı toplayıp gitti.
+348,Deyim,Üstesinden gelmek.,Zor bir işi başarıyla tamamlamak.,Bu zor projenin de üstesinden geldi.
+349,Deyim,Vız gelmek.,"Hiç önemsememek, aldırış etmemek.",Senin tehditlerin bana vız gelir.
+350,Deyim,Yüzsüzlük etmek.,"Utanmadan, sıkılmadan arsızca davranmak.",O kadar laf yedi hala yüzsüzlük edip geliyor.
+351,Atasözü,Davetsiz gelen döşeksiz oturur.,Çağrılmadan bir yere giden kişi iyi ağırlanmayı beklememelidir.,"Kimse seni çağırmadı, davetsiz gelen döşeksiz oturur."
+352,Atasözü,Deli dostun olacağına akıllı düşmanın olsun.,"Akılsız bir dost, yapacağı hatalarla sana düşmandan daha çok zarar verebilir.","O adamla arkadaşlık etme, deli dostun olacağına akıllı düşmanın olsun."
+353,Atasözü,"Deniz dalgasız olmaz, gönül sevdasız olmaz.",Her şeyin doğasında var olan bir özelliği vardır.,"Gençlikte böyle şeyler olur, deniz dalgasız olmaz gönül sevdasız olmaz."
+354,Atasözü,Derdini söylemeyen derman bulamaz.,İnsan sıkıntısını başkalarıyla paylaşmazsa ona çözüm bulamaz.,"Bana ne olduğunu anlat, derdini söylemeyen derman bulamaz."
+355,Atasözü,Dost ile ye iç alışveriş etme.,Arkadaşlık ilişkilerini para veya ticaret ilişkileriyle bozmamak gerekir.,"Onunla ortak olma, dost ile ye iç alışveriş etme."
+356,Atasözü,Doğru söz yemin istemez.,Gerçekten doğru ve dürüst olan bir sözün kanıta veya yemine ihtiyacı yoktur.,"Sana inanıyorum yemin etmene gerek yok, doğru söz yemin istemez."
+357,Atasözü,Dost acı söyler.,"Gerçek dost, insanın hatalarını ve eksiklerini yüzüne karşı söylemekten çekinmez.","Söylediklerime kırılma, dost acı söyler."
+358,Atasözü,Dünya malı dünyada kalır.,"İnsan öldüğünde malını mülkünü beraberinde götüremez, bu yüzden mala çok tamah etmemelidir.","Bu kadar hırs yapma, dünya malı dünyada kalır."
+359,Atasözü,"Eken biçer, konan göçer.",Her şeyin doğal bir süreci ve sonucu vardır.,"Bu dünyada kalıcı değiliz, eken biçer konan göçer."
+360,Atasözü,El için ağlayan gözden olur.,Başkaları için gereğinden fazla fedakarlık yapan kişi sonunda kendi zararlı çıkar.,"Onun için bu kadar üzülme, el için ağlayan gözden olur."
+361,Atasözü,Emanet ata binen tez iner.,Başkasına ait olan bir şeye veya güce güvenerek iş yapılamaz.,"Kendi arabanı almalısın, emanet ata binen tez iner."
+362,Atasözü,Er olan ekmeğini taştan çıkarır.,Çalışkan ve azimli kişi en zor şartlarda bile geçimini sağlar.,"O aç kalmaz, er olan ekmeğini taştan çıkarır."
+363,Atasözü,"Eşeği düğüne çağırmışlar, ya su lazımdır ya odun demiş.",Değer verilmeyen kişiler sadece iş düşüldüğünde hatırlanır.,"Beni sadece işleri düşünce arıyorlar, eşeği düğüne çağırmışlar ya su lazımdır ya odun demiş."
+364,Atasözü,Et tırnaktan ayrılmaz.,"Birbirine çok yakın olan, kan bağı olan kişiler arasına kimse giremez.","Kardeşinle küs kalamazsın, et tırnaktan ayrılmaz."
+365,Atasözü,Evdeki hesap çarşıya uymadı.,Önceden yapılan planlar ve hesaplar uygulamada her zaman tutmayabilir.,"Bütçemiz bu ay yetmedi, evdeki hesap çarşıya uymadı."
+366,Atasözü,"Fukaranın düşkünü, beyaz giyer kış günü.","Fakir veya görgüsüz kişi, durumuna uygun olmayan, yersiz davranışlarda bulunur.","Parası yok ama en pahalı telefonu almış, fukaranın düşkünü beyaz giyer kış günü."
+367,Atasözü,Garip kuşun yuvasını Allah yapar.,Kimsesiz ve çaresiz kişilere Allah yardım eder.,"O yetim çocuğun da bir rızkı var, garip kuşun yuvasını Allah yapar."
+368,Atasözü,"Gelen ağam, giden paşam.","İktidarda veya başta kim olursa olsun ona boyun eğen, dalkavukluk eden kişiler için kullanılır.","Onun bir duruşu yok, gelen ağam giden paşam der."
+369,Atasözü,Gözü tanede olan kuşun ayağı tuzaktan kurtulmaz.,Sadece kendi çıkarını düşünen ve açgözlü davranan kişi sonunda belaya bulaşır.,"O kadar hırslı ki sonunda batacak, gözü tanede olan kuşun ayağı tuzaktan kurtulmaz."
+370,Atasözü,"Güvenme varlığa, düşersin darlığa.","İnsan zenginliğine güvenip savurganlık yapmamalıdır, bir gün yoksul düşebilir.","Paranı idareli harca, güvenme varlığa düşersin darlığa."
+371,Atasözü,Harman döven öküzün ağzı bağlanmaz.,Bir işte çalışan ve emek veren kişinin o işin nimetlerinden faydalanması engellenemez.,"Çalışanlara ikramiyelerini verin, harman döven öküzün ağzı bağlanmaz."
+372,Atasözü,Hasta olmayan sağlığın kadrini bilmez.,İnsanlar ellerindeki nimetlerin değerini ancak onları kaybettiklerinde anlarlar.,"Hastalanınca sağlığın önemini anladı, hasta olmayan sağlığın kadrini bilmez."
+373,Atasözü,Her ağacın meyvesi olmaz.,Görünüşte işe yarar gibi duran her insandan veya her şeyden fayda beklenmez.,"O adamdan sana fayda gelmez, her ağacın meyvesi olmaz."
+374,Atasözü,"İğneyi kendine, çuvaldızı başkasına batır.",Başkalarını eleştirmeden önce kendi hatalarını ve kusurlarını düşünmelisin.,"Hep başkalarını suçluyorsun, önce iğneyi kendine çuvaldızı başkasına batır."
+375,Atasözü,"İşten artmaz, dişten artar.","İnsan ne kadar çok kazanırsa kazansın, tutumlu olmazsa birikim yapamaz.","Çok kazanıyor ama hiç para biriktiremiyor, işten artmaz dişten artar."
+376,Deyim,Aklı başından gitmek.,"Çok şaşırmak, korkmak veya sevinmekten ne yapacağını bilememek.",Kazayı görünce aklı başından gitti.
+377,Deyim,Alttan almak.,"Tartışmayı büyütmemek için yumuşak davranmak, taviz vermek.",O sinirliyken sen alttan almalısın.
+378,Deyim,Ayak diremek.,"Bir konuda inat etmek, düşüncesinden vazgeçmemek.",Oraya gitmemek için ayak diriyor.
+379,Deyim,Baş ütülemek.,Çok konuşarak karşısındakini rahatsız etmek.,Sabahtan beri başımı ütüledi.
+380,Deyim,Boynu bükük kalmak.,"Çaresiz, kimsesiz ve üzgün bir durumda olmak.",Yetim çocuklar boynu bükük kaldı.
+381,Deyim,Can kulağıyla dinlemek.,Bütün dikkatini vererek çok iyi dinlemek.,Öğretmenin anlattıklarını can kulağıyla dinledi.
+382,Deyim,Çiçeği burnunda.,"Çok yeni, taze.",Çiçeği burnunda bir öğretmen olarak göreve başladı.
+383,Deyim,Dili çözülmek.,Suskunluğunu bozup konuşmaya başlamak.,Olaydan sonra nihayet dili çözüldü.
+384,Deyim,Ekmeğinden olmak.,"İşini kaybetmek, geçim sağladığı kaynaktan mahrum kalmak.",O hatası yüzünden ekmeğinden oldu.
+385,Deyim,Gözü yaşlı.,"Çok ağlayan, üzüntülü.",Gözü yaşlı bir şekilde evden ayrıldı.
+386,Deyim,Göz yummak.,"Birinin hatasını görmezden gelmek, affetmek.",Çocuğun yaramazlıklarına göz yumuyor.
+387,Deyim,Havalara uçmak.,Çok sevinmek.,Sınavı kazandığını duyunca havalara uçtu.
+388,Deyim,İçi açılmak.,"Ferahlamak, sıkıntısı dağılmak.",Bahçeye çıkınca içim açıldı.
+389,Deyim,İçi sızlamak.,"Çok üzülmek, acımak.",O zavallı hayvanı görünce içim sızladı.
+390,Deyim,Kafasına takmak.,Bir şeyi sürekli düşünerek kendine dert etmek.,Sınav sonucunu çok kafasına takıyor.
+391,Deyim,Kanı donmak.,Çok korkunç bir olay karşısında dehşete düşmek.,Cinayet haberini okuyunca kanım dondu.
+392,Deyim,Kulak ardı etmek.,"Söylenenleri dikkate almamak, önemsememek.",Benim uyarılarımı kulak ardı etti.
+393,Deyim,Lafa karışmak.,Başkalarının konuşmasına izinsiz ve yersiz olarak katılmak.,Büyükler konuşurken lafa karışma.
+394,Deyim,Maskara olmak.,Gülünç ve alay edilecek duruma düşmek.,O kıyafetle herkese maskara oldu.
+395,Deyim,Omuz vermek.,"Birine yardım etmek, destek olmak.",Bu zor günlerde birbirimize omuz vermeliyiz.
+396,Deyim,Ömrü billah.,"Hayatı boyunca, hiçbir zaman.",Ömrü billah böyle bir rezalet görmedim.
+397,Deyim,Pupa yelken.,"Hiçbir engele takılmadan, çok hızlı bir şekilde.",Proje pupa yelken ilerliyor.
+398,Deyim,Rest çekmek.,Birine karşı kesin tavır alıp meydan okumak.,Şartları kabul etmeyince rest çekti.
+399,Deyim,Suya düşmek.,"Gerçekleşememek, boşa gitmek.",Bütün tatil planlarımız suya düştü.
+400,Deyim,Taşkınlık yapmak.,Aşırı ve kontrolsüz davranışlarda bulunmak.,Maçtan sonra taraftarlar taşkınlık yaptı.
