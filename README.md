@@ -1,1 +1,1 @@
-# Atalar-n-Sozu
+# Atalarin-Sozu
