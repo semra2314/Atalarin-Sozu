@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.Widgy"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +20,8 @@
         "monochromeImage": "./assets/images/icon-widgy.png"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.Widgy"
     },
     "web": {
       "output": "static",
@@ -37,6 +39,24 @@
           "dark": {
             "backgroundColor": "#000000"
           }
+        }
+      ],
+      [
+        "./node_modules/react-native-android-widget/app.plugin.js",
+        {
+          "widgets": [
+            {
+              "name": "Hello",
+              "label": "My Hello Widget",
+              "minWidth": "320dp",
+              "minHeight": "120dp",
+              "targetCellWidth": 5,
+              "targetCellHeight": 2,
+              "description": "This is my first widget",
+              "previewImage": "assets/images/icon-widgy.png",
+              "updatePeriodMillis": 1800000
+            }
+          ]
         }
       ]
     ],
