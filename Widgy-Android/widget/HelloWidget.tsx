@@ -1,7 +1,11 @@
 "use no memo";
 import { FlexWidget, TextWidget } from "react-native-android-widget";
 
-export function HelloWidget() {
+export type Props = {
+  phrase: string;
+};
+
+export function HelloWidget({ phrase }: Props) {
   return (
     <FlexWidget
       style={{
@@ -15,7 +19,7 @@ export function HelloWidget() {
       accessibilityLabel="Hello world widget"
     >
       <TextWidget
-        text="Hello"
+        text={phrase}
         style={{
           fontSize: 32,
           fontFamily: "Inter",

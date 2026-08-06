@@ -55,6 +55,17 @@
               "description": "This is my first widget",
               "previewImage": "assets/images/icon-widgy.png",
               "updatePeriodMillis": 1800000
+            },
+            {
+              "name": "Proverb",
+              "label": "Turkish Proverb",
+              "minWidth": "320dp",
+              "minHeight": "120dp",
+              "targetCellWidth": 5,
+              "targetCellHeight": 2,
+              "description": "Daily Turkish proverb",
+              "previewImage": "assets/images/icon-widgy.png",
+              "updatePeriodMillis": 1800000
             }
           ]
         }

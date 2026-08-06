@@ -1,10 +1,21 @@
+import { Proverb } from "@/types/WidgetConfig";
 import React from "react";
 import type { WidgetTaskHandlerProps } from "react-native-android-widget";
 import { HelloWidget } from "./HelloWidget";
+import { ProverbWidget } from "./ProverbWidget";
 
 const nameToWidget = {
   // Hello will be the **name** with which we will reference our widget.
+  Proverb: ProverbWidget,
   Hello: HelloWidget,
+};
+const proverb: Proverb = {
+  id: 1,
+  type: "Atasözü",
+  proverb: "Ağaç yaşken eğilir.",
+  meaning: "İnsanlar küçük yaşta kolayca eğitilirler.",
+  example:
+    "Çocuğuna yabancı dili şimdi öğretmelisin, sonuçta ağaç yaşken eğilir.",
 };
 
 export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
@@ -14,7 +25,7 @@ export async function widgetTaskHandler(props: WidgetTaskHandlerProps) {
 
   switch (props.widgetAction) {
     case "WIDGET_ADDED":
-      props.renderWidget(<Widget />);
+      props.renderWidget(<Widget proverb={proverb} phrase={"Hello"} />);
       break;
 
     case "WIDGET_UPDATE":
