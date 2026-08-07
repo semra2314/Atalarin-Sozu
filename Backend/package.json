@@ -1,0 +1,20 @@
+{
+  "name": "atalarin-sozu-backend",
+  "version": "1.0.0",
+  "description": "Ataların Sözü — Firebase Backend (Import Scripts)",
+  "scripts": {
+    "import:proverbs": "node scripts/importProverbs.js",
+    "import:themes": "node scripts/importThemes.js",
+    "deploy:rules": "firebase deploy --only firestore:rules"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.5",
+    "firebase-admin": "^12.3.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.12.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

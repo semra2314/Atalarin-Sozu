@@ -1,0 +1,13 @@
+{
+  "name": "atalarin-sozu-functions",
+  "version": "1.0.0",
+  "description": "Cloud Functions for Ataların Sözü",
+  "main": "index.js",
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.3.0",
+    "firebase-functions": "^5.0.1"
+  }
+}

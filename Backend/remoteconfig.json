@@ -1,0 +1,68 @@
+{
+  "version": "1",
+  "parameters": {
+    "free_themes": {
+      "defaultValue": {
+        "value": "[\"minimalist_white\",\"retro_vintage\"]"
+      },
+      "description": "Ücretsiz olarak erişilebilen tema ID listesi (JSON array string)",
+      "valueType": "STRING"
+    },
+    "premium_themes": {
+      "defaultValue": {
+        "value": "[\"neon_cyberpunk\",\"el_yazisi\",\"y2k_glitter\"]"
+      },
+      "description": "Premium (ücretli) tema ID listesi",
+      "valueType": "STRING"
+    },
+    "maintenance_mode": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "description": "true ise uygulama bakım ekranı gösterir",
+      "valueType": "BOOLEAN"
+    },
+    "daily_notification_enabled": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "description": "Günlük atasözü bildirimini aktif/pasif yapar",
+      "valueType": "BOOLEAN"
+    },
+    "app_version_minimum": {
+      "defaultValue": {
+        "value": "1.0.0"
+      },
+      "description": "Minimum desteklenen uygulama versiyonu (force update için)",
+      "valueType": "STRING"
+    },
+    "promo_banner_text": {
+      "defaultValue": {
+        "value": ""
+      },
+      "description": "Ana ekranda gösterilecek kampanya metni (boşsa banner gösterilmez)",
+      "valueType": "STRING"
+    },
+    "promo_banner_url": {
+      "defaultValue": {
+        "value": ""
+      },
+      "description": "Banner'a tıklanınca açılacak URL",
+      "valueType": "STRING"
+    },
+    "premium_price_try": {
+      "defaultValue": {
+        "value": "49.99"
+      },
+      "description": "Premium paket fiyatı (TL) - sadece görsel gösterim için, gerçek ödeme IAP'tan",
+      "valueType": "STRING"
+    },
+    "max_free_favorites": {
+      "defaultValue": {
+        "value": "20"
+      },
+      "description": "Ücretsiz kullanıcının favori listesine ekleyebileceği maksimum atasözü sayısı",
+      "valueType": "NUMBER"
+    }
+  }
+}
