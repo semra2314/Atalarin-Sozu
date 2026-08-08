@@ -5,6 +5,9 @@
 # Firebase — GİZLİ, asla commit etme!
 serviceAccountKey.json
 **/serviceAccountKey.json
+google-services.json
+**/google-services.json
+GoogleService-Info.plist
 .firebaserc
 
 # Node.js
