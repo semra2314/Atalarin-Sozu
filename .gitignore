@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Xcode — build products and per-user state
+build/
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Per-user Xcode settings: breakpoints, window layout, which scheme is selected.
+# Shared schemes (xcshareddata) are deliberately NOT ignored — the Widgy scheme
+# lives there, and losing it is what made the widgets disappear from the
+# simulator once already.
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods / Carthage (unused today, ignored in case they arrive)
+Pods/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/screenshots/**/*.png
+
+# Node — the creator portal lives in its own repo, but just in case
+node_modules/
+.next/
