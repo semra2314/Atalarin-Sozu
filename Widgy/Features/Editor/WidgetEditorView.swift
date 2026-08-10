@@ -34,6 +34,46 @@ struct WidgetEditorView: View {
     @State private var canvasPhotoItem: PhotosPickerItem?
     @State private var showAddToHome = false
     @State private var activeTab: EditorTab = .text
+    @State private var stickerSource: StickerSource = .emoji
+    /// Lets the system emoji keyboard reach the canvas: whatever character the
+    /// user types here becomes a sticker. This is how their own emoji — and
+    /// anything we didn't curate — gets in.
+    @State private var typedEmoji: String = ""
+
+    /// Where a sticker comes from. "Yours" covers everything Apple won't let us
+    /// read out of the Messages sticker drawer: cut one from a photo, paste one
+    /// that's been copied, or drop one onto the canvas.
+    enum StickerSource: String, CaseIterable, Identifiable {
+        case emoji, symbols, mine
+        var id: String { rawValue }
+        var title: String {
+            switch self {
+            case .emoji: "Emoji"
+            case .symbols: "Symbols"
+            case .mine: "Yours"
+            }
+        }
+    }
+
+    @State private var stickerPhotoItem: PhotosPickerItem?
+    @State private var isLiftingSubject = false
+    @State private var stickerError: String?
+
+    /// What the crop sheet is currently editing. Both routes end in the same
+    /// sheet; only where the result goes differs.
+    @State private var cropTarget: CropTarget?
+
+    enum CropTarget: Identifiable {
+        case canvasPhoto(UUID)
+        case background
+
+        var id: String {
+            switch self {
+            case let .canvasPhoto(id): "photo-\(id)"
+            case .background: "background"
+            }
+        }
+    }
     @AppStorage(OnboardingKeys.seenAddToHome) private var seenAddToHome = false
 
     /// The control panel's sections. Scrolls horizontally, so it can grow as
@@ -82,6 +122,17 @@ struct WidgetEditorView: View {
         ])
     ]
 
+    /// Emoji, grouped the way Apple's own keyboard does. A curated set rather
+    /// than the full catalogue — thousands of glyphs in a small panel is a
+    /// worse experience than a good forty, and the "type any emoji" field
+    /// below covers everything we leave out.
+    private let emojiGroups: [(name: String, emoji: [String])] = [
+        ("Smileys", ["😀", "🥰", "😎", "🤔", "😴", "🥳", "😭", "🫶"]),
+        ("Nature", ["🌸", "🌿", "🌙", "☀️", "🔥", "🌊", "⛄️", "🍂"]),
+        ("Life", ["☕️", "📚", "🎧", "✈️", "🏃", "🎯", "💡", "🕰️"]),
+        ("Hearts", ["❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "✨"])
+    ]
+
     /// Stickers by theme, so finding the right glyph doesn't mean scrolling
     /// past everything else.
     private let stickerGroups: [(name: String, symbols: [String])] = [
@@ -107,6 +158,9 @@ struct WidgetEditorView: View {
                     )
                 } else if content != nil, let bound = Binding($content) {
                     editor(widget: widget, content: bound)
+                        .sheet(item: $cropTarget) { target in
+                            cropSheet(target, content: bound)
+                        }
                 } else {
                     ProgressView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -160,6 +214,27 @@ struct WidgetEditorView: View {
         }
     }
 
+    /// One crop sheet, two destinations: a placed photo or the background.
+    @ViewBuilder
+    private func cropSheet(_ target: CropTarget, content: Binding<WidgetContent>) -> some View {
+        switch target {
+        case let .canvasPhoto(id):
+            if let photo = content.wrappedValue.photos.first(where: { $0.id == id }) {
+                PhotoCropView(imageData: photo.imageData) { cropped in
+                    guard let index = content.wrappedValue.photos.firstIndex(where: { $0.id == id })
+                    else { return }
+                    content.wrappedValue.photos[index].imageData = cropped
+                }
+            }
+        case .background:
+            if case let .photo(data) = content.wrappedValue.background {
+                PhotoCropView(imageData: data) { cropped in
+                    content.wrappedValue.background = .photo(cropped)
+                }
+            }
+        }
+    }
+
     // MARK: - Canvas zone
 
     private func canvasZone(_ content: Binding<WidgetContent>) -> some View {
@@ -177,7 +252,8 @@ struct WidgetEditorView: View {
                     family: previewFamily,
                     selectedStickerID: $selectedStickerID,
                     selectedPhotoID: $selectedPhotoID,
-                    selectedTextID: $selectedTextID
+                    selectedTextID: $selectedTextID,
+                    onCropPhoto: { cropTarget = .canvasPhoto($0) }
                 )
                 Spacer(minLength: 0)
                 sizeSelector
@@ -550,6 +626,23 @@ struct WidgetEditorView: View {
                     }
                 }
 
+                if content.background.wrappedValue.isPhoto {
+                    Button {
+                        cropTarget = .background
+                    } label: {
+                        HStack(spacing: Theme.Spacing.sm) {
+                            Image(systemName: "crop")
+                            Text("Crop photo")
+                        }
+                        .font(Theme.Typography.body)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .foregroundStyle(Theme.Palette.ink)
+                        .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: Theme.Radius.card))
+                    }
+                    .buttonStyle(.plain)
+                }
+
                 ForEach(backgroundGroups, id: \.name) { group in
                     VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
                         Text(group.name)
@@ -669,32 +762,35 @@ struct WidgetEditorView: View {
     @ViewBuilder
     private func stickersPanel(_ content: Binding<WidgetContent>) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xl) {
+            pillSegmented(StickerSource.allCases, selection: $stickerSource) { source, isSelected in
+                Text(source.title)
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(isSelected ? Theme.Palette.ink : Theme.Palette.subtleText)
+            }
+
             // A four-column grid rather than a horizontal strip: with eight
             // glyphs per group, a scrolling row hides half of them behind a
             // gesture nobody knows to make.
-            ForEach(stickerGroups, id: \.name) { stickerGroup in
-                VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-                    Text(stickerGroup.name)
-                        .widgyCapsLabel()
-                        .foregroundStyle(Theme.Palette.subtleText)
+            if stickerSource == .emoji {
+                ForEach(emojiGroups, id: \.name) { emojiGroup in
+                    glyphGrid(title: emojiGroup.name, items: emojiGroup.emoji) { character in
+                        Text(character).font(.system(size: 24))
+                    } action: { character in
+                        addEmoji(character, to: content)
+                    }
+                }
 
-                    LazyVGrid(
-                        columns: Array(repeating: GridItem(.flexible(), spacing: Theme.Spacing.md), count: 4),
-                        spacing: Theme.Spacing.md
-                    ) {
-                        ForEach(stickerGroup.symbols, id: \.self) { symbol in
-                            Button {
-                                addSticker(symbol, to: content)
-                            } label: {
-                                Image(systemName: symbol)
-                                    .font(.system(size: 19, weight: .light))
-                                    .foregroundStyle(Theme.Palette.ink)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 44)
-                                    .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: 12))
-                            }
-                            .buttonStyle(.plain)
-                        }
+                typeYourOwn(content)
+            } else if stickerSource == .mine {
+                yourStickers(content)
+            } else {
+                ForEach(stickerGroups, id: \.name) { stickerGroup in
+                    glyphGrid(title: stickerGroup.name, items: stickerGroup.symbols) { symbol in
+                        Image(systemName: symbol)
+                            .font(.system(size: 19, weight: .light))
+                            .foregroundStyle(Theme.Palette.ink)
+                    } action: { symbol in
+                        addSticker(symbol, to: content)
                     }
                 }
             }
@@ -702,6 +798,145 @@ struct WidgetEditorView: View {
             if !content.wrappedValue.stickers.isEmpty {
                 Divider()
                 selectedStickerControls(content: content)
+            }
+        }
+    }
+
+    private func glyphGrid<Item: Hashable, Label: View>(
+        title: String,
+        items: [Item],
+        @ViewBuilder label: @escaping (Item) -> Label,
+        action: @escaping (Item) -> Void
+    ) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+            Text(title)
+                .widgyCapsLabel()
+                .foregroundStyle(Theme.Palette.subtleText)
+
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible(), spacing: Theme.Spacing.md), count: 4),
+                spacing: Theme.Spacing.md
+            ) {
+                ForEach(items, id: \.self) { item in
+                    Button { action(item) } label: {
+                        label(item)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: 12))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+        }
+    }
+
+    /// The user's own stickers.
+    ///
+    /// iOS gives apps no way to read the Messages sticker drawer, so instead of
+    /// a list they can't have, these are the three routes that do work: cut a
+    /// subject out of a photo, paste one that's been copied, or drop one in.
+    @ViewBuilder
+    private func yourStickers(_ content: Binding<WidgetContent>) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.lg) {
+            PhotosPicker(selection: $stickerPhotoItem, matching: .images) {
+                HStack(spacing: Theme.Spacing.sm) {
+                    if isLiftingSubject {
+                        ProgressView().controlSize(.small)
+                        Text("Cutting out…")
+                    } else {
+                        Image(systemName: "person.and.background.dotted")
+                        Text("Make one from a photo")
+                    }
+                }
+                .font(Theme.Typography.body)
+                .frame(maxWidth: .infinity)
+                .frame(height: 48)
+                .foregroundStyle(Theme.Palette.ink)
+                .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: Theme.Radius.card))
+            }
+            .disabled(isLiftingSubject)
+            .onChange(of: stickerPhotoItem) { _, item in
+                Task { await makeStickerFromPhoto(item, into: content) }
+            }
+
+            Button {
+                pasteSticker(into: content)
+            } label: {
+                HStack(spacing: Theme.Spacing.sm) {
+                    Image(systemName: "doc.on.clipboard")
+                    Text("Paste a copied sticker")
+                }
+                .font(Theme.Typography.body)
+                .frame(maxWidth: .infinity)
+                .frame(height: 48)
+                .foregroundStyle(Theme.Palette.ink)
+                .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: Theme.Radius.card))
+            }
+            .buttonStyle(.plain)
+
+            // Drop target. Dragging a sticker or image from another app lands
+            // it straight on the canvas.
+            RoundedRectangle(cornerRadius: Theme.Radius.card, style: .continuous)
+                .strokeBorder(Theme.Palette.hairline,
+                              style: StrokeStyle(lineWidth: 1.5, dash: [6, 5]))
+                .frame(height: 84)
+                .overlay {
+                    VStack(spacing: 4) {
+                        Image(systemName: "hand.draw")
+                            .font(.system(size: 18, weight: .light))
+                        Text("…or drag one in from another app")
+                            .font(Theme.Typography.caption)
+                    }
+                    .foregroundStyle(Theme.Palette.subtleText)
+                }
+                .dropDestination(for: Data.self) { items, _ in
+                    guard let data = items.first else { return false }
+                    addImageSticker(data, to: content)
+                    return true
+                }
+
+            if let stickerError {
+                Text(stickerError)
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Palette.accent)
+            }
+
+            Text("Widgy can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job.")
+                .font(Theme.Typography.caption)
+                .foregroundStyle(Theme.Palette.subtleText)
+        }
+    }
+
+    /// The route to every emoji we didn't curate, and to the user's own —
+    /// tapping here opens the system emoji keyboard, and whatever they pick
+    /// becomes a sticker.
+    private func typeYourOwn(_ content: Binding<WidgetContent>) -> some View {
+        VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
+            Text("Any emoji")
+                .widgyCapsLabel()
+                .foregroundStyle(Theme.Palette.subtleText)
+
+            HStack(spacing: Theme.Spacing.md) {
+                TextField("Tap and use the emoji key 🙂", text: $typedEmoji)
+                    .textFieldStyle(.plain)
+                    .font(Theme.Typography.body)
+                    .autocorrectionDisabled()
+                    .padding(Theme.Spacing.md)
+                    .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: Theme.Radius.card))
+
+                Button {
+                    addTypedEmoji(to: content)
+                } label: {
+                    Text("Add")
+                        .font(Theme.Typography.label)
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, Theme.Spacing.lg)
+                        .frame(height: 44)
+                        .background(Theme.Palette.accent, in: .capsule)
+                }
+                .buttonStyle(.plain)
+                .disabled(typedEmoji.trimmingCharacters(in: .whitespaces).isEmpty)
+                .opacity(typedEmoji.trimmingCharacters(in: .whitespaces).isEmpty ? 0.4 : 1)
             }
         }
     }
@@ -739,6 +974,21 @@ struct WidgetEditorView: View {
 
                 labelledSlider("Opacity", value: photoBinding.opacity, range: 0.15...1, step: nil,
                                minIcon: "circle.dotted", maxIcon: "circle.fill", unit: .percent)
+
+                Button {
+                    cropTarget = .canvasPhoto(id)
+                } label: {
+                    HStack(spacing: Theme.Spacing.sm) {
+                        Image(systemName: "crop")
+                        Text("Crop")
+                    }
+                    .font(Theme.Typography.body)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(Theme.Palette.ink)
+                    .background(Theme.Palette.surfaceMuted, in: .rect(cornerRadius: Theme.Radius.card))
+                }
+                .buttonStyle(.plain)
                 // Duplicate/Delete live in the panel's sticky action bar now,
                 // so they're in the same place whatever is selected.
             }
@@ -788,8 +1038,20 @@ struct WidgetEditorView: View {
                     .widgyCapsLabel()
                     .foregroundStyle(Theme.Palette.subtleText)
 
-                swatchRow(colors: textColors, selectedHex: stickerBinding.wrappedValue.colorHex) { hex in
-                    stickerBinding.colorHex.wrappedValue = hex
+                // Only monochrome symbols can be tinted. Emoji are Apple's own
+                // multicolour artwork and photo cut-outs are photographs —
+                // offering a colour picker for either would be a control that
+                // silently does nothing.
+                if stickerBinding.wrappedValue.isTintable {
+                    swatchRow(colors: textColors, selectedHex: stickerBinding.wrappedValue.colorHex) { hex in
+                        stickerBinding.colorHex.wrappedValue = hex
+                    }
+                } else {
+                    Text(stickerBinding.wrappedValue.isEmoji
+                         ? "Emoji keep their own colours."
+                         : "Your sticker keeps its own colours.")
+                        .font(Theme.Typography.caption)
+                        .foregroundStyle(Theme.Palette.subtleText)
                 }
 
                 labelledSlider("Size", value: stickerBinding.scale, range: 0.5...2.5, step: nil,
@@ -878,10 +1140,10 @@ struct WidgetEditorView: View {
     /// The design's segmented control: a muted capsule track with the selected
     /// option riding on a white pill. SwiftUI's `.segmented` picker style can't
     /// be shaped like this, so it's built by hand.
-    private func pillSegmented<Value: Hashable>(
+    private func pillSegmented<Value: Hashable, Label: View>(
         _ values: [Value],
         selection: Binding<Value>,
-        @ViewBuilder label: @escaping (Value, Bool) -> some View
+        @ViewBuilder label: @escaping (Value, Bool) -> Label
     ) -> some View {
         HStack(spacing: 4) {
             ForEach(Array(values.enumerated()), id: \.offset) { _, value in
@@ -932,7 +1194,85 @@ struct WidgetEditorView: View {
     // MARK: - Actions
 
     private func addSticker(_ symbol: String, to content: Binding<WidgetContent>) {
-        let sticker = WidgetContent.Sticker(symbolName: symbol, x: 0.5, y: 0.5, scale: 1.0, colorHex: "FFFFFF")
+        place(WidgetContent.Sticker(symbolName: symbol), in: content)
+    }
+
+    private func addEmoji(_ character: String, to content: Binding<WidgetContent>) {
+        place(WidgetContent.Sticker(emoji: character), in: content)
+    }
+
+    /// Takes only the first character, so pasting a whole sentence doesn't
+    /// become a "sticker" made of words.
+    private func addTypedEmoji(to content: Binding<WidgetContent>) {
+        let trimmed = typedEmoji.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let first = trimmed.first else { return }
+        place(WidgetContent.Sticker(emoji: String(first)), in: content)
+        typedEmoji = ""
+    }
+
+    /// Cuts the subject out of a chosen photo and places it as a sticker.
+    private func makeStickerFromPhoto(_ item: PhotosPickerItem?, into content: Binding<WidgetContent>) async {
+        guard let item else { return }
+        isLiftingSubject = true
+        stickerError = nil
+        defer {
+            isLiftingSubject = false
+            stickerPhotoItem = nil
+        }
+
+        guard let raw = try? await item.loadTransferable(type: Data.self) else {
+            stickerError = "That photo couldn't be loaded."
+            return
+        }
+
+        do {
+            let cutout = try await SubjectLifter.liftSubject(from: raw)
+            place(WidgetContent.Sticker(imageData: cutout), in: content)
+        } catch {
+            stickerError = error.localizedDescription
+        }
+    }
+
+    private func pasteSticker(into content: Binding<WidgetContent>) {
+        stickerError = nil
+        // Stickers arrive on the pasteboard as images; PNG keeps transparency,
+        // which is exactly what a sticker is made of.
+        guard let image = UIPasteboard.general.image,
+              let data = image.pngData() else {
+            stickerError = "Nothing to paste — copy a sticker or image first."
+            return
+        }
+        addImageSticker(data, to: content)
+    }
+
+    /// Shared by paste and drag-drop: normalise whatever arrived, then place it.
+    private func addImageSticker(_ data: Data, to content: Binding<WidgetContent>) {
+        guard let image = UIImage(data: data) else {
+            stickerError = "That didn't look like an image."
+            return
+        }
+        // Downscale on the way in — several stickers plus photos all share the
+        // widget extension's memory budget.
+        let longest = max(image.size.width, image.size.height)
+        let factor = longest > 500 ? 500 / longest : 1
+        let target = CGSize(width: image.size.width * factor, height: image.size.height * factor)
+
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = 1
+        format.opaque = false
+        let resized = UIGraphicsImageRenderer(size: target, format: format).image { _ in
+            image.draw(in: CGRect(origin: .zero, size: target))
+        }
+
+        guard let png = resized.pngData() else {
+            stickerError = "Couldn't prepare that image."
+            return
+        }
+        stickerError = nil
+        place(WidgetContent.Sticker(imageData: png), in: content)
+    }
+
+    private func place(_ sticker: WidgetContent.Sticker, in content: Binding<WidgetContent>) {
         content.wrappedValue.stickers.append(sticker)
         selectedStickerID = sticker.id
         selectedPhotoID = nil
@@ -997,6 +1337,8 @@ private struct HomeScreenCanvas: View {
     @Binding var selectedStickerID: UUID?
     @Binding var selectedPhotoID: UUID?
     @Binding var selectedTextID: UUID?
+    /// Tapping the crop badge on an already-selected photo.
+    var onCropPhoto: (UUID) -> Void
 
     /// Height-to-width ratio of the stored image, so the selection frame
     /// matches what's actually drawn.
@@ -1005,20 +1347,54 @@ private struct HomeScreenCanvas: View {
         return image.size.height / image.size.width
     }
 
-    /// The four corner dots on a selected element.
-    private func handles(width: CGFloat, height: CGFloat) -> some View {
+    /// Where a corner-resize gesture started, so the drag doesn't feed back
+    /// into the size it's changing.
+    @State private var resizeStart: (scale: Double, width: CGFloat)?
+
+    /// The four corner dots on a selected element — draggable, because they
+    /// look draggable. They used to be decoration, which meant the one gesture
+    /// everyone tries first did nothing.
+    ///
+    /// The whole overlay is given a margin wider than the element so the dots
+    /// and the crop badge, which sit on the edge, are inside a touchable area
+    /// instead of hanging outside it.
+    private func handles(
+        width: CGFloat,
+        height: CGFloat,
+        currentScale: Double = 1,
+        onResize: ((Double) -> Void)? = nil
+    ) -> some View {
         ZStack {
             ForEach(0..<4, id: \.self) { corner in
+                let signX: CGFloat = corner % 2 == 0 ? -1 : 1
+                let signY: CGFloat = corner < 2 ? -1 : 1
+
                 Circle()
                     .fill(Theme.Palette.surface)
                     .overlay(Circle().stroke(Theme.Palette.accent, lineWidth: 1.5))
-                    .frame(width: 10, height: 10)
-                    .offset(
-                        x: (corner % 2 == 0 ? -1 : 1) * width / 2,
-                        y: (corner < 2 ? -1 : 1) * height / 2
+                    .frame(width: 12, height: 12)
+                    // A bigger invisible target than the dot itself: 12pt is
+                    // well under the 44pt Apple asks for.
+                    .contentShape(Circle().inset(by: -14))
+                    .offset(x: signX * width / 2, y: signY * height / 2)
+                    .gesture(
+                        onResize == nil ? nil :
+                        DragGesture()
+                            .onChanged { value in
+                                let start = resizeStart ?? (scale: currentScale, width: width)
+                                if resizeStart == nil { resizeStart = start }
+                                // Dragging away from the centre grows it,
+                                // whichever corner is held.
+                                let delta = (value.translation.width * signX
+                                             + value.translation.height * signY) / 2
+                                let proposed = max(24, start.width + 2 * delta)
+                                onResize?(start.scale * Double(proposed / start.width))
+                            }
+                            .onEnded { _ in resizeStart = nil }
                     )
             }
         }
+        .frame(width: width + 44, height: height + 44)
     }
 
     private func clearSelection(except keep: Element) {
@@ -1063,11 +1439,6 @@ private struct HomeScreenCanvas: View {
                         .stroke(Theme.Palette.accent,
                                 lineWidth: selectedPhotoID == photo.id ? 2 : 0)
                         .frame(width: width, height: height)
-                        .overlay {
-                            if selectedPhotoID == photo.id {
-                                handles(width: width, height: height)
-                            }
-                        }
                         .contentShape(Rectangle())
                         .position(x: canvas.width * photo.x, y: canvas.height * photo.y)
                         .gesture(
@@ -1141,11 +1512,6 @@ private struct HomeScreenCanvas: View {
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(Theme.Palette.accent, lineWidth: selectedTextID == element.id ? 2 : 0)
                         .frame(width: width, height: height)
-                        .overlay {
-                            if selectedTextID == element.id {
-                                handles(width: width, height: height)
-                            }
-                        }
                         .contentShape(Rectangle())
                         .position(x: canvas.width * element.x, y: canvas.height * element.y)
                         .gesture(
@@ -1174,11 +1540,76 @@ private struct HomeScreenCanvas: View {
                             }
                         }
                 }
+
+                // The selected element's chrome — corner handles and the crop
+                // badge — lives here rather than as an overlay on the element
+                // itself. As an overlay it sat inside a `contentShape` that
+                // clipped hit testing to the element's own bounds, so the dots
+                // and badge, which straddle the edge, never received a touch.
+                selectionChrome(canvas: canvas)
             }
             .frame(width: canvas.width, height: canvas.height)
         }
         .frame(maxWidth: .infinity)
         .animation(.snappy, value: family)
+    }
+
+    /// Handles and the crop badge for whatever is selected, drawn above every
+    /// element so nothing clips its touch area.
+    @ViewBuilder
+    private func selectionChrome(canvas: CGSize) -> some View {
+        if let id = selectedPhotoID,
+           let index = content.photos.firstIndex(where: { $0.id == id }) {
+            let photo = content.photos[index]
+            let width = canvas.width * photo.scale
+            let height = width * aspectRatio(of: photo)
+
+            ZStack {
+                handles(width: width, height: height, currentScale: photo.scale) { newScale in
+                    content.photos[index].scale = min(1.0, max(0.15, newScale))
+                }
+
+                // Appears only once the photo is selected: tap to select, tap
+                // the badge to crop. Two deliberate taps, no accidents.
+                Button {
+                    onCropPhoto(id)
+                } label: {
+                    Image(systemName: "crop")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(width: 30, height: 30)
+                        .background(Theme.Palette.accent, in: .circle)
+                        .overlay(Circle().stroke(.white, lineWidth: 1.5))
+                        .shadow(color: .black.opacity(0.25), radius: 3, y: 1)
+                }
+                .buttonStyle(.plain)
+                .offset(x: width / 2 + 6, y: -height / 2 - 6)
+            }
+            .position(x: canvas.width * photo.x, y: canvas.height * photo.y)
+
+        } else if let id = selectedTextID,
+                  let index = content.texts.firstIndex(where: { $0.id == id }) {
+            let element = content.texts[index]
+            let width = canvas.width * element.widthFraction
+            let height = max(28, element.fontSize * (canvas.width / WidgetMetrics.referenceWidth) * 1.6)
+
+            // Dragging a text corner changes its type size, which is what
+            // "make it bigger" means for words.
+            handles(width: width, height: height, currentScale: element.fontSize) { newSize in
+                content.texts[index].fontSize = min(60, max(8, newSize))
+            }
+            .position(x: canvas.width * element.x, y: canvas.height * element.y)
+
+        } else if let id = selectedStickerID,
+                  let index = content.stickers.firstIndex(where: { $0.id == id }) {
+            let sticker = content.stickers[index]
+            let side = canvas.width * 0.14 * sticker.scale + 18
+
+            handles(width: side, height: side, currentScale: sticker.scale) { newScale in
+                content.stickers[index].scale = min(2.5, max(0.5, newScale))
+            }
+            .position(x: canvas.width * sticker.x, y: canvas.height * sticker.y)
+        }
     }
 
     /// Drops a copy slightly offset from the original, so it's visible rather

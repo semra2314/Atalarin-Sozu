@@ -51,16 +51,44 @@ struct CustomWidgetView: View {
                 }
 
                 ForEach(content.stickers) { sticker in
-                    Image(systemName: sticker.symbolName)
-                        .font(.system(size: referenceWidth * 0.14 * sticker.scale * scale))
-                        .foregroundStyle(Color(hex: sticker.colorHex))
-                        .opacity(sticker.opacity)
-                        .rotationEffect(.degrees(sticker.rotation))
-                        .position(x: geo.size.width * sticker.x,
-                                  y: geo.size.height * sticker.y)
+                    stickerView(sticker, in: geo.size, scale: scale)
                 }
             }
         }
+    }
+
+    /// A sticker: either an emoji drawn as text in Apple's own colours, or a
+    /// monochrome SF Symbol tinted with the chosen colour.
+    @ViewBuilder
+    private func stickerView(
+        _ sticker: WidgetContent.Sticker,
+        in canvas: CGSize,
+        scale: CGFloat
+    ) -> some View {
+        let size = referenceWidth * 0.14 * sticker.scale * scale
+        Group {
+            if let data = sticker.imageData, let image = UIImage(data: data) {
+                // A cut-out keeps its own proportions — forcing it square
+                // would squash whatever the user lifted out of their photo.
+                let ratio = image.size.height / max(image.size.width, 1)
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: size * 1.6, height: size * 1.6 * ratio)
+            } else if let emoji = sticker.emoji {
+                Text(emoji)
+                    // Emoji glyphs sit a little smaller than a symbol at the
+                    // same point size, so nudge them up to match visually.
+                    .font(.system(size: size * 1.1))
+            } else {
+                Image(systemName: sticker.symbolName)
+                    .font(.system(size: size))
+                    .foregroundStyle(Color(hex: sticker.colorHex))
+            }
+        }
+        .opacity(sticker.opacity)
+        .rotationEffect(.degrees(sticker.rotation))
+        .position(x: canvas.width * sticker.x, y: canvas.height * sticker.y)
     }
 
     /// One placed text block, optionally on its own tinted plate.

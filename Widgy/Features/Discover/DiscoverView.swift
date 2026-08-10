@@ -57,10 +57,11 @@ struct DiscoverView: View {
                 }
             }
             .padding(.top, Theme.Spacing.lg)
-            // Breathing room under the last section so it clears the tab bar
-            // rather than ending flush against it.
-            .padding(.bottom, Theme.Spacing.xxl)
+            // Breathing room only — the tab bar's height is reserved by
+            // `.widgyTabBarInset()` below.
+            .padding(.bottom, Theme.Spacing.lg)
         }
+        .widgyTabBarInset()
     }
 
     private var tipBanner: some View {

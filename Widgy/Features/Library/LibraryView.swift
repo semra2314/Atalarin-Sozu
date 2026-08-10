@@ -68,6 +68,7 @@ struct LibraryView: View {
             .onMove(perform: move)
         }
         .listStyle(.insetGrouped)
+        .widgyTabBarInset()
     }
 
     private func delete(at offsets: IndexSet) {

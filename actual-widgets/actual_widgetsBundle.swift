@@ -118,5 +118,6 @@ struct WidgyWidgetBundle: WidgetBundle {
         FrameWidget()
         HushWidget()
         DailyWidget()
+        ProverbWidget()
     }
 }

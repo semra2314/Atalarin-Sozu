@@ -358,7 +358,19 @@ nonisolated struct WidgetContent: Codable, Hashable, Sendable {
 
     struct Sticker: Codable, Hashable, Sendable, Identifiable {
         var id: UUID = UUID()
+        /// The SF Symbol drawn when `emoji` is nil.
         var symbolName: String
+        /// An emoji character, when the sticker is one.
+        ///
+        /// Emoji and symbols are genuinely different things here: symbols are
+        /// monochrome glyphs we tint with `colorHex`, emoji are Apple's own
+        /// multicolour artwork and can't be recoloured — so the editor hides
+        /// the colour picker for them rather than offering a control that
+        /// silently does nothing.
+        var emoji: String?
+        /// A cut-out image sticker: made from the user's own photo, pasted
+        /// from the clipboard, or dropped onto the canvas. Transparent PNG.
+        var imageData: Data?
         var x: Double = 0.5          // normalized 0...1 within the canvas
         var y: Double = 0.5
         var scale: Double = 1.0
@@ -366,9 +378,17 @@ nonisolated struct WidgetContent: Codable, Hashable, Sendable {
         var rotation: Double = 0     // degrees
         var opacity: Double = 1.0
 
+        var isEmoji: Bool { emoji != nil }
+        var isImage: Bool { imageData != nil }
+        /// Only monochrome symbols can be tinted; emoji and photo cut-outs
+        /// carry their own colours.
+        var isTintable: Bool { emoji == nil && imageData == nil }
+
         init(
             id: UUID = UUID(),
-            symbolName: String,
+            symbolName: String = "star.fill",
+            emoji: String? = nil,
+            imageData: Data? = nil,
             x: Double = 0.5,
             y: Double = 0.5,
             scale: Double = 1.0,
@@ -378,6 +398,8 @@ nonisolated struct WidgetContent: Codable, Hashable, Sendable {
         ) {
             self.id = id
             self.symbolName = symbolName
+            self.emoji = emoji
+            self.imageData = imageData
             self.x = x
             self.y = y
             self.scale = scale
@@ -389,7 +411,9 @@ nonisolated struct WidgetContent: Codable, Hashable, Sendable {
         init(from decoder: Decoder) throws {
             let c = try decoder.container(keyedBy: CodingKeys.self)
             id = try c.decodeIfPresent(UUID.self, forKey: .id) ?? UUID()
-            symbolName = try c.decode(String.self, forKey: .symbolName)
+            symbolName = try c.decodeIfPresent(String.self, forKey: .symbolName) ?? "star.fill"
+            emoji = try c.decodeIfPresent(String.self, forKey: .emoji)
+            imageData = try c.decodeIfPresent(Data.self, forKey: .imageData)
             x = try c.decodeIfPresent(Double.self, forKey: .x) ?? 0.5
             y = try c.decodeIfPresent(Double.self, forKey: .y) ?? 0.5
             scale = try c.decodeIfPresent(Double.self, forKey: .scale) ?? 1

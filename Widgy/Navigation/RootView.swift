@@ -15,8 +15,16 @@ struct RootView: View {
 
     var body: some View {
         @Bindable var navigator = navigator
+        // The bar floats over the content and each scrollable screen reserves
+        // room for it with `.widgyTabBarInset()`.
+        //
+        // This used to use `.safeAreaInset`, which is the idiomatic tool but
+        // never actually inset the scroll content here — the Discover list kept
+        // ending underneath the bar however much the bar's own height was
+        // corrected. Reserving the space explicitly is less elegant and
+        // completely predictable.
         return selectedStack
-            .safeAreaInset(edge: .bottom, spacing: 0) {
+            .overlay(alignment: .bottom) {
                 if showsTabBar {
                     WidgyTabBar(selection: $navigator.selectedTab)
                 }

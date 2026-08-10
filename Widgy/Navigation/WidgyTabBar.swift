@@ -15,6 +15,15 @@ private let raisedProfileOverhang: CGFloat = 16
 struct WidgyTabBar: View {
     @Binding var selection: AppTab
 
+    /// Fixed height, declared rather than measured.
+    ///
+    /// This is what the safe-area inset reserves for scrolling content. Letting
+    /// it be inferred from the subviews left it ambiguous — the raised Profile
+    /// button uses `.offset`, which doesn't participate in layout — and the
+    /// Discover list kept ending up trapped behind the bar. 58pt button + the
+    /// overhang it needs above + breathing room below.
+    static let height: CGFloat = 58 + raisedProfileOverhang + 20
+
     var body: some View {
         HStack(spacing: 0) {
             item(.discover)
@@ -23,12 +32,7 @@ struct WidgyTabBar: View {
             item(.search)
             item(.settings)
         }
-        // The raised profile button is moved up with `.offset`, which doesn't
-        // participate in layout — so the bar has to reserve that space itself,
-        // otherwise the safe-area inset under-reports its height and scrolling
-        // content ends up trapped behind it.
-        .padding(.top, 12 + raisedProfileOverhang)
-        .padding(.bottom, 4)
+        .frame(height: Self.height)
         .padding(.horizontal, Theme.Spacing.sm)
         .background {
             Rectangle()
@@ -73,6 +77,18 @@ struct WidgyTabBar: View {
         .buttonStyle(.plain)
         .frame(maxWidth: .infinity)
         .offset(y: -raisedProfileOverhang)
+    }
+}
+
+extension View {
+    /// Reserves room at the bottom of scrolling content for the floating tab
+    /// bar. Apply to every screen that scrolls beneath it.
+    ///
+    /// `contentMargins` rather than `padding` so it insets the *scroll*
+    /// content — the last row can be scrolled fully clear of the bar, and the
+    /// scroll indicator stops in the right place too.
+    func widgyTabBarInset() -> some View {
+        contentMargins(.bottom, WidgyTabBar.height, for: .scrollContent)
     }
 }
 

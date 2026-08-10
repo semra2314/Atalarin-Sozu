@@ -49,6 +49,7 @@ nonisolated enum SampleCatalog {
         "t-frame": "Frame",
         "t-hush": "Hush",
         "t-daily": "Daily",
+        "t-proverb": "Söz",
         "t-custom": "Widgy"
     ]
 
@@ -151,6 +152,24 @@ nonisolated enum SampleCatalog {
             publishedAt: .now
         ),
         WidgetTemplate(
+            id: "t-proverb",
+            name: "Söz",
+            summary: "Her dört saatte bir yeni bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. 400 söz arasından.",
+            author: authors[2],
+            category: .minimal,
+            supportedSizes: [.small, .medium, .large, .accessoryRectangular],
+            theme: WidgetTheme(
+                backgroundHexes: ["FBF4EA", "F0E2CE"],
+                accentHex: "C05A3E"
+            ),
+            tags: ["atasözü", "deyim", "türkçe"],
+            installCount: 0,
+            rating: 5.0,
+            ratingCount: 0,
+            price: .free,
+            publishedAt: .now
+        ),
+        WidgetTemplate(
             id: "t-custom",
             name: "Custom Widget",
             summary: "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it.",
@@ -176,7 +195,9 @@ nonisolated enum SampleCatalog {
         "t-aurora": "aurora_widget",
         "t-focus": "focus_widget",
         "t-frame": "frame_widget",
-        "t-hush": "hush_widget"
+        "t-hush": "hush_widget",
+        "t-daily": "daily_widget",
+        "t-proverb": "soz_widget"
     ]
 
     /// Editable starting designs. ONLY for customizable templates.

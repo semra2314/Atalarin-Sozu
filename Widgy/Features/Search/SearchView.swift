@@ -34,6 +34,7 @@ struct SearchView: View {
             }
             .padding(.vertical, Theme.Spacing.md)
         }
+        .widgyTabBarInset()
         .background(Theme.Palette.background)
         .navigationTitle("Search")
         .searchable(

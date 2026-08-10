@@ -35,8 +35,9 @@ struct SettingsView: View {
                 logOut
                 footer
             }
-            .padding(.bottom, Theme.Spacing.xxl)
+            .padding(.bottom, Theme.Spacing.lg)
         }
+        .widgyTabBarInset()
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
     }
