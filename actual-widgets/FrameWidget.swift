@@ -90,7 +90,7 @@ struct FrameWidgetEntryView: View {
                     .minimumScaleFactor(0.55)
                     .fixedSize(horizontal: false, vertical: true)
 
-                Text(hasPhoto ? "Your moment,\nyour frame." : "Pick a photo\nin Widgy.")
+                Text(hasPhoto ? "Your moment,\nyour frame." : "Pick a photo\nin Kare.")
                     .font(AppFont.sans(size: family == .systemLarge ? 13 : 11, weight: .regular))
                     .foregroundStyle(cream.opacity(0.7))
                     .lineLimit(2)
@@ -159,7 +159,7 @@ struct FrameWidgetEntryView: View {
             VStack(spacing: 8) {
                 Image(systemName: "photo.on.rectangle.angled")
                     .font(.system(size: 22, weight: .light))
-                Text("Pick a photo\nin Widgy")
+                Text("Pick a photo\nin Kare")
                     .font(AppFont.sans(size: 11, weight: .regular))
                     .multilineTextAlignment(.center)
                     .minimumScaleFactor(0.7)

@@ -211,7 +211,7 @@ private struct SplashOverlay: View {
     var body: some View {
         ZStack {
             Theme.Palette.background.ignoresSafeArea()
-            Image("WidgyWordmark")
+            Image("KareWordmark")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200)
@@ -609,7 +609,7 @@ private struct SignInStep: View {
         VStack(spacing: Theme.Spacing.lg) {
             Spacer()
 
-            Image("WidgyWordmark")
+            Image("KareWordmark")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 170)
@@ -727,7 +727,7 @@ private struct UsernameStep: View {
                 Text("Pick a\nusername")
                     .font(Theme.Typography.displayLarge)
                     .foregroundStyle(Theme.Palette.ink)
-                Text("This is how you'll appear in Widgy. You can change it later.")
+                Text("This is how you'll appear in Kare. You can change it later.")
                     .font(Theme.Typography.bodyLarge)
                     .foregroundStyle(Theme.Palette.subtleText)
             }
@@ -759,7 +759,7 @@ private struct UsernameStep: View {
                 username = cleaned
                 onDone()
             } label: {
-                Text("Enter Widgy")
+                Text("Enter Kare")
                     .font(Theme.Typography.title).foregroundStyle(.white)
                     .frame(maxWidth: .infinity).frame(height: 60)
                     .background(valid ? Theme.Palette.accent : Theme.Palette.subtleText, in: .capsule)

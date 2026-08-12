@@ -1,4 +1,4 @@
-# Widgy — 7 dakikalık sunum metni
+# Kare — 7 dakikalık sunum metni
 
 Toplam 7:00. Aşağıdaki süreler **hedef**, prova ederken sapmaları buradan düzelt.
 Kritik kural: demo 2:30'u aşarsa geri kalan her şey sıkışır. Saatini demoya kur.
@@ -15,7 +15,7 @@ Kritik kural: demo 2:30'u aşarsa geri kalan her şey sıkışır. Saatini demoy
 > iOS widget'lara izin veriyor, fakat güzel bir widget istiyorsanız ya
 > tasarımcı olacaksınız ya da karmaşık bir uygulamayla saatler geçireceksiniz.
 >
-> Widgy bunu ikiye ayırıyor: hazır, canlı widget'lar isteyen alsın; kendi
+> Kare bunu ikiye ayırıyor: hazır, canlı widget'lar isteyen alsın; kendi
 > tasarımını yapmak isteyen otuz saniyede yapsın.
 
 *Not: buraya "widget pazarı şu kadar milyar dolar" gibi bir istatistik koyma.
@@ -32,7 +32,7 @@ Sırayı bilerek böyle kurdum: önce duygusal bağ, sonra teknik derinlik, sonr
 
 ### a) Söz — 40 saniye (görsel #2)
 
-> Buradan başlıyorum çünkü Widgy'nin çıkış fikri buydu. Dört saatte bir yeni
+> Buradan başlıyorum çünkü Kare'nin çıkış fikri buydu. Dört saatte bir yeni
 > bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. Dört yüz sözden oluşan
 > bir veri seti hazırladık.
 >
@@ -78,7 +78,7 @@ Bu cümleyi söylemeyi unutma; sunumun en değerli cümlesi bu.
 >
 > Tasarımcılar kendi widget'larını gönderiyor. [Form] İsim, açıklama,
 > görseller. [Sözleşme] Bir sözleşme imzalıyorlar — ve buradaki en önemli
-> madde şu: **tasarımın mülkiyeti tasarımcıda kalıyor.** Biz sadece Widgy
+> madde şu: **tasarımın mülkiyeti tasarımcıda kalıyor.** Biz sadece Kare
 > içinde dağıtma lisansı alıyoruz, istediği zaman geri çekebiliyor.
 >
 > [Dashboard] Onaylandıktan sonra ücretsiz mi yoksa ücretli mi sunacağına
@@ -93,13 +93,13 @@ akışı, döngü.
 
 ### Slayt 5 — Üç gelir kalemi
 
-> Widgy'nin geliri üç yerden geliyor.
+> Kare'nin geliri üç yerden geliyor.
 >
 > **Bir: komisyon.** Bir tasarımcı widget'ını ücretli sunduğunda satıştan pay
 > alıyoruz. Ücretsiz widget'lar tamamen komisyonsuz — katalogun zenginleşmesi
 > zaten bizim işimize geliyor, ondan para almak kendi ayağımıza sıkmak olur.
 >
-> **İki: Widgy+ aboneliği.** Aylık abonelik, tüm premium widget'lara ve
+> **İki: Kare+ aboneliği.** Aylık abonelik, tüm premium widget'lara ve
 > editördeki gelişmiş özelliklere erişim veriyor. Tek tek satın almak
 > istemeyen kullanıcı için.
 >
@@ -159,7 +159,7 @@ hale gelir.*
 
 **Slayt 7 — logo + tek cümle + iletişim**
 
-> Widgy, ana ekranı bir daha kimsenin aynı görünmediği bir yere çevirmek
+> Kare, ana ekranı bir daha kimsenin aynı görünmediği bir yere çevirmek
 > istiyor. Bunu tek başımıza yapmayacağız — tasarımcılarla birlikte yapacağız.
 >
 > Teşekkürler.

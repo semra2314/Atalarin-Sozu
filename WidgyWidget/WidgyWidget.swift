@@ -73,7 +73,7 @@ struct WidgyWidgetEntryView: View {
     private var emptyState: some View {
         VStack(spacing: 6) {
             Image(systemName: "square.grid.2x2")
-            Text("Open Widgy to design this")
+            Text("Open Kare to design this")
                 .font(.caption2)
                 .multilineTextAlignment(.center)
         }
@@ -95,7 +95,7 @@ struct WidgyWidget: Widget {
         ) { entry in
             WidgyWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Widgy")
+        .configurationDisplayName("Kare")
         .description("Your custom widget, designed in the app.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
         // Let our own design paint edge to edge.

@@ -45,7 +45,7 @@ struct TemplateDetailView: View {
         }
         .task { await load() }
         .sheet(isPresented: $showAddToHome) {
-            AddToHomeGuide(galleryName: template?.galleryName ?? template?.name ?? "Widgy")
+            AddToHomeGuide(galleryName: template?.galleryName ?? template?.name ?? "Kare")
                 .presentationDetents([.large])
         }
     }

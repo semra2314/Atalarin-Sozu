@@ -28,7 +28,7 @@ actor MockWidgetRepository: WidgetRepository {
             CatalogSection(
                 id: "spotlight",
                 title: "Featured today",
-                subtitle: "Hand-picked by the Widgy team",
+                subtitle: "Hand-picked by the Kare team",
                 style: .spotlight,
                 templates: Array(sorted.prefix(3))
             ),

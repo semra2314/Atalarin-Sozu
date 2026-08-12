@@ -265,19 +265,19 @@
         }
       }
     },
-    "Open Widgy to design this" : {
+    "Open Kare to design this" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Open Widgy to design this"
+            "value" : "Open Kare to design this"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tasarlamak için Widgy'yi aç"
+            "value" : "Tasarlamak için Kare'yi aç"
           }
         }
       }
@@ -285,10 +285,10 @@
     "Pause focus" : {
 
     },
-    "Pick a photo\nin Widgy" : {
+    "Pick a photo\nin Kare" : {
 
     },
-    "Pick a photo\nin Widgy." : {
+    "Pick a photo\nin Kare." : {
 
     },
     "Pick which of your saved designs this widget shows." : {
@@ -358,19 +358,19 @@
     "Timer is running" : {
 
     },
-    "Widgy" : {
+    "Kare" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy"
+            "value" : "Kare"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy"
+            "value" : "Kare"
           }
         }
       }

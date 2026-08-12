@@ -12,7 +12,7 @@ struct AddToHomeGuide: View {
     /// Exactly what to look for in the iOS widget gallery. Defaults to the
     /// build-your-own widget; fixed-design widgets pass their own name so we
     /// never send the user hunting for the wrong entry.
-    var galleryName: String = "Widgy"
+    var galleryName: String = "Kare"
 
     @Environment(\.dismiss) private var dismiss
 
@@ -40,7 +40,7 @@ struct AddToHomeGuide: View {
                 Text("Saved!\nNow add it home")
                     .font(Theme.Typography.displayLarge)
                     .foregroundStyle(Theme.Palette.ink)
-                Text("Your widget lives in Widgy. Put it on your home screen in three steps.")
+                Text("Your widget lives in Kare. Put it on your home screen in three steps.")
                     .font(Theme.Typography.bodyLarge)
                     .foregroundStyle(Theme.Palette.subtleText)
             }

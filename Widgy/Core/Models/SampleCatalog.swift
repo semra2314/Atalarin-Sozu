@@ -15,7 +15,7 @@ nonisolated enum SampleCatalog {
     static let authors: [Author] = [
         Author(id: "a1", displayName: "Nova Studio", handle: "@novastudio", isVerified: true),
         Author(id: "a2", displayName: "Deniz Kaya", handle: "@denizmakes"),
-        Author(id: "a-widgy", displayName: "Widgy", handle: "@widgy", isVerified: true)
+        Author(id: "a-kare", displayName: "Kare", handle: "@kare", isVerified: true)
     ]
 
     static let reviews: [Review] = [
@@ -50,7 +50,7 @@ nonisolated enum SampleCatalog {
         "t-hush": "Hush",
         "t-daily": "Daily",
         "t-proverb": "Söz",
-        "t-custom": "Widgy"
+        "t-custom": "Kare"
     ]
 
     /// Base name for per-size product images: "aurora" -> aurora_small/medium/large.
@@ -205,7 +205,7 @@ nonisolated enum SampleCatalog {
     /// Aurora and Focus deliberately have no entry here: they're fixed-design
     /// live widgets drawn by their own WidgetKit views (AuroraWidget/FocusWidget)
     /// from our real artwork. Giving them a `content` payload is what previously
-    /// let them be opened in the editor and mirrored into the generic "Widgy"
+    /// let them be opened in the editor and mirrored into the generic "Kare"
     /// widget, which then rendered Aurora's gradient instead of the real thing.
     private static let contentByID: [String: WidgetContent] = [
         "t-custom": WidgetContent(

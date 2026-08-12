@@ -219,7 +219,7 @@ struct SettingsView: View {
 
     private var footer: some View {
         VStack(spacing: 8) {
-            Image("WidgyWordmark")
+            Image("KareWordmark")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 96)

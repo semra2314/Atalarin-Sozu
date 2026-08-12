@@ -1,4 +1,4 @@
-# Widgy → TestFlight (external) · Çarşamba'dan Cuma'ya
+# Kare → TestFlight (external) · Çarşamba'dan Cuma'ya
 
 Sunum **Cuma**. External TestFlight, Apple'ın **Beta App Review**'undan geçmek
 zorunda ve bu genelde 24-48 saat sürüyor. Yani build'in **bugün** yukarı
@@ -24,10 +24,10 @@ Bu üç şeyi hallettim, senin sadece build alman lazım:
   karşılıyor, bazen reddediyor. Sebep kodu `CA92.1` (kendi uygulamanın ve
   kendi app group'unun defaults'una erişim), ki bizim durumumuz tam bu.
   Uzantının kendi manifesti olmak zorunda — uygulamanınki onu kapsamıyor.
-- Uzantının görünen adı `actual-widgets` idi, `Widgy` yaptım.
+- Uzantının görünen adı `actual-widgets` idi, `Kare` yaptım.
 - `ITSAppUsesNonExemptEncryption = NO` eklendi. Bu olmadan her yüklemeden
   sonra App Store Connect sana ihracat uyumluluğu sorusunu soruyor ve
-  cevaplayana kadar build "İşleniyor"da bekliyor. Widgy'de HTTPS bile yok,
+  cevaplayana kadar build "İşleniyor"da bekliyor. Kare'de HTTPS bile yok,
   cevap net biçimde hayır.
 
 **Xcode'da yapman gerekenler:**
@@ -58,7 +58,7 @@ düzeltip yeniden yollarsan `CURRENT_PROJECT_VERSION`'ı 2, 3 diye artır.
 | Alan | Değer |
 |---|---|
 | Platforms | iOS |
-| Name | Widgy |
+| Name | `Kare: Widget Marketplace` — App Store'daki isim benzersiz olmak zorunda. Tutmazsa sırayla `Kare Widgets`, `Kare: Widget Stüdyosu` dene. Telefonda ikonun altında yazan isim ayrı bir alan ve zaten sadece **Kare**. |
 | Primary Language | Turkish (ya da English — sonra değişir) |
 | Bundle ID | `com.erdendereli.Widgy` |
 | SKU | `widgy-ios-001` (sana özel, kullanıcı görmez) |
@@ -68,6 +68,8 @@ Bundle ID listede çıkmıyorsa: Xcode'da bir kez arşiv alıp yüklediğinde
 otomatik oluşuyor; ya da developer.apple.com → Identifiers'tan elle
 oluştur. Uzantının bundle ID'si (`com.erdendereli.Widgy.actual-widgets`)
 ayrı bir uygulama değil, onu App Store Connect'te oluşturmayacaksın.
+
+**Neden hâlâ Widgy yazıyor:** bundle ID, App Group, hedef ve şema adları kullanıcının görmediği teknik kimlikler. Marka Kare oldu ama bunlara dokunmadık; değiştirmek App Group'u ve provisioning'i baştan kurmayı gerektirir ve iki gün kala widget'ları kırma riski taşır. Hiçbir kazancı yok, kullanıcı hiçbirini görmüyor.
 
 **App Groups uyarısı:** `group.com.zeddy.Widgy` hem uygulama hem uzantı
 profilinde tanımlı olmalı. Automatic signing bunu hallediyor ama arşiv
@@ -105,7 +107,7 @@ Build işlenince TestFlight sekmesinde:
 
 - **Beta App Description** — kullanılabilecek metin:
 
-  > Widgy, iOS ana ekranınız için bir widget pazar yeridir. Hazır ve canlı
+  > Kare, iOS ana ekranınız için bir widget pazar yeridir. Hazır ve canlı
   > widget'ları katalogdan ekleyebilir, ya da kendi widget'ınızı fotoğraf,
   > metin ve sticker'larla kendiniz tasarlayabilirsiniz. Tüm widget'lar kilit
   > ekranında da çalışır. Uygulama tamamen cihaz üzerinde çalışır; hiçbir veri
@@ -119,7 +121,7 @@ Build işlenince TestFlight sekmesinde:
 
   > Uygulama açıldığında dil sorusu gelir, sonra ana ekran görünür. Widget'ları
   > görmek için: ana ekranda boş alana uzun basın → sol üstteki + → listeden
-  > "Widgy" seçin. Altı hazır widget ve kendi tasarımlarınız burada listelenir.
+  > "Kare" seçin. Altı hazır widget ve kendi tasarımlarınız burada listelenir.
   > Kendi widget'ınızı yapmak için uygulama içinde Widgets sekmesi → + → Editör.
   > Uygulama ağ bağlantısı kullanmaz, hesap gerektirmez.
 

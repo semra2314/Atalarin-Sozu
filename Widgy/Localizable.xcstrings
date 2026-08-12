@@ -1003,19 +1003,19 @@
     "English" : {
 
     },
-    "Enter Widgy" : {
+    "Enter Kare" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter Widgy"
+            "value" : "Enter Kare"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy'ye gir"
+            "value" : "Kare'ye gir"
           }
         }
       }
@@ -1332,7 +1332,7 @@
         }
       }
     },
-    "In the gallery, pick **%@** — not “Widgy”. “Widgy” is the make-your-own widget." : {
+    "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget." : {
 
     },
     "iOS only lets widgets be placed from its own gallery, so here's the shortcut." : {
@@ -2691,19 +2691,19 @@
         }
       }
     },
-    "This is how you'll appear in Widgy. You can change it later." : {
+    "This is how you'll appear in Kare. You can change it later." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This is how you'll appear in Widgy. You can change it later."
+            "value" : "This is how you'll appear in Kare. You can change it later."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy'de böyle görüneceksin. Sonradan değiştirebilirsin."
+            "value" : "Kare'de böyle görüneceksin. Sonradan değiştirebilirsin."
           }
         }
       }
@@ -2927,19 +2927,19 @@
     "Widgets, creators, tags" : {
 
     },
-    "Widgy can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job." : {
+    "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job."
+            "value" : "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgy, Mesajlar'daki sticker paketini okuyamaz — iOS buna izin vermiyor. Bu üç yol aynı işi görür."
+            "value" : "Kare, Mesajlar'daki sticker paketini okuyamaz — iOS buna izin vermiyor. Bu üç yol aynı işi görür."
           }
         }
       }
@@ -3066,19 +3066,19 @@
         }
       }
     },
-    "Your widget lives in Widgy. Put it on your home screen in three steps." : {
+    "Your widget lives in Kare. Put it on your home screen in three steps." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your widget lives in Widgy. Put it on your home screen in three steps."
+            "value" : "Your widget lives in Kare. Put it on your home screen in three steps."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widget'ın Widgy'de duruyor. Üç adımda ana ekranına koy."
+            "value" : "Widget'ın Kare'de duruyor. Üç adımda ana ekranına koy."
           }
         }
       }

@@ -65,7 +65,7 @@ nonisolated struct CloudKitCatalogSeeder {
         }
 
         return [
-            section("sec-featured", "Featured today", "Hand-picked by the Widgy team", "spotlight", featured, 0),
+            section("sec-featured", "Featured today", "Hand-picked by the Kare team", "spotlight", featured, 0),
             section("sec-trending", "Trending", "Most installed this week", "carousel", trending, 1)
         ]
     }

@@ -30,7 +30,7 @@ struct SetUpOnHomeView: View {
 
     private var isLockScreenSize: Bool { selectedSize.isLockScreen }
 
-    private var galleryName: String { template?.galleryName ?? template?.name ?? "Widgy" }
+    private var galleryName: String { template?.galleryName ?? template?.name ?? "Kare" }
 
     var body: some View {
         ScrollView {
@@ -138,11 +138,11 @@ struct SetUpOnHomeView: View {
     /// build-your-own widget, not this one.
     @ViewBuilder
     private var calloutIfNeeded: some View {
-        if galleryName != "Widgy" {
+        if galleryName != "Kare" {
             HStack(alignment: .top, spacing: Theme.Spacing.md) {
                 Image(systemName: "info.circle.fill")
                     .foregroundStyle(Theme.Palette.accent)
-                Text("In the gallery, pick **\(galleryName)** — not “Widgy”. “Widgy” is the make-your-own widget.")
+                Text("In the gallery, pick **\(galleryName)** — not “Kare”. “Kare” is the make-your-own widget.")
                     .font(Theme.Typography.body)
                     .foregroundStyle(Theme.Palette.ink)
                 Spacer(minLength: 0)

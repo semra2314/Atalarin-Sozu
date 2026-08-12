@@ -150,7 +150,7 @@ struct WidgetEditorView: View {
                 if !widget.isCustomizable {
                     // Fixed-design widget (Aurora, Focus, ...). Its look is ours,
                     // not editable — and letting it through here would also mirror
-                    // its design into the generic "Widgy" home-screen widget.
+                    // its design into the generic "Kare" home-screen widget.
                     ContentUnavailableView(
                         "This design is fixed",
                         systemImage: "lock.fill",
@@ -901,7 +901,7 @@ struct WidgetEditorView: View {
                     .foregroundStyle(Theme.Palette.accent)
             }
 
-            Text("Widgy can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job.")
+            Text("Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job.")
                 .font(Theme.Typography.caption)
                 .foregroundStyle(Theme.Palette.subtleText)
         }

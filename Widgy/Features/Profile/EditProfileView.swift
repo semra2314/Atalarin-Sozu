@@ -39,7 +39,7 @@ struct EditProfileView: View {
                     }
                     .padding(.horizontal, Theme.Spacing.lg)
 
-                    Text("This is how you'll appear in Widgy. You can change it later.")
+                    Text("This is how you'll appear in Kare. You can change it later.")
                         .font(Theme.Typography.caption)
                         .foregroundStyle(Theme.Palette.subtleText)
                         .multilineTextAlignment(.center)

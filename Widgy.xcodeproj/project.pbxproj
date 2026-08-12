@@ -419,7 +419,7 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_CFBundleDisplayName = Kare;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
@@ -452,7 +452,7 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_CFBundleDisplayName = Kare;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
@@ -608,7 +608,7 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_CFBundleDisplayName = Kare;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -643,7 +643,7 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_CFBundleDisplayName = Kare;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
