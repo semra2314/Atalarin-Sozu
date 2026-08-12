@@ -1,16 +1,16 @@
-# Kare — 7 dakikalık sunum metni
+# Kare, 7 dakikalık sunum metni
 
 Toplam 7:00. Aşağıdaki süreler **hedef**, prova ederken sapmaları buradan düzelt.
 Kritik kural: demo 2:30'u aşarsa geri kalan her şey sıkışır. Saatini demoya kur.
 
 ---
 
-## 0:00–0:45 — Açılış: problem ve söz
+## 0:00–0:45, Açılış: problem ve söz
 
-**Slayt 1 — Ana ekran fotoğrafı (görsel #1), üstünde tek cümle**
+**Slayt 1, Ana ekran fotoğrafı (görsel #1), üstünde tek cümle**
 
-> Telefonumuza günde ortalama yüzlerce kez bakıyoruz. Ama ana ekranımız —
-> ilk gördüğümüz yer — hepimizde birbirinin aynı.
+> Telefonumuza günde ortalama yüzlerce kez bakıyoruz. Ama ana ekranımız , 
+> ilk gördüğümüz yer, hepimizde birbirinin aynı.
 >
 > iOS widget'lara izin veriyor, fakat güzel bir widget istiyorsanız ya
 > tasarımcı olacaksınız ya da karmaşık bir uygulamayla saatler geçireceksiniz.
@@ -23,14 +23,14 @@ Doğrulanmamış rakam sunumun en zayıf yeri olur ve jüri tam oradan sorar.*
 
 ---
 
-## 0:45–3:15 — Demo (en önemli 2,5 dakika)
+## 0:45–3:15, Demo (en önemli 2,5 dakika)
 
-**Slayt 2 — sadece "Demo" yazsın, dikkat ekranda değil telefonda olsun**
+**Slayt 2, sadece "Demo" yazsın, dikkat ekranda değil telefonda olsun**
 
 Sırayı bilerek böyle kurdum: önce duygusal bağ, sonra teknik derinlik, sonra
 "bunu ben de yapabilirim" hissi.
 
-### a) Söz — 40 saniye (görsel #2)
+### a) Söz, 40 saniye (görsel #2)
 
 > Buradan başlıyorum çünkü Kare'nin çıkış fikri buydu. Dört saatte bir yeni
 > bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. Dört yüz sözden oluşan
@@ -39,28 +39,28 @@ Sırayı bilerek böyle kurdum: önce duygusal bağ, sonra teknik derinlik, sonr
 > [Ana ekranı göster] Şu an gördüğünüz söz, dört saat sonra kendiliğinden
 > değişecek. Uygulamayı açmanıza gerek yok.
 
-### b) Aurora ve canlı widget'lar — 30 saniye
+### b) Aurora ve canlı widget'lar, 30 saniye
 
 > Widget'larımız statik resim değil. Aurora bir saat ve arka planı günün
-> saatine göre değişiyor — şafak, sabah, öğle, gün batımı, gece.
+> saatine göre değişiyor, şafak, sabah, öğle, gün batımı, gece.
 >
 > [Tanıtım görseli ya da 3 kare] Bu geçişleri sahnede bekleyemeyiz, o yüzden
 > hazırladık.
 >
 > Focus ise canlı bir sayaç. [Kayıt #8] Başlat diyorum, ana ekranda geri
-> saymaya başlıyor — ve kilit ekranında da devam ediyor.
+> saymaya başlıyor, ve kilit ekranında da devam ediyor.
 
-### c) Editör — 60 saniye (kayıt #7)
+### c) Editör, 60 saniye (kayıt #7)
 
 > Şimdi asıl kısım: kendi widget'ını yapmak.
 >
 > [Kaydı oynat] Fotoğrafımı koyuyorum, konumunu ayarlıyorum. Metin ekliyorum,
-> sürükleyerek yerleştiriyorum. Bir sticker — bu arada sticker'ı kendi
+> sürükleyerek yerleştiriyorum. Bir sticker, bu arada sticker'ı kendi
 > fotoğrafımdan da üretebiliyorum, arka planı otomatik kesiliyor.
 >
 > Kaydet. Ve ana ekranda.
 
-### d) Kilit ekranı — 20 saniye (görsel #3)
+### d) Kilit ekranı, 20 saniye (görsel #3)
 
 > Hepsi kilit ekranında da çalışıyor.
 
@@ -69,15 +69,15 @@ Bu cümleyi söylemeyi unutma; sunumun en değerli cümlesi bu.
 
 ---
 
-## 3:15–4:15 — Creator portal (görseller #9–12)
+## 3:15–4:15, Creator portal (görseller #9–12)
 
-**Slayt 3–4 — portal ekran görüntüleri**
+**Slayt 3–4, portal ekran görüntüleri**
 
 > Buraya kadar olan kısım ürünün yarısı. Diğer yarısı şu: bu widget'ları
 > sadece biz yapmayacağız.
 >
 > Tasarımcılar kendi widget'larını gönderiyor. [Form] İsim, açıklama,
-> görseller. [Sözleşme] Bir sözleşme imzalıyorlar — ve buradaki en önemli
+> görseller. [Sözleşme] Bir sözleşme imzalıyorlar, ve buradaki en önemli
 > madde şu: **tasarımın mülkiyeti tasarımcıda kalıyor.** Biz sadece Kare
 > içinde dağıtma lisansı alıyoruz, istediği zaman geri çekebiliyor.
 >
@@ -86,17 +86,17 @@ Bu cümleyi söylemeyi unutma; sunumun en değerli cümlesi bu.
 
 ---
 
-## 4:15–5:30 — İş modeli
+## 4:15–5:30, İş modeli
 
 Bu bölüm sunumun en çok soru alacak yeri. Üç slayt: gelir kalemleri, paranın
 akışı, döngü.
 
-### Slayt 5 — Üç gelir kalemi
+### Slayt 5, Üç gelir kalemi
 
 > Kare'nin geliri üç yerden geliyor.
 >
 > **Bir: komisyon.** Bir tasarımcı widget'ını ücretli sunduğunda satıştan pay
-> alıyoruz. Ücretsiz widget'lar tamamen komisyonsuz — katalogun zenginleşmesi
+> alıyoruz. Ücretsiz widget'lar tamamen komisyonsuz, katalogun zenginleşmesi
 > zaten bizim işimize geliyor, ondan para almak kendi ayağımıza sıkmak olur.
 >
 > **İki: Kare+ aboneliği.** Aylık abonelik, tüm premium widget'lara ve
@@ -105,7 +105,7 @@ akışı, döngü.
 >
 > **Üç: öne çıkarma.** İleride, yaratıcılar için ücretli vitrin alanı.
 
-### Slayt 6 — Paranın akışı (asıl slayt bu)
+### Slayt 6, Paranın akışı (asıl slayt bu)
 
 Burada jürinin aklındaki soruyu onlar sormadan cevaplıyoruz.
 
@@ -123,31 +123,31 @@ Burada jürinin aklındaki soruyu onlar sormadan cevaplıyoruz.
 > Fiyatlandırmayı buna göre kuruyoruz.
 
 *Komisyon oranını ve havuz yüzdesini netleştirdiyseniz burada söyleyin.
-Netleştirmediyseniz "oranları pazar araştırmasıyla belirliyoruz" deyin —
+Netleştirmediyseniz "oranları pazar araştırmasıyla belirliyoruz" deyin , 
 uydurmayın. Uydurulmuş bir rakam, olmayan bir rakamdan daha kötüdür; jüri
 "bu sayı nereden geliyor" diye sorar ve cevabınız yoksa tüm model şüpheli
 hale gelir.*
 
-### Slayt 7 — Döngü
+### Slayt 7, Döngü
 
 > Ve asıl mesele burada: [basit üç kutulu şema] Ne kadar çok yaratıcı gelirse
 > katalog zenginleşir, katalog zenginleştikçe kullanıcı gelir, kullanıcı
 > geldikçe yaratıcı için burada olmak daha değerli hale gelir.
 >
 > Bunun bir zorluğu var ve farkındayız: bu döngü başlangıçta boş. O yüzden ilk
-> katalogu biz üretiyoruz — şu an gördüğünüz yedi widget bizim. Yaratıcılar
+> katalogu biz üretiyoruz, şu an gördüğünüz yedi widget bizim. Yaratıcılar
 > boş bir rafa değil, dolu bir rafa geliyor.
 
 ---
 
-## 5:30–6:15 — Nerede olduğumuz
+## 5:30–6:15, Nerede olduğumuz
 
-**Slayt 6 — durum ve yol haritası**
+**Slayt 6, durum ve yol haritası**
 
 > Bugün itibarıyla: yedi çalışan widget, kilit ekranı desteği, tam bir tasarım
 > editörü, Türkçe ve İngilizce arayüz, ve hazır bir yaratıcı portalı.
 >
-> Sıradaki adım TestFlight — gerçek kullanıcı geri bildirimi. Ondan sonra App
+> Sıradaki adım TestFlight, gerçek kullanıcı geri bildirimi. Ondan sonra App
 > Store.
 
 *Dürüst ol: henüz kullanıcınız yok. "Yakında binlerce kullanıcı" deme. Jüri
@@ -155,12 +155,12 @@ hale gelir.*
 
 ---
 
-## 6:15–7:00 — Kapanış ve soru payı
+## 6:15–7:00, Kapanış ve soru payı
 
-**Slayt 7 — logo + tek cümle + iletişim**
+**Slayt 7, logo + tek cümle + iletişim**
 
 > Kare, ana ekranı bir daha kimsenin aynı görünmediği bir yere çevirmek
-> istiyor. Bunu tek başımıza yapmayacağız — tasarımcılarla birlikte yapacağız.
+> istiyor. Bunu tek başımıza yapmayacağız, tasarımcılarla birlikte yapacağız.
 >
 > Teşekkürler.
 
@@ -183,7 +183,7 @@ Kalan 30-40 saniyeyi soruya bırak. Erken bitirmek geç bitirmekten iyidir.
 
 **"Apple neden bunu kendisi yapmıyor?"**
 > Apple widget altyapısını veriyor ama tasarım ve pazar yeri katmanını
-> vermiyor. Biz o katmandayız — App Store'un widget'lar için olmayan hali.
+> vermiyor. Biz o katmandayız, App Store'un widget'lar için olmayan hali.
 
 **"Kullanıcı neden ücretli widget alsın?"**
 > Almak zorunda değil, katalogun çoğu ücretsiz. Ücretli olanlar tasarımcının
@@ -212,9 +212,9 @@ Kalan 30-40 saniyeyi soruya bırak. Erken bitirmek geç bitirmekten iyidir.
 **"Neden abonelik? Tek tek satış yetmez mi?"**
 > Düşük hacimde tek tek satış öngörülemez ve her satın alma kullanıcı için bir
 > karar anı. Abonelik hem geliri öngörülebilir yapıyor hem de kullanıcının
-> katalogu keşfetmesini teşvik ediyor — denemenin maliyeti sıfır olunca daha
+> katalogu keşfetmesini teşvik ediyor, denemenin maliyeti sıfır olunca daha
 > çok widget deniyor, daha çok yaratıcı kazanıyor.
 
 **"Kullanıcı neden aylık ödesin, bir kez alıp bıraksa?"**
-> Katalog sürekli büyüyor ve widget'lar canlı — Söz dört saatte bir, Daily her
+> Katalog sürekli büyüyor ve widget'lar canlı, Söz dört saatte bir, Daily her
 > gün değişiyor. Abonelik tek bir ürünü değil, akan bir katalogu satın almak.
