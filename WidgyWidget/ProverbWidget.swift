@@ -62,21 +62,33 @@ struct ProverbWidgetEntryView: View {
     /// medium adds the meaning, large adds an example underneath.
     private var metrics: (title: CGFloat, meaning: CGFloat, label: CGFloat, inset: CGFloat) {
         switch family {
-        case .systemSmall: (15, 11, 8, 13)
-        case .systemLarge: (27, 15, 11, 22)
-        default:           (18, 12, 9, 15)
+        case .systemSmall: (14, 10, 10, 13)
+        case .systemLarge: (31, 16, 13, 22)
+        default:           (18, 12, 11, 15)
         }
     }
 
     /// Line budgets, so a long entry shrinks (minimumScaleFactor) instead of
     /// pushing the block below it off the card.
+    ///
+    /// Every size now carries the meaning and an example — the saying alone
+    /// left the small widget looking like a fragment. The budgets are what
+    /// makes that fit: two lines each on small and medium, checked against the
+    /// dataset's median lengths (title 22, meaning 57, example 52 characters).
     private var lineBudget: (title: Int, meaning: Int, example: Int) {
         switch family {
-        case .systemSmall: (5, 0, 0)
+        case .systemSmall: (2, 2, 2)
         case .systemLarge: (4, 4, 3)
-        default:           (2, 3, 0)
+        default:           (2, 2, 2)
         }
     }
+
+    /// Medium reads as a caption card, so it's centred; the other two are
+    /// left-aligned blocks.
+    private var isCentred: Bool { family == .systemMedium }
+    private var horizontal: HorizontalAlignment { isCentred ? .center : .leading }
+    private var textAlignment: TextAlignment { isCentred ? .center : .leading }
+    private var frameAlignment: Alignment { isCentred ? .center : .topLeading }
 
     var body: some View {
         if isAccessory {
@@ -90,11 +102,17 @@ struct ProverbWidgetEntryView: View {
     }
 
     private var home: some View {
-        VStack(alignment: .leading, spacing: family == .systemSmall ? 5 : 8) {
+        VStack(alignment: horizontal, spacing: family == .systemSmall ? 4 : 6) {
             Text(entry.proverb.kindLabel)
                 .font(.system(size: metrics.label, weight: .bold))
-                .tracking(0.8)
+                .tracking(1)
                 .foregroundStyle(accent)
+
+            // On large, the saying sits in the optical centre with the example
+            // at the foot. Anchoring everything to the top left a dead area in
+            // the middle of the card — most sayings are short, and the layout
+            // has to look composed for those, not just for the longest one.
+            if family == .systemLarge { Spacer(minLength: 0) }
 
             Text(entry.proverb.title)
                 .font(AppFont.serif(size: metrics.title, weight: .bold))
@@ -104,36 +122,35 @@ struct ProverbWidgetEntryView: View {
                 .minimumScaleFactor(0.5)
                 .fixedSize(horizontal: false, vertical: true)
 
-            if lineBudget.meaning > 0 {
-                Text(entry.proverb.meaning)
-                    .font(AppFont.sans(size: metrics.meaning, weight: .regular))
-                    .foregroundStyle(muted)
-                    .lineSpacing(2)
-                    .lineLimit(lineBudget.meaning)
-                    .minimumScaleFactor(0.6)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+            Text(entry.proverb.meaning)
+                .font(AppFont.sans(size: metrics.meaning, weight: .regular))
+                .foregroundStyle(muted)
+                .lineSpacing(1)
+                .lineLimit(lineBudget.meaning)
+                .minimumScaleFactor(0.55)
+                .fixedSize(horizontal: false, vertical: true)
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 2)
 
-            if lineBudget.example > 0, !entry.proverb.example.isEmpty {
-                VStack(alignment: .leading, spacing: 7) {
+            if !entry.proverb.example.isEmpty {
+                VStack(alignment: horizontal, spacing: family == .systemSmall ? 4 : 6) {
                     Rectangle()
                         .fill(accent.opacity(0.35))
-                        .frame(width: 24, height: 1.5)
+                        .frame(width: family == .systemSmall ? 18 : 24, height: 1.5)
                     Text(entry.proverb.example)
                         .font(AppFont.serif(size: metrics.meaning, weight: .regular))
                         .italic()
                         .foregroundStyle(muted.opacity(0.85))
-                        .lineSpacing(3)
+                        .lineSpacing(1)
                         .lineLimit(lineBudget.example)
-                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.55)
                         .fixedSize(horizontal: false, vertical: true)
                 }
             }
         }
+        .multilineTextAlignment(textAlignment)
         .padding(metrics.inset)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: frameAlignment)
         .containerBackground(for: .widget) { backdrop }
     }
 
@@ -209,7 +226,7 @@ struct ProverbWidget: Widget {
             ProverbWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Söz")
-        .description("Her dört saatte bir yeni bir atasözü ya da deyim, anlamıyla birlikte.")
+        .description("A Turkish proverb or idiom every four hours, with its meaning.")
         .supportedFamilies([
             .systemSmall, .systemMedium, .systemLarge,
             .accessoryRectangular, .accessoryInline

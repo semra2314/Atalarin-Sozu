@@ -12,9 +12,12 @@ struct SearchView: View {
 
     private let columns = [GridItem(.adaptive(minimum: 150), spacing: Theme.Spacing.lg)]
 
+    @FocusState private var searchFocused: Bool
+
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Theme.Spacing.lg) {
+                searchField
                 filterRow
 
                 if let viewModel {
@@ -37,13 +40,6 @@ struct SearchView: View {
         .widgyTabBarInset()
         .background(Theme.Palette.background)
         .navigationTitle("Search")
-        .searchable(
-            text: Binding(
-                get: { viewModel?.query ?? "" },
-                set: { viewModel?.query = $0 }
-            ),
-            prompt: "Widgets, creators, tags"
-        )
         .onChange(of: viewModel?.query) { _, _ in
             viewModel?.scheduleSearch()
         }
@@ -53,6 +49,50 @@ struct SearchView: View {
                 await viewModel?.performSearch()
             }
         }
+    }
+
+    /// A field in the content rather than `.searchable`.
+    ///
+    /// The system search bar lives inside the navigation bar, where it collapses
+    /// under a large title until you pull down — on this screen it simply wasn't
+    /// there as far as anyone could tell. A search screen should show its search
+    /// box without being asked.
+    private var searchField: some View {
+        HStack(spacing: Theme.Spacing.sm) {
+            Image(systemName: "magnifyingglass")
+                .foregroundStyle(Theme.Palette.subtleText)
+
+            TextField(
+                "Widgets, creators, tags",
+                text: Binding(
+                    get: { viewModel?.query ?? "" },
+                    set: { viewModel?.query = $0 }
+                )
+            )
+            .textFieldStyle(.plain)
+            .font(Theme.Typography.bodyLarge)
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+            .submitLabel(.search)
+            .focused($searchFocused)
+            .onSubmit { Task { await viewModel?.performSearch() } }
+
+            if !(viewModel?.query ?? "").isEmpty {
+                Button {
+                    viewModel?.query = ""
+                    viewModel?.scheduleSearch()
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(Theme.Palette.subtleText)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, Theme.Spacing.md)
+        .frame(height: 48)
+        .background(Theme.Palette.surface, in: .capsule)
+        .overlay(Capsule().stroke(Theme.Palette.hairline, lineWidth: 1))
+        .padding(.horizontal, Theme.Spacing.lg)
     }
 
     private var filterRow: some View {

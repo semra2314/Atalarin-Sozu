@@ -44,7 +44,9 @@ nonisolated struct WidgyDesignQuery: EntityQuery {
     }
 }
 
-nonisolated struct SelectDesignIntent: WidgetConfigurationIntent {
+// Not marked `nonisolated`: `@Parameter` is a mutable stored property, and
+// `nonisolated` can't be applied to one — an error outright in Swift 6.
+struct SelectDesignIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource { "Choose a design" }
     static var description: IntentDescription {
         IntentDescription("Pick which of your saved designs this widget shows.")

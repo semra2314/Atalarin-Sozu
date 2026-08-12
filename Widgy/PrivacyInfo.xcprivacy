@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Widgy keeps everything on the device. Designs, the profile name and photo,
+	  the language choice and the installed-widget list live in the app's own
+	  container and in the shared App Group so the widget extension can read
+	  them. Nothing leaves the phone, so there is no collected data to declare
+	  and no tracking.
+	-->
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<!--
+			  @AppStorage and UserDefaults(suiteName:) — onboarding state, the
+			  language preference, the profile, and the App Group handoff to the
+			  widgets. CA92.1 is the reason for reading and writing defaults
+			  belonging to this app and its own app group.
+			-->
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

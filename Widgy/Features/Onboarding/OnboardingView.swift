@@ -19,16 +19,26 @@ struct OnboardingView: View {
     @AppStorage(OnboardingKeys.username) private var storedUsername = ""
     @AppStorage(OnboardingKeys.aesthetics) private var aesthetics = ""
 
-    private enum Step { case slides, taste, signIn, username }
+    private enum Step { case language, slides, taste, signIn, username }
     @State private var step: Step
     @State private var selected: Set<String> = []
     @State private var showSplash = true
     @State private var authMessage: String?
 
     init() {
+        let defaults = UserDefaults.standard
         // Returning users (logged out) skip the intro and go straight to sign-in.
-        let before = UserDefaults.standard.bool(forKey: OnboardingKeys.hasOnboardedBefore)
-        _step = State(initialValue: before ? .signIn : .slides)
+        let before = defaults.bool(forKey: OnboardingKeys.hasOnboardedBefore)
+        let chosenLanguage = defaults.bool(forKey: OnboardingKeys.languageChosen)
+
+        // Language comes first, before any copy the user has to read: asking
+        // in a language they may not speak is the wrong way round. Only ever
+        // shown once, and never to someone who's onboarded before.
+        if !before && !chosenLanguage {
+            _step = State(initialValue: .language)
+        } else {
+            _step = State(initialValue: before ? .signIn : .slides)
+        }
     }
 
     // Captured during auth, saved once the username is chosen.
@@ -40,6 +50,8 @@ struct OnboardingView: View {
             Theme.Palette.background.ignoresSafeArea()
 
             switch step {
+            case .language:
+                LanguageStep { step = .slides }
             case .slides:
                 SlidesStep(onContinue: { step = .taste }, onSkip: { step = .signIn })
             case .taste:
@@ -99,6 +111,96 @@ struct OnboardingView: View {
         aesthetics = selected.sorted().joined(separator: ",")
         UserDefaults.standard.set(true, forKey: OnboardingKeys.hasOnboardedBefore)
         withAnimation(.easeInOut) { completed = true }
+    }
+}
+
+// MARK: - Language
+
+/// The first thing a new user sees, before any copy they'd have to read.
+///
+/// Each option is written in its own language — "Türkçe", "English" — rather
+/// than translated into the current one. Someone who doesn't read the current
+/// language still has to be able to find theirs.
+private struct LanguageStep: View {
+    var onContinue: () -> Void
+
+    @AppStorage(OnboardingKeys.language) private var languageRaw = AppLanguage.system.rawValue
+    @AppStorage(OnboardingKeys.languageChosen) private var languageChosen = false
+    @State private var selection: AppLanguage = .system
+
+    /// Start on whatever the phone is already set to, so most people just
+    /// confirm rather than choose.
+    private var deviceDefault: AppLanguage {
+        (Locale.current.language.languageCode?.identifier == "tr") ? .turkish : .english
+    }
+
+    private let options: [AppLanguage] = [.turkish, .english]
+
+    var body: some View {
+        VStack(spacing: Theme.Spacing.xl) {
+            Spacer()
+
+            Image(systemName: "globe")
+                .font(.system(size: 44, weight: .light))
+                .foregroundStyle(Theme.Palette.accent)
+
+            VStack(spacing: Theme.Spacing.sm) {
+                Text("Dilini seç")
+                    .font(Theme.Typography.displayLarge)
+                    .foregroundStyle(Theme.Palette.ink)
+                Text("Choose your language")
+                    .font(Theme.Typography.bodyLarge)
+                    .foregroundStyle(Theme.Palette.subtleText)
+            }
+            .multilineTextAlignment(.center)
+
+            VStack(spacing: Theme.Spacing.md) {
+                ForEach(options) { option in
+                    Button {
+                        withAnimation(.snappy) { selection = option }
+                    } label: {
+                        HStack {
+                            Text(option == .turkish ? "Türkçe" : "English")
+                                .font(Theme.Typography.title)
+                                .foregroundStyle(Theme.Palette.ink)
+                            Spacer()
+                            Image(systemName: selection == option ? "checkmark.circle.fill" : "circle")
+                                .font(.title3)
+                                .foregroundStyle(selection == option
+                                                 ? Theme.Palette.accent : Theme.Palette.hairline)
+                        }
+                        .padding(Theme.Spacing.lg)
+                        .background(Theme.Palette.surface, in: .rect(cornerRadius: Theme.Radius.card))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: Theme.Radius.card)
+                                .stroke(selection == option ? Theme.Palette.accent : Theme.Palette.hairline,
+                                        lineWidth: selection == option ? 2 : 1)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(.horizontal, Theme.Spacing.lg)
+
+            Spacer()
+
+            Button {
+                languageRaw = selection.rawValue
+                languageChosen = true
+                onContinue()
+            } label: {
+                Text(selection == .turkish ? "Devam et" : "Continue")
+                    .font(Theme.Typography.title)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 60)
+                    .background(Theme.Palette.accent, in: .capsule)
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, Theme.Spacing.lg)
+            .padding(.bottom, Theme.Spacing.lg)
+        }
+        .task { selection = deviceDefault }
     }
 }
 
@@ -447,7 +549,10 @@ private struct StyleThumbnail: View {
             Capsule().fill(Theme.Palette.hairline).frame(width: 54, height: 3)
         case "Bold":
             ZStack(alignment: .bottomTrailing) {
-                Text("BOLD")
+                // Artwork inside a style swatch, not copy — `verbatim` keeps it
+                // out of the string catalog, where it also collided with the
+                // "Bold" font-weight label.
+                Text(verbatim: "BOLD")
                     .font(AppFont.serif(size: 22, weight: .bold))
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -38,11 +38,18 @@ final class SearchViewModel {
         errorMessage = nil
         do {
             results = try await repository.search(query: query, category: selectedCategory)
+            isSearching = false
+        } catch is CancellationError {
+            // The user typed another character and this search was superseded.
+            // Not a failure — showing "CancellationError" here was why typing
+            // anything with no match looked like a crash. Leave the results and
+            // the spinner alone; the search that replaced this one owns them.
+            return
         } catch {
             errorMessage = error.localizedDescription
             results = []
+            isSearching = false
         }
-        isSearching = false
     }
 
     func selectCategory(_ category: WidgetCategory?) {

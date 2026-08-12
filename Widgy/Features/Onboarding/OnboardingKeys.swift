@@ -17,4 +17,11 @@ enum OnboardingKeys {
     static let aesthetics = "selectedAesthetics"
     static let seenDiscoverTip = "hasSeenDiscoverTip"
     static let seenAddToHome = "hasSeenAddToHome"
+    /// Raw value of `AppLanguage`. Not first-run state, but it lives here so
+    /// every stored key has one home.
+    static let language = "appLanguage"
+    /// Whether the language question has been answered. Separate from
+    /// `language` because "use the phone's language" is a real choice, and
+    /// storing it would otherwise be indistinguishable from never having asked.
+    static let languageChosen = "hasChosenLanguage"
 }

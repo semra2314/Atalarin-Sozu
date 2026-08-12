@@ -8,8 +8,10 @@ import SwiftData
 
 struct ProfileView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppNavigator.self) private var navigator
     @AppStorage(OnboardingKeys.displayName) private var displayName = ""
     @AppStorage(OnboardingKeys.username) private var username = ""
+    @State private var showEditProfile = false
 
     @Query(sort: \InstalledWidget.addedAt, order: .reverse)
     private var widgets: [InstalledWidget]
@@ -19,11 +21,6 @@ struct ProfileView: View {
     private var madeCount: Int { widgets.filter { $0.contentData != nil }.count }
     private var favoriteCount: Int { widgets.filter(\.isFavorite).count }
 
-    private let collections: [(title: String, meta: String, hexes: [String])] = [
-        ("Minimalist", "24 ITEMS · CURATED BY YOU", ["3A3A3C", "6E6E73"]),
-        ("Productivity", "18 ITEMS · PRIVATE", ["2C2C2E", "8C8382"])
-    ]
-
     var body: some View {
         ScrollView {
             VStack(spacing: Theme.Spacing.xl) {
@@ -31,13 +28,14 @@ struct ProfileView: View {
                 identity
                 stats
                 myWidgets
-                savedCollections
+                favourites
             }
             .padding(.bottom, Theme.Spacing.lg)
         }
         .widgyTabBarInset()
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
+        .sheet(isPresented: $showEditProfile) { EditProfileView() }
     }
 
     // MARK: Header
@@ -48,13 +46,14 @@ struct ProfileView: View {
                 .font(Theme.Typography.headline)
                 .foregroundStyle(Theme.Palette.ink)
             Spacer()
-            Image(systemName: "bag")
-                .font(.body)
-                .foregroundStyle(Theme.Palette.ink)
-            Circle()
-                .fill(Theme.Palette.surfaceMuted)
-                .frame(width: 32, height: 32)
-                .overlay(Image(systemName: "person.fill").font(.footnote).foregroundStyle(Theme.Palette.subtleText))
+            Button {
+                showEditProfile = true
+            } label: {
+                Image(systemName: "square.and.pencil")
+                    .font(.body)
+                    .foregroundStyle(Theme.Palette.ink)
+            }
+            .buttonStyle(.plain)
         }
         .padding(.horizontal, Theme.Spacing.lg)
         .padding(.top, Theme.Spacing.md)
@@ -63,31 +62,23 @@ struct ProfileView: View {
     // MARK: Identity
 
     private var identity: some View {
-        VStack(spacing: Theme.Spacing.sm) {
-            ZStack(alignment: .bottomTrailing) {
-                Circle()
-                    .fill(Theme.Palette.surfaceMuted)
-                    .frame(width: 100, height: 100)
-                    .overlay(Image(systemName: "person.fill").font(.system(size: 40)).foregroundStyle(Theme.Palette.subtleText))
-                    .overlay(Circle().stroke(Theme.Palette.surface, lineWidth: 4))
-                    .shadow(color: Theme.Shadow.color, radius: Theme.Shadow.radius, y: Theme.Shadow.y)
+        Button {
+            showEditProfile = true
+        } label: {
+            VStack(spacing: Theme.Spacing.sm) {
+                ProfileAvatar(size: 100)
 
-                Circle()
-                    .fill(Theme.Palette.accent)
-                    .frame(width: 30, height: 30)
-                    .overlay(Image(systemName: "checkmark").font(.caption2.weight(.bold)).foregroundStyle(.white))
-                    .overlay(Circle().stroke(Theme.Palette.background, lineWidth: 3))
-            }
-
-            VStack(spacing: 2) {
-                Text(name)
-                    .font(Theme.Typography.headline)
-                    .foregroundStyle(Theme.Palette.ink)
-                Text(handle)
-                    .font(Theme.Typography.body)
-                    .foregroundStyle(Theme.Palette.subtleText)
+                VStack(spacing: 2) {
+                    Text(name)
+                        .font(Theme.Typography.headline)
+                        .foregroundStyle(Theme.Palette.ink)
+                    Text(handle)
+                        .font(Theme.Typography.body)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                }
             }
         }
+        .buttonStyle(.plain)
     }
 
     // MARK: Stats
@@ -129,7 +120,7 @@ struct ProfileView: View {
 
     private var myWidgets: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.md) {
-            SectionHeader(title: "My Widgets", seeAllAction: {})
+            SectionHeader(title: "My Widgets") { navigator.selectedTab = .library }
                 .padding(.horizontal, Theme.Spacing.lg)
 
             if widgets.isEmpty {
@@ -203,43 +194,67 @@ struct ProfileView: View {
         }
     }
 
-    // MARK: Saved Collections
+    // MARK: Favourites
 
-    private var savedCollections: some View {
+    /// Was a pair of invented "Saved Collections" cards with made-up item
+    /// counts. Replaced with something true: the widgets the user has actually
+    /// favourited, which also gives the heart button on each card a purpose.
+    @ViewBuilder
+    private var favourites: some View {
+        let favourited = widgets.filter(\.isFavorite)
+
         VStack(alignment: .leading, spacing: Theme.Spacing.md) {
-            Text("Saved Collections")
+            Text("Favourites")
                 .font(Theme.Typography.headlineSmall)
                 .foregroundStyle(Theme.Palette.ink)
                 .padding(.horizontal, Theme.Spacing.lg)
 
-            VStack(spacing: Theme.Spacing.md) {
-                ForEach(collections, id: \.title) { collection in
-                    collectionCard(collection)
+            if favourited.isEmpty {
+                Text("Tap the heart on any widget to keep it here.")
+                    .font(Theme.Typography.body)
+                    .foregroundStyle(Theme.Palette.subtleText)
+                    .padding(.horizontal, Theme.Spacing.lg)
+            } else {
+                VStack(spacing: 0) {
+                    ForEach(favourited) { widget in
+                        NavigationLink(value: widget.libraryDestination) {
+                            favouriteRow(widget)
+                        }
+                        .buttonStyle(.plain)
+
+                        if widget.id != favourited.last?.id {
+                            Divider().padding(.leading, 76)
+                        }
+                    }
                 }
+                .widgyCard()
+                .padding(.horizontal, Theme.Spacing.lg)
             }
-            .padding(.horizontal, Theme.Spacing.lg)
         }
     }
 
-    private func collectionCard(_ collection: (title: String, meta: String, hexes: [String])) -> some View {
-        ZStack(alignment: .bottomLeading) {
-            LinearGradient(colors: collection.hexes.map(Color.init(hex:)),
-                           startPoint: .topLeading, endPoint: .bottomTrailing)
-            LinearGradient(colors: [.black.opacity(0.55), .clear],
-                           startPoint: .bottom, endPoint: .center)
+    private func favouriteRow(_ widget: InstalledWidget) -> some View {
+        HStack(spacing: Theme.Spacing.md) {
+            badge(widget)
+                .frame(width: 44, height: 44)
+
             VStack(alignment: .leading, spacing: 2) {
-                Text(collection.title)
-                    .font(Theme.Typography.headlineSmall)
-                    .foregroundStyle(.white)
-                Text(collection.meta)
-                    .font(.system(size: 10, weight: .semibold))
-                    .tracking(0.5)
-                    .foregroundStyle(.white.opacity(0.85))
+                Text(widget.name)
+                    .font(Theme.Typography.cardTitle)
+                    .foregroundStyle(Theme.Palette.ink)
+                Text(widget.category.displayName)
+                    .font(Theme.Typography.caption)
+                    .foregroundStyle(Theme.Palette.subtleText)
             }
-            .padding(Theme.Spacing.lg)
+
+            Spacer()
+
+            Image(systemName: "chevron.right")
+                .font(.footnote)
+                .foregroundStyle(Theme.Palette.subtleText)
         }
-        .frame(height: 120)
-        .clipShape(.rect(cornerRadius: 20, style: .continuous))
+        .padding(Theme.Spacing.md)
+        .contentShape(.rect)
     }
 }
 

@@ -120,7 +120,10 @@ nonisolated enum DailyStore {
 
 // MARK: - Library
 
-extension DailyStore {
+// `nonisolated` so the library can be read from the widget extension's own
+// context — the enum is nonisolated, but an extension doesn't inherit that
+// and the project defaults to MainActor isolation.
+nonisolated extension DailyStore {
 
     static let library: [DailySource: [DailyPassage]] = [
         // Reference format: surah name, chapter:verse, and the juz it falls in —

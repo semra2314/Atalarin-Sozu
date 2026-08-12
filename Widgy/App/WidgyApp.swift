@@ -12,6 +12,11 @@ import SwiftData
 struct WidgyApp: App {
     private let appEnvironment = AppEnvironment.live
     @State private var navigator = AppNavigator()
+    @AppStorage(OnboardingKeys.language) private var languageRaw = AppLanguage.system.rawValue
+
+    private var language: AppLanguage {
+        AppLanguage(rawValue: languageRaw) ?? .system
+    }
 
     init() {
         // Picks up Fraunces / DM Sans if their TTFs are bundled in Resources/Fonts.
@@ -35,6 +40,9 @@ struct WidgyApp: App {
             RootGate()
                 .environment(\.appEnvironment, appEnvironment)
                 .environment(navigator)
+                // Applied at the root so a change in Settings reaches every
+                // screen at once.
+                .widgyLanguage(language)
         }
         .modelContainer(modelContainer)
     }

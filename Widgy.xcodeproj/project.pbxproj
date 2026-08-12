@@ -310,6 +310,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = F8A5A269300EB7AB00503723;
 			minimizedProjectReferenceProxies = 1;
@@ -418,7 +419,8 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "actual-widgets";
+				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -450,7 +452,8 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "actual-widgets";
+				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -605,6 +608,8 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -638,6 +643,8 @@
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Widgy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
