@@ -28,10 +28,10 @@ export default function NavBar({ loggedIn = false }: NavBarProps) {
             Agreement
           </Link>
           <Link
-            href="/#faq"
+            href="/dashboard"
             className="text-sm font-medium text-subtleText transition-colors hover:text-accent"
           >
-            FAQ
+            Dashboard
           </Link>
         </nav>
 
@@ -43,7 +43,9 @@ export default function NavBar({ loggedIn = false }: NavBarProps) {
             >
               My Dashboard
             </Link>
-            <div className="h-10 w-10 rounded-full border-2 border-surfaceMuted bg-surfaceMuted" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accentTint font-serif text-sm font-semibold text-accent">
+              S
+            </span>
           </div>
         ) : (
           <Link
