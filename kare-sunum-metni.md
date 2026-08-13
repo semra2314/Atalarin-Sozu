@@ -1,9 +1,27 @@
-# Kare, 7 dakikalık sunum metni
+# Kare · 7 dakikalık sunum metni
 
-Toplam 7:00. Aşağıdaki süreler **hedef**, prova ederken sapmaları buradan düzelt.
-Kritik kural: demo 2:30'u aşarsa geri kalan her şey sıkışır. Saatini demoya kur.
+**Slayt sayısı 10 ile sınırlı, sunum buna göre yeniden kuruldu.** Her slaydın
+kendi konuşmacı notu var ve zamanlamalar orada yazıyor; sunum modunda önünde
+duracak. Aşağıdaki metin o notların uzun hâli.
+
+| # | Slayt | Süre |
+|---|---|---|
+| 1 | Kapak | 0:00–0:35 |
+| 2 | Problem ve çözüm | 0:35–1:05 |
+| 3 | Demo | 1:05–3:35 |
+| 4 | Katalog ve editör | 3:35–4:00 |
+| 5 | Yaratıcı portalı | 4:00–4:40 |
+| 6 | İş modeli | 4:40–5:05 |
+| 7 | Paranın akışı | 5:05–5:30 |
+| 8 | Yaratıcı havuzu | 5:30–5:55 |
+| 9 | Durum ve yol haritası | 5:55–6:25 |
+| 10 | Kapanış ve QR | 6:25–7:00 |
+
+Kritik kural değişmedi: demo 2,5 dakikayı aşarsa geri kalan her şey sıkışır.
+Saatini demoya kur.
 
 ---
+
 
 ## 0:00–0:45, Açılış: problem ve söz
 
