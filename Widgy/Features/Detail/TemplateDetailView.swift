@@ -148,15 +148,25 @@ struct TemplateDetailView: View {
                 }
             }
 
-            HStack(spacing: Theme.Spacing.md) {
-                Text(String(format: "%.1f", template.rating))
-                    .font(Theme.Typography.displayLarge)
-                    .foregroundStyle(Theme.Palette.ink)
-                VStack(alignment: .leading, spacing: 2) {
-                    StarRating(value: template.rating, size: 16)
-                    Text("\(template.ratingCount) ratings")
-                        .font(Theme.Typography.label)
-                        .foregroundStyle(Theme.Palette.subtleText)
+            // The average and the rating count used to be shown here, from
+            // numbers invented in the sample catalogue. With no users there is
+            // no average, and a made-up 4.8 is worse than an honest blank: it
+            // is the first thing anyone would think to check.
+            //
+            // Real reviews, written in the app, do appear. Once there are
+            // enough of them an average computed from this list belongs here.
+            if !reviews.isEmpty {
+                let average = Double(reviews.map(\.stars).reduce(0, +)) / Double(reviews.count)
+                HStack(spacing: Theme.Spacing.md) {
+                    Text(String(format: "%.1f", average))
+                        .font(Theme.Typography.displayLarge)
+                        .foregroundStyle(Theme.Palette.ink)
+                    VStack(alignment: .leading, spacing: 2) {
+                        StarRating(value: average, size: 16)
+                        Text("\(reviews.count) ratings")
+                            .font(Theme.Typography.label)
+                            .foregroundStyle(Theme.Palette.subtleText)
+                    }
                 }
             }
 
@@ -203,11 +213,20 @@ struct TemplateDetailView: View {
         .scrollIndicators(.hidden)
     }
 
+    /// Three facts about the widget, every one of them read off the template
+    /// rather than invented. The row used to show a rating average and an
+    /// install count, both hard-coded in the sample catalogue; with no users
+    /// behind them they were the weakest thing on the screen.
     private func statsRow(_ template: WidgetTemplate) -> some View {
-        HStack(spacing: 0) {
-            stat(value: String(format: "%.1f", template.rating), label: "\(template.ratingCount) ratings")
+        let lockSizes: Set<WidgetSize> = [.accessoryCircular, .accessoryRectangular]
+        let homeSizes = template.supportedSizes.filter { !lockSizes.contains($0) }
+        let hasLockScreen = template.supportedSizes.contains { lockSizes.contains($0) }
+
+        return HStack(spacing: 0) {
+            stat(value: "\(homeSizes.count)", label: "sizes")
             Divider().frame(height: 34)
-            stat(value: template.installCountText, label: "installs")
+            stat(value: hasLockScreen ? String(localized: "Yes") : String(localized: "No"),
+                 label: "lock screen")
             Divider().frame(height: 34)
             stat(value: template.category.displayName, label: "category")
         }
@@ -218,8 +237,8 @@ struct TemplateDetailView: View {
 
     private func stat(value: String, label: String) -> some View {
         VStack(spacing: 2) {
-            Text(value).font(.headline)
-            Text(label)
+            Text(LocalizedStringKey(value)).font(.headline)
+            Text(LocalizedStringKey(label))
                 .font(.caption2)
                 .foregroundStyle(Theme.Palette.subtleText)
         }

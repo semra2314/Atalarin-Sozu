@@ -74,7 +74,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld değerlendirme"
+            "value": "%lld puan"
           }
         }
       }
@@ -1851,7 +1851,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Henüz yazılı değerlendirme yok. İlk sen ol."
+            "value": "Henüz yorum yok. İlk sen yaz."
           }
         }
       }
@@ -2223,7 +2223,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Puanlar ve Değerlendirmeler"
+            "value": "Puanlar ve yorumlar"
           }
         }
       }
@@ -3336,7 +3336,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Değerlendirme yaz"
+            "value": "Yorum yaz"
           }
         }
       }
@@ -3404,7 +3404,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Değerlendirmen"
+            "value": "Yorumun"
           }
         }
       }
@@ -3846,6 +3846,142 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yarı kalın"
+          }
+        }
+      }
+    },
+    "sizes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sizes"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "boyut"
+          }
+        }
+      }
+    },
+    "lock screen": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lock screen"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kilit ekranı"
+          }
+        }
+      }
+    },
+    "category": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "category"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "kategori"
+          }
+        }
+      }
+    },
+    "Yes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yes"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Var"
+          }
+        }
+      }
+    },
+    "No": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yok"
+          }
+        }
+      }
+    },
+    "All widgets": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All widgets"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bütün widget'lar"
+          }
+        }
+      }
+    },
+    "Everything that ships with Kare": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything that ships with Kare"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kare ile gelen her şey"
+          }
+        }
+      }
+    },
+    "Quietly minimal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quietly minimal"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sakin ve sade"
           }
         }
       }

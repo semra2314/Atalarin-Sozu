@@ -66,7 +66,7 @@ nonisolated struct CloudKitCatalogSeeder {
 
         return [
             section("sec-featured", "Featured today", "Hand-picked by the Kare team", "spotlight", featured, 0),
-            section("sec-trending", "Trending", "Most installed this week", "carousel", trending, 1)
+            section("sec-all", "All widgets", "Everything that ships with Kare", "carousel", trending, 1)
         ]
     }
 

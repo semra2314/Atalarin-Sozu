@@ -23,7 +23,10 @@ actor MockWidgetRepository: WidgetRepository {
 
     func discoverSections() async throws -> [CatalogSection] {
         try await simulateLatency()
-        let sorted = templates.sorted { $0.installCount > $1.installCount }
+        // Katalog sırasının kendisi bizim seçtiğimiz sıra. Eskiden uydurma
+        // installCount alanına göre sıralanıyordu; o sayı hiçbir şeyi
+        // ölçmüyordu, sadece sıralamayı keyfî yapıyordu.
+        let sorted = templates
         return [
             CatalogSection(
                 id: "spotlight",
@@ -33,11 +36,11 @@ actor MockWidgetRepository: WidgetRepository {
                 templates: Array(sorted.prefix(3))
             ),
             CatalogSection(
-                id: "trending",
-                title: "Trending",
-                subtitle: "Most installed this week",
+                id: "all",
+                title: "All widgets",
+                subtitle: "Everything that ships with Kare",
                 style: .carousel,
-                templates: Array(sorted.prefix(8))
+                templates: sorted
             ),
             CatalogSection(
                 id: "minimal",
