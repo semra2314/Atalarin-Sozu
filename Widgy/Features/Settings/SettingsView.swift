@@ -15,6 +15,8 @@ struct SettingsView: View {
 
     @State private var showEditProfile = false
     @State private var showLanguagePicker = false
+    @State private var showKarePlus = false
+    @AppStorage(KarePlus.isSubscribedKey) private var isSubscribed = false
     @AppStorage(OnboardingKeys.language) private var languageRaw = AppLanguage.system.rawValue
 
     private var language: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .system }
@@ -52,6 +54,7 @@ struct SettingsView: View {
             VStack(spacing: Theme.Spacing.xl) {
                 header
                 identity
+                karePlusCard
                 settingsCard
                 logOut
                 footer
@@ -62,6 +65,7 @@ struct SettingsView: View {
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showEditProfile) { EditProfileView() }
+        .sheet(isPresented: $showKarePlus) { KarePlusView() }
         .sheet(isPresented: $showLanguagePicker) {
             languageSheet.presentationDetents([.height(340)])
         }
@@ -94,11 +98,56 @@ struct SettingsView: View {
                 Text(name)
                     .font(Theme.Typography.headline)
                     .foregroundStyle(Theme.Palette.ink)
-                Text("Free plan")
+                Text(isSubscribed ? "Kare+ member" : "Free plan")
                     .font(Theme.Typography.body)
-                    .foregroundStyle(Theme.Palette.subtleText)
+                    .foregroundStyle(isSubscribed ? Theme.Palette.accent : Theme.Palette.subtleText)
             }
         }
+    }
+
+    /// Kare+ girişi. Abonelik iş modelinin ürün içindeki karşılığı, o yüzden
+    /// ayarların derinlerine gömmek yerine kimliğin hemen altında duruyor.
+    private var karePlusCard: some View {
+        Button { showKarePlus = true } label: {
+            HStack(spacing: Theme.Spacing.md) {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Theme.Palette.accent)
+                    .frame(width: 28, height: 28)
+                    .overlay {
+                        Image(systemName: isSubscribed ? "checkmark" : "plus")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(.white)
+                    }
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Kare+")
+                        .font(Theme.Typography.headlineSmall)
+                        .foregroundStyle(Theme.Palette.ink)
+                    Text(isSubscribed
+                         ? "Active. Every paid widget is yours."
+                         : "Every paid widget, one subscription.")
+                        .font(Theme.Typography.caption)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                        .lineLimit(1)
+                }
+
+                Spacer()
+
+                if !isSubscribed {
+                    Text("\(KarePlus.monthlyPrice)/mo")
+                        .font(Theme.Typography.labelCaps)
+                        .foregroundStyle(Theme.Palette.accent)
+                }
+                Image(systemName: "chevron.right")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Palette.subtleText)
+            }
+            .padding(Theme.Spacing.lg)
+            .widgyCard()
+            .padding(.horizontal, Theme.Spacing.lg)
+            .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
     }
 
     private var settingsCard: some View {
