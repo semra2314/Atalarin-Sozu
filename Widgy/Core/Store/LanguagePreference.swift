@@ -23,7 +23,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 
     var displayName: String {
         switch self {
-        case .system: String(localized: "Phone language")
+        case .system: "Phone language"
         case .turkish: "Türkçe"
         case .english: "English"
         }
