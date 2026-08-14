@@ -107,7 +107,7 @@ struct ProfileView: View {
             Text(value)
                 .font(Theme.Typography.headlineSmall)
                 .foregroundStyle(Theme.Palette.ink)
-            Text(label)
+            Text(LocalizedStringKey(label))
                 .font(.system(size: 10, weight: .semibold))
                 .textCase(.uppercase)
                 .tracking(0.5)

@@ -27,7 +27,7 @@ struct WidgetCard: View {
                     Text(template.author.displayName)
                         .lineLimit(1)
                     Text("·")
-                    Text(template.price.displayText)
+                    Text(LocalizedStringKey(template.price.displayText))
                         .fontWeight(template.price.isFree ? .regular : .semibold)
                 }
                 .font(Theme.Typography.caption)

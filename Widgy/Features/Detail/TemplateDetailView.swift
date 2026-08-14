@@ -84,7 +84,7 @@ struct TemplateDetailView: View {
                     .font(Theme.Typography.label)
                 }
 
-                Text(template.summary)
+                Text(LocalizedStringKey(template.summary))
                     .font(Theme.Typography.bodyLarge)
                     .foregroundStyle(Theme.Palette.ink.opacity(0.85))
                     .padding(.top, Theme.Spacing.xs)
@@ -265,7 +265,7 @@ struct TemplateDetailView: View {
                     Image(systemName: isInstalled ? "checkmark" : "plus")
                     Text(isInstalled ? "In library" : "Add to library")
                     Text("·").opacity(0.5)
-                    Text(template.price.displayText)
+                    Text(LocalizedStringKey(template.price.displayText))
                 }
             }
             .font(Theme.Typography.title)

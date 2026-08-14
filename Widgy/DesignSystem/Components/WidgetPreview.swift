@@ -82,7 +82,7 @@ struct WidgetPreview: View {
                 .lineLimit(2)
 
             if size != .small && !size.isLockScreen {
-                Text(template.summary)
+                Text(LocalizedStringKey(template.summary))
                     .font(.system(size: 11))
                     .foregroundStyle(template.theme.foreground.opacity(0.7))
                     .lineLimit(2)

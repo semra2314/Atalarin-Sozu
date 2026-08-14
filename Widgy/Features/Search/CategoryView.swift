@@ -34,7 +34,7 @@ struct CategoryView: View {
             }
         }
         .background(Theme.Palette.background)
-        .navigationTitle(category.displayName)
+        .navigationTitle(LocalizedStringKey(category.displayName))
         .navigationBarTitleDisplayMode(.inline)
         .task { await load() }
     }

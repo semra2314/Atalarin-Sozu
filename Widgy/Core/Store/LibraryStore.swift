@@ -34,6 +34,26 @@ final class LibraryStore {
         return widget
     }
 
+    /// Puts the built-in catalogue into the library the first time the app
+    /// runs, so nobody lands on an empty Widgets tab and an empty profile.
+    ///
+    /// This is a product decision, not a demo trick: the six widgets ship
+    /// inside the app, they cost nothing, and a new user has no way of knowing
+    /// what "add a widget" means until they can see one. They can be removed
+    /// like anything else. Only the fixed designs are seeded; the make-your-own
+    /// template stays out, because an empty custom widget has nothing to show.
+    ///
+    /// Idempotent by way of `install`, which returns the existing record rather
+    /// than duplicating, so a second call is harmless.
+    func seedBuiltInsIfNeeded() throws {
+        let existing = (try? context.fetchCount(FetchDescriptor<InstalledWidget>())) ?? 0
+        guard existing == 0 else { return }
+
+        for template in SampleCatalog.templates where !template.isEditable {
+            try install(template, size: template.primarySize)
+        }
+    }
+
     func remove(templateID: String) throws {
         guard let existing = try fetch(templateID: templateID) else { return }
         context.delete(existing)

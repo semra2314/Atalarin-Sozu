@@ -29,7 +29,7 @@ struct CategoryChip: View {
                 if let symbolName {
                     Image(systemName: symbolName)
                 }
-                Text(title)
+                Text(LocalizedStringKey(title))
             }
             .font(Theme.Typography.label)
             .padding(.horizontal, Theme.Spacing.lg)

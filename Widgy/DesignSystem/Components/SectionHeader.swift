@@ -13,11 +13,11 @@ struct SectionHeader: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 2) {
-                Text(title)
+                Text(LocalizedStringKey(title))
                     .font(Theme.Typography.headlineSmall)
                     .foregroundStyle(Theme.Palette.ink)
                 if let subtitle {
-                    Text(subtitle)
+                    Text(LocalizedStringKey(subtitle))
                         .font(Theme.Typography.body)
                         .foregroundStyle(Theme.Palette.subtleText)
                 }

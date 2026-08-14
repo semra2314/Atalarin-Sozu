@@ -62,8 +62,8 @@ nonisolated enum SampleCatalog {
     private static let baseTemplates: [WidgetTemplate] = [
         WidgetTemplate(
             id: "t-aurora",
-            name: String(localized: "Aurora Clock"),
-            summary: String(localized: "A live clock whose aurora background follows the light of day. Also sits on your lock screen."),
+            name: "Aurora Clock",
+            summary: "A live clock whose aurora background follows the light of day. Also sits on your lock screen.",
             author: authors[0],
             category: .minimal,
             supportedSizes: [.small, .medium, .large, .accessoryCircular, .accessoryRectangular],
@@ -81,8 +81,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-focus",
-            name: String(localized: "Focus Stack"),
-            summary: String(localized: "A live deep-work timer. Start it, and the countdown follows you to the lock screen."),
+            name: "Focus Stack",
+            summary: "A live deep-work timer. Start it, and the countdown follows you to the lock screen.",
             author: authors[1],
             category: .productivity,
             supportedSizes: [.small, .medium, .large, .accessoryCircular, .accessoryRectangular],
@@ -99,8 +99,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-frame",
-            name: String(localized: "Frame"),
-            summary: String(localized: "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays."),
+            name: "Frame",
+            summary: "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays.",
             author: authors[0],
             category: .photos,
             supportedSizes: [.small, .medium, .large],
@@ -117,8 +117,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-hush",
-            name: String(localized: "Hush"),
-            summary: String(localized: "One quiet word, changing through the day. Nothing to tap, nothing to manage."),
+            name: "Hush",
+            summary: "One quiet word, changing through the day. Nothing to tap, nothing to manage.",
             author: authors[1],
             category: .minimal,
             supportedSizes: [.small, .medium, .large, .accessoryCircular, .accessoryRectangular],
@@ -135,8 +135,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-daily",
-            name: String(localized: "Daily"),
-            summary: String(localized: "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference."),
+            name: "Daily",
+            summary: "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference.",
             author: authors[2],
             category: .minimal,
             supportedSizes: [.small, .medium, .large, .accessoryRectangular],
@@ -153,8 +153,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-proverb",
-            name: String(localized: "Söz"),
-            summary: String(localized: "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings."),
+            name: "Söz",
+            summary: "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings.",
             author: authors[2],
             category: .minimal,
             supportedSizes: [.small, .medium, .large, .accessoryRectangular],
@@ -171,8 +171,8 @@ nonisolated enum SampleCatalog {
         ),
         WidgetTemplate(
             id: "t-custom",
-            name: String(localized: "Custom Widget"),
-            summary: String(localized: "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it."),
+            name: "Custom Widget",
+            summary: "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it.",
             author: authors[2],
             category: .minimal,
             supportedSizes: [.small, .medium, .large],

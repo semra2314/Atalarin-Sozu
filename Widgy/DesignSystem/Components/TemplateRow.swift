@@ -17,7 +17,7 @@ struct TemplateRow: View {
                 Text(template.name)
                     .font(Theme.Typography.title)
                     .foregroundStyle(Theme.Palette.ink)
-                Text(template.summary)
+                Text(LocalizedStringKey(template.summary))
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Palette.subtleText)
                     .lineLimit(1)
@@ -25,7 +25,7 @@ struct TemplateRow: View {
 
             Spacer(minLength: Theme.Spacing.sm)
 
-            Text(template.price.displayText)
+            Text(LocalizedStringKey(template.price.displayText))
                 .font(Theme.Typography.labelCaps)
                 .padding(.horizontal, Theme.Spacing.md)
                 .padding(.vertical, Theme.Spacing.xs)

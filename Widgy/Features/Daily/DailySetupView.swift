@@ -103,7 +103,7 @@ struct DailySetupView: View {
                             in: .rect(cornerRadius: 10))
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(source.displayName)
+                Text(LocalizedStringKey(source.displayName))
                     .font(Theme.Typography.cardTitle)
                     .foregroundStyle(Theme.Palette.ink)
                 Text(source.subtitle)

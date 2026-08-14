@@ -79,7 +79,7 @@ struct WidgyTabBar: View {
                 Image(systemName: tab.symbolName)
                     .font(.system(size: 19))
                     .frame(height: iconBox)
-                Text(tab.title)
+                Text(LocalizedStringKey(tab.title))
                     .font(.system(size: 10, weight: .semibold))
                     .textCase(.uppercase)
                     .tracking(0.4)

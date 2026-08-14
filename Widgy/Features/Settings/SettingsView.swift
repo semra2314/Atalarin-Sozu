@@ -36,13 +36,13 @@ struct SettingsView: View {
 
     private var rows: [Row] {
         [
-            Row(icon: "person", title: String(localized: "Account"),
+            Row(icon: "person", title: "Account",
                 detail: username.isEmpty ? nil : "@" + username, action: .editProfile),
-            Row(icon: "globe", title: String(localized: "Language"),
+            Row(icon: "globe", title: "Language",
                 detail: language.displayName, action: .chooseLanguage),
-            Row(icon: "bell", title: String(localized: "Notifications"), action: .systemSettings),
-            Row(icon: "lock", title: String(localized: "Privacy"), action: .systemSettings),
-            Row(icon: "questionmark.circle", title: String(localized: "Help & Support"),
+            Row(icon: "bell", title: "Notifications", action: .systemSettings),
+            Row(icon: "lock", title: "Privacy", action: .systemSettings),
+            Row(icon: "questionmark.circle", title: "Help & Support",
                 action: .systemSettings)
         ]
     }
@@ -123,7 +123,7 @@ struct SettingsView: View {
                 .frame(width: 40, height: 40)
                 .background(Theme.Palette.surfaceMuted, in: .circle)
             VStack(alignment: .leading, spacing: 1) {
-                Text(row.title)
+                Text(LocalizedStringKey(row.title))
                     .font(Theme.Typography.bodyLarge)
                     .foregroundStyle(Theme.Palette.ink)
                 if let detail = row.detail {
@@ -150,7 +150,7 @@ struct SettingsView: View {
                         showLanguagePicker = false
                     } label: {
                         HStack {
-                            Text(option.displayName)
+                            Text(LocalizedStringKey(option.displayName))
                                 .font(Theme.Typography.bodyLarge)
                                 .foregroundStyle(Theme.Palette.ink)
                             Spacer()

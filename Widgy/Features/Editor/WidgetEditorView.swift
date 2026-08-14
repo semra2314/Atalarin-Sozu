@@ -309,7 +309,7 @@ struct WidgetEditorView: View {
                         withAnimation(.snappy) { activeTab = tab }
                     } label: {
                         VStack(spacing: 6) {
-                            Text(tab.title)
+                            Text(LocalizedStringKey(tab.title))
                                 .font(Theme.Typography.label)
                                 .fontWeight(activeTab == tab ? .bold : .medium)
                                 .foregroundStyle(activeTab == tab ? Theme.Palette.accent : Theme.Palette.subtleText)
@@ -419,7 +419,7 @@ struct WidgetEditorView: View {
                 Button {
                     withAnimation(.snappy) { previewFamily = family }
                 } label: {
-                    Text(family.displayName)
+                    Text(LocalizedStringKey(family.displayName))
                         .font(Theme.Typography.label)
                         .padding(.horizontal, Theme.Spacing.lg)
                         .padding(.vertical, Theme.Spacing.sm)
@@ -571,13 +571,13 @@ struct WidgetEditorView: View {
                     // Each font option is set in its own typeface, so the control
                     // shows what it does rather than just naming it.
                     pillSegmented(WidgetContent.FontStyle.allCases, selection: text.fontStyle) { style, isSelected in
-                        Text(style.displayName)
+                        Text(LocalizedStringKey(style.displayName))
                             .font(style.font(size: 13, weight: .semibold))
                             .foregroundStyle(isSelected ? Theme.Palette.ink : Theme.Palette.subtleText)
                     }
 
                     pillSegmented(WidgetContent.Weight.allCases, selection: text.fontWeight) { weight, isSelected in
-                        Text(weight.displayName)
+                        Text(LocalizedStringKey(weight.displayName))
                             .font(.system(size: 13, weight: weight.swiftUI))
                             .foregroundStyle(isSelected ? Theme.Palette.ink : Theme.Palette.subtleText)
                     }
