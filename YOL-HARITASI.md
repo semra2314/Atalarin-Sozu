@@ -122,56 +122,110 @@ ihtiyaç netleştiğinde bir haftalık iş.
 
 ---
 
-## Pazarlama
+## Pazarlama · dört kanal, tek içerik
 
-Bütçeniz yok, o yüzden para gerektirmeyen kanallar önemli. Sırayla:
+Bütçe yok, o yüzden kanallar emek karşılığı çalışmalı. Dördü birden var ve
+**farklı işler yapıyorlar**, birbirinin kopyası değiller.
 
-**1. App Store'un kendisi (en yüksek getiri, sıfır maliyet)**
+### 1 · App Store'un kendisi
 
-İnsanların çoğu uygulamayı App Store'da arayarak bulur. Altyazı, anahtar
-kelimeler ve ekran görüntüleri üzerinde çalışmak, herhangi bir reklamdan daha
-çok kurulum getirir. Ayda bir gözden geçirin, hangi kelimeden geldiklerini App
-Store Connect gösteriyor.
+En yüksek niyetli trafik. Uygulamayı arayan insan zaten indirmeye hazır.
+Altyazı, anahtar kelimeler ve ekran görüntüleri üzerinde çalışmak herhangi bir
+reklamdan çok kurulum getirir. Ayda bir gözden geçir; hangi kelimeden
+geldiklerini App Store Connect söylüyor.
 
-**2. Kısa video (widget uygulamaları için doğal mecra)**
+### 2 · Docs sitesi
 
-TikTok ve Instagram Reels'te "ana ekran düzenleme" içeriği çok izleniyor.
-Sizin avantajınız: ürün zaten görsel. On beş saniyede boş ana ekrandan
-tasarlanmış ana ekrana geçiş, anlatım gerektirmiyor.
+Bunun asıl işi dokümantasyon değil, **arama trafiği.**
 
-Haftada iki video, üç ay. Biri tutarsa hepsini karşılıyor.
+Kimse "Kare docs" diye aramıyor. Ama şunları arıyorlar, hem de çok:
 
-**3. Söz widget'ı, içerik olarak**
+- *how to add a widget on iphone*
+- *aesthetic home screen ideas*
+- *custom widget with my own photo*
+- *lock screen widget ios*
 
-Elinizde 400 sözlük bir veri seti var ve bu bir içerik kaynağı. Her gün bir
-atasözü, anlamıyla, Kare'nin tipografisiyle paylaşın. Uygulamayı satmıyor,
-hesabı büyütüyor; uygulama arkadan geliyor. Türkiye'de bu içerik türünün
-karşılığı yüksek.
+Bu soruların cevabını yazarsan Google, uygulamanın varlığından haberi olmayan
+insanları sana getirir. Ve bu trafik bitmiyor; bir video iki gün yaşıyor, iyi
+bir rehber iki yıl.
 
-**4. Topluluk**
+Üstelik **App Store zaten bir destek URL'si zorunlu tutuyor**, yani bu sayfayı
+yapmak seçenek değil. Madem yapılacak, arama için yazılsın.
 
-Reddit'te r/iphone ve ana ekran düzenleme toplulukları, Türkiye'de Ekşi ve
-Donanım Haber. Reklam gibi girmeyin, kendi ana ekranınızı paylaşın. İnsanlar
-"bu widget ne" diye sorar, o zaman söylersiniz.
+İlk altı yazı:
 
-**5. Neden global, neden İngilizce önce**
+1. iPhone'da ana ekrana widget nasıl eklenir (adım adım, ekran görüntülü)
+2. Kilit ekranına widget ekleme
+3. Kendi fotoğrafınla widget yapma
+4. Sticker'ın arka planını kesme
+5. Widget'ım güncellenmiyor, ne yapmalıyım
+6. Kare nedir, ne değildir
 
-Pazarlama kanalınız TikTok ve TikTok'un sınırı yok. İngilizce içerik
-üretirseniz algoritma sizi büyük pazara taşır; Türkiye'yle sınırlamak
-algoritmanın doğal erişimine karşı kürek çekmektir. Üstelik Türkiye App
-Store'unda kullanıcı başına gelir düşük, orada birinci olmak bile az para
-demek.
+İlk beşi Kare'den bağımsız sorular, yani seni tanımayan insanı getiriyor.
+Altıncısı onları kullanıcıya çeviriyor.
 
-Bunun iki somut sonucu var:
+Site zaten Next.js ve Vercel'de; `/help` altına statik sayfalar olarak eklenir.
 
-- **App Store listelemesi İngilizce birinci dil olacak**, Türkçe yerelleştirme
-  olarak eklenecek. Uygulama zaten iki dilli, iş sadece mağaza tarafında.
-- **Ekran görüntüleri kusursuz olmak zorunda.** Global pazarda cilalı
-  uygulamalarla yarışıyorsunuz; Türkiye pazarı pürüzleri daha çok affediyor.
-  En çok emek verilecek pazarlama işi bu.
+**Bir de alan adı meselesi.** `widgy-creators.vercel.app` bir marka değil ve
+arama motorunda ciddiye alınmıyor. Global çıkıyorsan gerçek bir alan adı al:
+`kare.app`, `getkare.app`, `karewidgets.com` gibi. Yılda birkaç yüz lira ve
+docs sitesinin arama değerini bu belirliyor.
+
+### 3 · TikTok
+
+İşi **keşif**: seni tanımayan insana ulaşmak. Algoritma takipçi sayına
+bakmadan gösteriyor, o yüzden sıfırdan başlayan için en adil mecra.
+
+Ürün zaten görsel. On beş saniyede boş ana ekrandan tasarlanmış ana ekrana
+geçiş, anlatım bile gerektirmiyor.
+
+### 4 · Instagram
+
+İşi TikTok'tan **farklı**: itibar ve tasarımcı ilişkileri.
+
+Instagram'da keşif zayıf ama **tasarımcılar orada yaşıyor.** Faz 3'te
+tasarımcılara yazacaksın ve ilk yapacakları şey profiline bakmak olacak.
+Düzgün bir Instagram, "bu ciddi bir iş" demenin en ucuz yolu.
+
+Söz widget'ı burada içerik kaynağı: her gün bir söz, Kare'nin tipografisiyle.
+Uygulamayı satmıyor, hesabı büyütüyor.
+
+### 5 · Topluluk
+
+Reddit'te r/iphone ve ana ekran düzenleme toplulukları. Reklam gibi girme,
+kendi ana ekranını paylaş. İnsanlar "bu widget ne" diye sorar, o zaman
+söylersin.
+
+### Kanalları tek içerikle beslemek
+
+Dört kanal için dört içerik planı yaparsan üç hafta içinde tükenirsin. Doğrusu
+**tek çekim, dört çıktı**:
+
+Haftada bir kez, bir widget'ı sıfırdan yaparken ekranı kaydet. O tek kayıttan:
+
+- **TikTok:** 15 saniyelik hızlandırılmış hâli
+- **Instagram:** aynı video Reels olarak + sonucun tek karelik görseli
+- **Docs:** aynı akışın ekran görüntülü yazılı rehberi
+- **App Store:** aynı kareler tanıtım görseli olarak
+
+Bir saatlik çekim, dört kanal. Sürdürülebilir olan tek yöntem bu.
+
+### Neden global, neden İngilizce önce
+
+Kanalların hiçbirinin sınırı yok. İngilizce üretirsen algoritma da arama da
+seni büyük pazara taşır; Türkiye'yle sınırlamak doğal erişime karşı kürek
+çekmek olur. Üstelik Türkiye App Store'unda kullanıcı başına gelir düşük,
+orada birinci olmak bile az para demek.
+
+İki somut sonucu var:
+
+- **App Store listelemesi ve docs sitesi İngilizce birinci dil olacak**, Türkçe
+  yerelleştirme olarak eklenecek. Uygulama zaten iki dilli.
+- **Ekran görüntüleri kusursuz olmak zorunda.** Global mağazada cilalı
+  uygulamalarla yarışıyorsun; Türkiye pazarı pürüzleri daha çok affederdi.
 
 Söz widget'ı kalıyor ve global uygulamanın içinde daha değerli bir şey
-kanıtlıyor: yerelleştirilmiş içerik widget'ı yapabildiğinizi. Bugün Türkçe
+kanıtlıyor: yerelleştirilmiş içerik widget'ı yapabildiğini. Bugün Türkçe
 atasözü, yarın İspanyolca ya da Japonca karşılığı. Bu bir şablon, tek seferlik
 bir özellik değil.
 
@@ -220,9 +274,10 @@ Bu tempo ciddi. Buna göre gerçekçi hedef: **beş hafta sonra App Store'da,
 - 20-30 kişi bul. TikTok'ta zaten bu nişi izliyorsun; oradaki insanlara yaz.
   Yabancı test kullanıcısı, tanıdıktan çok daha değerli.
 - Tek soruyu sor: widget'ı ana ekrana ekleyebildin mi.
-- **Paralel:** App Store Connect'te Paid Apps sözleşmesi, banka ve vergi
-  bilgisi kurulumuna bugün başla. Aylar sonra lazım olacak ama bekleme
-  süresi uzun ve sana hiçbir şeye mal olmuyor.
+- **Paralel iki iş, ikisi de bekleme süresi yüzünden erken başlamalı:**
+  - App Store Connect'te Paid Apps sözleşmesi, banka ve vergi bilgisi.
+  - **Alan adını al** ve siteyi oraya taşı. Arama motorunun bir alan adına
+    güvenmesi zaman alıyor; ne kadar erken alırsan o kadar iyi.
 
 ### 2. hafta · En büyük iş: widget ekleme rehberi
 
@@ -231,15 +286,17 @@ animasyonlu bir anlatım. Boş ana ekrandan widget'a kadar.
 
 Yanında: boş durumlar, izin reddi halleri, altı widget'ın da bellek testi.
 
-### 3. hafta · App Store vitrini
+### 3. hafta · App Store vitrini ve docs
 
 Bu hafta kod değil pazarlama haftası, ve dönüşümü en çok etkileyen hafta bu.
 
 - **Beş ekran görüntüsü**, her biri tek bir fikir. Global pazarda cilalı
   uygulamalarla yarışıyorsun, burada acele etme.
 - İngilizce listeleme metinleri, anahtar kelime araştırması.
-- Uygulama önizleme videosu (isteğe bağlı ama dönüşümü ciddi artırıyor,
-  zaten TikTok için çektiğin malzemeden çıkar).
+- **Docs sitesinin ilk üç yazısı.** Bunlar aynı zamanda App Store'un istediği
+  destek URL'sini karşılıyor, yani zaten yapman gereken işi arama trafiğine
+  çeviriyorsun.
+- Uygulama önizleme videosu, zaten çektiğin malzemeden çıkar.
 - Kare+ ekranının satın alma butonunu çıkar.
 
 ### 4. hafta · Cila ve gönderim
@@ -251,11 +308,16 @@ Bu hafta kod değil pazarlama haftası, ve dönüşümü en çok etkileyen hafta
 ### 5. hafta · Çıkış ve içerik motoru
 
 - Yayında. Kurulum sayısına değil, **widget ekleme oranına** bak.
-- TikTok'ta haftada iki video başlat. Bir video tutana kadar durma.
+- Haftalık ritmi kur: **bir çekim, dört çıktı.** Bir widget'ı sıfırdan
+  yaparken ekranı kaydet; TikTok videosu, Reels, docs yazısı ve App Store
+  görseli aynı kayıttan çıksın.
+- Kalan üç docs yazısını tamamla.
 
 ### 6-12. hafta · Ölçüp düzeltmek, sonra para
 
-- Her hafta: bir ürün düzeltmesi, iki video.
+- Her hafta: bir ürün düzeltmesi, bir çekim ve ondan çıkan dört içerik.
+- Ayda bir: hangi docs yazısının arama getirdiğine bak, kazananın etrafına
+  iki yazı daha yaz.
 - Elde tutma stabilse **StoreKit 2 ile Kare+**. Banka kurulumu 1. haftada
   başladığı için hazır olacak.
 - Gelir görünmeye başladığında tasarımcı fazı konuşulabilir.
