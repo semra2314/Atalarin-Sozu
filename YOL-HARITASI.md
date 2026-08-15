@@ -63,11 +63,16 @@ kalmadığı.
 
 ### App Store listeleme
 
-- **İsim:** `Kare: Widget Marketplace` (30 karakter sınırı)
-- **Altyazı:** en değerli 30 karakter. Öneri: *"Ana ekranını sen tasarla"*
-- **Anahtar kelimeler:** widget, ana ekran, kilit ekranı, özelleştirme, tema,
-  atasözü, saat, fotoğraf. Türkçe ve İngilizce ayrı ayrı.
+Birinci dil **İngilizce**, Türkçe yerelleştirme olarak eklenecek.
+
+- **İsim:** `Kare: Widget Maker` ya da `Kare: Home Screen Widgets` (30 karakter)
+- **Altyazı:** en değerli 30 karakter. Öneri: *"Design your own widgets"*
+- **Anahtar kelimeler:** widget, home screen, lock screen, custom, aesthetic,
+  theme, icon, photo widget, clock widget. Türkçe için ayrı liste.
 - **Açıklama:** ilk üç satır kritik, gerisini kimse açmıyor.
+
+`aesthetic` kelimesini atlama. Bu nişte insanların aradığı kelime tam olarak o
+ve rakiplerin çoğu ismine bile koyuyor.
 
 **Reddedilme ihtimali olan yerler:** Kare+ ekranı StoreKit'siz duruyor. İlk
 sürümde ya tamamen kaldırın ya da satın alma butonunu çıkarıp sadece "yakında"
@@ -86,11 +91,19 @@ Sırası geldiğinde, ve ancak Faz 1'de insanlar kaldıysa.
 - **Önce abonelik, sonra komisyon.** Komisyon tasarımcı gerektiriyor,
   abonelik gerektirmiyor.
 
-**Şirket meselesi:** App Store'dan gelir alabilmek için şahıs firması ya da
-şirket gerekiyor, vergi bilgisi giriliyor. Tasarımcılara ödeme yapmak ise ayrı
-ve daha ağır bir iş: sözleşme, fatura, stopaj, ödeme sağlayıcısı. Faz 3'e
-başlamadan önce bir mali müşavirle bir saat konuşun, sonradan çözmesi çok
-pahalı.
+**Şirket meselesi ve bir tuzak.** "Para kazanmaya başlayınca şirket açarım"
+mantıklı ama bir sırası var: App Store'da abonelik satabilmek için önce **Paid
+Apps sözleşmesini** imzalamak, banka ve vergi bilgisi girmek gerekiyor. Bu
+bilgiler tamamlanana kadar Apple parayı biriktirip **ödemiyor**. Yani kod hazır
+olsa bile satışa açamıyorsun.
+
+Buradaki gecikme günlerle değil haftalarla ölçülüyor. O yüzden banka ve vergi
+kurulumunu **Kare+ kodunu yazmadan önce** başlat; kod bittiğinde bekleyen taraf
+sen olma.
+
+Vergi tarafında ne yapman gerektiğini bir mali müşavire sor, ben avukat ya da
+mali müşavir değilim. Bir saatlik danışma, sonradan çözmesi çok pahalı olan bir
+sorunu baştan çözüyor.
 
 ---
 
@@ -141,11 +154,26 @@ Reddit'te r/iphone ve ana ekran düzenleme toplulukları, Türkiye'de Ekşi ve
 Donanım Haber. Reklam gibi girmeyin, kendi ana ekranınızı paylaşın. İnsanlar
 "bu widget ne" diye sorar, o zaman söylersiniz.
 
-**5. Neden önce Türkiye**
+**5. Neden global, neden İngilizce önce**
 
-Söz widget'ı rakiplerde yok ve olamaz da, çünkü 400 sözlük bir veri seti
-hazırlamak zahmetli. Küçük bir pazarda ilk sıraya çıkmak, büyük bir pazarda
-yüzüncü olmaktan iyidir. Global açılış, Türkiye'de tuttuktan sonra.
+Pazarlama kanalınız TikTok ve TikTok'un sınırı yok. İngilizce içerik
+üretirseniz algoritma sizi büyük pazara taşır; Türkiye'yle sınırlamak
+algoritmanın doğal erişimine karşı kürek çekmektir. Üstelik Türkiye App
+Store'unda kullanıcı başına gelir düşük, orada birinci olmak bile az para
+demek.
+
+Bunun iki somut sonucu var:
+
+- **App Store listelemesi İngilizce birinci dil olacak**, Türkçe yerelleştirme
+  olarak eklenecek. Uygulama zaten iki dilli, iş sadece mağaza tarafında.
+- **Ekran görüntüleri kusursuz olmak zorunda.** Global pazarda cilalı
+  uygulamalarla yarışıyorsunuz; Türkiye pazarı pürüzleri daha çok affediyor.
+  En çok emek verilecek pazarlama işi bu.
+
+Söz widget'ı kalıyor ve global uygulamanın içinde daha değerli bir şey
+kanıtlıyor: yerelleştirilmiş içerik widget'ı yapabildiğinizi. Bugün Türkçe
+atasözü, yarın İspanyolca ya da Japonca karşılığı. Bu bir şablon, tek seferlik
+bir özellik değil.
 
 ---
 
@@ -178,6 +206,67 @@ karşı gerçek bir üstünlük ve TestFlight incelemesini de kolaylaştırdı.
 gerektirmiyor, SDK gerektirmiyor, kullanıcıyı takip etmiyor. Kurulum, elde
 tutma, çökme ve dönüşüm oranlarını veriyor. Başlangıç için fazlasıyla yeterli.
 Daha fazlası gerekene kadar gizlilik vaadinizi bozmayın.
+
+---
+
+## Takvim · haftada 24-32 saat
+
+Bu tempo ciddi. Buna göre gerçekçi hedef: **beş hafta sonra App Store'da,
+üç ay sonra gelir.**
+
+### 1. hafta · TestFlight ve gerçek insanlar
+
+- Build'i yükle, external review'a gönder (ilk gün, gerisi beklerken yapılır).
+- 20-30 kişi bul. TikTok'ta zaten bu nişi izliyorsun; oradaki insanlara yaz.
+  Yabancı test kullanıcısı, tanıdıktan çok daha değerli.
+- Tek soruyu sor: widget'ı ana ekrana ekleyebildin mi.
+- **Paralel:** App Store Connect'te Paid Apps sözleşmesi, banka ve vergi
+  bilgisi kurulumuna bugün başla. Aylar sonra lazım olacak ama bekleme
+  süresi uzun ve sana hiçbir şeye mal olmuyor.
+
+### 2. hafta · En büyük iş: widget ekleme rehberi
+
+Beta geri bildirimi muhtemelen bunu söyleyecek. Uygulama içinde, atlanamayan,
+animasyonlu bir anlatım. Boş ana ekrandan widget'a kadar.
+
+Yanında: boş durumlar, izin reddi halleri, altı widget'ın da bellek testi.
+
+### 3. hafta · App Store vitrini
+
+Bu hafta kod değil pazarlama haftası, ve dönüşümü en çok etkileyen hafta bu.
+
+- **Beş ekran görüntüsü**, her biri tek bir fikir. Global pazarda cilalı
+  uygulamalarla yarışıyorsun, burada acele etme.
+- İngilizce listeleme metinleri, anahtar kelime araştırması.
+- Uygulama önizleme videosu (isteğe bağlı ama dönüşümü ciddi artırıyor,
+  zaten TikTok için çektiğin malzemeden çıkar).
+- Kare+ ekranının satın alma butonunu çıkar.
+
+### 4. hafta · Cila ve gönderim
+
+- Beta'dan gelen hataları kapat.
+- Gerçek cihazda baştan sona, temiz kurulumla dene.
+- Gönder. İnceleme genelde 24-48 saat.
+
+### 5. hafta · Çıkış ve içerik motoru
+
+- Yayında. Kurulum sayısına değil, **widget ekleme oranına** bak.
+- TikTok'ta haftada iki video başlat. Bir video tutana kadar durma.
+
+### 6-12. hafta · Ölçüp düzeltmek, sonra para
+
+- Her hafta: bir ürün düzeltmesi, iki video.
+- Elde tutma stabilse **StoreKit 2 ile Kare+**. Banka kurulumu 1. haftada
+  başladığı için hazır olacak.
+- Gelir görünmeye başladığında tasarımcı fazı konuşulabilir.
+
+### Bir uyarı
+
+Haftada 24-32 saatin **en az yarısı pazarlama olmalı.** Bu senin doğal
+eğilimine ters gelecek, çünkü kod yazmak daha rahat ve ilerleme hissi veriyor.
+Ama uygulaman şu an rakiplerin çoğundan iyi durumda; eksik olan kod değil,
+kimsenin bilmemesi. Bir özellik daha eklemek dördüncü videoyu çekmekten daha
+az değerli.
 
 ---
 
