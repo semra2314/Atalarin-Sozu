@@ -1,4331 +1,4351 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "…or drag one in from another app": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "…or drag one in from another app"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "…or drag one in from another app" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…or drag one in from another app"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "…ya da başka bir uygulamadan sürükleyip bırak"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "…ya da başka bir uygulamadan sürükleyip bırak"
           }
         }
       }
     },
-    "·": {},
-    "@": {},
-    "#%@": {},
-    "%.1f out of 5 stars": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%.1f out of 5 stars"
+    "·" : {
+
+    },
+    "@" : {
+
+    },
+    "#%@" : {
+
+    },
+    "%.1f out of 5 stars" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1f out of 5 stars"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "5 yıldız üzerinden %.1f"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 yıldız üzerinden %.1f"
           }
         }
       }
     },
-    "%@ · %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ · %2$@"
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
           }
         }
       }
     },
-    "%@ ships with its own design. Add it from the home-screen widget gallery to use it.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ ships with its own design. Add it from the home-screen widget gallery to use it."
+    "%@ ships with its own design. Add it from the home-screen widget gallery to use it." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ships with its own design. Add it from the home-screen widget gallery to use it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ kendi tasarımıyla geliyor. Kullanmak için ana ekran widget galerisinden ekle."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ kendi tasarımıyla geliyor. Kullanmak için ana ekran widget galerisinden ekle."
           }
         }
       }
+    },
+    "%@/mo" : {
+
     },
-    "%lld ratings": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld ratings"
+    "%lld ratings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ratings"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld puan"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld puan"
           }
         }
       }
     },
-    "%lld star%@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld star%2$@"
+    "%lld star%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld star%2$@"
           }
         }
       }
     },
-    "%lld. %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$lld. %2$@"
+    "%lld. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld. %2$@"
           }
         }
       }
     },
-    "3-20 letters, numbers or underscores.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3-20 letters, numbers or underscores."
+    "%lld%% of subscription revenue goes to the creator pool and is shared between the designers whose widgets are installed that month." : {
+
+    },
+    "3-20 letters, numbers or underscores." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3-20 letters, numbers or underscores."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3-20 harf, rakam ya da alt çizgi."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3-20 harf, rakam ya da alt çizgi."
           }
         }
       }
     },
-    "A live clock whose aurora background follows the light of day. Also sits on your lock screen.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A live clock whose aurora background follows the light of day. Also sits on your lock screen."
+    "A live clock whose aurora background follows the light of day. Also sits on your lock screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A live clock whose aurora background follows the light of day. Also sits on your lock screen."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aurora arka planı günün ışığını takip eden canlı bir saat. Kilit ekranında da durur."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aurora arka planı günün ışığını takip eden canlı bir saat. Kilit ekranında da durur."
           }
         }
       }
     },
-    "A live deep-work timer. Start it, and the countdown follows you to the lock screen.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A live deep-work timer. Start it, and the countdown follows you to the lock screen."
+    "A live deep-work timer. Start it, and the countdown follows you to the lock screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A live deep-work timer. Start it, and the countdown follows you to the lock screen."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Canlı bir derin çalışma sayacı. Başlat, geri sayım kilit ekranına kadar seninle gelsin."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Canlı bir derin çalışma sayacı. Başlat, geri sayım kilit ekranına kadar seninle gelsin."
           }
         }
       }
     },
-    "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference."
+    "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seçtiğin kaynaktan günde bir alıntı — kutsal metin, stoacı felsefe, şiir ya da atasözü. Her zaman kaynağıyla birlikte."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçtiğin kaynaktan günde bir alıntı — kutsal metin, stoacı felsefe, şiir ya da atasözü. Her zaman kaynağıyla birlikte."
           }
         }
       }
     },
-    "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings."
+    "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Her dört saatte bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. 400 söz arasından."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her dört saatte bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. 400 söz arasından."
           }
         }
       }
     },
-    "Aa": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aa"
+    "Aa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aa"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aa"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aa"
           }
         }
       }
     },
-    "Account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+    "Account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesap"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap"
           }
         }
       }
     },
-    "Add": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add"
+    "Active. Every paid widget is yours." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active. Every paid widget is yours."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif. Bütün ücretli widget'lar senin."
           }
         }
       }
     },
-    "Add a photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add a photo"
+    "Add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraf ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekle"
           }
         }
       }
     },
-    "Add a widget from Discover, then customise it here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add a widget from Discover, then customise it here."
+    "Add a photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keşfet'ten bir widget ekle, sonra burada özelleştir."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf ekle"
           }
         }
       }
     },
-    "Add it from Discover first, then edit it here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add it from Discover first, then edit it here."
+    "Add a widget from Discover, then customise it here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a widget from Discover, then customise it here."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Önce Keşfet'ten ekle, sonra burada düzenle."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keşfet'ten bir widget ekle, sonra burada özelleştir."
           }
         }
       }
     },
-    "Add it to your home screen": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add it to your home screen"
+    "Add it from Discover first, then edit it here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add it from Discover first, then edit it here."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ana ekranına ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önce Keşfet'ten ekle, sonra burada düzenle."
           }
         }
       }
     },
-    "Add it to your lock screen": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add it to your lock screen"
+    "Add it to your home screen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add it to your home screen"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kilit ekranına ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekranına ekle"
           }
         }
       }
     },
-    "Add text": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add text"
+    "Add it to your lock screen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add it to your lock screen"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Metin ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilit ekranına ekle"
           }
         }
       }
     },
-    "Add to Home Screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add to Home Screen"
+    "Add text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add text"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ana Ekrana Ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin ekle"
           }
         }
       }
     },
-    "Add to library": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add to library"
+    "Add to Home Screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to Home Screen"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kitaplığa ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana Ekrana Ekle"
           }
         }
       }
     },
-    "Added · Set up on Home Screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Added · Set up on Home Screen"
+    "Add to library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to library"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eklendi · Ana Ekranda kur"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplığa ekle"
           }
         }
       }
     },
-    "Already have an account?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Already have an account?"
+    "Added · Set up on Home Screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added · Set up on Home Screen"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesabın var mı?"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklendi · Ana Ekranda kur"
           }
         }
       }
     },
-    "Any emoji": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Any emoji"
+    "Advanced backgrounds, custom stickers and every typography control." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Advanced backgrounds, custom stickers and every typography control."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Herhangi bir emoji"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelişmiş arka planlar, kendi sticker'ların ve bütün tipografi ayarları."
           }
         }
       }
     },
-    "Approved": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Approved"
+    "All widgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All widgets"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Onaylandı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün widget'lar"
           }
         }
       }
     },
-    "Aurora Clock": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aurora Clock"
+    "Already have an account?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already have an account?"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aurora Clock"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabın var mı?"
           }
         }
       }
     },
-    "Background": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Background"
+    "Any emoji" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Any emoji"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arka plan"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Herhangi bir emoji"
           }
         }
       }
     },
-    "Background plate": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Background plate"
+    "Approved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Approved"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arka plan katmanı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onaylandı"
           }
         }
       }
     },
-    "Bible": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bible"
+    "Aurora Clock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aurora Clock"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İncil"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aurora Clock"
           }
         }
       }
     },
-    "Bold": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bold"
+    "Background" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kalın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arka plan"
           }
         }
       }
     },
-    "by": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "by"
+    "Background plate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background plate"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yapan"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arka plan katmanı"
           }
         }
       }
     },
-    "by %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "by %@"
+    "Bible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bible"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yapan %@"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İncil"
           }
         }
       }
     },
-    "Cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "Bold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bold"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vazgeç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalın"
           }
         }
       }
     },
-    "Caption": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Caption"
+    "by" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Başlık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yapan"
           }
         }
       }
     },
-    "Change photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change photo"
+    "by %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by %@"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğrafı değiştir"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yapan %@"
           }
         }
       }
     },
-    "Choose a different photo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a different photo"
+    "Cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Başka bir fotoğraf seç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vazgeç"
           }
         }
       }
     },
-    "Choose a photo": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose a photo"
+    "Caption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caption"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraf seç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başlık"
           }
         }
       }
     },
-    "Choose your language": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choose your language"
+    "category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "category"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dilini seç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kategori"
           }
         }
       }
     },
-    "Colour": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Colour"
+    "Change photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Renk"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğrafı değiştir"
           }
         }
       }
     },
-    "Coming next: every widget from this creator, in one place.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Coming next: every widget from this creator, in one place."
+    "Choose a different photo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a different photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yakında: bu yaratıcının tüm widget'ları tek yerde."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başka bir fotoğraf seç"
           }
         }
       }
     },
-    "Continue": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continue"
+    "Choose a photo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Devam et"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf seç"
           }
         }
       }
     },
-    "Continue without account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continue without account"
+    "Choose your language" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your language"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesapsız devam et"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dilini seç"
           }
         }
       }
     },
-    "Cool": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cool"
+    "Colour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colour"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Soğuk"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renk"
           }
         }
       }
     },
-    "Corners": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Corners"
+    "Coming next: every widget from this creator, in one place." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming next: every widget from this creator, in one place."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Köşeler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakında: bu yaratıcının tüm widget'ları tek yerde."
           }
         }
       }
     },
-    "Couldn't load that photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Couldn't load that photo"
+    "Continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu fotoğraf yüklenemedi"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam et"
           }
         }
       }
     },
-    "Create account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Create account"
+    "Continue without account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue without account"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesap oluştur"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesapsız devam et"
           }
         }
       }
     },
-    "Create your account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Create your account"
+    "Cool" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cool"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hesabını oluştur"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soğuk"
           }
         }
       }
     },
-    "Creator": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Creator"
+    "Corners" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Corners"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaratıcı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Köşeler"
           }
         }
       }
     },
-    "Creator profiles": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Creator profiles"
+    "Couldn't load that photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't load that photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaratıcı profilleri"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu fotoğraf yüklenemedi"
           }
         }
       }
     },
-    "Crop": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crop"
+    "Create account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create account"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kırp"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap oluştur"
           }
         }
       }
     },
-    "Crop photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Crop photo"
+    "Create your account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your account"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğrafı kırp"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabını oluştur"
           }
         }
       }
     },
-    "Custom Widget": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Custom Widget"
+    "Creator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creator"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Özel Widget"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaratıcı"
           }
         }
       }
     },
-    "Cutting out…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cutting out…"
+    "Creator profiles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Creator profiles"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kesiliyor…"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaratıcı profilleri"
           }
         }
       }
     },
-    "Daily": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Daily"
+    "Crop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crop"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Daily"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kırp"
           }
         }
       }
     },
-    "Deep work": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deep work"
+    "Crop photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crop photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Derin çalışma"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğrafı kırp"
           }
         }
       }
     },
-    "Delete": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete"
+    "Custom Widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Widget"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sil"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel Widget"
           }
         }
       }
     },
-    "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it."
+    "Cutting out…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cutting out…"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sıfırdan kendin tasarla: arka planı seç, metnini ekle, sticker'ları yerleştir — tam istediğin gibi."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kesiliyor…"
           }
         }
       }
     },
-    "Devam et": {},
-    "Dilini seç": {},
-    "Direction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Direction"
+    "Daily" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yön"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily"
           }
         }
       }
     },
-    "Discover": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Discover"
+    "Deep work" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep work"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keşfet"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Derin çalışma"
           }
         }
       }
     },
-    "Done": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
+    "Delete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tamam"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sil"
           }
         }
       }
     },
-    "Drag to reposition, pinch to zoom.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Drag to reposition, pinch to zoom."
+    "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konumlandırmak için sürükle, yakınlaştırmak için iki parmakla aç."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırdan kendin tasarla: arka planı seç, metnini ekle, sticker'ları yerleştir — tam istediğin gibi."
           }
         }
       }
     },
-    "Duplicate": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duplicate"
+    "Designers get paid" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Designers get paid"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çoğalt"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasarımcı kazanıyor"
           }
         }
       }
+    },
+    "Devam et" : {
+
     },
-    "Edit profile": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit profile"
+    "Dilini seç" : {
+
+    },
+    "Direction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profili düzenle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yön"
           }
         }
       }
     },
-    "Editor": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editor"
+    "Discover" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Düzenleyici"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keşfet"
           }
         }
       }
     },
-    "Emoji": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emoji"
+    "Done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emoji"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
           }
         }
       }
     },
-    "Emoji keep their own colours.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emoji keep their own colours."
+    "Drag to reposition, pinch to zoom." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag to reposition, pinch to zoom."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Emoji kendi renklerini korur."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konumlandırmak için sürükle, yakınlaştırmak için iki parmakla aç."
           }
         }
       }
     },
-    "End session": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "End session"
+    "Duplicate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Oturumu bitir"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çoğalt"
           }
         }
       }
     },
-    "English": {},
-    "Enter Kare": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter Kare"
+    "Edit profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit profile"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare'ye gir"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili düzenle"
           }
         }
       }
     },
-    "Every passage is shown with its reference, and comes from a public-domain translation.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every passage is shown with its reference, and comes from a public-domain translation."
+    "Editor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editor"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Her alıntı kaynağıyla birlikte gösterilir ve kamuya açık bir çeviriden gelir."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenleyici"
           }
         }
       }
     },
-    "Favorite": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorite"
+    "Emoji" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emoji"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favori"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emoji"
           }
         }
       }
     },
-    "Favourites": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favourites"
+    "Emoji keep their own colours." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emoji keep their own colours."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favoriler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emoji kendi renklerini korur."
           }
         }
       }
     },
-    "Feeling": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Feeling"
+    "End session" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End session"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duygu"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturumu bitir"
           }
         }
       }
     },
-    "Focus": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Focus"
+    "English" : {
+
+    },
+    "Enter Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Kare"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Focus"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare'ye gir"
           }
         }
       }
     },
-    "Focus Stack": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Focus Stack"
+    "Every paid widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every paid widget"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Focus Stack"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün ücretli widget'lar"
           }
         }
       }
     },
-    "Frame": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frame"
+    "Every paid widget in the catalogue is yours to install." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every paid widget in the catalogue is yours to install."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frame"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalogdaki bütün ücretli widget'ları kurabilirsin."
           }
         }
       }
     },
-    "Frame reads this photo straight from your device — it never leaves your phone.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frame reads this photo straight from your device — it never leaves your phone."
+    "Every paid widget, one subscription." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every paid widget, one subscription."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frame bu fotoğrafı doğrudan cihazından okur; telefonundan hiç çıkmaz."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bütün ücretli widget'lar, tek abonelik."
           }
         }
       }
     },
-    "Free": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free"
+    "Every passage is shown with its reference, and comes from a public-domain translation." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every passage is shown with its reference, and comes from a public-domain translation."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ücretsiz"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her alıntı kaynağıyla birlikte gösterilir ve kamuya açık bir çeviriden gelir."
           }
         }
       }
     },
-    "Free plan": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Free plan"
+    "Everything that ships with Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything that ships with Kare"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ücretsiz plan"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare ile gelen her şey"
           }
         }
       }
     },
-    "Get Started": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Get Started"
+    "Favorite" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorite"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Başla"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favori"
           }
         }
       }
     },
-    "Good\nmorning": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Good\nmorning"
+    "Favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Günaydın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriler"
           }
         }
       }
     },
-    "Got it": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Got it"
+    "Favourites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favourites"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anladım"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriler"
           }
         }
       }
     },
-    "Hearts": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hearts"
+    "Featured today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured today"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kalpler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünün seçkisi"
           }
         }
       }
     },
-    "Heavy": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Heavy"
+    "Feeling" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feeling"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çok kalın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duygu"
           }
         }
       }
     },
-    "Help & Support": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Help & Support"
+    "Finance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finance"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yardım ve Destek"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finans"
           }
         }
       }
     },
-    "How do I add it to my home screen?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "How do I add it to my home screen?"
+    "Focus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ana ekranıma nasıl eklerim?"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus"
           }
         }
       }
     },
-    "Hush": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hush"
+    "Focus Stack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Stack"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hush"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus Stack"
           }
         }
       }
     },
-    "In library": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In library"
+    "Frame" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frame"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kitaplıkta"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frame"
           }
         }
       }
     },
-    "In Review": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In Review"
+    "Frame reads this photo straight from your device — it never leaves your phone." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frame reads this photo straight from your device — it never leaves your phone."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İncelemede"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frame bu fotoğrafı doğrudan cihazından okur; telefonundan hiç çıkmaz."
           }
         }
       }
     },
-    "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget."
+    "Free" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Galeride **%@** seç, “Kare” değil. “Kare” kendi tasarımını yaptığın widget."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz"
           }
         }
       }
     },
-    "iOS only lets widgets be placed from its own gallery, so here's the shortcut.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iOS only lets widgets be placed from its own gallery, so here's the shortcut."
+    "Free plan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free plan"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iOS widget'ların yalnızca kendi galerisinden eklenmesine izin veriyor, kısayolu burada."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ücretsiz plan"
           }
         }
       }
     },
-    "Language": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Language"
+    "Fun" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fun"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dil"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eğlence"
           }
         }
       }
     },
-    "Large": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Large"
+    "Get Started" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Büyük"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başla"
           }
         }
       }
     },
-    "Library": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Library"
+    "Good\nmorning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good\nmorning"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kitaplık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günaydın"
           }
         }
       }
     },
-    "Life": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Life"
+    "Got it" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got it"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaşam"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anladım"
           }
         }
       }
     },
-    "Light": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Light"
+    "Great and free" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Great and free"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İnce"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güzel ve ücretsiz"
           }
         }
       }
     },
-    "Line spacing": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Line spacing"
+    "Half of subscription revenue goes to the creators whose widgets you actually use." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Half of subscription revenue goes to the creators whose widgets you actually use."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Satır aralığı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonelik gelirinin yarısı, widget'ını gerçekten kullandığın tasarımcılara gidiyor."
           }
         }
       }
     },
-    "Log in": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log in"
+    "Hand-picked by the Kare team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand-picked by the Kare team"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Giriş yap"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare ekibinin seçtikleri"
           }
         }
       }
     },
-    "Log Out": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log Out"
+    "Health" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Health"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Çıkış yap"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağlık"
           }
         }
       }
     },
-    "Looks good.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Looks good."
+    "Hearts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hearts"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güzel görünüyor."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalpler"
           }
         }
       }
     },
-    "Make one from a photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Make one from a photo"
+    "Heavy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heavy"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraftan üret"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok kalın"
           }
         }
       }
     },
-    "Medium": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium"
+    "Help & Support" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help & Support"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orta"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yardım ve Destek"
           }
         }
       }
     },
-    "Mono": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mono"
+    "How do I add it to my home screen?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I add it to my home screen?"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mono"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekranıma nasıl eklerim?"
           }
         }
       }
     },
-    "My Widgets": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "My Widgets"
+    "Hush" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hush"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget'larım"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hush"
           }
         }
       }
     },
-    "Name": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Name"
+    "In library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In library"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ad"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplıkta"
           }
         }
       }
     },
-    "Nature": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nature"
+    "In Review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Review"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doğa"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İncelemede"
           }
         }
       }
     },
-    "Neutral": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neutral"
+    "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nötr"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Galeride **%@** seç, “Kare” değil. “Kare” kendi tasarımını yaptığın widget."
           }
         }
       }
     },
-    "Next": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next"
+    "Install anything in the catalogue without buying widgets one by one." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install anything in the catalogue without buying widgets one by one."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Devam"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalogdaki her şeyi tek tek satın almadan kurabilirsin."
           }
         }
       }
     },
-    "No photo yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No photo yet"
+    "iOS only lets widgets be placed from its own gallery, so here's the shortcut." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS only lets widgets be placed from its own gallery, so here's the shortcut."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz fotoğraf yok"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS widget'ların yalnızca kendi galerisinden eklenmesine izin veriyor, kısayolu burada."
           }
         }
       }
     },
-    "No written reviews yet. Be the first.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No written reviews yet. Be the first."
+    "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Henüz yorum yok. İlk sen yaz."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare, Mesajlar'daki sticker paketini okuyamaz — iOS buna izin vermiyor. Bu üç yol aynı işi görür."
           }
         }
       }
     },
-    "Nothing here yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nothing here yet"
+    "Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Burada henüz bir şey yok"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+"
           }
         }
       }
     },
-    "Notifications": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Notifications"
+    "Kare+ is active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ is active"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bildirimler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ aktif"
           }
         }
       }
     },
-    "One quiet word, changing through the day. Nothing to tap, nothing to manage.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "One quiet word, changing through the day. Nothing to tap, nothing to manage."
+    "Kare+ member" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ member"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gün boyunca değişen tek bir sakin kelime. Dokunulacak, yönetilecek bir şey yok."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ üyesi"
           }
         }
       }
     },
-    "Opacity": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opacity"
+    "Language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saydamlık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
           }
         }
       }
     },
-    "Optional — a word or two": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional — a word or two"
+    "Large" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Large"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İsteğe bağlı — bir iki kelime"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Büyük"
           }
         }
       }
     },
-    "Original": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Original"
+    "Library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orijinal"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplık"
           }
         }
       }
     },
-    "Padding": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Padding"
+    "Life" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "İç boşluk"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaşam"
           }
         }
       }
     },
-    "Paste a copied sticker": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Paste a copied sticker"
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kopyalanan sticker'ı yapıştır"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnce"
           }
         }
       }
     },
-    "Pause focus": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pause focus"
+    "Line spacing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line spacing"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odağı duraklat"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satır aralığı"
           }
         }
       }
     },
-    "Phone language": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Phone language"
+    "Lock · Circular" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lock · Circular"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Telefon dili"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilit · Dairesel"
           }
         }
       }
     },
-    "Photos": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photos"
+    "Lock · Rectangular" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lock · Rectangular"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraf"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilit · Dikdörtgen"
           }
         }
       }
     },
-    "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete."
+    "lock screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lock screen"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eklediğin fotoğraflar tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kilit ekranı"
           }
         }
       }
     },
-    "Pick a\nusername": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick a\nusername"
+    "Log in" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir kullanıcı\nadı seç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yap"
           }
         }
       }
     },
-    "Pick a length and a sound, then start. Your Focus widget counts down live.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick a length and a sound, then start. Your Focus widget counts down live."
+    "Log Out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Out"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir süre ve ses seç, sonra başla. Focus widget'ın canlı olarak geri sayar."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkış yap"
           }
         }
       }
     },
-    "Pick a vibe or two. We'll tune your Discover feed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pick a vibe or two. We'll tune your Discover feed."
+    "Looks good." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looks good."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir iki tarz seç. Keşfet akışını ona göre ayarlayalım."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güzel görünüyor."
           }
         }
       }
     },
-    "Poetry": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Poetry"
+    "Made" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Şiir"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaptığım"
           }
         }
       }
     },
-    "Post": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Post"
+    "Made by you" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by you"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gönder"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin yaptıkların"
           }
         }
       }
     },
-    "Privacy": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Privacy"
+    "Make one from a photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make one from a photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gizlilik"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraftan üret"
           }
         }
       }
     },
-    "Profile": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profile"
+    "Medium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Profil"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orta"
           }
         }
       }
     },
-    "Proverbs": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Proverbs"
+    "Medium weight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium weight"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Atasözleri"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orta"
           }
         }
       }
     },
-    "Quran": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quran"
+    "Minimal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimal"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kur'an"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sade"
           }
         }
       }
     },
-    "Ratings & Reviews": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ratings & Reviews"
+    "Mono" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mono"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puanlar ve yorumlar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mono"
           }
         }
       }
     },
-    "remaining": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "remaining"
+    "Monthly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kaldı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aylık"
           }
         }
       }
     },
-    "Remove photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Remove photo"
+    "My Widgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Widgets"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğrafı kaldır"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'larım"
           }
         }
       }
     },
-    "Resume focus": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Resume focus"
+    "Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odağa devam et"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ad"
           }
         }
       }
     },
-    "Rotation": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rotation"
+    "Nature" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nature"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Döndürme"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğa"
           }
         }
       }
     },
-    "Rounded": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rounded"
+    "Neutral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neutral"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yuvarlak"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nötr"
           }
         }
       }
     },
-    "Sans": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sans"
+    "New this week" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New this week"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sans"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta yeni"
           }
         }
       }
     },
-    "Save": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save"
+    "Next" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaydet"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam"
           }
         }
       }
     },
-    "Save to widget": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save to widget"
+    "No" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget'a kaydet"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yok"
           }
         }
       }
     },
-    "Saved Collections": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved Collections"
+    "No payment is taken in this beta." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No payment is taken in this beta."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kayıtlı Koleksiyonlar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu beta sürümünde ödeme alınmıyor."
           }
         }
       }
     },
-    "Saved to your widget": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved to your widget"
+    "No photo yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No photo yet"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget'ına kaydedildi"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz fotoğraf yok"
           }
         }
       }
     },
-    "Saved!\nNow add it home": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved!\nNow add it home"
+    "No written reviews yet. Be the first." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No written reviews yet. Be the first."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaydedildi!\nŞimdi ana ekrana ekle"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz yorum yok. İlk sen yaz."
           }
         }
       }
     },
-    "Search": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "Nothing here yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing here yet"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ara"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burada henüz bir şey yok"
           }
         }
       }
     },
-    "See all": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "See all"
+    "Notifications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tümünü gör"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildirimler"
           }
         }
       }
     },
-    "Selected photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selected photo"
+    "One quiet word, changing through the day. Nothing to tap, nothing to manage." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One quiet word, changing through the day. Nothing to tap, nothing to manage."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seçili fotoğraf"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün boyunca değişen tek bir sakin kelime. Dokunulacak, yönetilecek bir şey yok."
           }
         }
       }
     },
-    "Selected sticker": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selected sticker"
+    "Opacity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opacity"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seçili sticker"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saydamlık"
           }
         }
       }
     },
-    "Serif": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Serif"
+    "Optional — a word or two" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional — a word or two"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Serif"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İsteğe bağlı — bir iki kelime"
           }
         }
       }
     },
-    "Settings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "Original" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ayarlar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orijinal"
           }
         }
       }
     },
-    "Sign in once so your widgets and library follow you everywhere.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign in once so your widgets and library follow you everywhere."
+    "Padding" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Padding"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir kez giriş yap, widget'ların ve kitaplığın her yerde seninle olsun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İç boşluk"
           }
         }
       }
     },
-    "Sign up": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign up"
+    "Paste a copied sticker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste a copied sticker"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaydol"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyalanan sticker'ı yapıştır"
           }
         }
       }
     },
-    "Sign up with email": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign up with email"
+    "Pause focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause focus"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "E-postayla kaydol"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağı duraklat"
           }
         }
       }
     },
-    "Size": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Size"
+    "per month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per month"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boyut"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aylık"
           }
         }
       }
     },
-    "Sizes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sizes"
+    "per year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per year"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boyutlar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yıllık"
           }
         }
       }
     },
-    "Skip": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip"
+    "Phone language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone language"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geç"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefon dili"
           }
         }
       }
     },
-    "Small": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Small"
+    "Photos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Küçük"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf"
           }
         }
       }
     },
-    "Smileys": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Smileys"
+    "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suratlar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklediğin fotoğraflar tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
           }
         }
       }
     },
-    "Something went wrong": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Something went wrong"
+    "Pick a\nusername" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a\nusername"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bir şeyler ters gitti"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kullanıcı\nadı seç"
           }
         }
       }
     },
-    "Source": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Source"
+    "Pick a length and a sound, then start. Your Focus widget counts down live." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a length and a sound, then start. Your Focus widget counts down live."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kaynak"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir süre ve ses seç, sonra başla. Focus widget'ın canlı olarak geri sayar."
           }
         }
       }
     },
-    "Söz": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Söz"
+    "Pick a vibe or two. We'll tune your Discover feed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a vibe or two. We'll tune your Discover feed."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Söz"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir iki tarz seç. Keşfet akışını ona göre ayarlayalım."
           }
         }
       }
     },
-    "Square": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Square"
+    "Poetry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poetry"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şiir"
           }
         }
       }
     },
-    "Start focus": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start focus"
+    "Post" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Post"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odağı başlat"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gönder"
           }
         }
       }
     },
-    "Stickers": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stickers"
+    "Privacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sticker"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizlilik"
           }
         }
       }
     },
-    "Stoic": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stoic"
+    "Productivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Productivity"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stoacı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üretkenlik"
           }
         }
       }
     },
-    "Stop focus": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stop focus"
+    "Profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odağı bitir"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
           }
         }
       }
     },
-    "Style": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Style"
+    "Proverbs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proverbs"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stil"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atasözleri"
           }
         }
       }
     },
-    "Symbols": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Symbols"
+    "Quietly minimal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quietly minimal"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Semboller"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sakin ve sade"
           }
         }
       }
     },
-    "Tall": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tall"
+    "Quran" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quran"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uzun"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kur'an"
           }
         }
       }
     },
-    "Tap a photo on the canvas to adjust it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap a photo on the canvas to adjust it."
+    "Ratings & Reviews" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ratings & Reviews"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ayarlamak için tuvaldeki bir fotoğrafa dokun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puanlar ve yorumlar"
           }
         }
       }
     },
-    "Tap a sticker on the canvas to adjust it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap a sticker on the canvas to adjust it."
+    "Regular" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ayarlamak için tuvaldeki bir sticker'a dokun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
           }
         }
       }
     },
-    "Tap a text block on the canvas to edit it.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap a text block on the canvas to edit it."
+    "remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "remaining"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Düzenlemek için tuvaldeki bir metne dokun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kaldı"
           }
         }
       }
     },
-    "Tap a text block on the canvas to style it, or add one from the Text tab.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap a text block on the canvas to style it, or add one from the Text tab."
+    "Remove photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Biçimlendirmek için tuvaldeki bir metne dokun ya da Metin sekmesinden yeni bir tane ekle."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğrafı kaldır"
           }
         }
       }
     },
-    "Tap and use the emoji key 🙂": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap and use the emoji key 🙂"
+    "Resume focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume focus"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dokun ve emoji tuşunu kullan 🙂"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağa devam et"
           }
         }
       }
     },
-    "Tap any widget to make it yours.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap any widget to make it yours."
+    "Rotation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seninki olması için herhangi bir widget'a dokun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Döndürme"
           }
         }
       }
     },
-    "Tap the heart on any widget to keep it here.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tap the heart on any widget to keep it here."
+    "Rounded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rounded"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Burada tutmak için herhangi bir widget'ın kalbine dokun."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuvarlak"
           }
         }
       }
     },
-    "Text": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text"
+    "Sans" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Metin"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans"
           }
         }
       }
     },
-    "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete."
+    "Save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eklediğin metin tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydet"
           }
         }
       }
     },
-    "This design is fixed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This design is fixed"
+    "Save %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save %@"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu tasarım sabit"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ tasarruf"
           }
         }
       }
     },
-    "This is how you'll appear in Kare. You can change it later.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This is how you'll appear in Kare. You can change it later."
+    "Save to widget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save to widget"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare'de böyle görüneceksin. Sonradan değiştirebilirsin."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'a kaydet"
           }
         }
       }
     },
-    "Try again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try again"
+    "Saved Collections" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved Collections"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekrar dene"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıtlı Koleksiyonlar"
           }
         }
       }
     },
-    "Türkçe": {},
-    "Use a photo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Use a photo"
+    "Saved to your widget" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved to your widget"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fotoğraf kullan"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'ına kaydedildi"
           }
         }
       }
     },
-    "username": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "username"
+    "Saved!\nNow add it home" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved!\nNow add it home"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kullanıcı adı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydedildi!\nŞimdi ana ekrana ekle"
           }
         }
       }
     },
-    "Username": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Username"
+    "Search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kullanıcı adı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ara"
           }
         }
       }
     },
-    "VERSION 1.0.0 (2026)": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "VERSION 1.0.0 (2026)"
+    "See all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See all"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SÜRÜM 1.0.0 (2026)"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tümünü gör"
           }
         }
       }
     },
-    "Warm": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Warm"
+    "Selected photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sıcak"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili fotoğraf"
           }
         }
       }
     },
-    "Welcome\nback": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Welcome\nback"
+    "Selected sticker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected sticker"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tekrar\nhoş geldin"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçili sticker"
           }
         }
       }
     },
-    "What did you think?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What did you think?"
+    "Semibold" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semibold"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ne düşündün?"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yarı kalın"
           }
         }
       }
     },
-    "What's your\nstyle?": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "What's your\nstyle?"
+    "Serif" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tarzın\nnasıl?"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serif"
           }
         }
       }
     },
-    "Wide": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wide"
+    "Settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Geniş"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
           }
         }
       }
     },
-    "Widget not found": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget not found"
+    "Sign in once so your widgets and library follow you everywhere." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in once so your widgets and library follow you everywhere."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget bulunamadı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kez giriş yap, widget'ların ve kitaplığın her yerde seninle olsun."
           }
         }
       }
     },
-    "Widget of the Day": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget of the Day"
+    "Sign up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Günün Widget'ı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydol"
           }
         }
       }
     },
-    "Widgets": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widgets"
+    "Sign up with email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up with email"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget'lar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-postayla kaydol"
           }
         }
       }
     },
-    "Widgets on your home screen follow your phone's language.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widgets on your home screen follow your phone's language."
+    "Size" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ana ekranındaki widget'lar telefonunun dilini kullanır."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boyut"
           }
         }
       }
     },
-    "Widgets you add from Discover will collect here, ready for your home screen.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widgets you add from Discover will collect here, ready for your home screen."
+    "sizes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sizes"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keşfet'ten eklediğin widget'lar burada toplanır, ana ekranın için hazır bekler."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "boyut"
           }
         }
       }
     },
-    "Widgets, creators, tags": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widgets, creators, tags"
+    "Sizes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sizes"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget, tasarımcı, etiket"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boyutlar"
           }
         }
       }
     },
-    "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job."
+    "Skip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare, Mesajlar'daki sticker paketini okuyamaz — iOS buna izin vermiyor. Bu üç yol aynı işi görür."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geç"
           }
         }
       }
     },
-    "Width": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Width"
+    "Small" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Genişlik"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küçük"
           }
         }
       }
     },
-    "Write a review": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Write a review"
+    "Smileys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smileys"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yorum yaz"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suratlar"
           }
         }
       }
     },
-    "Your name": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your name"
+    "Social" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Social"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Adın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sosyal"
           }
         }
       }
     },
-    "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays."
+    "Something went wrong" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ana ekranında kendi fotoğrafın, istersen bir başlıkla. Bir kez seç, orada kalsın."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir şeyler ters gitti"
           }
         }
       }
     },
-    "Your rating": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your rating"
+    "Source" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Puanın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynak"
           }
         }
       }
     },
-    "Your review": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your review"
+    "Söz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Söz"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yorumun"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Söz"
           }
         }
       }
     },
-    "Your sticker keeps its own colours.": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your sticker keeps its own colours."
+    "Square" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Square"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sticker kendi renklerini korur."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare"
           }
         }
       }
     },
-    "Your text": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your text"
+    "Start focus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start focus"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Metnin"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağı başlat"
           }
         }
       }
     },
-    "Your widget lives in Kare. Put it on your home screen in three steps.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your widget lives in Kare. Put it on your home screen in three steps."
+    "Stickers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stickers"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widget'ın Kare'de duruyor. Üç adımda ana ekranına koy."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sticker"
           }
         }
       }
     },
-    "Your words": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your words"
+    "Stoic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stoic"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kelimelerin"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stoacı"
           }
         }
       }
     },
-    "yourname": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yourname"
+    "Stop focus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop focus"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kullaniciadin"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağı bitir"
           }
         }
       }
     },
-    "Yours": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yours"
+    "Style" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Style"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seninkiler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stil"
           }
         }
       }
     },
-    "Featured today": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Featured today"
+    "Subscribe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscribe"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bugünün seçkisi"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abone ol"
           }
         }
       }
     },
-    "Great and free": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Great and free"
+    "Symbols" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Symbols"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Güzel ve ücretsiz"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Semboller"
           }
         }
       }
     },
-    "Hand-picked by the Kare team": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hand-picked by the Kare team"
+    "Tall" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tall"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare ekibinin seçtikleri"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uzun"
           }
         }
       }
     },
-    "New this week": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New this week"
+    "Tap a photo on the canvas to adjust it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a photo on the canvas to adjust it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu hafta yeni"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlamak için tuvaldeki bir fotoğrafa dokun."
           }
         }
       }
     },
-    "Made by you": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Made by you"
+    "Tap a sticker on the canvas to adjust it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a sticker on the canvas to adjust it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Senin yaptıkların"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlamak için tuvaldeki bir sticker'a dokun."
           }
         }
       }
     },
-    "You": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You"
+    "Tap a text block on the canvas to edit it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a text block on the canvas to edit it."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sen"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzenlemek için tuvaldeki bir metne dokun."
           }
         }
       }
     },
-    "Made": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Made"
+    "Tap a text block on the canvas to style it, or add one from the Text tab." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a text block on the canvas to style it, or add one from the Text tab."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yaptığım"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biçimlendirmek için tuvaldeki bir metne dokun ya da Metin sekmesinden yeni bir tane ekle."
           }
         }
       }
     },
-    "Favorites": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favorites"
+    "Tap and use the emoji key 🙂" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap and use the emoji key 🙂"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Favoriler"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokun ve emoji tuşunu kullan 🙂"
           }
         }
       }
     },
-    "Productivity": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Productivity"
+    "Tap any widget to make it yours." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap any widget to make it yours."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Üretkenlik"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seninki olması için herhangi bir widget'a dokun."
           }
         }
       }
     },
-    "Health": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Health"
+    "Tap the heart on any widget to keep it here." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the heart on any widget to keep it here."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sağlık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Burada tutmak için herhangi bir widget'ın kalbine dokun."
           }
         }
       }
     },
-    "Finance": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finance"
+    "Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Finans"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin"
           }
         }
       }
     },
-    "Weather": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weather"
+    "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hava"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklediğin metin tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
           }
         }
       }
     },
-    "Minimal": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Minimal"
+    "The full editor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The full editor"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sade"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editörün tamamı"
           }
         }
       }
     },
-    "Social": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Social"
+    "This design is fixed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This design is fixed"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sosyal"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu tasarım sabit"
           }
         }
       }
     },
-    "Fun": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fun"
+    "This is how you'll appear in Kare. You can change it later." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This is how you'll appear in Kare. You can change it later."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eğlence"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare'de böyle görüneceksin. Sonradan değiştirebilirsin."
           }
         }
       }
     },
-    "Lock · Circular": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lock · Circular"
+    "Try again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kilit · Dairesel"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar dene"
           }
         }
       }
+    },
+    "Türkçe" : {
+
     },
-    "Lock · Rectangular": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lock · Rectangular"
+    "Turn off" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn off"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kilit · Dikdörtgen"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
           }
         }
       }
     },
-    "Regular": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regular"
+    "Use a photo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use a photo"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Normal"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoğraf kullan"
           }
         }
       }
     },
-    "Medium weight": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Medium weight"
+    "username" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "username"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Orta"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kullanıcı adı"
           }
         }
       }
     },
-    "Semibold": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Semibold"
+    "Username" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yarı kalın"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı adı"
           }
         }
       }
     },
-    "sizes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sizes"
+    "VERSION 1.0.0 (2026)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VERSION 1.0.0 (2026)"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "boyut"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SÜRÜM 1.0.0 (2026)"
           }
         }
       }
     },
-    "lock screen": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "lock screen"
+    "Warm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warm"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kilit ekranı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıcak"
           }
         }
       }
     },
-    "category": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "category"
+    "Weather" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weather"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "kategori"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hava"
           }
         }
       }
     },
-    "Yes": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yes"
+    "Welcome\nback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome\nback"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Var"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar\nhoş geldin"
           }
         }
       }
     },
-    "No": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No"
+    "What did you think?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What did you think?"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yok"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne düşündün?"
           }
         }
       }
     },
-    "All widgets": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All widgets"
+    "What's your\nstyle?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's your\nstyle?"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bütün widget'lar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarzın\nnasıl?"
           }
         }
       }
     },
-    "Everything that ships with Kare": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Everything that ships with Kare"
+    "Wide" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wide"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare ile gelen her şey"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geniş"
           }
         }
       }
     },
-    "Quietly minimal": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quietly minimal"
+    "Widget not found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget not found"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sakin ve sade"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget bulunamadı"
           }
         }
       }
     },
-    "Kare+": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+"
+    "Widget of the Day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget of the Day"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün Widget'ı"
           }
         }
       }
     },
-    "Every paid widget, one subscription.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every paid widget, one subscription."
+    "Widgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bütün ücretli widget'lar, tek abonelik."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'lar"
           }
         }
       }
     },
-    "Every paid widget": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every paid widget"
+    "Widgets on your home screen follow your phone's language." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets on your home screen follow your phone's language."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bütün ücretli widget'lar"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekranındaki widget'lar telefonunun dilini kullanır."
           }
         }
       }
     },
-    "Install anything in the catalogue without buying widgets one by one.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Install anything in the catalogue without buying widgets one by one."
+    "Widgets you add from Discover will collect here, ready for your home screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets you add from Discover will collect here, ready for your home screen."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Katalogdaki her şeyi tek tek satın almadan kurabilirsin."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keşfet'ten eklediğin widget'lar burada toplanır, ana ekranın için hazır bekler."
           }
         }
       }
     },
-    "The full editor": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The full editor"
+    "Widgets, creators, tags" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgets, creators, tags"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Editörün tamamı"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget, tasarımcı, etiket"
           }
         }
       }
     },
-    "Advanced backgrounds, custom stickers and every typography control.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Advanced backgrounds, custom stickers and every typography control."
+    "Width" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Width"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gelişmiş arka planlar, kendi sticker'ların ve bütün tipografi ayarları."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genişlik"
           }
         }
       }
     },
-    "Designers get paid": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Designers get paid"
+    "Write a review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write a review"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tasarımcı kazanıyor"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorum yaz"
           }
         }
       }
     },
-    "Half of subscription revenue goes to the creators whose widgets you actually use.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Half of subscription revenue goes to the creators whose widgets you actually use."
+    "Yearly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yearly"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abonelik gelirinin yarısı, widget'ını gerçekten kullandığın tasarımcılara gidiyor."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yıllık"
           }
         }
       }
     },
-    "Yearly": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yearly"
+    "Yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yıllık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Var"
           }
         }
       }
     },
-    "Monthly": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monthly"
+    "You" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aylık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sen"
           }
         }
       }
     },
-    "per year": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "per year"
+    "Your name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your name"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "yıllık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adın"
           }
         }
       }
     },
-    "per month": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "per month"
+    "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "aylık"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekranında kendi fotoğrafın, istersen bir başlıkla. Bir kez seç, orada kalsın."
           }
         }
       }
     },
-    "Subscribe": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Subscribe"
+    "Your rating" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your rating"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Abone ol"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puanın"
           }
         }
       }
     },
-    "Kare+ is active": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+ is active"
+    "Your review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your review"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+ aktif"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumun"
           }
         }
       }
     },
-    "Every paid widget in the catalogue is yours to install.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Every paid widget in the catalogue is yours to install."
+    "Your sticker keeps its own colours." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your sticker keeps its own colours."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Katalogdaki bütün ücretli widget'ları kurabilirsin."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sticker kendi renklerini korur."
           }
         }
       }
     },
-    "Turn off": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Turn off"
+    "Your text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your text"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kapat"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metnin"
           }
         }
       }
     },
-    "No payment is taken in this beta.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No payment is taken in this beta."
+    "Your widget lives in Kare. Put it on your home screen in three steps." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your widget lives in Kare. Put it on your home screen in three steps."
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bu beta sürümünde ödeme alınmıyor."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'ın Kare'de duruyor. Üç adımda ana ekranına koy."
           }
         }
       }
     },
-    "Kare+ member": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+ member"
+    "Your words" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your words"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kare+ üyesi"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kelimelerin"
           }
         }
       }
     },
-    "Active. Every paid widget is yours.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Active. Every paid widget is yours."
+    "yourname" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yourname"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktif. Bütün ücretli widget'lar senin."
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kullaniciadin"
           }
         }
       }
     },
-    "Save %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save %@"
+    "Yours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yours"
           }
         },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ tasarruf"
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seninkiler"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }
