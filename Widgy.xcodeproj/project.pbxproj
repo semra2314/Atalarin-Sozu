@@ -10,6 +10,12 @@
 		F840F2E43014042200EFFD46 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F840F2E33014042200EFFD46 /* WidgetKit.framework */; };
 		F840F2E63014042200EFFD46 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F840F2E53014042200EFFD46 /* SwiftUI.framework */; };
 		F840F2F33014042400EFFD46 /* actual-widgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F840F2E13014042200EFFD46 /* actual-widgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F88A993A3059A7A500FEFBCC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F88A99393059A7A500FEFBCC /* FirebaseAuth */; };
+		F88A993C3059A7A500FEFBCC /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = F88A993B3059A7A500FEFBCC /* FirebaseCore */; };
+		F88A993E3059A7A500FEFBCC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F88A993D3059A7A500FEFBCC /* FirebaseFirestore */; };
+		F88A99403059A7A500FEFBCC /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = F88A993F3059A7A500FEFBCC /* FirebaseCrashlytics */; };
+		F8CC9B8E3031DF3F0065C3CE /* kare_ios_icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F8CC9B8D3031DF3F0065C3CE /* kare_ios_icon.icon */; };
+		F8CC9B8F3031DF3F0065C3CE /* kare_ios_icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = F8CC9B8D3031DF3F0065C3CE /* kare_ios_icon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +61,11 @@
 		F840F2E33014042200EFFD46 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F840F2E53014042200EFFD46 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F840F2FA301404D600EFFD46 /* actual-widgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "actual-widgetsExtension.entitlements"; sourceTree = "<group>"; };
+		F8662B33306E67B90033B336 /* Kare.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Kare.storekit; sourceTree = "<group>"; };
 		F8A5A272300EB7AB00503723 /* Widgy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Widgy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A5A284300EB7AD00503723 /* WidgyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8A5A28E300EB7AD00503723 /* WidgyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WidgyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8CC9B8D3031DF3F0065C3CE /* kare_ios_icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = kare_ios_icon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -71,9 +79,28 @@
 		F840F2FC3014071400EFFD46 /* Exceptions for "Widgy" folder in "actual-widgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Core/LiveWidgets/CountdownEvent.swift,
+				Core/LiveWidgets/ExhaleIntents.swift,
+				Core/LiveWidgets/KarePlusAccess.swift,
+				Core/LiveWidgets/LifeProgress.swift,
+				Core/LiveWidgets/LungsGauge.swift,
+				Core/LiveWidgets/QuitPlan.swift,
 				Core/Models/WidgetContent.swift,
 				Core/Models/WidgetSize.swift,
+				Core/Proverb/ProverbLibrary.swift,
 				Core/Store/SharedWidgetStore.swift,
+				Core/Store/WidgetLanguage.swift,
+				Core/WidgetViews/AuroraWidgetView.swift,
+				Core/WidgetViews/CountdownWidgetView.swift,
+				Core/WidgetViews/DailyWidgetView.swift,
+				Core/WidgetViews/ExhaleWidgetView.swift,
+				Core/WidgetViews/FocusWidgetView.swift,
+				Core/WidgetViews/FrameWidgetView.swift,
+				Core/WidgetViews/HushWidgetView.swift,
+				Core/WidgetViews/KarePlusArt.swift,
+				Core/WidgetViews/KareWidgetBackground.swift,
+				Core/WidgetViews/ProgressWidgetView.swift,
+				Core/WidgetViews/ProverbWidgetView.swift,
 				DesignSystem/AppFont.swift,
 				"DesignSystem/Color+Hex.swift",
 				DesignSystem/Components/CustomWidgetView.swift,
@@ -130,6 +157,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88A993C3059A7A500FEFBCC /* FirebaseCore in Frameworks */,
+				F88A993A3059A7A500FEFBCC /* FirebaseAuth in Frameworks */,
+				F88A993E3059A7A500FEFBCC /* FirebaseFirestore in Frameworks */,
+				F88A99403059A7A500FEFBCC /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +184,7 @@
 		F840F2E23014042200EFFD46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F8CC9B8D3031DF3F0065C3CE /* kare_ios_icon.icon */,
 				F840F2E33014042200EFFD46 /* WidgetKit.framework */,
 				F840F2E53014042200EFFD46 /* SwiftUI.framework */,
 			);
@@ -162,6 +194,7 @@
 		F8A5A269300EB7AB00503723 = {
 			isa = PBXGroup;
 			children = (
+				F8662B33306E67B90033B336 /* Kare.storekit */,
 				F840F2FA301404D600EFFD46 /* actual-widgetsExtension.entitlements */,
 				F8A5A274300EB7AB00503723 /* Widgy */,
 				F8A5A287300EB7AD00503723 /* WidgyTests */,
@@ -216,6 +249,7 @@
 				F8A5A26F300EB7AB00503723 /* Frameworks */,
 				F8A5A270300EB7AB00503723 /* Resources */,
 				F840F2F83014042400EFFD46 /* Embed Foundation Extensions */,
+				F88A99413059A7A500FEFBCC /* Upload dSYMs to Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -227,6 +261,10 @@
 			);
 			name = Widgy;
 			packageProductDependencies = (
+				F88A99393059A7A500FEFBCC /* FirebaseAuth */,
+				F88A993B3059A7A500FEFBCC /* FirebaseCore */,
+				F88A993D3059A7A500FEFBCC /* FirebaseFirestore */,
+				F88A993F3059A7A500FEFBCC /* FirebaseCrashlytics */,
 			);
 			productName = Widgy;
 			productReference = F8A5A272300EB7AB00503723 /* Widgy.app */;
@@ -314,6 +352,9 @@
 			);
 			mainGroup = F8A5A269300EB7AB00503723;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F8A5A273300EB7AB00503723 /* Products */;
 			projectDirPath = "";
@@ -332,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8CC9B8F3031DF3F0065C3CE /* kare_ios_icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8CC9B8E3031DF3F0065C3CE /* kare_ios_icon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +400,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F88A99413059A7A500FEFBCC /* Upload dSYMs to Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			name = "Upload dSYMs to Crashlytics";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Release\" ]; then\n  \"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F840F2DD3014042200EFFD46 /* Sources */ = {
@@ -415,7 +484,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "actual-widgetsExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
@@ -448,7 +517,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = "actual-widgetsExtension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "actual-widgets/Info.plist";
@@ -600,11 +669,12 @@
 		F8A5A299300EB7AD00503723 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = kare_ios_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Widgy/Widgy.entitlements;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -614,7 +684,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,11 +705,12 @@
 		F8A5A29A300EB7AD00503723 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = kare_ios_icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Widgy/Widgy.entitlements;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -649,7 +720,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -672,7 +743,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
@@ -694,7 +765,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
@@ -715,7 +786,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -735,7 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = MYLRV4628Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
@@ -800,6 +871,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F88A99393059A7A500FEFBCC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F88A993B3059A7A500FEFBCC /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		F88A993D3059A7A500FEFBCC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F88A993F3059A7A500FEFBCC /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88A99383059A7A500FEFBCC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8A5A26A300EB7AB00503723 /* Project object */;
 }

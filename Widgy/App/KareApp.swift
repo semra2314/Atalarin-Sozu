@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import FirebaseCore
+import FirebaseCrashlytics
 
 @main
 struct KareApp: App {
@@ -32,6 +33,12 @@ struct KareApp: App {
         if FirebaseApp.app() == nil,
            Bundle.main.path(forResource: "GoogleService-Info", ofType: "plist") != nil {
             FirebaseApp.configure()
+            // Crash reports from real users only. A crash while developing
+            // is already in front of us in Xcode, and would only bury the
+            // ones we need to see.
+            #if DEBUG
+            Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(false)
+            #endif
         }
         // A "signed in" flag with no Firebase user behind it goes back to guest.
         AuthService.reconcile()
