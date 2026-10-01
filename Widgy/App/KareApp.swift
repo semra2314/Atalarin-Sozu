@@ -67,6 +67,8 @@ struct KareApp: App {
                 .task { await subscriptions.load() }
                 // Removal answers given offline go out on the next launch.
                 .task { await RemovalFeedbackStore.flush() }
+                // Keeps the public profile in step with the one on this phone.
+                .task { await PublicProfileService.shared.publishMine() }
                 // Widgets run in their own process and cannot see the
                 // in-app language; hand it to them through the App Group.
                 .task { WidgetLanguage.save(appLanguageRaw: languageRaw) }

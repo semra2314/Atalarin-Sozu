@@ -1,6 +1,6 @@
 //
 //  EditProfileView.swift
-//  Widgy
+//  Kare
 //
 //  Name, handle and avatar. Everything on the profile screen used to be fixed
 //  text; this is where it becomes the user's.
@@ -58,6 +58,7 @@ struct EditProfileView: View {
                     Button("Save") {
                         displayName = draftName.trimmingCharacters(in: .whitespacesAndNewlines)
                         username = trimmedHandle
+                        Task { await PublicProfileService.shared.publishMine() }
                         dismiss()
                     }
                     .fontWeight(.semibold)
@@ -92,12 +93,16 @@ struct EditProfileView: View {
                 Task {
                     if let data = try? await item?.loadTransferable(type: Data.self) {
                         profile.save(imageData: data)
+                        await PublicProfileService.shared.publishMine()
                     }
                 }
             }
 
             if profile.avatar() != nil {
-                Button("Remove photo") { profile.removeAvatar() }
+                Button("Remove photo") {
+                    profile.removeAvatar()
+                    Task { await PublicProfileService.shared.publishMine() }
+                }
                     .font(Theme.Typography.label)
                     .foregroundStyle(Theme.Palette.accent)
             }
@@ -106,7 +111,7 @@ struct EditProfileView: View {
 
     private func field(_ title: String, text: Binding<String>, prompt: String) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text(title).widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+            Text(title).kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
             TextField(prompt, text: text)
                 .textFieldStyle(.plain)
                 .font(Theme.Typography.bodyLarge)

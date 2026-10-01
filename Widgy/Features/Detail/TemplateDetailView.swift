@@ -22,6 +22,7 @@ struct TemplateDetailView: View {
     @State private var reviewsFailed = false
     @State private var reviewAlert: String?
     @State private var reportTarget: Review?
+    @State private var profileTarget: Review?
     @State private var showReviewComposer = false
     @State private var showAddToHome = false
     @State private var showKarePlus = false
@@ -235,7 +236,8 @@ struct TemplateDetailView: View {
                                   isMine: ReviewService.isMine(review),
                                   onReport: { reportTarget = review },
                                   onBlock: { block(review) },
-                                  onDelete: { Task { await deleteMyReview(review) } })
+                                  onDelete: { Task { await deleteMyReview(review) } },
+                                  onOpenProfile: { profileTarget = review })
                     }
                 }
             }
@@ -250,6 +252,11 @@ struct TemplateDetailView: View {
             Button("Cancel", role: .cancel) {}
         } message: { _ in
             Text("We look at every report within 24 hours and remove reviews that break the rules.")
+        }
+        .sheet(item: $profileTarget, onDismiss: { Task { await loadReviews() } }) { review in
+            if let uid = review.authorID {
+                PublicProfileView(uid: uid, fallbackName: review.authorName)
+            }
         }
         .alert(reviewAlert ?? "", isPresented: Binding(
             get: { reviewAlert != nil }, set: { if !$0 { reviewAlert = nil } }
@@ -589,13 +596,41 @@ private struct ReviewRow: View {
     var onReport: () -> Void = {}
     var onBlock: () -> Void = {}
     var onDelete: () -> Void = {}
+    var onOpenProfile: () -> Void = {}
+
+    @State private var profiles = PublicProfileService.shared
+
+    private var handle: String? {
+        guard let uid = review.authorID, let h = profiles.profile(for: uid)?.handle, !h.isEmpty else { return nil }
+        return h
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-            HStack {
-                Text(review.authorName)
-                    .font(Theme.Typography.title)
-                    .foregroundStyle(Theme.Palette.ink)
+            HStack(spacing: Theme.Spacing.sm) {
+                Button {
+                    if review.authorID != nil { onOpenProfile() }
+                } label: {
+                    HStack(spacing: Theme.Spacing.sm) {
+                        PublicAvatar(uid: review.authorID, fallbackName: review.authorName, size: 36)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(review.authorName)
+                                .font(Theme.Typography.title)
+                                .foregroundStyle(Theme.Palette.ink)
+                                .lineLimit(1)
+                            if let handle {
+                                Text(verbatim: handle)
+                                    .font(Theme.Typography.caption)
+                                    .foregroundStyle(Theme.Palette.subtleText)
+                                    .lineLimit(1)
+                            }
+                        }
+                    }
+                    .contentShape(.rect)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(Text(review.authorName))
+                .accessibilityHint("Opens their profile")
                 Spacer()
                 Text(review.createdAt, format: .relative(presentation: .named, unitsStyle: .wide))
                     .font(Theme.Typography.label)

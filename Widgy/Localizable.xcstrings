@@ -9559,6 +9559,86 @@
           }
         }
       }
+    },
+    "Kare user" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare kullanıcısı"
+          }
+        }
+      }
+    },
+    "Report profile" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profili şikayet et"
+          }
+        }
+      }
+    },
+    "Profile options" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil seçenekleri"
+          }
+        }
+      }
+    },
+    "Report this profile" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu profili şikayet et"
+          }
+        }
+      }
+    },
+    "Thanks for telling us. We'll take a look." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildirdiğin için teşekkürler. İnceleyeceğiz."
+          }
+        }
+      }
+    },
+    "No reviews yet." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz yorum yok."
+          }
+        }
+      }
+    },
+    "Opens their profile" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilini açar"
+          }
+        }
+      }
+    },
+    "%lld reviews" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld yorum"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

@@ -144,6 +144,9 @@ struct OnboardingView: View {
         // guest gets through here too, and must not come out the other side
         // able to post a review under a name nobody verified.
         UserDefaults.standard.set(pendingHasAccount, forKey: OnboardingKeys.hasAccount)
+        if pendingHasAccount {
+            Task { await PublicProfileService.shared.publishMine() }
+        }
         withAnimation(.easeInOut) { completed = true }
     }
 }

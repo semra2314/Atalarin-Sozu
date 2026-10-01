@@ -160,6 +160,7 @@ enum AuthService {
         // Their reviews go with them. Done before the account, while the
         // security rules can still see who owns them.
         await ReviewService.deleteAll(byUID: user.uid)
+        await PublicProfileService.shared.deleteMine(uid: user.uid)
         try await run { try await user.delete() }
     }
 

@@ -80,6 +80,35 @@ enum ReviewService {
         .sorted { $0.createdAt > $1.createdAt }
     }
 
+    /// Everything one person has written, for their public profile.
+    static func fetch(byUID uid: String) async throws -> [Review] {
+        guard !blockedUIDs.contains(uid) else { return [] }
+        let snapshot = try await Firestore.firestore()
+            .collection(reviews)
+            .whereField("uid", isEqualTo: uid)
+            .limit(to: 50)
+            .getDocuments()
+        let reported = reportedIDs
+        return snapshot.documents.compactMap { doc -> Review? in
+            let data = doc.data()
+            guard (data["hidden"] as? Bool) != true,
+                  !reported.contains(doc.documentID),
+                  let templateID = data["templateID"] as? String,
+                  let stars = data["stars"] as? Int,
+                  let text = data["text"] as? String else { return nil }
+            return Review(id: doc.documentID,
+                          templateID: templateID,
+                          authorName: data["authorName"] as? String ?? "Kare user",
+                          authorID: uid,
+                          stars: stars,
+                          text: text,
+                          createdAt: (data["createdAt"] as? Timestamp)?.dateValue() ?? .now)
+        }
+        .sorted { $0.createdAt > $1.createdAt }
+    }
+
+    static func isBlocked(_ uid: String) -> Bool { blockedUIDs.contains(uid) }
+
     // MARK: Writing
 
     /// Posts or replaces the signed-in user's review of this widget.
@@ -95,6 +124,8 @@ enum ReviewService {
             "text": String(review.text.prefix(1_000)),
             "createdAt": Timestamp(date: .now)
         ]
+        // Make sure there is a profile behind the name before it goes public.
+        await PublicProfileService.shared.publishMine()
         try await Firestore.firestore().collection(reviews)
             .document("\(review.templateID)_\(uid)")
             .setData(data, merge: true)
