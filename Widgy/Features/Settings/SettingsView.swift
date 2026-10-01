@@ -25,6 +25,7 @@ struct SettingsView: View {
     @State private var deleting = false
     @State private var deleteError: String?
     @Environment(\.subscriptions) private var subscriptions
+    @Environment(\.dynamicTypeSize) private var typeSize
     @AppStorage(OnboardingKeys.language) private var languageRaw = AppLanguage.system.rawValue
 
     private var language: AppLanguage { AppLanguage(rawValue: languageRaw) ?? .system }
@@ -80,6 +81,7 @@ struct SettingsView: View {
                 footer
             }
             .padding(.bottom, Theme.Spacing.lg)
+            .kareReadableWidth()
         }
         .kareTabBarInset()
         .background(Theme.Palette.background)
@@ -236,24 +238,15 @@ struct SettingsView: View {
                     karePlusSubtitle
                         .font(Theme.Typography.caption)
                         .foregroundStyle(Theme.Palette.subtleText)
-                        .lineLimit(1)
+                        .lineLimit(typeSize.isAccessibilitySize ? nil : 1)
+                    // With large text there is no room beside the title, so
+                    // the price moves under it instead of squeezing both.
+                    if typeSize.isAccessibilitySize { karePlusPrice.padding(.top, 2) }
                 }
 
-                Spacer()
+                Spacer(minLength: 0)
 
-                if !subscriptions.canOfferSubscription {
-                    Text("Soon")
-                        .font(Theme.Typography.labelCaps)
-                        .foregroundStyle(Theme.Palette.subtleText)
-                } else if !subscriptions.isSubscribed, let price = subscriptions.monthlyDisplayPrice {
-                    // The real monthly price for this storefront, or nothing at
-                    // all until StoreKit has answered. A placeholder here would
-                    // be a number we invented sitting next to a Subscribe flow
-                    // that charges something else.
-                    Text("\(price)/mo")
-                        .font(Theme.Typography.labelCaps)
-                        .foregroundStyle(Theme.Palette.accent)
-                }
+                if !typeSize.isAccessibilitySize { karePlusPrice }
 
                 if subscriptions.canOfferSubscription {
                     Image(systemName: "chevron.right")
@@ -267,6 +260,24 @@ struct SettingsView: View {
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
+    }
+
+    @ViewBuilder
+    private var karePlusPrice: some View {
+                if !subscriptions.canOfferSubscription {
+                    Text("Soon")
+                        .font(Theme.Typography.labelCaps)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                } else if !subscriptions.isSubscribed, let price = subscriptions.monthlyDisplayPrice {
+                    // The real monthly price for this storefront, or nothing at
+                    // all until StoreKit has answered. A placeholder here would
+                    // be a number we invented sitting next to a Subscribe flow
+                    // that charges something else.
+                    Text("\(price)/mo")
+                        .font(Theme.Typography.labelCaps)
+                        .foregroundStyle(Theme.Palette.accent)
+                        .fixedSize()
+                }
     }
 
     /// Three states, three sentences. During the beta it says the paid designs
