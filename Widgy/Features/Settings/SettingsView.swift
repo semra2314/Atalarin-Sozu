@@ -46,6 +46,7 @@ struct SettingsView: View {
             case chooseAppearance
             case addWidgetGuide
             case systemSettings
+            case open(URL)
         }
     }
 
@@ -63,9 +64,11 @@ struct SettingsView: View {
             Row(icon: "circle.lefthalf.filled", title: "Appearance",
                 detail: appearance.displayName, action: .chooseAppearance),
             Row(icon: "bell", title: "Notifications", action: .systemSettings),
-            Row(icon: "lock", title: "Privacy", action: .systemSettings),
+            // These two used to open the phone's Settings app, which has
+            // neither our privacy policy nor any way to reach us.
+            Row(icon: "lock", title: "Privacy", action: .open(KarePlus.privacyURL)),
             Row(icon: "questionmark.circle", title: "Help & Support",
-                action: .systemSettings)
+                action: .open(URL(string: "https://kare.erdendereli.com/support")!))
         ]
     }
 
@@ -439,6 +442,8 @@ struct SettingsView: View {
             if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url)
             }
+        case let .open(url):
+            UIApplication.shared.open(url)
         }
     }
 
@@ -467,6 +472,14 @@ struct SettingsView: View {
         .buttonStyle(.plain)
     }
 
+    /// Read from the bundle, so the footer never disagrees with the App Store.
+    private var appVersion: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = info?["CFBundleVersion"] as? String ?? "1"
+        return "\(short) (\(build))"
+    }
+
     private var footer: some View {
         VStack(spacing: 8) {
             Image("KareWordmark")
@@ -474,7 +487,7 @@ struct SettingsView: View {
                 .scaledToFit()
                 .frame(width: 96)
                 .opacity(0.5)
-            Text("VERSION 1.0.0 (2026)")
+            Text(verbatim: "VERSION \(appVersion)")
                 .font(.system(size: 10, weight: .semibold))
                 .tracking(1.5)
                 .foregroundStyle(Theme.Palette.subtleText.opacity(0.6))
