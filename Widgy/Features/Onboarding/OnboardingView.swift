@@ -1,6 +1,6 @@
 //
 //  OnboardingView.swift
-//  Widgy
+//  Kare
 //
 //  First impression + first-run flow: brand splash -> value slides -> taste
 //  picker -> Sign in with Apple. On completion it flips the AppStorage flag and
@@ -24,6 +24,7 @@ struct OnboardingView: View {
     @State private var selected: Set<String> = []
     @State private var showSplash = true
     @State private var authMessage: String?
+    @State private var isSigningIn = false
 
     init() {
         let defaults = UserDefaults.standard
@@ -43,6 +44,7 @@ struct OnboardingView: View {
 
     // Captured during auth, saved once the username is chosen.
     @State private var pendingName = ""
+    @State private var pendingHasAccount = false
     @State private var username = ""
 
     var body: some View {
@@ -59,12 +61,20 @@ struct OnboardingView: View {
             case .signIn:
                 SignInStep(message: authMessage,
                            onApple: handleApple,
-                           onEmailComplete: { name in advanceToUsername(name: name) },
-                           onSkip: { advanceToUsername(name: "") })
+                           onEmailComplete: { name in advanceToUsername(name: name, signedIn: true) },
+                           onSkip: { advanceToUsername(name: "", signedIn: false) })
             case .username:
                 UsernameStep(suggested: suggestedUsername,
                              username: $username,
                              onDone: complete)
+            }
+
+            if isSigningIn {
+                Color.black.opacity(0.15).ignoresSafeArea()
+                ProgressView()
+                    .controlSize(.large)
+                    .padding(Theme.Spacing.xl)
+                    .background(Theme.Palette.surface, in: .rect(cornerRadius: 20, style: .continuous))
             }
 
             if showSplash {
@@ -79,7 +89,10 @@ struct OnboardingView: View {
     }
 
     private var suggestedUsername: String {
-        let base = pendingName.isEmpty ? "widgyfan" : pendingName
+        // Left over from the old name. Every new user who signs in without
+        // giving a name was being offered "widgyfan" as their handle, on the
+        // one screen nobody can now skip.
+        let base = pendingName.isEmpty ? "karefan" : pendingName
         return base.lowercased().filter { $0.isLetter || $0.isNumber || $0 == "_" || $0 == " " }
             .replacingOccurrences(of: " ", with: "_")
     }
@@ -87,20 +100,37 @@ struct OnboardingView: View {
     private func handleApple(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(auth):
-            if let cred = auth.credential as? ASAuthorizationAppleIDCredential {
-                let name = [cred.fullName?.givenName, cred.fullName?.familyName]
-                    .compactMap { $0 }.joined(separator: " ")
-                advanceToUsername(name: name)
-            } else {
-                advanceToUsername(name: "")
+            guard let cred = auth.credential as? ASAuthorizationAppleIDCredential else {
+                authMessage = String(localized: "Couldn't sign in with Apple. Try again.")
+                return
             }
-        case .failure:
-            authMessage = "Couldn't sign in. Try again, or continue for now."
+            // Apple said yes; now Firebase has to. Only then is it an account.
+            authMessage = nil
+            isSigningIn = true
+            Task {
+                defer { isSigningIn = false }
+                do {
+                    let name = try await AuthService.signIn(with: cred)
+                    advanceToUsername(name: name, signedIn: true)
+                } catch {
+                    authMessage = error.localizedDescription
+                }
+            }
+        case let .failure(error):
+            // Closing the Apple sheet is a choice, not an error.
+            if (error as? ASAuthorizationError)?.code == .canceled { return }
+            // The old copy offered to "continue for now", which was the guest
+            // door. With that door closed, pointing at it would strand anyone
+            // whose Apple sign-in fails.
+            authMessage = AccountPolicy.allowsGuestAccess
+                ? "Couldn't sign in. Try again, or continue for now."
+                : "Couldn't sign in. Try again, or sign up with your email."
         }
     }
 
-    private func advanceToUsername(name: String) {
+    private func advanceToUsername(name: String, signedIn: Bool) {
         pendingName = name
+        pendingHasAccount = signedIn
         withAnimation(.easeInOut) { step = .username }
     }
 
@@ -110,6 +140,10 @@ struct OnboardingView: View {
         storedUsername = clean.isEmpty ? "you" : clean
         aesthetics = selected.sorted().joined(separator: ",")
         UserDefaults.standard.set(true, forKey: OnboardingKeys.hasOnboardedBefore)
+        // Finishing onboarding and having an account are different facts. A
+        // guest gets through here too, and must not come out the other side
+        // able to post a review under a name nobody verified.
+        UserDefaults.standard.set(pendingHasAccount, forKey: OnboardingKeys.hasAccount)
         withAnimation(.easeInOut) { completed = true }
     }
 }
@@ -415,7 +449,7 @@ private struct PhoneHero: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 44, style: .continuous)
-                .fill(LinearGradient(colors: [Color(hex: "EFE9E7"), Color(hex: "E2DAD8")],
+                .fill(LinearGradient(colors: [Theme.Palette.stageTop, Theme.Palette.stageBottom],
                                      startPoint: .top, endPoint: .bottom))
                 .frame(width: 182, height: 300)
                 .overlay(RoundedRectangle(cornerRadius: 44, style: .continuous).stroke(Theme.Palette.hairline, lineWidth: 1))
@@ -618,7 +652,10 @@ private struct SignInStep: View {
                 Text("Create your account")
                     .font(Theme.Typography.headline)
                     .foregroundStyle(Theme.Palette.ink)
-                Text("Sign in once so your widgets and library follow you everywhere.")
+                // It used to say the library would "follow you everywhere".
+                // There is no backend yet, so nothing follows anyone anywhere,
+                // and this is now the first thing a blocked user reads.
+                Text("Your widgets, your library and your creator name, all under one profile.")
                     .font(Theme.Typography.body)
                     .foregroundStyle(Theme.Palette.subtleText)
                     .multilineTextAlignment(.center)
@@ -637,7 +674,7 @@ private struct SignInStep: View {
 
             VStack(spacing: Theme.Spacing.md) {
                 SignInWithAppleButton(.signUp) { request in
-                    request.requestedScopes = [.fullName]
+                    AuthService.prepare(request)
                 } onCompletion: { result in
                     onApple(result.mapError { $0 as Error })
                 }
@@ -668,10 +705,22 @@ private struct SignInStep: View {
             }
             .padding(.horizontal, Theme.Spacing.lg)
 
-            Button("Continue without account", action: onSkip)
+            if AccountPolicy.allowsGuestAccess {
+                VStack(spacing: 2) {
+                    Button("Continue without account", action: onSkip)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                    // Said here rather than discovered later. Someone who
+                    // skips should know what they are skipping.
+                    Text("You can browse and build. Reviews and a creator profile need an account.")
+                        .foregroundStyle(Theme.Palette.subtleText.opacity(0.75))
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, Theme.Spacing.xl)
+                }
                 .font(Theme.Typography.label)
-                .foregroundStyle(Theme.Palette.subtleText)
                 .padding(.bottom, Theme.Spacing.lg)
+            } else {
+                Spacer().frame(height: Theme.Spacing.lg)
+            }
         }
         .background(Theme.Palette.background)
     }
@@ -689,12 +738,17 @@ private struct AuthField: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-            Text(title).widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+            // Wrapped, not passed as plain String. `Text(someString)` and
+            // `TextField(someString, …)` both bind to the non-localising
+            // overload, so these labels stayed English however the app was set.
+            // That mattered less when the screen could be skipped. It is now
+            // the door everyone has to walk through.
+            Text(LocalizedStringKey(title)).kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
             Group {
                 if secure {
-                    SecureField(placeholder, text: $text)
+                    SecureField(LocalizedStringKey(placeholder), text: $text)
                 } else {
-                    TextField(placeholder, text: $text)
+                    TextField(LocalizedStringKey(placeholder), text: $text)
                         .keyboardType(keyboard)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
@@ -778,11 +832,30 @@ private struct EmailSignUpView: View {
     @State private var name = ""
     @State private var email = ""
     @State private var password = ""
+    @State private var busy = false
+    @State private var error: String?
 
     private var valid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty
         && email.contains("@") && email.contains(".")
         && password.count >= 6
+    }
+
+    private func submit() {
+        let cleanName = name.trimmingCharacters(in: .whitespaces)
+        busy = true
+        error = nil
+        Task {
+            defer { busy = false }
+            do {
+                try await AuthService.signUp(name: cleanName,
+                                             email: email.trimmingCharacters(in: .whitespaces),
+                                             password: password)
+                onComplete(cleanName)
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
     }
 
     var body: some View {
@@ -798,16 +871,22 @@ private struct EmailSignUpView: View {
                     AuthField(title: "Password", placeholder: "At least 6 characters", text: $password, secure: true)
                 }
 
-                Button {
-                    onComplete(name.trimmingCharacters(in: .whitespaces))
-                } label: {
-                    Text("Create account")
-                        .font(Theme.Typography.title).foregroundStyle(.white)
-                        .frame(maxWidth: .infinity).frame(height: 54)
-                        .background(valid ? Theme.Palette.accent : Theme.Palette.subtleText, in: .capsule)
+                if let error {
+                    Text(error)
+                        .font(Theme.Typography.label)
+                        .foregroundStyle(Theme.Palette.accent)
+                }
+
+                Button(action: submit) {
+                    Group {
+                        if busy { ProgressView().tint(.white) } else { Text("Create account") }
+                    }
+                    .font(Theme.Typography.title).foregroundStyle(.white)
+                    .frame(maxWidth: .infinity).frame(height: 54)
+                    .background(valid ? Theme.Palette.accent : Theme.Palette.subtleText, in: .capsule)
                 }
                 .buttonStyle(.plain)
-                .disabled(!valid)
+                .disabled(!valid || busy)
             }
             .padding(Theme.Spacing.lg)
             .padding(.top, Theme.Spacing.md)
@@ -822,9 +901,41 @@ private struct EmailLoginView: View {
     var onComplete: (String) -> Void
     @State private var email = ""
     @State private var password = ""
+    @State private var busy = false
+    @State private var error: String?
+    @State private var notice: String?
 
     private var valid: Bool {
         email.contains("@") && email.contains(".") && password.count >= 6
+    }
+
+    private var cleanEmail: String { email.trimmingCharacters(in: .whitespaces) }
+
+    private func submit() {
+        busy = true
+        error = nil
+        notice = nil
+        Task {
+            defer { busy = false }
+            do {
+                let name = try await AuthService.logIn(email: cleanEmail, password: password)
+                onComplete(name)
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
+    }
+
+    private func resetPassword() {
+        error = nil
+        Task {
+            do {
+                try await AuthService.sendPasswordReset(to: cleanEmail)
+                notice = String(localized: "Check your inbox for a link to reset your password.")
+            } catch {
+                self.error = error.localizedDescription
+            }
+        }
     }
 
     var body: some View {
@@ -839,17 +950,33 @@ private struct EmailLoginView: View {
                     AuthField(title: "Password", placeholder: "Your password", text: $password, secure: true)
                 }
 
-                Button {
-                    let handle = email.split(separator: "@").first.map(String.init) ?? "You"
-                    onComplete(handle.capitalized)
-                } label: {
-                    Text("Log in")
-                        .font(Theme.Typography.title).foregroundStyle(.white)
-                        .frame(maxWidth: .infinity).frame(height: 54)
-                        .background(valid ? Theme.Palette.accent : Theme.Palette.subtleText, in: .capsule)
+                if let error {
+                    Text(error)
+                        .font(Theme.Typography.label)
+                        .foregroundStyle(Theme.Palette.accent)
+                }
+                if let notice {
+                    Text(notice)
+                        .font(Theme.Typography.label)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                }
+
+                Button(action: submit) {
+                    Group {
+                        if busy { ProgressView().tint(.white) } else { Text("Log in") }
+                    }
+                    .font(Theme.Typography.title).foregroundStyle(.white)
+                    .frame(maxWidth: .infinity).frame(height: 54)
+                    .background(valid ? Theme.Palette.accent : Theme.Palette.subtleText, in: .capsule)
                 }
                 .buttonStyle(.plain)
-                .disabled(!valid)
+                .disabled(!valid || busy)
+
+                Button("Forgot password?", action: resetPassword)
+                    .font(Theme.Typography.label)
+                    .foregroundStyle(Theme.Palette.accent)
+                    .frame(maxWidth: .infinity)
+                    .disabled(!cleanEmail.contains("@"))
             }
             .padding(Theme.Spacing.lg)
             .padding(.top, Theme.Spacing.md)

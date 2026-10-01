@@ -1,6 +1,6 @@
 //
 //  AppEnvironment.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -24,7 +24,15 @@ nonisolated final class AppEnvironment: Sendable {
     /// switch this to `.cloudKit(...)` — no view or view-model changes needed:
     ///
     ///     static let live = cloudKit(containerIdentifier: "iCloud.com.yourteam.Widgy")
-    static let live = AppEnvironment(widgets: MockWidgetRepository())
+    ///
+    /// The catalogue ships inside the app, so the live build runs the mock with
+    /// no artificial delay. The 220ms default exists to make loading states
+    /// visible in development; in the shipping app it was just a spinner
+    /// flashing on every screen for no reason.
+    ///
+    /// Reviews are real now: `FirebaseWidgetRepository` keeps the bundled
+    /// catalogue and sends reviews to Firestore.
+    static let live = AppEnvironment(widgets: FirebaseWidgetRepository())
 
     /// CloudKit-backed catalog (public database).
     static func cloudKit(containerIdentifier: String) -> AppEnvironment {

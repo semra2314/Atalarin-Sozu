@@ -1,32 +1,8 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "…or drag one in from another app" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…or drag one in from another app"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "…ya da başka bir uygulamadan sürükleyip bırak"
-          }
-        }
-      }
-    },
-    "·" : {
-
-    },
-    "@" : {
-
-    },
-    "#%@" : {
-
-    },
+    "" : {},
+    "#%@" : {},
     "%.1f out of 5 stars" : {
       "localizations" : {
         "en" : {
@@ -43,12 +19,64 @@
         }
       }
     },
-    "%@ · %@" : {
+    "%@" : {},
+    "%@ %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "%1$@ · %2$@"
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %lld days · %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ %lld days · %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld gün · %3$@"
+          }
+        }
+      }
+    },
+    "%@ is gone from your library. A quick answer helps us make Kare better." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ is gone from your library. A quick answer helps us make Kare better."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ kütüphanenden kaldırıldı. Kısa bir cevap Kare'yi daha iyi yapmamıza yardım eder."
+          }
+        }
+      }
+    },
+    "%@ saved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ biriktirdin"
           }
         }
       }
@@ -69,8 +97,212 @@
         }
       }
     },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
     "%@/mo" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@/mo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@/ay"
+          }
+        }
+      }
+    },
+    "%lld" : {},
+    "%lld days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün"
+          }
+        }
+      }
+    },
+    "%lld days ago" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day ago"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days ago"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün önce"
+          }
+        }
+      }
+    },
+    "%lld days left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days left"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld gün kaldı"
+          }
+        }
+      }
+    },
+    "%lld days · %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld days · %2$@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld gün · %2$@"
+          }
+        }
+      }
+    },
+    "%lld hours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hour"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hours"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld saat"
+          }
+        }
+      }
+    },
+    "%lld hours left" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hour left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld hours left"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld saat kaldı"
+          }
+        }
+      }
+    },
+    "%lld min / %lld min" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld min / %2$lld min"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld dk / %2$lld dk"
+          }
+        }
+      }
     },
     "%lld ratings" : {
       "localizations" : {
@@ -98,6 +330,69 @@
         }
       }
     },
+    "%lld weeks lived" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld week lived"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld weeks lived"
+                }
+              }
+            }
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hafta yaşandı"
+          }
+        }
+      }
+    },
+    "%lld weeks · %lld days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld weeks · %2$lld days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld hafta · %2$lld gün"
+          }
+        }
+      }
+    },
+    "%lld%% of subscription revenue goes to the creator pool and is shared between the designers whose widgets are installed that month." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%% of subscription revenue goes to the creator pool and is shared between the designers whose widgets are installed that month."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonelik gelirinin %%%lld'si yaratıcı havuzuna gidiyor ve o ay widget'ı kurulan tasarımcılar arasında paylaşılıyor."
+          }
+        }
+      }
+    },
     "%lld. %@" : {
       "localizations" : {
         "en" : {
@@ -108,9 +403,8 @@
         }
       }
     },
-    "%lld%% of subscription revenue goes to the creator pool and is shared between the designers whose widgets are installed that month." : {
-
-    },
+    "0" : {},
+    "23" : {},
     "3-20 letters, numbers or underscores." : {
       "localizations" : {
         "en" : {
@@ -123,6 +417,75 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3-20 harf, rakam ya da alt çizgi."
+          }
+        }
+      }
+    },
+    "@" : {},
+    "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her dört saatte bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. 400 söz arasından."
+          }
+        }
+      }
+    },
+    "A Turkish proverb or idiom every four hours, with its meaning." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Turkish proverb or idiom every four hours, with its meaning."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her dört saatte bir atasözü ya da deyim, anlamıyla birlikte."
+          }
+        }
+      }
+    },
+    "A clock that follows the light of day." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A clock that follows the light of day."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün ışığını takip eden bir saat."
+          }
+        }
+      }
+    },
+    "A creator profile is how people find your widgets, so it needs an account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A creator profile is how people find your widgets, so it needs an account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasarımcı profili, insanların widget'larını bulma yolu, o yüzden hesap gerekiyor."
           }
         }
       }
@@ -161,40 +524,177 @@
         }
       }
     },
-    "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference." : {
+    "A nudge to drink water, sitting where you already look a hundred times a day." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A passage a day, from the source you choose — scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference."
+            "value" : "A nudge to drink water, sitting where you already look a hundred times a day."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seçtiğin kaynaktan günde bir alıntı — kutsal metin, stoacı felsefe, şiir ya da atasözü. Her zaman kaynağıyla birlikte."
+            "value" : "Su içmen için küçük bir dürtme, zaten günde yüz kez baktığın yerde duruyor."
           }
         }
       }
     },
-    "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings." : {
+    "A paid widget" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings."
+            "value" : "A paid widget"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Her dört saatte bir atasözü ya da deyim, anlamı ve örnek cümlesiyle. 400 söz arasından."
+            "value" : "Ücretli bir widget"
           }
         }
       }
     },
+    "A passage a day, from the source you choose." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A passage a day, from the source you choose."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçtiğin kaynaktan günde bir alıntı."
+          }
+        }
+      }
+    },
+    "A passage a day, from the source you choose: scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A passage a day, from the source you choose: scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçtiğin kaynaktan günde bir alıntı: kutsal metin, stoacı felsefe, şiir ya da atasözü. Her zaman kaynağıyla birlikte."
+          }
+        }
+      }
+    },
+    "A single line to hold you to one thing at a time. Heavy serif on near-black." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A single line to hold you to one thing at a time. Heavy serif on near-black."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aynı anda tek işe bağlı kalman için tek satır. Neredeyse siyah zeminde kalın serif."
+          }
+        }
+      }
+    },
+    "A slip is part of quitting for most people. Your count starts again from this moment." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A slip is part of quitting for most people. Your count starts again from this moment."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çoğu insan için bir kayma, bırakma sürecinin parçası. Sayacın bu andan itibaren yeniden başlar."
+          }
+        }
+      }
+    },
+    "A small private thing for a person you like. Two words and a heart." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A small private thing for a person you like. Two words and a heart."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sevdiğin biri için küçük ve size özel. İki kelime ve bir kalp."
+          }
+        }
+      }
+    },
+    "A trip, a wedding, an exam, a visit. Add the day you are waiting for." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A trip, a wedding, an exam, a visit. Add the day you are waiting for."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir tatil, bir düğün, bir sınav, bir buluşma. Beklediğin günü ekle."
+          }
+        }
+      }
+    },
+    "A warm gradient and a soft greeting. Change the words to whatever you want to read at a glance." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A warm gradient and a soft greeting. Change the words to whatever you want to read at a glance."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıcak bir geçiş ve yumuşak bir selam. Yazıyı, bir bakışta görmek istediğin şeyle değiştir."
+          }
+        }
+      }
+    },
+    "A warm paper card with a prompt you finish yourself. Rewrite it each morning." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A warm paper card with a prompt you finish yourself. Rewrite it each morning."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendi tamamlayacağın bir cümleyle sıcak bir kâğıt kart. Her sabah yeniden yaz."
+          }
+        }
+      }
+    },
+    "ATA" : {},
     "Aa" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -259,6 +759,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekle"
+          }
+        }
+      }
+    },
+    "Add a countdown in Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a countdown in Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare'de bir geri sayım ekle"
           }
         }
       }
@@ -380,6 +897,23 @@
         }
       }
     },
+    "Add to favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to favorites"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorilere ekle"
+          }
+        }
+      }
+    },
     "Add to library" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -397,6 +931,40 @@
         }
       }
     },
+    "Add your birthday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your birthday"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğum gününü ekle"
+          }
+        }
+      }
+    },
+    "Add your birthday in Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your birthday in Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğum gününü Kare'de ekle"
+          }
+        }
+      }
+    },
     "Added · Set up on Home Screen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -410,6 +978,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eklendi · Ana Ekranda kur"
+          }
+        }
+      }
+    },
+    "Added!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklendi!"
+          }
+        }
+      }
+    },
+    "Adding a widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding a widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget nasıl eklenir"
+          }
+        }
+      }
+    },
+    "Adding…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekleniyor…"
           }
         }
       }
@@ -465,6 +1084,23 @@
         }
       }
     },
+    "An estimate: about 20 minutes of life expectancy for every cigarette not smoked." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An estimate: about 20 minutes of life expectancy for every cigarette not smoked."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahmini: içilmeyen her sigara için yaklaşık 20 dakikalık yaşam süresi."
+          }
+        }
+      }
+    },
     "Any emoji" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -482,6 +1118,57 @@
         }
       }
     },
+    "Anything" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anything"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer"
+          }
+        }
+      }
+    },
+    "Anything else? (optional)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anything else? (optional)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eklemek istediğin bir şey var mı? (isteğe bağlı)"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görünüm"
+          }
+        }
+      }
+    },
     "Approved" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -495,6 +1182,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Onaylandı"
+          }
+        }
+      }
+    },
+    "At least 6 characters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At least 6 characters"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En az 6 karakter"
+          }
+        }
+      }
+    },
+    "Aurora" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aurora"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aurora"
           }
         }
       }
@@ -550,6 +1271,40 @@
         }
       }
     },
+    "Between five and fifteen years, your stroke risk falls to that of someone who never smoked." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Between five and fifteen years, your stroke risk falls to that of someone who never smoked."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beş ile on beş yıl arasında inme riskin, hiç sigara içmemiş birininkine iner."
+          }
+        }
+      }
+    },
+    "Between two and twelve weeks, blood flows better and your lungs work better. Walking and climbing stairs get easier." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Between two and twelve weeks, blood flows better and your lungs work better. Walking and climbing stairs get easier."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İki ile on iki hafta arasında kan dolaşımın ve akciğerlerin daha iyi çalışır. Yürümek ve merdiven çıkmak kolaylaşır."
+          }
+        }
+      }
+    },
     "Bible" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -563,6 +1318,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İncil"
+          }
+        }
+      }
+    },
+    "Birthday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birthday"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğum günü"
+          }
+        }
+      }
+    },
+    "Black type on off-white, and nothing else. The one that disappears into a clean home screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Black type on off-white, and nothing else. The one that disappears into a clean home screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kırık beyaz üstünde siyah yazı, başka hiçbir şey. Sade bir ana ekranda kaybolan tasarım."
           }
         }
       }
@@ -584,34 +1373,138 @@
         }
       }
     },
-    "by" : {
+    "Breathe in…" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "by"
+            "value" : "Breathe in…"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "yapan"
+            "value" : "Derin bir nefes…"
           }
         }
       }
     },
-    "by %@" : {
+    "Breathing easier" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "by %@"
+            "value" : "Breathing easier"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "yapan %@"
+            "value" : "Nefesin rahatlıyor"
+          }
+        }
+      }
+    },
+    "Breathing gets easier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing gets easier"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes almak kolaylaşır"
+          }
+        }
+      }
+    },
+    "Buy Kare+ for life" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy Kare+ for life"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+'yı ömür boyu al"
+          }
+        }
+      }
+    },
+    "Buy just this one" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy just this one"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece bunu al"
+          }
+        }
+      }
+    },
+    "Buy just this one, or unlock every paid widget with Kare+." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy just this one, or unlock every paid widget with Kare+."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece bunu satın al ya da Kare+ ile tüm ücretli widget'ları aç."
+          }
+        }
+      }
+    },
+    "Buy one, or get them all with Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy one, or get them all with Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek tek al ya da Kare+ ile hepsini aç"
+          }
+        }
+      }
+    },
+    "By nine months your lungs are much better at cleaning themselves, and breathlessness is well down." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By nine months your lungs are much better at cleaning themselves, and breathlessness is well down."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dokuzuncu aya geldiğinde akciğerlerin kendini çok daha iyi temizler, nefes darlığı belirgin şekilde azalır."
           }
         }
       }
@@ -650,19 +1543,70 @@
         }
       }
     },
-    "category" : {
+    "Carbon monoxide in your blood drops to normal" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "category"
+            "value" : "Carbon monoxide in your blood drops to normal"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kategori"
+            "value" : "Kanındaki karbonmonoksit normale iner"
+          }
+        }
+      }
+    },
+    "Carbon monoxide is leaving your blood, and oxygen levels start returning to normal." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carbon monoxide is leaving your blood, and oxygen levels start returning to normal."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karbonmonoksit kanından çıkıyor, oksijen seviyen normale dönmeye başlıyor."
+          }
+        }
+      }
+    },
+    "Card colour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card colour"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kart rengi"
+          }
+        }
+      }
+    },
+    "Celebration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celebration"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kutlama"
           }
         }
       }
@@ -680,6 +1624,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotoğrafı değiştir"
+          }
+        }
+      }
+    },
+    "Check your connection and try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your connection and try again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlantını kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "Choose a countdown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a countdown"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir geri sayım seç"
+          }
+        }
+      }
+    },
+    "Choose a design" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a design"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir tasarım seç"
           }
         }
       }
@@ -716,6 +1711,23 @@
         }
       }
     },
+    "Choose what to measure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose what to measure"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neyi ölçeceğini seç"
+          }
+        }
+      }
+    },
     "Choose your language" : {
       "localizations" : {
         "en" : {
@@ -728,6 +1740,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dilini seç"
+          }
+        }
+      }
+    },
+    "Cigarettes a day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cigarettes a day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günde kaç sigara"
+          }
+        }
+      }
+    },
+    "Circulation improves and lung function increases" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Circulation improves and lung function increases"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dolaşımın düzelir, akciğer fonksiyonun artar"
+          }
+        }
+      }
+    },
+    "Claim your handle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claim your handle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı adını al"
+          }
+        }
+      }
+    },
+    "Clear search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aramayı temizle"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
           }
         }
       }
@@ -762,6 +1859,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yakında: bu yaratıcının tüm widget'ları tek yerde."
+          }
+        }
+      }
+    },
+    "Coming soon. Paid widgets are free for now." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming soon. Paid widgets are free for now."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakında. Ücretli widget'lar şimdilik ücretsiz."
           }
         }
       }
@@ -834,6 +1948,40 @@
         }
       }
     },
+    "Coughing and shortness of breath decrease" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coughing and shortness of breath decrease"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öksürük ve nefes darlığı azalır"
+          }
+        }
+      }
+    },
+    "Coughing and wheezing improve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coughing and wheezing improve"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öksürük ve hırıltı azalır"
+          }
+        }
+      }
+    },
     "Couldn't load that photo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -851,6 +1999,74 @@
         }
       }
     },
+    "Couldn't prepare that image." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't prepare that image."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu görsel hazırlanamadı."
+          }
+        }
+      }
+    },
+    "Couldn't sign in. Try again, or sign up with your email." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't sign in. Try again, or sign up with your email."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapılamadı. Tekrar dene ya da e-postanla kayıt ol."
+          }
+        }
+      }
+    },
+    "Count what matters" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Count what matters"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önemli olanı say"
+          }
+        }
+      }
+    },
+    "Countdown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Countdown"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Sayım"
+          }
+        }
+      }
+    },
     "Create account" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -864,6 +2080,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hesap oluştur"
+          }
+        }
+      }
+    },
+    "Create an account to publish widgets and write reviews." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create an account to publish widgets and write reviews."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget yayınlamak ve yorum yazmak için hesap oluştur."
           }
         }
       }
@@ -987,6 +2220,7 @@
         }
       }
     },
+    "DEY" : {},
     "Daily" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1000,6 +2234,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Daily"
+          }
+        }
+      }
+    },
+    "Dark mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Koyu mod"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarih"
+          }
+        }
+      }
+    },
+    "Day, week, month, year, or your life so far." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day, week, month, year, or your life so far."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün, hafta, ay, yıl ya da bugüne kadarki hayatın."
+          }
+        }
+      }
+    },
+    "Days smoke-free, money kept, and lungs that fill as you heal." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days smoke-free, money kept, and lungs that fill as you heal."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sigarasız günler, cebinde kalan para ve iyileştikçe dolan ciğerler."
+          }
+        }
+      }
+    },
+    "Days until the day you are waiting for." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days until the day you are waiting for."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklediğin güne kalan günler."
+          }
+        }
+      }
+    },
+    "Days until the day you are waiting for: a trip, a wedding, an exam. One dot per day, filling as it gets closer." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days until the day you are waiting for: a trip, a wedding, an exam. One dot per day, filling as it gets closer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beklediğin güne kalan günler: bir tatil, bir düğün, bir sınav. Her gün için bir nokta, yaklaştıkça doluyor."
           }
         }
       }
@@ -1038,19 +2374,53 @@
         }
       }
     },
-    "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it." : {
+    "Delete countdown" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Design your own from scratch: pick a background, add your text, drop in stickers — exactly how you want it."
+            "value" : "Delete countdown"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıfırdan kendin tasarla: arka planı seç, metnini ekle, sticker'ları yerleştir — tam istediğin gibi."
+            "value" : "Geri sayımı sil"
+          }
+        }
+      }
+    },
+    "Design" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasarım"
+          }
+        }
+      }
+    },
+    "Design your own from scratch: pick a background, add your text, drop in stickers, exactly how you want it." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Design your own from scratch: pick a background, add your text, drop in stickers, exactly how you want it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıfırdan kendin tasarla: arka planı seç, metnini ekle, sticker'ları yerleştir, tam istediğin gibi."
           }
         }
       }
@@ -1072,12 +2442,8 @@
         }
       }
     },
-    "Devam et" : {
-
-    },
-    "Dilini seç" : {
-
-    },
+    "Devam et" : {},
+    "Dilini seç" : {},
     "Direction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1112,6 +2478,23 @@
         }
       }
     },
+    "Dismiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      }
+    },
     "Done" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1125,6 +2508,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Dots" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dots"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noktalar"
           }
         }
       }
@@ -1146,6 +2546,23 @@
         }
       }
     },
+    "Drawn against %lld years: a round number, not a prediction. Your birthday stays on this phone." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drawn against %lld years: a round number, not a prediction. Your birthday stays on this phone."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld yıla göre çizilir: yuvarlak bir sayı, tahmin değil. Doğum günün bu telefondan çıkmaz."
+          }
+        }
+      }
+    },
     "Duplicate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1159,6 +2576,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çoğalt"
+          }
+        }
+      }
+    },
+    "Each Progress widget measures one thing. Touch and hold it on your home screen, then Edit Widget, to choose the day, week, month, year or your life." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each Progress widget measures one thing. Touch and hold it on your home screen, then Edit Widget, to choose the day, week, month, year or your life."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her İlerleme widget'ı tek bir şeyi ölçer. Günü, haftayı, ayı, yılı ya da hayatını seçmek için ana ekranda widget'a basılı tut, sonra Widget'ı Düzenle."
+          }
+        }
+      }
+    },
+    "Edit countdown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit countdown"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri sayımı düzenle"
           }
         }
       }
@@ -1193,6 +2644,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düzenleyici"
+          }
+        }
+      }
+    },
+    "Electric magenta bleeding into deep violet. Loud, on purpose." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Electric magenta bleeding into deep violet. Loud, on purpose."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektrik moru derin menekşeye akıyor. Bilerek yüksek sesli."
+          }
+        }
+      }
+    },
+    "Email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-posta"
           }
         }
       }
@@ -1247,9 +2732,7 @@
         }
       }
     },
-    "English" : {
-
-    },
+    "English" : {},
     "Enter Kare" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1263,6 +2746,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kare'ye gir"
+          }
+        }
+      }
+    },
+    "Every attempt counts. Most people who quit for good tried more than once." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every attempt counts. Most people who quit for good tried more than once."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her deneme sayılır. Sigarayı tamamen bırakanların çoğu birden fazla kez denedi."
+          }
+        }
+      }
+    },
+    "Every day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her gün"
+          }
+        }
+      }
+    },
+    "Every month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her ay"
           }
         }
       }
@@ -1335,6 +2869,23 @@
         }
       }
     },
+    "Every year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every year"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her yıl"
+          }
+        }
+      }
+    },
     "Everything that ships with Kare" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1348,6 +2899,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kare ile gelen her şey"
+          }
+        }
+      }
+    },
+    "Exam" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exam"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sınav"
+          }
+        }
+      }
+    },
+    "Exhale" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exhale"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes Al"
           }
         }
       }
@@ -1437,6 +3022,23 @@
         }
       }
     },
+    "Fifteen years in, your risk of coronary heart disease is that of someone who never smoked." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fifteen years in, your risk of coronary heart disease is that of someone who never smoked."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On beş yıl sonra koroner kalp hastalığı riskin, hiç sigara içmemiş biriyle aynıdır."
+          }
+        }
+      }
+    },
     "Finance" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1488,6 +3090,40 @@
         }
       }
     },
+    "Focus paused · %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Focus paused · %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odak duraklatıldı · %@"
+          }
+        }
+      }
+    },
+    "For quitting smoking. Your lungs fill as your body recovers, with days smoke-free and the money you kept. Tap the lungs to breathe." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For quitting smoking. Your lungs fill as your body recovers, with days smoke-free and the money you kept. Tap the lungs to breathe."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sigarayı bırakanlar için. Vücudun toparlandıkça ciğerlerin dolar; sigarasız günlerin ve cebinde kalan para da yanında. Nefes almak için ciğerlere dokun."
+          }
+        }
+      }
+    },
     "Frame" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1505,13 +3141,13 @@
         }
       }
     },
-    "Frame reads this photo straight from your device — it never leaves your phone." : {
+    "Frame reads this photo straight from your device. It never leaves your phone." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Frame reads this photo straight from your device — it never leaves your phone."
+            "value" : "Frame reads this photo straight from your device. It never leaves your phone."
           }
         },
         "tr" : {
@@ -1539,6 +3175,40 @@
         }
       }
     },
+    "Free air" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free air"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özgür nefes"
+          }
+        }
+      }
+    },
+    "Free during beta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free during beta"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beta boyunca ücretsiz"
+          }
+        }
+      }
+    },
     "Free plan" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1552,6 +3222,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ücretsiz plan"
+          }
+        }
+      }
+    },
+    "From %@/mo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From %@/mo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aylık %@"
+          }
+        }
+      }
+    },
+    "From three months, coughs, wheezing and breathing problems start to ease as your lungs clear." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From three months, coughs, wheezing and breathing problems start to ease as your lungs clear."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Üçüncü aydan itibaren akciğerlerin temizlendikçe öksürük, hırıltı ve nefes sorunları hafiflemeye başlar."
           }
         }
       }
@@ -1601,6 +3305,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Günaydın"
+          }
+        }
+      }
+    },
+    "Good afternoon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good afternoon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İyi günler"
+          }
+        }
+      }
+    },
+    "Good evening" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good evening"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İyi akşamlar"
+          }
+        }
+      }
+    },
+    "Good morning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good morning"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günaydın"
+          }
+        }
+      }
+    },
+    "Good night" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good night"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İyi geceler"
           }
         }
       }
@@ -1690,6 +3462,74 @@
         }
       }
     },
+    "Health timeline from the World Health Organization and the NHS. Life won back is an estimate from University College London (2024). Kare is not medical advice; your doctor or a quit line can help you plan." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Health timeline from the World Health Organization and the NHS. Life won back is an estimate from University College London (2024). Kare is not medical advice; your doctor or a quit line can help you plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sağlık zaman çizelgesi Dünya Sağlık Örgütü ve NHS'ten. Geri kazanılan ömür, University College London'ın (2024) tahminine dayanır. Kare tıbbi tavsiye değildir; doktorun ya da bir bırakma hattı plan yapmana yardım edebilir."
+          }
+        }
+      }
+    },
+    "Heart disease risk is about half a smoker's" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart disease risk is about half a smoker's"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalp hastalığı riskin, sigara içen birinin yaklaşık yarısına iner"
+          }
+        }
+      }
+    },
+    "Heart disease risk is the same as a non-smoker's" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart disease risk is the same as a non-smoker's"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalp hastalığı riskin hiç içmemiş biriyle aynı olur"
+          }
+        }
+      }
+    },
+    "Heart rate and blood pressure drop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart rate and blood pressure drop"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalp atışın ve tansiyonun düşer"
+          }
+        }
+      }
+    },
     "Hearts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1741,6 +3581,40 @@
         }
       }
     },
+    "Hit the plus in the corner, then type “%@” in the search box. Do not scroll the list, it is long." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hit the plus in the corner, then type “%@” in the search box. Do not scroll the list, it is long."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Köşedeki artıya bas, sonra arama kutusuna “%@” yaz. Listeyi kaydırma, çok uzun."
+          }
+        }
+      }
+    },
+    "Home screen and lock screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home screen and lock screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekran ve kilit ekranı"
+          }
+        }
+      }
+    },
     "How do I add it to my home screen?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1754,6 +3628,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ana ekranıma nasıl eklerim?"
+          }
+        }
+      }
+    },
+    "How much of the day, month, year or your life has passed." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How much of the day, month, year or your life has passed."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün, ayın, yılın ya da hayatının ne kadarı geçti."
+          }
+        }
+      }
+    },
+    "How much of the day, week, month or year has passed, or of your life. A big number and one dot per unit." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How much of the day, week, month or year has passed, or of your life. A big number and one dot per unit."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günün, haftanın, ayın, yılın ya da hayatının ne kadarı geçti. Büyük bir sayı ve her birim için bir nokta."
+          }
+        }
+      }
+    },
+    "How to add a widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to add a widget"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget nasıl eklenir"
           }
         }
       }
@@ -1775,19 +3700,70 @@
         }
       }
     },
-    "In library" : {
+    "I didn't like the design" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In library"
+            "value" : "I didn't like the design"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kitaplıkta"
+            "value" : "Tasarımını beğenmedim"
+          }
+        }
+      }
+    },
+    "I found something better" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found something better"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha iyisini buldum"
+          }
+        }
+      }
+    },
+    "I wasn't using it" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I wasn't using it"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanmıyordum"
+          }
+        }
+      }
+    },
+    "In %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sonra"
           }
         }
       }
@@ -1809,18 +3785,120 @@
         }
       }
     },
-    "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget." : {
+    "In a pack" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In the gallery, pick **%@** — not “Kare”. “Kare” is the make-your-own widget."
+            "value" : "In a pack"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir pakette"
+          }
+        }
+      }
+    },
+    "In library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In library"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kitaplıkta"
+          }
+        }
+      }
+    },
+    "In progress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In progress"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüyor"
+          }
+        }
+      }
+    },
+    "In the first minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the first minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk dakikalarda"
+          }
+        }
+      }
+    },
+    "In the gallery, pick **%@**, not “Kare”. “Kare” is the make-your-own widget." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the gallery, pick **%@**, not “Kare”. “Kare” is the make-your-own widget."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Galeride **%@** seç, “Kare” değil. “Kare” kendi tasarımını yaptığın widget."
+          }
+        }
+      }
+    },
+    "In your pocket" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In your pocket"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cebinde kalan"
+          }
+        }
+      }
+    },
+    "Included in Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Included in Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ içinde"
           }
         }
       }
@@ -1842,36 +3920,87 @@
         }
       }
     },
-    "iOS only lets widgets be placed from its own gallery, so here's the shortcut." : {
+    "It didn't look good on my home screen" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iOS only lets widgets be placed from its own gallery, so here's the shortcut."
+            "value" : "It didn't look good on my home screen"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "iOS widget'ların yalnızca kendi galerisinden eklenmesine izin veriyor, kısayolu burada."
+            "value" : "Ana ekranımda güzel durmadı"
           }
         }
       }
     },
-    "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job." : {
+    "It didn't work as expected" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job."
+            "value" : "It didn't work as expected"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kare, Mesajlar'daki sticker paketini okuyamaz — iOS buna izin vermiyor. Bu üç yol aynı işi görür."
+            "value" : "Beklediğim gibi çalışmadı"
+          }
+        }
+      }
+    },
+    "It's yours!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's yours!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artık senin!"
+          }
+        }
+      }
+    },
+    "Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare"
+          }
+        }
+      }
+    },
+    "Kare can't read your Messages sticker pack. iOS doesn't allow it, so these three routes do the same job." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare can't read your Messages sticker pack. iOS doesn't allow it, so these three routes do the same job."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare, Mesajlar'daki sticker paketini okuyamaz. iOS buna izin vermediği için bu üç yol aynı işi görür."
           }
         }
       }
@@ -1906,6 +4035,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kare+ aktif"
+          }
+        }
+      }
+    },
+    "Kare+ is yours for life" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ is yours for life"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ ömür boyu senin"
           }
         }
       }
@@ -1961,6 +4107,23 @@
         }
       }
     },
+    "Last cigarette" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last cigarette"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son sigara"
+          }
+        }
+      }
+    },
     "Library" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1995,6 +4158,23 @@
         }
       }
     },
+    "Life won back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Life won back"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri kazanılan ömür"
+          }
+        }
+      }
+    },
     "Light" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2012,6 +4192,23 @@
         }
       }
     },
+    "Light mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light mode"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açık mod"
+          }
+        }
+      }
+    },
     "Line spacing" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2025,6 +4222,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Satır aralığı"
+          }
+        }
+      }
+    },
+    "Live deep-work timer, on your home and lock screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live deep-work timer, on your home and lock screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekranında ve kilit ekranında canlı derin çalışma sayacı."
+          }
+        }
+      }
+    },
+    "Live widgets that keep count for you, and every paid design, in one subscription." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live widgets that keep count for you, and every paid design, in one subscription."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin yerine sayan canlı widget'lar ve tüm ücretli tasarımlar, tek abonelikte."
+          }
+        }
+      }
+    },
+    "Live widgets that keep score for you" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live widgets that keep score for you"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin yerine takip eden canlı widget'lar"
+          }
+        }
+      }
+    },
+    "Lock screen too" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lock screen too"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilit ekranına da"
           }
         }
       }
@@ -2063,19 +4328,19 @@
         }
       }
     },
-    "lock screen" : {
+    "Log Out" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "lock screen"
+            "value" : "Log Out"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kilit ekranı"
+            "value" : "Çıkış yap"
           }
         }
       }
@@ -2097,23 +4362,6 @@
         }
       }
     },
-    "Log Out" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log Out"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çıkış yap"
-          }
-        }
-      }
-    },
     "Looks good." : {
       "localizations" : {
         "en" : {
@@ -2126,6 +4374,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Güzel görünüyor."
+          }
+        }
+      }
+    },
+    "Lung cancer risk is about half a smoker's" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lung cancer risk is about half a smoker's"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akciğer kanseri riskin, sigara içen birinin yaklaşık yarısına iner"
+          }
+        }
+      }
+    },
+    "Lungs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lungs"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akciğerler"
           }
         }
       }
@@ -2164,6 +4446,23 @@
         }
       }
     },
+    "Made with Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made with Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare ile yapıldı"
+          }
+        }
+      }
+    },
     "Make one from a photo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2177,6 +4476,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotoğraftan üret"
+          }
+        }
+      }
+    },
+    "Manage subscription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage subscription"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aboneliği yönet"
+          }
+        }
+      }
+    },
+    "Measure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Measure"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ölçü"
           }
         }
       }
@@ -2334,6 +4667,23 @@
         }
       }
     },
+    "New countdown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New countdown"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni geri sayım"
+          }
+        }
+      }
+    },
     "New this week" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2352,6 +4702,7 @@
       }
     },
     "Next" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2362,7 +4713,24 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Devam"
+            "value" : "Sıradaki"
+          }
+        }
+      }
+    },
+    "Next · %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next · %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sıradaki · %@"
           }
         }
       }
@@ -2380,6 +4748,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yok"
+          }
+        }
+      }
+    },
+    "No countdowns yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No countdowns yet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz geri sayım yok"
+          }
+        }
+      }
+    },
+    "No focus session" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No focus session"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odak oturumu yok"
           }
         }
       }
@@ -2418,6 +4820,40 @@
         }
       }
     },
+    "No previous purchase found on this Apple Account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No previous purchase found on this Apple Account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Apple Hesabında önceki bir satın alma bulunamadı."
+          }
+        }
+      }
+    },
+    "No session running" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No session running"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çalışan oturum yok"
+          }
+        }
+      }
+    },
     "No written reviews yet. Be the first." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2431,6 +4867,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Henüz yorum yok. İlk sen yaz."
+          }
+        }
+      }
+    },
+    "Not now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not now"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şimdi değil"
           }
         }
       }
@@ -2452,6 +4905,23 @@
         }
       }
     },
+    "Nothing to paste — copy a sticker or image first." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to paste — copy a sticker or image first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapıştırılacak bir şey yok. Önce bir sticker ya da görsel kopyala."
+          }
+        }
+      }
+    },
     "Notifications" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2465,6 +4935,84 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bildirimler"
+          }
+        }
+      }
+    },
+    "Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Now"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu an"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "One instruction, in monospace, on a cold dark gradient. For the hours that matter." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One instruction, in monospace, on a cold dark gradient. For the hours that matter."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soğuk koyu bir zeminde, tek bir talimat. Önemli saatler için."
+          }
+        }
+      }
+    },
+    "One payment, yours forever" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One payment, yours forever"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tek ödeme, sonsuza dek senin"
+          }
+        }
+      }
+    },
+    "One quiet word, changing through the day." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One quiet word, changing through the day."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gün boyunca değişen tek bir sakin kelime."
           }
         }
       }
@@ -2486,6 +5034,23 @@
         }
       }
     },
+    "One year in, your risk of coronary heart disease is about half that of someone who still smokes." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One year in, your risk of coronary heart disease is about half that of someone who still smokes."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir yıl sonra koroner kalp hastalığı riskin, hâlâ içen birinin yaklaşık yarısıdır."
+          }
+        }
+      }
+    },
     "Opacity" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2503,19 +5068,53 @@
         }
       }
     },
-    "Optional — a word or two" : {
+    "Open Kare to design this" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Optional — a word or two"
+            "value" : "Open Kare to design this"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İsteğe bağlı — bir iki kelime"
+            "value" : "Tasarlamak için Kare'yi aç"
+          }
+        }
+      }
+    },
+    "Optional, a short line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional, a short line"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İsteğe bağlı, kısa bir satır"
+          }
+        }
+      }
+    },
+    "Optional, a word or two" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional, a word or two"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İsteğe bağlı, bir iki kelime"
           }
         }
       }
@@ -2537,6 +5136,40 @@
         }
       }
     },
+    "Oxygen levels are recovering" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oxygen levels are recovering"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oksijen seviyen toparlanıyor"
+          }
+        }
+      }
+    },
+    "Packs a day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packs a day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Günde kaç paket"
+          }
+        }
+      }
+    },
     "Padding" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2550,6 +5183,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "İç boşluk"
+          }
+        }
+      }
+    },
+    "Part of Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Part of Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+'ın parçası"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre"
           }
         }
       }
@@ -2571,6 +5238,23 @@
         }
       }
     },
+    "Pause" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duraklat"
+          }
+        }
+      }
+    },
     "Pause focus" : {
       "localizations" : {
         "en" : {
@@ -2587,36 +5271,36 @@
         }
       }
     },
-    "per month" : {
+    "Paused" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "per month"
+            "value" : "Paused"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "aylık"
+            "value" : "Duraklatıldı"
           }
         }
       }
     },
-    "per year" : {
+    "Payment is charged to your Apple Account. The subscription renews automatically unless you turn off auto-renew at least 24 hours before the period ends." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "per year"
+            "value" : "Payment is charged to your Apple Account. The subscription renews automatically unless you turn off auto-renew at least 24 hours before the period ends."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "yıllık"
+            "value" : "Ödeme Apple Hesabından tahsil edilir. Dönem bitmeden en az 24 saat önce otomatik yenilemeyi kapatmazsan abonelik kendiliğinden yenilenir."
           }
         }
       }
@@ -2655,19 +5339,19 @@
         }
       }
     },
-    "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete." : {
+    "Photos you add sit on the canvas. Drag to move, and long-press to duplicate or delete." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete."
+            "value" : "Photos you add sit on the canvas. Drag to move, and long-press to duplicate or delete."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eklediğin fotoğraflar tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
+            "value" : "Eklediğin fotoğraflar tuvalde durur. Taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
           }
         }
       }
@@ -2705,6 +5389,57 @@
         }
       }
     },
+    "Pick a photo\nin Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a photo\nin Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare'de bir\nfotoğraf seç"
+          }
+        }
+      }
+    },
+    "Pick a photo\nin Kare." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a photo\nin Kare."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare'den bir\nfotoğraf seç."
+          }
+        }
+      }
+    },
+    "Pick a size and add it" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a size and add it"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir boyut seç ve ekle"
+          }
+        }
+      }
+    },
     "Pick a vibe or two. We'll tune your Discover feed." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2718,6 +5453,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bir iki tarz seç. Keşfet akışını ona göre ayarlayalım."
+          }
+        }
+      }
+    },
+    "Pick which of your countdowns this widget shows." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick which of your countdowns this widget shows."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu widget'ın hangi geri sayımı göstereceğini seç."
+          }
+        }
+      }
+    },
+    "Pick which of your saved designs this widget shows." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick which of your saved designs this widget shows."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu widget'ın kayıtlı tasarımlarından hangisini göstereceğini seç."
+          }
+        }
+      }
+    },
+    "Place more than one Countdown widget and choose a different countdown for each: touch and hold the widget, then Edit Widget." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Place more than one Countdown widget and choose a different countdown for each: touch and hold the widget, then Edit Widget."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birden fazla Geri Sayım widget'ı koyup her birine farklı bir geri sayım seçebilirsin: widget'a basılı tut, sonra Widget'ı Düzenle."
+          }
+        }
+      }
+    },
+    "Plans couldn't load" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plans couldn't load"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Planlar yüklenemedi"
           }
         }
       }
@@ -2756,6 +5559,40 @@
         }
       }
     },
+    "Press an empty spot until the icons start to jiggle." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press an empty spot until the icons start to jiggle."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boş bir yere, simgeler titremeye başlayana kadar bas."
+          }
+        }
+      }
+    },
+    "Price of a pack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price of a pack"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paket fiyatı"
+          }
+        }
+      }
+    },
     "Privacy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2769,6 +5606,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gizlilik"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gizlilik Politikası"
           }
         }
       }
@@ -2807,6 +5661,23 @@
         }
       }
     },
+    "Progress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlerleme"
+          }
+        }
+      }
+    },
     "Proverbs" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2820,6 +5691,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Atasözleri"
+          }
+        }
+      }
+    },
+    "Purchased" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchased"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alındı"
           }
         }
       }
@@ -2892,18 +5780,36 @@
         }
       }
     },
-    "remaining" : {
+    "Remove" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "remaining"
+            "value" : "Remove"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "kaldı"
+            "value" : "Kaldır"
+          }
+        }
+      }
+    },
+    "Remove from favorites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from favorites"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorilerden çıkar"
           }
         }
       }
@@ -2925,6 +5831,57 @@
         }
       }
     },
+    "Restart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baştan"
+          }
+        }
+      }
+    },
+    "Restore purchases" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchases"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satın alımları geri yükle"
+          }
+        }
+      }
+    },
+    "Resume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resume"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devam et"
+          }
+        }
+      }
+    },
     "Resume focus" : {
       "localizations" : {
         "en" : {
@@ -2937,6 +5894,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odağa devam et"
+          }
+        }
+      }
+    },
+    "Reviews and ratings carry your name, so they need an account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reviews and ratings carry your name, so they need an account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumlar ve puanlar adınla görünür, o yüzden hesap gerekiyor."
+          }
+        }
+      }
+    },
+    "Right now in your body" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right now in your body"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu an vücudunda"
           }
         }
       }
@@ -2971,6 +5962,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yuvarlak"
+          }
+        }
+      }
+    },
+    "Same as phone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Same as phone"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefonla aynı"
           }
         }
       }
@@ -3108,6 +6116,40 @@
         }
       }
     },
+    "Second line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Second line"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İkinci satır"
+          }
+        }
+      }
+    },
+    "See Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+'ı gör"
+          }
+        }
+      }
+    },
     "See all" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3121,6 +6163,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tümünü gör"
+          }
+        }
+      }
+    },
+    "See options" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See options"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seçenekleri gör"
           }
         }
       }
@@ -3176,6 +6235,23 @@
         }
       }
     },
+    "Send" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gönder"
+          }
+        }
+      }
+    },
     "Serif" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3193,6 +6269,40 @@
         }
       }
     },
+    "Set up in Library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set up in Library"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kütüphanede ayarla"
+          }
+        }
+      }
+    },
+    "Set your quit date in Kare" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set your quit date in Kare"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bırakma tarihini Kare'de gir"
+          }
+        }
+      }
+    },
     "Settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3206,6 +6316,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "Share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paylaş"
+          }
+        }
+      }
+    },
+    "Show all widgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show all widgets"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm widget'ları göster"
+          }
+        }
+      }
+    },
+    "Show favorites only" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show favorites only"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sadece favorileri göster"
+          }
+        }
+      }
+    },
+    "Show my life in years" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show my life in years"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayatımı yıllarla göster"
           }
         }
       }
@@ -3278,23 +6456,6 @@
         }
       }
     },
-    "sizes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sizes"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "boyut"
-          }
-        }
-      }
-    },
     "Sizes" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3346,6 +6507,23 @@
         }
       }
     },
+    "Small, medium or large. Drag it where you want and tap Done." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small, medium or large. Drag it where you want and tap Done."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küçük, orta ya da büyük. İstediğin yere sürükle ve Bitti'ye bas."
+          }
+        }
+      }
+    },
     "Smileys" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3380,6 +6558,57 @@
         }
       }
     },
+    "Soft pink into periwinkle, with room for a short hello. The friendliest thing on the screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soft pink into periwinkle, with room for a short hello. The friendliest thing on the screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pembeden menekşe mavisine, kısa bir merhabaya yer bırakarak. Ekrandaki en sıcak şey."
+          }
+        }
+      }
+    },
+    "Someone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Someone"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biri için"
+          }
+        }
+      }
+    },
+    "Something else" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something else"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başka bir şey"
+          }
+        }
+      }
+    },
     "Something went wrong" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3393,6 +6622,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bir şeyler ters gitti"
+          }
+        }
+      }
+    },
+    "Soon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soon"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakında"
           }
         }
       }
@@ -3414,23 +6660,6 @@
         }
       }
     },
-    "Söz" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Söz"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Söz"
-          }
-        }
-      }
-    },
     "Square" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3448,6 +6677,40 @@
         }
       }
     },
+    "Start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başla"
+          }
+        }
+      }
+    },
+    "Start a deep-work session." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start a deep-work session."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir derin çalışma oturumu başlat."
+          }
+        }
+      }
+    },
     "Start focus" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3461,6 +6724,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odağı başlat"
+          }
+        }
+      }
+    },
+    "Start over" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start over"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baştan başla"
+          }
+        }
+      }
+    },
+    "Start over from now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start over from now"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şu andan itibaren baştan başla"
+          }
+        }
+      }
+    },
+    "Start the count again?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start the count again?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sayacı sıfırlayalım mı?"
+          }
+        }
+      }
+    },
+    "Stay focused." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stay focused."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odağını koru."
           }
         }
       }
@@ -3499,6 +6830,23 @@
         }
       }
     },
+    "Stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitir"
+          }
+        }
+      }
+    },
     "Stop focus" : {
       "localizations" : {
         "en" : {
@@ -3511,6 +6859,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odağı bitir"
+          }
+        }
+      }
+    },
+    "Stroke risk falls toward a non-smoker's" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroke risk falls toward a non-smoker's"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İnme riskin hiç içmemiş birininkine yaklaşır"
           }
         }
       }
@@ -3549,6 +6914,40 @@
         }
       }
     },
+    "Summer trip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summer trip"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yaz tatili"
+          }
+        }
+      }
+    },
+    "Sure? Tap again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sure? Tap again"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emin misin? Tekrar dokun"
+          }
+        }
+      }
+    },
     "Symbols" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3566,6 +6965,40 @@
         }
       }
     },
+    "Söz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Söz"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Söz"
+          }
+        }
+      }
+    },
+    "Take a breath" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes al"
+          }
+        }
+      }
+    },
     "Tall" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3579,6 +7012,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uzun"
+          }
+        }
+      }
+    },
+    "Tap + and search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap + and search"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+ simgesine bas ve ara"
           }
         }
       }
@@ -3702,6 +7152,108 @@
         }
       }
     },
+    "Tap the lungs to take a breath" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the lungs to take a breath"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nefes almak için ciğerlere dokun"
+          }
+        }
+      }
+    },
+    "Tap to open its settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to open its settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarları için dokun"
+          }
+        }
+      }
+    },
+    "Taste and smell improve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taste and smell improve"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tat ve koku alman güçlenir"
+          }
+        }
+      }
+    },
+    "Tell us in a few words" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tell us in a few words"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Birkaç kelimeyle anlat"
+          }
+        }
+      }
+    },
+    "Ten years in, your risk of lung cancer is about half a smoker's, and the risk of several other cancers falls too." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten years in, your risk of lung cancer is about half a smoker's, and the risk of several other cancers falls too."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On yıl sonra akciğer kanseri riskin, sigara içen birinin yaklaşık yarısına iner; birçok başka kanser riski de düşer."
+          }
+        }
+      }
+    },
+    "Terms of Use" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanım Koşulları"
+          }
+        }
+      }
+    },
     "Text" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3719,19 +7271,138 @@
         }
       }
     },
-    "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete." : {
+    "Text you add sits on the canvas. Drag to move it, and long-press to duplicate or delete." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete."
+            "value" : "Text you add sits on the canvas. Drag to move it, and long-press to duplicate or delete."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Eklediğin metin tuvalde durur — taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
+            "value" : "Eklediğin metin tuvalde durur. Taşımak için sürükle, çoğaltmak ya da silmek için basılı tut."
+          }
+        }
+      }
+    },
+    "Thank you!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teşekkürler!"
+          }
+        }
+      }
+    },
+    "That didn't look like an image." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That didn't look like an image."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu bir görsele benzemiyor."
+          }
+        }
+      }
+    },
+    "That is %lld cigarettes a day." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is %lld cigarettes a day."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu, günde %lld sigara ediyor."
+          }
+        }
+      }
+    },
+    "That photo couldn't be loaded." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That photo couldn't be loaded."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu fotoğraf yüklenemedi."
+          }
+        }
+      }
+    },
+    "That photo couldn't be loaded. If it's in iCloud, check your connection and try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That photo couldn't be loaded. If it's in iCloud, check your connection and try again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu fotoğraf yüklenemedi. iCloud'daysa bağlantını kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "The air is clearing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The air is clearing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hava açılıyor"
+          }
+        }
+      }
+    },
+    "The first day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The first day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İlk gün"
           }
         }
       }
@@ -3787,6 +7458,193 @@
         }
       }
     },
+    "This month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu ay"
+          }
+        }
+      }
+    },
+    "This purchase is waiting for approval." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This purchase is waiting for approval."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu satın alma onay bekliyor."
+          }
+        }
+      }
+    },
+    "This week" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hafta"
+          }
+        }
+      }
+    },
+    "This year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This year"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu yıl"
+          }
+        }
+      }
+    },
+    "Timeline from the World Health Organization. Kare is not medical advice; your doctor or a quit line can help you plan." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timeline from the World Health Organization. Kare is not medical advice; your doctor or a quit line can help you plan."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaman çizelgesi Dünya Sağlık Örgütü'nden. Kare tıbbi tavsiye değildir; doktorun ya da bir bırakma hattı plan yapmana yardım edebilir."
+          }
+        }
+      }
+    },
+    "Today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün"
+          }
+        }
+      }
+    },
+    "Today in one word and one emoji. Edit it whenever the mood turns." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today in one word and one emoji. Edit it whenever the mood turns."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün, tek kelime ve tek emoji. Havan değiştikçe düzenle."
+          }
+        }
+      }
+    },
+    "Today!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today!"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugün!"
+          }
+        }
+      }
+    },
+    "Touch and hold the home screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch and hold the home screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana ekrana basılı tut"
+          }
+        }
+      }
+    },
+    "Touch and hold the lock screen, tap Customise, then the area under the clock." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch and hold the lock screen, tap Customise, then the area under the clock."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilit ekranına basılı tut, Özelleştir'e bas, sonra saatin altındaki alana dokun."
+          }
+        }
+      }
+    },
+    "Trip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trip"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seyahat"
+          }
+        }
+      }
+    },
     "Try again" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3803,9 +7661,6 @@
           }
         }
       }
-    },
-    "Türkçe" : {
-
     },
     "Turn off" : {
       "extractionState" : "manual",
@@ -3824,6 +7679,126 @@
         }
       }
     },
+    "Türkçe" : {},
+    "Unlock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilidi aç"
+          }
+        }
+      }
+    },
+    "Unlock everything with Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock everything with Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ ile hepsini aç"
+          }
+        }
+      }
+    },
+    "Unlock with Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock with Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+ ile aç"
+          }
+        }
+      }
+    },
+    "Unlocked with a subscription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlocked with a subscription"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abonelikle açılır"
+          }
+        }
+      }
+    },
+    "Unlocking…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlocking…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Açılıyor…"
+          }
+        }
+      }
+    },
+    "Unlocks all %lld paid designs in the catalogue, and everything paid we add later." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlocks all %lld paid designs in the catalogue, and everything paid we add later."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Katalogdaki %lld ücretli tasarımın hepsini ve sonra ekleyeceğimiz her ücretli tasarımı açar."
+          }
+        }
+      }
+    },
+    "Untitled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untitled"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adsız"
+          }
+        }
+      }
+    },
     "Use a photo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3837,22 +7812,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fotoğraf kullan"
-          }
-        }
-      }
-    },
-    "username" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "username"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "kullanıcı adı"
           }
         }
       }
@@ -3908,6 +7867,23 @@
         }
       }
     },
+    "We read every answer." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We read every answer."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her cevabı tek tek okuyoruz."
+          }
+        }
+      }
+    },
     "Weather" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3941,6 +7917,40 @@
         }
       }
     },
+    "Welcome to Kare+" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Kare+"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kare+'ya hoş geldin"
+          }
+        }
+      }
+    },
+    "What are you waiting for?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What are you waiting for?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neyi bekliyorsun?"
+          }
+        }
+      }
+    },
     "What did you think?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3958,6 +7968,40 @@
         }
       }
     },
+    "What is it for?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is it for?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne için?"
+          }
+        }
+      }
+    },
+    "What your body is doing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What your body is doing"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vücudunda neler oluyor"
+          }
+        }
+      }
+    },
     "What's your\nstyle?" : {
       "localizations" : {
         "en" : {
@@ -3970,6 +8014,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tarzın\nnasıl?"
+          }
+        }
+      }
+    },
+    "Why did you remove it?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why did you remove it?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neden kaldırdın?"
           }
         }
       }
@@ -4042,19 +8103,19 @@
         }
       }
     },
-    "Widgets on your home screen follow your phone's language." : {
+    "Widgets on your home screen follow this language too." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Widgets on your home screen follow your phone's language."
+            "value" : "Widgets on your home screen follow this language too."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ana ekranındaki widget'lar telefonunun dilini kullanır."
+            "value" : "Ana ekrandaki widget'lar da bu dili kullanır."
           }
         }
       }
@@ -4177,6 +8238,126 @@
         }
       }
     },
+    "You can browse and build. Reviews and a creator profile need an account." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can browse and build. Reviews and a creator profile need an account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gezebilir ve tasarlayabilirsin. Yorum ve tasarımcı profili için hesap gerekiyor."
+          }
+        }
+      }
+    },
+    "Your blood carries oxygen the way it did before you smoked." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your blood carries oxygen the way it did before you smoked."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kanın, sigara içmeye başlamadan önceki gibi oksijen taşıyor."
+          }
+        }
+      }
+    },
+    "Your bronchial tubes begin to relax and your energy levels start to rise." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your bronchial tubes begin to relax and your energy levels start to rise."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bronşların gevşemeye başlıyor ve enerjin yükseliyor."
+          }
+        }
+      }
+    },
+    "Your custom widget, designed in the app." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your custom widget, designed in the app."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamada tasarladığın kendi widget'ın."
+          }
+        }
+      }
+    },
+    "Your life" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your life"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hayatın"
+          }
+        }
+      }
+    },
+    "Your lungs start clearing out mucus, and food begins to taste and smell like it used to." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your lungs start clearing out mucus, and food begins to taste and smell like it used to."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akciğerlerin mukusu temizlemeye başlıyor, yemekler eskisi gibi tat ve koku vermeye başlıyor."
+          }
+        }
+      }
+    },
+    "Your moment,\nyour frame." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your moment,\nyour frame."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin anın,\nsenin çerçeven."
+          }
+        }
+      }
+    },
+    "Your moment, your frame." : {},
     "Your name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4194,6 +8375,23 @@
         }
       }
     },
+    "Your numbers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your numbers"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senin rakamların"
+          }
+        }
+      }
+    },
     "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4207,6 +8405,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ana ekranında kendi fotoğrafın, istersen bir başlıkla. Bir kez seç, orada kalsın."
+          }
+        }
+      }
+    },
+    "Your own photo, framed on the home screen." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your own photo, framed on the home screen."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kendi fotoğrafın, ana ekranında çerçevelenmiş."
+          }
+        }
+      }
+    },
+    "Your password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your password"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifren"
+          }
+        }
+      }
+    },
+    "Your pulse is already returning to normal." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your pulse is already returning to normal."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nabzın şimdiden normale dönüyor."
           }
         }
       }
@@ -4295,6 +8544,40 @@
         }
       }
     },
+    "Your widgets stay exactly where they are." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your widgets stay exactly where they are."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'ların olduğu yerde kalır."
+          }
+        }
+      }
+    },
+    "Your widgets, your library and your creator name, all under one profile." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your widgets, your library and your creator name, all under one profile."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget'ların, kütüphanen ve tasarımcı adın, hepsi tek bir profilde."
+          }
+        }
+      }
+    },
     "Your words" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4308,6 +8591,597 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kelimelerin"
+          }
+        }
+      }
+    },
+    "Yours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seninkiler"
+          }
+        }
+      }
+    },
+    "arrive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "arrive"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "şimdiye gel"
+          }
+        }
+      }
+    },
+    "be here" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "be here"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "burada ol"
+          }
+        }
+      }
+    },
+    "breathe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "breathe"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nefes al"
+          }
+        }
+      }
+    },
+    "by" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yapan"
+          }
+        }
+      }
+    },
+    "by %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "by %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yapan %@"
+          }
+        }
+      }
+    },
+    "category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "category"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kategori"
+          }
+        }
+      }
+    },
+    "day to go" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "day to go"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gün kaldı"
+          }
+        }
+      }
+    },
+    "days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gün"
+          }
+        }
+      }
+    },
+    "days to go" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days to go"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gün kaldı"
+          }
+        }
+      }
+    },
+    "iOS only lets widgets be placed from its own gallery, so here's the shortcut." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS only lets widgets be placed from its own gallery, so here's the shortcut."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS widget'ların yalnızca kendi galerisinden eklenmesine izin veriyor, kısayolu burada."
+          }
+        }
+      }
+    },
+    "kept since your last cigarette" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kept since your last cigarette"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "son sigarandan beri cebinde"
+          }
+        }
+      }
+    },
+    "listen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "listen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dinle"
+          }
+        }
+      }
+    },
+    "lock screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lock screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kilit ekranı"
+          }
+        }
+      }
+    },
+    "make it yours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "make it yours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kendine göre yap"
+          }
+        }
+      }
+    },
+    "not smoked" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "not smoked"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "içilmedi"
+          }
+        }
+      }
+    },
+    "notice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "notice"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fark et"
+          }
+        }
+      }
+    },
+    "of life won back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of life won back"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kazanılan ömür"
+          }
+        }
+      }
+    },
+    "passed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "passed"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "geçti"
+          }
+        }
+      }
+    },
+    "pause" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pause"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bir dur"
+          }
+        }
+      }
+    },
+    "per month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aylık"
+          }
+        }
+      }
+    },
+    "per week" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "haftalık"
+          }
+        }
+      }
+    },
+    "per year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per year"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yıllık"
+          }
+        }
+      }
+    },
+    "recovered" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "recovered"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iyileşme"
+          }
+        }
+      }
+    },
+    "release" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "release"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bırak"
+          }
+        }
+      }
+    },
+    "remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "remaining"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kaldı"
+          }
+        }
+      }
+    },
+    "saved" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "biriktirdin"
+          }
+        }
+      }
+    },
+    "settle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "settle"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sakinleş"
+          }
+        }
+      }
+    },
+    "sizes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sizes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "boyut"
+          }
+        }
+      }
+    },
+    "slow down" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "slow down"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yavaşla"
+          }
+        }
+      }
+    },
+    "smoke-free" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "smoke-free"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sigarasız"
+          }
+        }
+      }
+    },
+    "soften" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "soften"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "gevşe"
+          }
+        }
+      }
+    },
+    "today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bugün"
+          }
+        }
+      }
+    },
+    "username" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "username"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kullanıcı adı"
+          }
+        }
+      }
+    },
+    "won back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "won back"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kazanılan ömür"
           }
         }
       }
@@ -4329,19 +9203,359 @@
         }
       }
     },
-    "Yours" : {
+    "·" : {},
+    "…or drag one in from another app" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yours"
+            "value" : "…or drag one in from another app"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seninkiler"
+            "value" : "…ya da başka bir uygulamadan sürükleyip bırak"
+          }
+        }
+      }
+    },
+    "✈️ Summer trip" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✈️ Summer trip"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "✈️ Yaz tatili"
+          }
+        }
+      }
+    },
+    "🎉" : {},
+    "🙏" : {},
+    "That email already has an account. Try logging in." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu e-postayla zaten bir hesap var. Giriş yapmayı dene."
+          }
+        }
+      }
+    },
+    "That email doesn't look right." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu e-posta doğru görünmüyor."
+          }
+        }
+      }
+    },
+    "Pick a longer password, at least 6 characters." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daha uzun bir şifre seç, en az 6 karakter."
+          }
+        }
+      }
+    },
+    "Email or password is wrong." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E-posta ya da şifre yanlış."
+          }
+        }
+      }
+    },
+    "No connection. Check your internet and try again." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlantı yok. İnternetini kontrol edip tekrar dene."
+          }
+        }
+      }
+    },
+    "Too many tries. Wait a minute and try again." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok fazla deneme oldu. Biraz bekleyip tekrar dene."
+          }
+        }
+      }
+    },
+    "For your safety, log out, log back in, then try again." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Güvenliğin için çıkış yapıp tekrar giriş yap, sonra yeniden dene."
+          }
+        }
+      }
+    },
+    "This account has been turned off." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hesap devre dışı bırakılmış."
+          }
+        }
+      }
+    },
+    "Accounts aren't available right now. Try again later." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesaplar şu an kullanılamıyor. Daha sonra tekrar dene."
+          }
+        }
+      }
+    },
+    "You're not signed in." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapmamışsın."
+          }
+        }
+      }
+    },
+    "Couldn't sign in with Apple. Try again." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple ile giriş yapılamadı. Tekrar dene."
+          }
+        }
+      }
+    },
+    "Spam or advertising" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spam ya da reklam"
+          }
+        }
+      }
+    },
+    "Offensive language" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldırgan dil"
+          }
+        }
+      }
+    },
+    "Harassment or hate" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taciz ya da nefret söylemi"
+          }
+        }
+      }
+    },
+    "Sign in to write a review." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorum yazmak için giriş yap."
+          }
+        }
+      }
+    },
+    "Your review has words we don't allow. Please reword it." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumunda izin vermediğimiz kelimeler var. Lütfen farklı yaz."
+          }
+        }
+      }
+    },
+    "Couldn't load reviews." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumlar yüklenemedi."
+          }
+        }
+      }
+    },
+    "Report this review" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu yorumu şikayet et"
+          }
+        }
+      }
+    },
+    "We look at every report within 24 hours and remove reviews that break the rules." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Her şikayete 24 saat içinde bakıyor, kurallara uymayan yorumları kaldırıyoruz."
+          }
+        }
+      }
+    },
+    "Thanks for telling us. That review is hidden for you, and we'll take a look." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildirdiğin için teşekkürler. Bu yorum artık sana görünmüyor, inceleyeceğiz."
+          }
+        }
+      }
+    },
+    "You won't see reviews from this person anymore." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artık bu kişinin yorumlarını görmeyeceksin."
+          }
+        }
+      }
+    },
+    "Delete my review" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumumu sil"
+          }
+        }
+      }
+    },
+    "Report review" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorumu şikayet et"
+          }
+        }
+      }
+    },
+    "Block this person" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu kişiyi engelle"
+          }
+        }
+      }
+    },
+    "Review options" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yorum seçenekleri"
+          }
+        }
+      }
+    },
+    "Check your inbox for a link to reset your password." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifreni sıfırlama bağlantısı için gelen kutuna bak."
+          }
+        }
+      }
+    },
+    "Forgot password?" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifremi unuttum"
+          }
+        }
+      }
+    },
+    "Delete your account?" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabın silinsin mi?"
+          }
+        }
+      }
+    },
+    "Delete account" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabı sil"
+          }
+        }
+      }
+    },
+    "Your account and your reviews are deleted for good. Widgets on this phone stay. Kare+ is billed by Apple, so cancel it in Settings if you have it." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabın ve yorumların kalıcı olarak silinir. Bu telefondaki widgetların kalır. Kare+ ödemesini Apple aldığı için, varsa aboneliğini Ayarlar'dan iptal et."
+          }
+        }
+      }
+    },
+    "Enter your password" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifreni gir"
+          }
+        }
+      }
+    },
+    "To keep your account safe, confirm it's you." : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabını korumak için sen olduğunu doğrula."
           }
         }
       }

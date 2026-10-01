@@ -1,46 +1,45 @@
 //
 //  FirebaseWidgetRepository.swift
-//  Widgy
+//  Kare
 //
-//  Placeholder for the production backend.
-//
-//  To activate:
-//    1. Add the Firebase SPM package (FirebaseFirestore) to the Widgy target.
-//    2. Drop `GoogleService-Info.plist` into the project.
-//    3. Uncomment the implementation below and delete the `notImplemented` throws.
-//    4. In `AppEnvironment.live`, swap `MockWidgetRepository()` for
-//       `FirebaseWidgetRepository()`. Nothing else changes.
-//
-//  Expected Firestore shape:
-//    /templates/{templateId}        -> WidgetTemplate (Codable)
-//    /catalogSections/{sectionId}   -> { title, subtitle, style, templateIds: [String] }
+//  What the shipping app runs on. The catalogue ships inside the app (it is
+//  ours, it changes with app updates, and it must work offline), so those
+//  calls go straight to the bundled catalogue. Reviews are written by people
+//  and read by other people, so they go to Firestore.
 //
 
 import Foundation
 
 nonisolated struct FirebaseWidgetRepository: WidgetRepository {
+    private let catalog = MockWidgetRepository(artificialDelay: .zero)
 
     func discoverSections() async throws -> [CatalogSection] {
-        throw RepositoryError.notImplemented("Firebase discover")
+        try await catalog.discoverSections()
     }
 
     func template(id: String) async throws -> WidgetTemplate {
-        throw RepositoryError.notImplemented("Firebase template fetch")
+        try await catalog.template(id: id)
     }
 
     func search(query: String, category: WidgetCategory?) async throws -> [WidgetTemplate] {
-        throw RepositoryError.notImplemented("Firebase search")
+        try await catalog.search(query: query, category: category)
     }
 
     func templates(in category: WidgetCategory) async throws -> [WidgetTemplate] {
-        throw RepositoryError.notImplemented("Firebase category fetch")
+        try await catalog.templates(in: category)
     }
 
     func reviews(for templateID: String) async throws -> [Review] {
-        throw RepositoryError.notImplemented("Firebase reviews")
+        guard await ReviewService.isAvailable else { return try await catalog.reviews(for: templateID) }
+        do {
+            return try await ReviewService.fetch(templateID: templateID)
+        } catch {
+            throw RepositoryError.transport(underlying: error)
+        }
     }
 
     func submitReview(_ review: Review) async throws {
-        throw RepositoryError.notImplemented("Firebase submit review")
+        guard await ReviewService.isAvailable else { return try await catalog.submitReview(review) }
+        try await ReviewService.submit(review)
     }
 }
