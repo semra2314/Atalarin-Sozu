@@ -1,6 +1,6 @@
 //
 //  CategoryView.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -24,10 +24,11 @@ struct CategoryView: View {
             } else {
                 LazyVGrid(columns: columns, spacing: Theme.Spacing.xl) {
                     ForEach(templates) { template in
-                        NavigationLink(value: AppRoute.templateDetail(templateID: template.id)) {
+                        NavigationLink(value: AppRoute.templateDetail(templateID: template.id, source: "cat-\(template.id)")) {
                             WidgetCard(template: template, size: .small, width: 150)
+                                .zoomSource("cat-\(template.id)")
                         }
-                        .buttonStyle(.plain)
+                        .buttonStyle(.karePress)
                     }
                 }
                 .padding(Theme.Spacing.lg)

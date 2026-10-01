@@ -1,6 +1,6 @@
 //
 //  RootView.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -16,7 +16,7 @@ struct RootView: View {
     var body: some View {
         @Bindable var navigator = navigator
         // The bar floats over the content and each scrollable screen reserves
-        // room for it with `.widgyTabBarInset()`.
+        // room for it with `.kareTabBarInset()`.
         //
         // This used to use `.safeAreaInset`, which is the idiomatic tool but
         // never actually inset the scroll content here — the Discover list kept
@@ -26,8 +26,15 @@ struct RootView: View {
         return selectedStack
             .overlay(alignment: .bottom) {
                 if showsTabBar {
-                    WidgyTabBar(selection: $navigator.selectedTab)
+                    KareTabBar(selection: $navigator.selectedTab)
                 }
+            }
+            // "Add to library" from the market lands on the widget itself,
+            // with the library list one step back.
+            .onChange(of: navigator.pendingLibraryRoute) { _, route in
+                guard let route else { return }
+                libraryPath = NavigationPath([route])
+                navigator.pendingLibraryRoute = nil
             }
     }
 
@@ -73,10 +80,29 @@ struct RootView: View {
 extension View {
     /// Attaches the app's route table. Applied once per NavigationStack.
     func withAppRoutes() -> some View {
-        navigationDestination(for: AppRoute.self) { route in
+        modifier(AppRoutes())
+    }
+}
+
+/// Owns the namespace the stack's zoom transitions share, so every card and
+/// every page in one NavigationStack talk about the same thing.
+private struct AppRoutes: ViewModifier {
+    @Namespace private var zoom
+
+    func body(content: Content) -> some View {
+        content
+            .navigationDestination(for: AppRoute.self) { route in
+                destination(route).environment(\.zoomNamespace, zoom)
+            }
+            .environment(\.zoomNamespace, zoom)
+    }
+
+    @ViewBuilder
+    private func destination(_ route: AppRoute) -> some View {
             switch route {
-            case let .templateDetail(templateID):
+            case let .templateDetail(templateID, source):
                 TemplateDetailView(templateID: templateID)
+                    .modifier(ZoomDestination(sourceID: source))
             case let .category(category):
                 CategoryView(category: category)
             case let .author(authorID):
@@ -91,8 +117,13 @@ extension View {
                 FrameSetupView()
             case .daily:
                 DailySetupView()
+            case .exhale:
+                KarePlusGate(templateID: "t-exhale") { ExhaleSetupView() }
+            case .countdown:
+                KarePlusGate(templateID: "t-countdown") { CountdownSetupView() }
+            case .progress:
+                KarePlusGate(templateID: "t-progress") { ProgressSetupView() }
             }
-        }
     }
 }
 

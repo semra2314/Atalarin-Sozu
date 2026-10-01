@@ -1,6 +1,6 @@
 //
 //  AppRoute.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation
@@ -8,7 +8,9 @@ import Foundation
 /// Every push destination in the app. Keeping them in one enum means a
 /// deep link only has to build a value, not know about any view.
 enum AppRoute: Hashable {
-    case templateDetail(templateID: String)
+    /// `source` names the card it was opened from, so the page can zoom out
+    /// of that card. Nil for every other way in.
+    case templateDetail(templateID: String, source: String? = nil)
     case category(WidgetCategory)
     case author(authorID: String)
     case editor(templateID: String)
@@ -20,6 +22,12 @@ enum AppRoute: Hashable {
     case frame
     /// Source picker that feeds the Daily widget.
     case daily
+    /// Quit date and numbers for the Exhale widget. Kare+.
+    case exhale
+    /// The list of countdowns the Countdown widget can show. Kare+.
+    case countdown
+    /// Birthday and preview for the Progress widget. Kare+.
+    case progress
 }
 
 enum AppTab: String, Hashable, CaseIterable {

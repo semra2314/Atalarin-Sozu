@@ -1,6 +1,6 @@
 //
 //  SearchView.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -37,7 +37,7 @@ struct SearchView: View {
             }
             .padding(.vertical, Theme.Spacing.md)
         }
-        .widgyTabBarInset()
+        .kareTabBarInset()
         .background(Theme.Palette.background)
         .navigationTitle("Search")
         .onChange(of: viewModel?.query) { _, _ in
@@ -83,6 +83,7 @@ struct SearchView: View {
                     viewModel?.scheduleSearch()
                 } label: {
                     Image(systemName: "xmark.circle.fill")
+                        .accessibilityLabel(Text("Clear search"))
                         .foregroundStyle(Theme.Palette.subtleText)
                 }
                 .buttonStyle(.plain)
@@ -116,10 +117,11 @@ struct SearchView: View {
     private func grid(_ templates: [WidgetTemplate]) -> some View {
         LazyVGrid(columns: columns, spacing: Theme.Spacing.xl) {
             ForEach(templates) { template in
-                NavigationLink(value: AppRoute.templateDetail(templateID: template.id)) {
+                NavigationLink(value: AppRoute.templateDetail(templateID: template.id, source: "search-\(template.id)")) {
                     WidgetCard(template: template, size: .small, width: 150)
+                        .zoomSource("search-\(template.id)")
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(.karePress)
             }
         }
         .padding(.horizontal, Theme.Spacing.lg)
