@@ -1,6 +1,6 @@
 //
 //  LibraryStore.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation
@@ -31,36 +31,48 @@ final class LibraryStore {
         let widget = InstalledWidget(template: template, size: size, sortIndex: nextIndex)
         context.insert(widget)
         try context.save()
+
+        // Hand the design to the widget extension straight away.
+        //
+        // SwiftData lives in the app; the extension is a separate process and
+        // reads only what SharedWidgetStore has written to the App Group. Until
+        // now the only thing that ever wrote there was the editor's save. That
+        // was survivable when the one editable template started blank, but a
+        // ready-made preset is meant to work without being edited at all: you
+        // add it, you go to the home screen, you pick it. Without this line it
+        // never reached the "Design" picker, so the widget showed some other
+        // design and the preset looked broken through no fault of the user.
+        if let content = template.content {
+            SharedWidgetStore.save(id: template.id,
+                                   content: content,
+                                   family: size,
+                                   name: template.name)
+        }
+
+        syncMirror()
         return widget
     }
 
-    /// Puts the built-in catalogue into the library the first time the app
-    /// runs, so nobody lands on an empty Widgets tab and an empty profile.
-    ///
-    /// This is a product decision, not a demo trick: the six widgets ship
-    /// inside the app, they cost nothing, and a new user has no way of knowing
-    /// what "add a widget" means until they can see one. They can be removed
-    /// like anything else. Only the fixed designs are seeded; the make-your-own
-    /// template stays out, because an empty custom widget has nothing to show.
-    ///
-    /// Idempotent by way of `install`, which returns the existing record rather
-    /// than duplicating, so a second call is harmless.
-    func seedBuiltInsIfNeeded() throws {
-        let existing = (try? context.fetchCount(FetchDescriptor<InstalledWidget>())) ?? 0
-        guard existing == 0 else { return }
-
-        for template in SampleCatalog.templates where !template.isEditable {
-            try install(template, size: template.primarySize)
-        }
+    /// Tells the widget extension which widgets are in the library. A new
+    /// user starts with none, and the widget picker only offers what is here.
+    func syncMirror() {
+        let all = (try? context.fetch(FetchDescriptor<InstalledWidget>())) ?? []
+        LibraryMirror.set(Set(all.map(\.templateID)))
     }
 
-    func remove(templateID: String) throws {
-        guard let existing = try fetch(templateID: templateID) else { return }
+    /// Returns what the "why did you remove it?" survey needs to know.
+    @discardableResult
+    func remove(templateID: String) throws -> RemovalSurveyTarget? {
+        guard let existing = try fetch(templateID: templateID) else { return nil }
+        let days = Calendar.current.dateComponents([.day], from: existing.addedAt, to: .now).day
+        let target = RemovalSurveyTarget(templateID: existing.templateID, name: existing.name, daysInstalled: days)
         context.delete(existing)
         try context.save()
         // Drop the mirrored design too, so a placed widget stops offering a
         // design the user has deleted.
         SharedWidgetStore.remove(id: templateID)
+        syncMirror()
+        return target
     }
 
     func toggleFavorite(_ widget: InstalledWidget) throws {

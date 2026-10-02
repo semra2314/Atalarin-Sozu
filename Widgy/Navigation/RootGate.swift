@@ -1,6 +1,6 @@
 //
 //  RootGate.swift
-//  Widgy
+//  Kare
 //
 //  Shows onboarding on first launch, the app afterwards.
 //
@@ -22,11 +22,10 @@ struct RootGate: View {
                     .transition(.opacity)
             }
         }
-        // Fill the library with the built-in widgets on the first run. Done
-        // here rather than inside onboarding so it also covers anyone who
-        // already finished onboarding on an earlier build.
+        // The library starts empty. Tell the widget extension what is in it,
+        // so the widget picker only offers widgets the user has added.
         .task {
-            try? LibraryStore(context: modelContext).seedBuiltInsIfNeeded()
+            LibraryStore(context: modelContext).syncMirror()
         }
     }
 }
