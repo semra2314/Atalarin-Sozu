@@ -46,9 +46,10 @@ private struct ZoomSource: ViewModifier {
 
     func body(content: Content) -> some View {
         if let id, let namespace {
-            content.matchedTransitionSource(id: id, in: namespace) { source in
-                source.clipShape(.rect(cornerRadius: Theme.Radius.card, style: .continuous))
-            }
+            // No clip shape here: rounding the source's corners also rounds
+            // them at rest, which cut the first letter off the author line
+            // in the card's bottom-left corner.
+            content.matchedTransitionSource(id: id, in: namespace)
         } else {
             content
         }
