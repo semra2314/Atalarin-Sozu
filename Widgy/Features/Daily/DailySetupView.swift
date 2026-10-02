@@ -1,6 +1,6 @@
 //
 //  DailySetupView.swift
-//  Widgy
+//  Kare
 //
 //  Where the Daily widget gets its source. Choosing here writes into the App
 //  Group and reloads the widget, so the home screen follows immediately.
@@ -23,6 +23,7 @@ struct DailySetupView: View {
                 sourceList
                 note
             }
+            .kareReadableWidth()
             .padding(.horizontal, Theme.Spacing.lg)
             .padding(.vertical, Theme.Spacing.xl)
         }
@@ -72,7 +73,7 @@ struct DailySetupView: View {
 
     private var sourceList: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text("Source").widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+            Text("Source").kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
 
             VStack(spacing: 0) {
                 ForEach(Array(DailySource.allCases.enumerated()), id: \.element.id) { index, source in
@@ -89,7 +90,7 @@ struct DailySetupView: View {
                     }
                 }
             }
-            .widgyCard()
+            .kareCard()
         }
     }
 
@@ -106,7 +107,7 @@ struct DailySetupView: View {
                 Text(LocalizedStringKey(source.displayName))
                     .font(Theme.Typography.cardTitle)
                     .foregroundStyle(Theme.Palette.ink)
-                Text(source.subtitle)
+                Text(LocalizedStringKey(source.subtitle))
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Palette.subtleText)
                     .lineLimit(1)

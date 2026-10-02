@@ -1,6 +1,6 @@
 //
 //  WidgetEditorView.swift
-//  Widgy
+//  Kare
 //
 //  The "make your own" widget editor. Two fixed zones: a canvas that stays put,
 //  and a tabbed control panel — Text, Style, Background, Photos, Stickers.
@@ -206,11 +206,43 @@ struct WidgetEditorView: View {
         }
         .ignoresSafeArea(edges: .bottom)
         .toolbar {
+            // Sharing sits next to Save because this is the moment someone is
+            // proudest of what they made. Asking them to find it later, from
+            // another screen, is asking at the wrong time.
+            ToolbarItem(placement: .topBarTrailing) {
+                shareButton(widget: widget, content: content.wrappedValue)
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") { save(widget: widget, content: content.wrappedValue) }
                     .fontWeight(.semibold)
                     .tint(Theme.Palette.accent)
             }
+        }
+    }
+
+    /// Renders the current design and hands it to the system share sheet.
+    ///
+    /// Rendered on the spot rather than kept in state, because the design
+    /// changes on almost every tap and a cached image would quietly share an
+    /// older version of the widget. It costs one `ImageRenderer` pass on a
+    /// deliberate tap, which is nothing.
+    ///
+    /// `ShareLink` is given an `Image`; SwiftUI's `Transferable` conformance
+    /// then offers it to Photos, Messages, Instagram and the rest without us
+    /// writing a file or naming a UTType.
+    @ViewBuilder
+    private func shareButton(widget: InstalledWidget, content: WidgetContent) -> some View {
+        if let rendered = ShareImage.render(content: content,
+                                            size: widget.size,
+                                            name: widget.name) {
+            let image = Image(uiImage: rendered)
+            ShareLink(
+                item: image,
+                preview: SharePreview(widget.name, image: image)
+            ) {
+                Image(systemName: "square.and.arrow.up")
+            }
+            .tint(Theme.Palette.ink)
         }
     }
 
@@ -240,7 +272,7 @@ struct WidgetEditorView: View {
     private func canvasZone(_ content: Binding<WidgetContent>) -> some View {
         ZStack {
             LinearGradient(
-                colors: [Color(hex: "EFE9E7"), Color(hex: "E2DAD8")],
+                colors: [Theme.Palette.stageTop, Theme.Palette.stageBottom],
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea(edges: .top)
@@ -460,7 +492,7 @@ struct WidgetEditorView: View {
             .buttonStyle(.plain)
 
             if content.wrappedValue.texts.isEmpty {
-                Text("Text you add sits on the canvas — drag to move it, and long-press to duplicate or delete.")
+                Text("Text you add sits on the canvas. Drag to move it, and long-press to duplicate or delete.")
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Palette.subtleText)
             } else {
@@ -645,7 +677,7 @@ struct WidgetEditorView: View {
 
                 ForEach(backgroundGroups, id: \.name) { group in
                     VStack(alignment: .leading, spacing: Theme.Spacing.xs) {
-                        Text(group.name)
+                        Text(LocalizedStringKey(group.name))
                             .font(.caption2)
                             .foregroundStyle(Theme.Palette.subtleText)
                         ScrollView(.horizontal) {
@@ -676,7 +708,7 @@ struct WidgetEditorView: View {
                 }
 
                 if !content.background.wrappedValue.isPhoto {
-                    Text("Direction").widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+                    Text("Direction").kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
                     pillSegmented(WidgetContent.GradientDirection.allCases,
                                   selection: content.gradientDirection) { direction, isSelected in
                         Image(systemName: direction.symbolName)
@@ -730,7 +762,7 @@ struct WidgetEditorView: View {
             .scrollIndicators(.hidden)
 
             if content.wrappedValue.photos.isEmpty {
-                Text("Photos you add sit on the canvas — drag to move, and long-press to duplicate or delete.")
+                Text("Photos you add sit on the canvas. Drag to move, and long-press to duplicate or delete.")
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Palette.subtleText)
             } else {
@@ -810,7 +842,7 @@ struct WidgetEditorView: View {
     ) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             Text(title)
-                .widgyCapsLabel()
+                .kareCapsLabel()
                 .foregroundStyle(Theme.Palette.subtleText)
 
             LazyVGrid(
@@ -896,12 +928,15 @@ struct WidgetEditorView: View {
                 }
 
             if let stickerError {
-                Text(stickerError)
+                // Through the string catalogue, not verbatim: a plain
+                // `Text(String)` skips localization and showed Turkish users
+                // English errors.
+                Text(LocalizedStringKey(stickerError))
                     .font(Theme.Typography.caption)
                     .foregroundStyle(Theme.Palette.accent)
             }
 
-            Text("Kare can't read your Messages sticker pack — iOS doesn't allow it. These three routes do the same job.")
+            Text("Kare can't read your Messages sticker pack. iOS doesn't allow it, so these three routes do the same job.")
                 .font(Theme.Typography.caption)
                 .foregroundStyle(Theme.Palette.subtleText)
         }
@@ -913,7 +948,7 @@ struct WidgetEditorView: View {
     private func typeYourOwn(_ content: Binding<WidgetContent>) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             Text("Any emoji")
-                .widgyCapsLabel()
+                .kareCapsLabel()
                 .foregroundStyle(Theme.Palette.subtleText)
 
             HStack(spacing: Theme.Spacing.md) {
@@ -1035,7 +1070,7 @@ struct WidgetEditorView: View {
             )
             VStack(alignment: .leading, spacing: Theme.Spacing.md) {
                 Text("Selected sticker")
-                    .widgyCapsLabel()
+                    .kareCapsLabel()
                     .foregroundStyle(Theme.Palette.subtleText)
 
                 // Only monochrome symbols can be tinted. Emoji are Apple's own
@@ -1076,7 +1111,7 @@ struct WidgetEditorView: View {
 
     private func group<Content: View>(_ title: String, @ViewBuilder _ body: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text(title).widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+            Text(LocalizedStringKey(title)).kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
             body()
         }
     }
@@ -1314,7 +1349,7 @@ struct WidgetEditorView: View {
 /// Point sizes and corners tuned to read like real iOS home-screen widgets.
 private enum WidgetMetrics {
     /// The width the design scales against, so a sticker keeps its size across families.
-    static let referenceWidth: CGFloat = 329
+    static let referenceWidth: CGFloat = CustomWidgetView.authoringWidth
 
     static func canvasSize(for family: WidgetSize) -> CGSize {
         switch family {
@@ -1411,7 +1446,7 @@ private struct HomeScreenCanvas: View {
         ZStack {
             RoundedRectangle(cornerRadius: 28, style: .continuous)
                 .fill(LinearGradient(
-                    colors: [Color(hex: "EFE9E7"), Color(hex: "E2DAD8")],
+                    colors: [Theme.Palette.stageTop, Theme.Palette.stageBottom],
                     startPoint: .top, endPoint: .bottom
                 ))
                 .frame(height: 420)
@@ -1433,9 +1468,9 @@ private struct HomeScreenCanvas: View {
                     // Hug the photo's real rendered bounds. The frame used to be
                     // square whatever the image's shape, so a wide or tall photo
                     // showed an outline that didn't match what was on screen.
-                    let width = canvas.width * photo.scale
+                    let width = min(canvas.width, canvas.height) * photo.scale
                     let height = width * aspectRatio(of: photo)
-                    RoundedRectangle(cornerRadius: photo.cornerRadius * (canvas.width / WidgetMetrics.referenceWidth))
+                    RoundedRectangle(cornerRadius: photo.cornerRadius * CustomWidgetView.scale(in: canvas, referenceWidth: WidgetMetrics.referenceWidth))
                         .stroke(Theme.Palette.accent,
                                 lineWidth: selectedPhotoID == photo.id ? 2 : 0)
                         .frame(width: width, height: height)
@@ -1469,7 +1504,7 @@ private struct HomeScreenCanvas: View {
                 }
 
                 ForEach($content.stickers) { $sticker in
-                    let handle = canvas.width * 0.14 * sticker.scale + 18
+                    let handle = min(canvas.width, canvas.height) * 0.14 * sticker.scale + 18
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Theme.Palette.accent, lineWidth: selectedStickerID == sticker.id ? 2 : 0)
                         .frame(width: handle, height: handle)
@@ -1508,7 +1543,7 @@ private struct HomeScreenCanvas: View {
                 // and the thing you most often want to grab.
                 ForEach($content.texts) { $element in
                     let width = canvas.width * element.widthFraction
-                    let height = max(28, element.fontSize * (canvas.width / WidgetMetrics.referenceWidth) * 1.6)
+                    let height = max(28, element.fontSize * CustomWidgetView.scale(in: canvas, referenceWidth: WidgetMetrics.referenceWidth) * 1.6)
                     RoundedRectangle(cornerRadius: 6)
                         .stroke(Theme.Palette.accent, lineWidth: selectedTextID == element.id ? 2 : 0)
                         .frame(width: width, height: height)
@@ -1561,7 +1596,7 @@ private struct HomeScreenCanvas: View {
         if let id = selectedPhotoID,
            let index = content.photos.firstIndex(where: { $0.id == id }) {
             let photo = content.photos[index]
-            let width = canvas.width * photo.scale
+            let width = min(canvas.width, canvas.height) * photo.scale
             let height = width * aspectRatio(of: photo)
 
             ZStack {
@@ -1575,6 +1610,7 @@ private struct HomeScreenCanvas: View {
                     onCropPhoto(id)
                 } label: {
                     Image(systemName: "crop")
+                        .accessibilityLabel(Text("Crop photo"))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(.white)
                         .frame(width: 30, height: 30)
@@ -1591,7 +1627,7 @@ private struct HomeScreenCanvas: View {
                   let index = content.texts.firstIndex(where: { $0.id == id }) {
             let element = content.texts[index]
             let width = canvas.width * element.widthFraction
-            let height = max(28, element.fontSize * (canvas.width / WidgetMetrics.referenceWidth) * 1.6)
+            let height = max(28, element.fontSize * CustomWidgetView.scale(in: canvas, referenceWidth: WidgetMetrics.referenceWidth) * 1.6)
 
             // Dragging a text corner changes its type size, which is what
             // "make it bigger" means for words.
@@ -1603,7 +1639,7 @@ private struct HomeScreenCanvas: View {
         } else if let id = selectedStickerID,
                   let index = content.stickers.firstIndex(where: { $0.id == id }) {
             let sticker = content.stickers[index]
-            let side = canvas.width * 0.14 * sticker.scale + 18
+            let side = min(canvas.width, canvas.height) * 0.14 * sticker.scale + 18
 
             handles(width: side, height: side, currentScale: sticker.scale) { newScale in
                 content.stickers[index].scale = min(2.5, max(0.5, newScale))

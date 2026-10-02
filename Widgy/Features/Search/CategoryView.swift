@@ -34,6 +34,7 @@ struct CategoryView: View {
                 .padding(Theme.Spacing.lg)
             }
         }
+        .kareReadableScrollMargins(Theme.Layout.wideWidth)
         .background(Theme.Palette.background)
         .navigationTitle(LocalizedStringKey(category.displayName))
         .navigationBarTitleDisplayMode(.inline)

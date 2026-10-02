@@ -25,6 +25,7 @@ struct DiscoverView: View {
             }
         }
         .navigationTitle("Discover")
+        .toolbar(.hidden, for: .navigationBar)
         .background(Theme.Palette.background)
         .task {
             if viewModel == nil {
@@ -38,6 +39,9 @@ struct DiscoverView: View {
     private func content(_ sections: [CatalogSection]) -> some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Theme.Spacing.xxl) {
+                Text("Discover").kareScreenTitle()
+                    .padding(.bottom, -Theme.Spacing.md)
+
                 if !seenTip {
                     tipBanner.padding(.horizontal, Theme.Spacing.lg)
                 }
@@ -62,6 +66,7 @@ struct DiscoverView: View {
             // `.kareTabBarInset()` below.
             .padding(.bottom, Theme.Spacing.lg)
         }
+        .kareReadableScrollMargins(Theme.Layout.wideWidth)
         .kareTabBarInset()
     }
 

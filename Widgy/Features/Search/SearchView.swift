@@ -17,6 +17,7 @@ struct SearchView: View {
     var body: some View {
         ScrollView {
             LazyVStack(alignment: .leading, spacing: Theme.Spacing.lg) {
+                Text("Search").kareScreenTitle()
                 searchField
                 filterRow
 
@@ -37,9 +38,11 @@ struct SearchView: View {
             }
             .padding(.vertical, Theme.Spacing.md)
         }
+        .kareReadableScrollMargins(Theme.Layout.wideWidth)
         .kareTabBarInset()
         .background(Theme.Palette.background)
         .navigationTitle("Search")
+        .toolbar(.hidden, for: .navigationBar)
         .onChange(of: viewModel?.query) { _, _ in
             viewModel?.scheduleSearch()
         }

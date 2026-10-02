@@ -51,23 +51,27 @@ struct OnboardingView: View {
         ZStack {
             Theme.Palette.background.ignoresSafeArea()
 
-            switch step {
-            case .language:
-                LanguageStep { step = .slides }
-            case .slides:
-                SlidesStep(onContinue: { step = .taste }, onSkip: { step = .signIn })
-            case .taste:
-                TasteStep(selected: $selected, onContinue: { step = .signIn })
-            case .signIn:
-                SignInStep(message: authMessage,
-                           onApple: handleApple,
-                           onEmailComplete: { name in advanceToUsername(name: name, signedIn: true) },
-                           onSkip: { advanceToUsername(name: "", signedIn: false) })
-            case .username:
-                UsernameStep(suggested: suggestedUsername,
-                             username: $username,
-                             onDone: complete)
+            Group {
+                switch step {
+                case .language:
+                    LanguageStep { step = .slides }
+                case .slides:
+                    SlidesStep(onContinue: { step = .taste }, onSkip: { step = .signIn })
+                case .taste:
+                    TasteStep(selected: $selected, onContinue: { step = .signIn })
+                case .signIn:
+                    SignInStep(message: authMessage,
+                               onApple: handleApple,
+                               onEmailComplete: { name in advanceToUsername(name: name, signedIn: true) },
+                               onSkip: { advanceToUsername(name: "", signedIn: false) })
+                case .username:
+                    UsernameStep(suggested: suggestedUsername,
+                                 username: $username,
+                                 onDone: complete)
+                }
             }
+            // Onboarding is a single form; on iPad it reads best narrow.
+            .kareReadableWidth(540)
 
             if isSigningIn {
                 Color.black.opacity(0.15).ignoresSafeArea()
@@ -319,7 +323,7 @@ private struct SlidesStep: View {
         }
     }
 
-    private func slide(visual: some View, title: String, subtitle: String) -> some View {
+    private func slide(visual: some View, title: LocalizedStringKey, subtitle: LocalizedStringKey) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.xxl) {
             Spacer()
             ZStack {
