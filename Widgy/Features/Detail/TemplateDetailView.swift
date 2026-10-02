@@ -80,7 +80,9 @@ struct TemplateDetailView: View {
             AddToHomeGuide(galleryName: template?.galleryName ?? template?.name ?? "Kare")
                 .presentationDetents([.large])
         }
-        .sheet(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
+        // Full screen, not a sheet: on iPad and Mac a sheet is a small
+        // card that showed one plan and hid the other two below the fold.
+        .fullScreenCover(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
         .sheet(isPresented: $showUnlock) {
             if let template {
                 WidgetUnlockSheet(template: template) {

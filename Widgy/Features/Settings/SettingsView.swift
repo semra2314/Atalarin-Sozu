@@ -90,7 +90,9 @@ struct SettingsView: View {
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showEditProfile) { EditProfileView().kareMacScaled() }
-        .sheet(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
+        // Full screen, not a sheet: on iPad and Mac a sheet is a small
+        // card that showed one plan and hid the other two below the fold.
+        .fullScreenCover(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
         .sheet(isPresented: $showAddGuide) {
             AddToHomeGuide(isCelebration: false)
         }
