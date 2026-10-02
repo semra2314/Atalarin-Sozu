@@ -60,14 +60,14 @@ struct WidgetCard: View {
                     HStack(spacing: Theme.Spacing.xs) {
                         Text(template.author.displayName)
                         Text("·")
-                        Text(LocalizedStringKey(shownPrice.displayText))
-                            .fontWeight(shownPrice.isFree ? .regular : .semibold)
+                        subscriptions.priceText(for: template)
+                            .fontWeight(subscriptions.priceIsEmphasised(for: template) ? .semibold : .regular)
                     }
                     .lineLimit(1)
                     VStack(alignment: .leading, spacing: 0) {
                         Text(template.author.displayName).lineLimit(1)
-                        Text(LocalizedStringKey(shownPrice.displayText))
-                            .fontWeight(shownPrice.isFree ? .regular : .semibold)
+                        subscriptions.priceText(for: template)
+                            .fontWeight(subscriptions.priceIsEmphasised(for: template) ? .semibold : .regular)
                     }
                 }
                 .font(Theme.Typography.caption)

@@ -1,9 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
+    "" : {},
     "…or drag one in from another app" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -21,15 +19,9 @@
         }
       }
     },
-    "·" : {
-
-    },
-    "@" : {
-
-    },
-    "#%@" : {
-
-    },
+    "·" : {},
+    "@" : {},
+    "#%@" : {},
     "%.1f out of 5 stars" : {
       "localizations" : {
         "en" : {
@@ -46,9 +38,7 @@
         }
       }
     },
-    "%@" : {
-
-    },
+    "%@" : {},
     "%@ · %@" : {
       "localizations" : {
         "en" : {
@@ -153,9 +143,7 @@
         }
       }
     },
-    "%lld" : {
-
-    },
+    "%lld" : {},
     "%lld days" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -461,15 +449,9 @@
         }
       }
     },
-    "🎉" : {
-
-    },
-    "🙏" : {
-
-    },
-    "0" : {
-
-    },
+    "🎉" : {},
+    "🙏" : {},
+    "0" : {},
     "3-20 letters, numbers or underscores." : {
       "localizations" : {
         "en" : {
@@ -486,9 +468,7 @@
         }
       }
     },
-    "23" : {
-
-    },
+    "23" : {},
     "A clock that follows the light of day." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1296,9 +1276,7 @@
         }
       }
     },
-    "ATA" : {
-
-    },
+    "ATA" : {},
     "Aurora" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2761,15 +2739,9 @@
         }
       }
     },
-    "Devam et" : {
-
-    },
-    "DEY" : {
-
-    },
-    "Dilini seç" : {
-
-    },
+    "Devam et" : {},
+    "DEY" : {},
+    "Dilini seç" : {},
     "Direction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3068,9 +3040,7 @@
         }
       }
     },
-    "English" : {
-
-    },
+    "English" : {},
     "Enter Kare" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8713,9 +8683,7 @@
         }
       }
     },
-    "Türkçe" : {
-
-    },
+    "Türkçe" : {},
     "Turn off" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9483,9 +9451,7 @@
         }
       }
     },
-    "Your moment, your frame." : {
-
-    },
+    "Your moment, your frame." : {},
     "Your name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9763,6 +9729,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seninkiler"
+          }
+        }
+      }
+    },
+    "Unlocked" : {
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kilidi açık"
           }
         }
       }

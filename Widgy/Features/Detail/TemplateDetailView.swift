@@ -469,15 +469,7 @@ struct TemplateDetailView: View {
     /// App Review rejection (guideline 2.2).
     @ViewBuilder
     private func priceLabel(for template: WidgetTemplate) -> some View {
-        if template.price.isFree {
-            Text(LocalizedStringKey(template.price.displayText))
-        } else if subscriptions.isSubscribed {
-            Text("Included in Kare+")
-        } else if subscriptions.ownsSingly(templateID: template.id) {
-            Text("Purchased")
-        } else {
-            Text("Free")
-        }
+        subscriptions.priceText(for: template)
     }
 
     /// One button in the bottom bar.
