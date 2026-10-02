@@ -1,6 +1,6 @@
 //
 //  ProfileView.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -12,6 +12,8 @@ struct ProfileView: View {
     @AppStorage(OnboardingKeys.displayName) private var displayName = ""
     @AppStorage(OnboardingKeys.username) private var username = ""
     @State private var showEditProfile = false
+    @State private var showSignInRequired = false
+    @AppStorage(OnboardingKeys.hasAccount) private var hasAccount = false
 
     @Query(sort: \InstalledWidget.addedAt, order: .reverse)
     private var widgets: [InstalledWidget]
@@ -26,16 +28,22 @@ struct ProfileView: View {
             VStack(spacing: Theme.Spacing.xl) {
                 header
                 identity
+                if !hasAccount { claimProfileCard }
                 stats
                 myWidgets
                 favourites
             }
             .padding(.bottom, Theme.Spacing.lg)
+            .kareReadableWidth()
         }
-        .widgyTabBarInset()
+        .kareTabBarInset()
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
-        .sheet(isPresented: $showEditProfile) { EditProfileView() }
+        .sheet(isPresented: $showEditProfile) { EditProfileView().kareMacScaled() }
+        .sheet(isPresented: $showSignInRequired) {
+            SignInRequiredSheet(action: .creatorProfile)
+                .presentationDetents([.medium])
+        }
     }
 
     // MARK: Header
@@ -50,6 +58,7 @@ struct ProfileView: View {
                 showEditProfile = true
             } label: {
                 Image(systemName: "square.and.pencil")
+                    .accessibilityLabel(Text("Edit profile"))
                     .font(.body)
                     .foregroundStyle(Theme.Palette.ink)
             }
@@ -77,6 +86,46 @@ struct ProfileView: View {
                         .foregroundStyle(Theme.Palette.subtleText)
                 }
             }
+        }
+        .buttonStyle(.plain)
+    }
+
+    /// Shown to guests only.
+    ///
+    /// The widgets below are already theirs and stay theirs, so this does not
+    /// block the page or hide anything. It offers the part a guest genuinely
+    /// does not have: a handle other people can find, and the ability to
+    /// publish. Framed as something to gain rather than a wall, because the
+    /// widgets on this screen are the argument.
+    private var claimProfileCard: some View {
+        Button { showSignInRequired = true } label: {
+            HStack(spacing: Theme.Spacing.md) {
+                Image(systemName: "person.crop.circle.badge.plus")
+                    .font(.title3)
+                    .foregroundStyle(Theme.Palette.accent)
+                    .frame(width: 40, height: 40)
+                    .background(Theme.Palette.accentTint, in: .circle)
+
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Claim your handle")
+                        .font(Theme.Typography.cardTitle)
+                        .foregroundStyle(Theme.Palette.ink)
+                    Text("Create an account to publish widgets and write reviews.")
+                        .font(Theme.Typography.caption)
+                        .foregroundStyle(Theme.Palette.subtleText)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                Spacer(minLength: 0)
+
+                Image(systemName: "chevron.right")
+                    .font(.footnote)
+                    .foregroundStyle(Theme.Palette.subtleText)
+            }
+            .padding(Theme.Spacing.lg)
+            .kareCard()
+            .padding(.horizontal, Theme.Spacing.lg)
+            .contentShape(.rect)
         }
         .buttonStyle(.plain)
     }
@@ -153,6 +202,7 @@ struct ProfileView: View {
                     try? LibraryStore(context: modelContext).toggleFavorite(widget)
                 } label: {
                     Image(systemName: widget.isFavorite ? "heart.fill" : "heart")
+                        .accessibilityLabel(widget.isFavorite ? Text("Remove from favorites") : Text("Add to favorites"))
                         .foregroundStyle(widget.isFavorite ? Theme.Palette.accent : Theme.Palette.subtleText)
                 }
                 .buttonStyle(.plain)
@@ -160,7 +210,7 @@ struct ProfileView: View {
 
             Spacer(minLength: Theme.Spacing.lg)
 
-            Text(widget.name)
+            Text(LocalizedStringKey(widget.name))
                 .font(Theme.Typography.title)
                 .foregroundStyle(Theme.Palette.ink)
                 .lineLimit(1)
@@ -172,7 +222,7 @@ struct ProfileView: View {
         .padding(Theme.Spacing.lg)
         .frame(height: 132, alignment: .topLeading)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .widgyCard()
+        .kareCard()
     }
 
     /// Real artwork for fixed-design widgets (Aurora, Focus, ...); a category
@@ -227,7 +277,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                .widgyCard()
+                .kareCard()
                 .padding(.horizontal, Theme.Spacing.lg)
             }
         }
@@ -239,7 +289,7 @@ struct ProfileView: View {
                 .frame(width: 44, height: 44)
 
             VStack(alignment: .leading, spacing: 2) {
-                Text(widget.name)
+                Text(LocalizedStringKey(widget.name))
                     .font(Theme.Typography.cardTitle)
                     .foregroundStyle(Theme.Palette.ink)
                 Text(widget.category.displayName)

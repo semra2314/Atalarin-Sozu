@@ -60,7 +60,7 @@ struct TemplateDetailView: View {
     var body: some View {
         ScrollView {
             if let template {
-                detail(template)
+                detail(template).kareReadableWidth()
             } else if let errorMessage {
                 ErrorStateView(message: errorMessage) { Task { await load() } }
             } else {
@@ -72,7 +72,7 @@ struct TemplateDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom) {
             if let template {
-                installBar(template)
+                installBar(template).kareReadableWidth()
             }
         }
         .task { await load() }
@@ -80,7 +80,7 @@ struct TemplateDetailView: View {
             AddToHomeGuide(galleryName: template?.galleryName ?? template?.name ?? "Kare")
                 .presentationDetents([.large])
         }
-        .sheet(isPresented: $showKarePlus) { KarePlusView() }
+        .sheet(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
         .sheet(isPresented: $showUnlock) {
             if let template {
                 WidgetUnlockSheet(template: template) {
@@ -90,6 +90,7 @@ struct TemplateDetailView: View {
                         showKarePlus = true
                     }
                 }
+                .kareMacScaled()
             }
         }
         .sheet(isPresented: $showSignInRequired) {
@@ -255,7 +256,7 @@ struct TemplateDetailView: View {
         }
         .sheet(item: $profileTarget, onDismiss: { Task { await loadReviews() } }) { review in
             if let uid = review.authorID {
-                PublicProfileView(uid: uid, fallbackName: review.authorName)
+                PublicProfileView(uid: uid, fallbackName: review.authorName).kareMacScaled()
             }
         }
         .alert(reviewAlert ?? "", isPresented: Binding(

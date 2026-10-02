@@ -59,6 +59,8 @@ struct KareApp: App {
     var body: some Scene {
         WindowGroup {
             RootGate()
+                // Everything bigger on a Mac; no effect on iPhone or iPad.
+                .kareMacScaled()
                 .environment(\.appEnvironment, appEnvironment)
                 .environment(navigator)
                 .environment(\.subscriptions, subscriptions)

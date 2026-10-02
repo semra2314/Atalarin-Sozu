@@ -89,8 +89,8 @@ struct SettingsView: View {
         .kareTabBarInset()
         .background(Theme.Palette.background)
         .toolbar(.hidden, for: .navigationBar)
-        .sheet(isPresented: $showEditProfile) { EditProfileView() }
-        .sheet(isPresented: $showKarePlus) { KarePlusView() }
+        .sheet(isPresented: $showEditProfile) { EditProfileView().kareMacScaled() }
+        .sheet(isPresented: $showKarePlus) { KarePlusView().kareMacScaled() }
         .sheet(isPresented: $showAddGuide) {
             AddToHomeGuide(isCelebration: false)
         }

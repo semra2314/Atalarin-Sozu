@@ -89,7 +89,7 @@ extension Theme {
         static let readableWidth: CGFloat = 680
         /// For the catalogue screens, which are grids and shelves rather than
         /// text. Stops them stretching edge to edge in a wide Mac window.
-        static let wideWidth: CGFloat = 1280
+        static let wideWidth: CGFloat = 1040
     }
 }
 
