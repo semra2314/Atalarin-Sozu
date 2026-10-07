@@ -1,6 +1,6 @@
 //
 //  DailyPassage.swift
-//  Widgy  (shared: app + widget extension)
+//  Kare  (shared: app + widget extension)
 //
 //  Content and preferences for the Daily widget. The app writes the chosen
 //  source into the App Group; the widget reads it and picks the day's passage.

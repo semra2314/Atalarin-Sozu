@@ -1,6 +1,6 @@
 //
 //  CloudKitCatalogSeeder.swift
-//  Widgy
+//  Kare
 //
 //  One-off developer utility: pushes `SampleCatalog` into the CloudKit PUBLIC
 //  database so there is something to browse while the real creator-upload flow

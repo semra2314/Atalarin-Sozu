@@ -1,6 +1,6 @@
 //
 //  FocusIntents.swift
-//  Widgy  (shared: app + widget extension)
+//  Kare  (shared: app + widget extension)
 //
 //  App Intents that let the home-screen Focus widget start/stop a session with a
 //  tap (interactive widgets, iOS 17+). Add target membership to BOTH targets.

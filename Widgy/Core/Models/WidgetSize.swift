@@ -1,6 +1,6 @@
 //
 //  WidgetSize.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

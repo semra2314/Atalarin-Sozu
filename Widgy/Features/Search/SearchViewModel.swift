@@ -1,6 +1,6 @@
 //
 //  SearchViewModel.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

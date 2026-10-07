@@ -1,6 +1,6 @@
 //
 //  WidgetTheme.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI

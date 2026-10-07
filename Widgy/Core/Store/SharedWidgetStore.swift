@@ -1,6 +1,6 @@
 //
 //  SharedWidgetStore.swift
-//  Widgy  (shared with the WidgetKit extension)
+//  Kare  (shared with the WidgetKit extension)
 //
 //  Bridges the editor and the home-screen widget. The app writes each saved
 //  design into the App Group container; the widget extension reads them back.
@@ -9,7 +9,7 @@
 //  `current-widget.json`, which meant every custom widget placed on the home
 //  screen showed whichever design was saved last — place two, get the same one
 //  twice. Each design now gets its own file, and a placed widget remembers
-//  which id it's showing (see `WidgySelection` / the widget's AppIntent config).
+//  which id it's showing (see `KareSelection` / the widget's AppIntent config).
 //
 //  IMPORTANT: add this file's target membership to BOTH the app and the widget
 //  extension, and set `appGroupID` to the App Group you create in Signing &

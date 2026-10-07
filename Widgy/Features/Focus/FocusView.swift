@@ -1,6 +1,6 @@
 //
 //  FocusView.swift
-//  Widgy
+//  Kare
 //
 //  In-app focus session control: pick a duration + ambient sound, start, and
 //  watch a live ring count down. State is shared to the App Group so the
@@ -31,6 +31,7 @@ struct FocusView: View {
                     setup
                 }
             }
+            .kareReadableWidth()
             .padding(Theme.Spacing.lg)
             .padding(.top, Theme.Spacing.md)
         }
@@ -82,7 +83,7 @@ struct FocusView: View {
                 stop()
             } label: {
                 Text("End session")
-                    .font(Theme.Typography.title).foregroundStyle(.white)
+                    .font(Theme.Typography.title).foregroundStyle(Theme.Palette.onInk)
                     .frame(maxWidth: .infinity).frame(height: 56)
                     .background(Theme.Palette.ink, in: .capsule)
             }
@@ -137,7 +138,7 @@ struct FocusView: View {
 
     private func section<Content: View>(_ title: String, @ViewBuilder _ content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
-            Text(title).widgyCapsLabel().foregroundStyle(Theme.Palette.subtleText)
+            Text(title).kareCapsLabel().foregroundStyle(Theme.Palette.subtleText)
             content()
         }
     }

@@ -1,6 +1,6 @@
 //
 //  WidgetCategory.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

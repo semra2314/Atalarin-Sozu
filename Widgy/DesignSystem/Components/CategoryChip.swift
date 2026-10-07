@@ -1,6 +1,6 @@
 //
 //  CategoryChip.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI

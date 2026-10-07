@@ -1,6 +1,6 @@
 //
 //  WidgetPreview.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -29,8 +29,28 @@ struct WidgetPreview: View {
         #endif
     }
 
+    /// The store image, but only if it is really in the asset catalogue. A
+    /// catalogue entry whose art has not been added yet falls through to the
+    /// drawn preview instead of an empty box.
+    private var resolvedImageName: String? {
+        guard let name = sizeImageName ?? template.previewImageName else { return nil }
+        #if canImport(UIKit)
+        return UIImage(named: name) != nil ? name : nil
+        #else
+        return name
+        #endif
+    }
+
     var body: some View {
-        if let imageName = sizeImageName ?? template.previewImageName {
+        if preferSizeImage, LiveWidgetRender.supportedIDs.contains(template.id) {
+            // The detail page's size picker: the real widget at that size,
+            // not the one marketing picture used everywhere else.
+            LiveWidgetRender(templateID: template.id, size: size)
+        } else if preferSizeImage, let designed = template.content {
+            // Presets and Custom: the actual design at the picked size, not
+            // their market picture.
+            CustomWidgetView(content: designed, size: size)
+        } else if let imageName = resolvedImageName {
             // A real store / per-size product image.
             Image(imageName)
                 .resizable()
@@ -38,6 +58,9 @@ struct WidgetPreview: View {
                 .frame(maxWidth: .infinity)
                 .aspectRatio(size.aspectRatio, contentMode: .fit)
                 .clipShape(.rect(cornerRadius: template.theme.cornerRadius))
+        } else if LiveWidgetPreview.supportedIDs.contains(template.id) {
+            // Kare+ live widgets have no store art yet; draw the real thing.
+            LiveWidgetPreview(templateID: template.id, size: size)
         } else if let designed = template.content {
             // Render the ready-made design exactly as it will look on the home screen.
             CustomWidgetView(content: designed, size: size)
@@ -76,7 +99,7 @@ struct WidgetPreview: View {
 
             Spacer(minLength: 0)
 
-            Text(template.name)
+            Text(LocalizedStringKey(template.name))
                 .font(.system(size: size == .small ? 13 : 15, weight: .semibold))
                 .foregroundStyle(template.theme.foreground)
                 .lineLimit(2)

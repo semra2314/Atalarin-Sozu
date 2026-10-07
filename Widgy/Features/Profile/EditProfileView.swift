@@ -45,6 +45,7 @@ struct EditProfileView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, Theme.Spacing.xl)
                 }
+                .kareReadableWidth()
                 .padding(.vertical, Theme.Spacing.xl)
             }
             .background(Theme.Palette.background)

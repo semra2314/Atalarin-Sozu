@@ -1,6 +1,6 @@
 //
 //  InstalledWidget.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation
@@ -12,7 +12,14 @@ import SwiftData
 final class InstalledWidget {
     @Attribute(.unique) var templateID: String
     var name: String
-    var authorName: String
+    /// Cached at install time. Read `authorName` below instead, which prefers
+    /// the live catalogue. Renaming a creator used to leave every already
+    /// installed widget showing the old name forever, with no way out short of
+    /// removing and re-adding it, because this column is written once and
+    /// never touched again.
+    /// Was the `authorName` column before it became a cache; `originalName`
+    /// lets an existing store migrate in place instead of failing to open.
+    @Attribute(originalName: "authorName") private var authorNameStored: String = ""
     var categoryRaw: String
     var sizeRaw: String
     var themeData: Data?
@@ -46,7 +53,7 @@ final class InstalledWidget {
     ) {
         self.templateID = templateID
         self.name = name
-        self.authorName = authorName
+        self.authorNameStored = authorName
         self.categoryRaw = categoryRaw
         self.sizeRaw = sizeRaw
         self.themeData = themeData
@@ -72,6 +79,17 @@ extension InstalledWidget {
         SampleCatalog.templates.first { $0.id == templateID }
     }
 
+    /// Who made this, read live rather than from the copy taken at install.
+    ///
+    /// The same self-healing trick as `isCustomizable`: someone who installed
+    /// a widget back when the catalogue credited invented studios sees the
+    /// real creator the next time the row is drawn, with no migration and
+    /// nothing to remove and re-add. The stored value is only a fallback for a
+    /// template that has since left the catalogue entirely.
+    var authorName: String {
+        catalogTemplate?.author.displayName ?? authorNameStored
+    }
+
     /// False for fixed-design widgets (Aurora, Focus, ...) that ship with a
     /// finished look and must never open the "make your own" editor.
     var isCustomizable: Bool {
@@ -81,8 +99,12 @@ extension InstalledWidget {
 
     /// Store/marketing image for fixed-design widgets (e.g. "aurora_widget").
     /// Nil for customizable widgets, which render from `content` instead.
+    ///
+    /// Customizable widgets (presets, Custom) have market art too now, but in
+    /// the user's library they show their own edited design, never the ad.
     var previewImageName: String? {
-        catalogTemplate?.previewImageName ?? previewImageNameStored
+        guard !isCustomizable else { return nil }
+        return catalogTemplate?.previewImageName ?? previewImageNameStored
     }
 
     var theme: WidgetTheme? {
@@ -121,6 +143,9 @@ extension InstalledWidget {
         case "t-focus": return .focus
         case "t-frame": return .frame
         case "t-daily": return .daily
+        case "t-exhale": return .exhale
+        case "t-countdown": return .countdown
+        case "t-progress": return .progress
         default:
             return isCustomizable ? .editor(templateID: templateID) : .setUpOnHome(templateID: templateID)
         }

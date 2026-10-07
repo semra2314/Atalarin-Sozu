@@ -1,6 +1,6 @@
 //
 //  LanguagePreference.swift
-//  Widgy
+//  Kare
 //
 //  In-app language choice.
 //
@@ -41,7 +41,7 @@ enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 
 extension View {
     /// Applies the chosen language to everything below this point.
-    func widgyLanguage(_ language: AppLanguage) -> some View {
+    func kareLanguage(_ language: AppLanguage) -> some View {
         modifier(LanguageModifier(language: language))
     }
 }

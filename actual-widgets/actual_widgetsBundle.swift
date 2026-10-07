@@ -1,6 +1,6 @@
 //
-//  WidgyWidget.swift
-//  WidgyWidget  (Widget Extension target)
+//  KareWidget.swift
+//  KareWidget  (Widget Extension target)
 //
 //  Renders the user's saved widget on the home screen by reading the payload
 //  the app wrote into the App Group, and drawing it with the SHARED
@@ -16,7 +16,7 @@ import AppIntents
 
 // MARK: - Timeline
 
-struct WidgyEntry: TimelineEntry {
+struct KareEntry: TimelineEntry {
     let date: Date
     let payload: SharedWidgetStore.Payload?
 }
@@ -24,17 +24,17 @@ struct WidgyEntry: TimelineEntry {
 /// Reads whichever design this particular placed widget was configured with.
 /// Each instance carries its own `SelectDesignIntent`, which is what lets two
 /// custom widgets on the same home screen show two different designs.
-struct WidgyProvider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> WidgyEntry {
-        WidgyEntry(date: .now, payload: SharedWidgetStore.mostRecent())
+struct KareProvider: AppIntentTimelineProvider {
+    func placeholder(in context: Context) -> KareEntry {
+        KareEntry(date: .now, payload: SharedWidgetStore.mostRecent())
     }
 
-    func snapshot(for configuration: SelectDesignIntent, in context: Context) async -> WidgyEntry {
-        WidgyEntry(date: .now, payload: SharedWidgetStore.load(id: configuration.design?.id))
+    func snapshot(for configuration: SelectDesignIntent, in context: Context) async -> KareEntry {
+        KareEntry(date: .now, payload: SharedWidgetStore.load(id: configuration.design?.id))
     }
 
-    func timeline(for configuration: SelectDesignIntent, in context: Context) async -> Timeline<WidgyEntry> {
-        let entry = WidgyEntry(date: .now, payload: SharedWidgetStore.load(id: configuration.design?.id))
+    func timeline(for configuration: SelectDesignIntent, in context: Context) async -> Timeline<KareEntry> {
+        let entry = KareEntry(date: .now, payload: SharedWidgetStore.load(id: configuration.design?.id))
         // Content only changes when the user edits, and save() reloads us then.
         return Timeline(entries: [entry], policy: .never)
     }
@@ -42,8 +42,8 @@ struct WidgyProvider: AppIntentTimelineProvider {
 
 // MARK: - View
 
-struct WidgyWidgetEntryView: View {
-    var entry: WidgyProvider.Entry
+struct KareWidgetEntryView: View {
+    var entry: KareProvider.Entry
     @Environment(\.widgetFamily) private var family
 
     var body: some View {
@@ -52,8 +52,15 @@ struct WidgyWidgetEntryView: View {
                 CustomWidgetView(
                     content: payload.content,
                     size: mappedSize,
-                    referenceWidth: 329,
-                    cornerRadius: 0            // the widget container already clips
+                    cornerRadius: 0,           // the widget container already clips
+                    // `fills` exists precisely for this call and was never
+                    // passed. Without it the renderer forces its own aspect
+                    // ratio inside the widget container, so the canvas is a
+                    // few points narrower than the space iOS gave us, gets
+                    // centred with gutters, and draws a hairline border meant
+                    // for in-app previews. Every normalised position is then
+                    // measured against the wrong width.
+                    fills: true
                 )
             } else {
                 emptyState
@@ -84,16 +91,18 @@ struct WidgyWidgetEntryView: View {
 
 // MARK: - Widget
 
-struct WidgyWidget: Widget {
+struct KareWidget: Widget {
     var body: some WidgetConfiguration {
         // AppIntentConfiguration (not Static) so each placed widget stores its
         // own choice of design — long-press > Edit Widget > Design.
         AppIntentConfiguration(
             kind: SharedWidgetStore.widgetKind,
             intent: SelectDesignIntent.self,
-            provider: WidgyProvider()
+            provider: KareProvider()
         ) { entry in
-            WidgyWidgetEntryView(entry: entry)
+            KareWidgetEntryView(entry: entry)
+                // Kare's own language setting, not only the phone's.
+                .environment(\.locale, WidgetLanguage.locale)
         }
         .configurationDisplayName("Kare")
         .description("Your custom widget, designed in the app.")
@@ -104,7 +113,7 @@ struct WidgyWidget: Widget {
 }
 
 @main
-struct WidgyWidgetBundle: WidgetBundle {
+struct KareWidgetBundle: WidgetBundle {
     init() {
         // Register Fraunces inside the extension too (fonts must be added to
         // the extension target). Safe no-op if none are bundled.
@@ -112,12 +121,16 @@ struct WidgyWidgetBundle: WidgetBundle {
     }
 
     var body: some Widget {
-        WidgyWidget()
+        KareWidget()
         AuroraWidget()
         FocusWidget()
         FrameWidget()
         HushWidget()
         DailyWidget()
         ProverbWidget()
+        // Kare+
+        ExhaleWidget()
+        CountdownWidget()
+        ProgressWidget()
     }
 }

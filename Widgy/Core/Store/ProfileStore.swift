@@ -1,6 +1,6 @@
 //
 //  ProfileStore.swift
-//  Widgy
+//  Kare
 //
 //  The user's avatar. Name and handle live in `@AppStorage`; an image doesn't
 //  belong there — UserDefaults is for small values, and a photo would be read

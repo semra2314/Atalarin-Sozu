@@ -1,6 +1,6 @@
 //
 //  AuthorView.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI

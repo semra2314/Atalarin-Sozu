@@ -1,6 +1,6 @@
 //
 //  Author.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

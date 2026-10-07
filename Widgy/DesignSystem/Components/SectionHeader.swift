@@ -1,6 +1,6 @@
 //
 //  SectionHeader.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI
@@ -28,7 +28,7 @@ struct SectionHeader: View {
             if let seeAllAction {
                 Button(action: seeAllAction) {
                     Text("See all")
-                        .widgyCapsLabel()
+                        .kareCapsLabel()
                         .foregroundStyle(Theme.Palette.ink)
                 }
             }

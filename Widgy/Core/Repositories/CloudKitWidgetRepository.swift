@@ -1,6 +1,6 @@
 //
 //  CloudKitWidgetRepository.swift
-//  Widgy
+//  Kare
 //
 //  Production catalog backed by CloudKit's PUBLIC database (Apple-native, free,
 //  iCloud auth for creators). The iOS marketplace is its own catalog, separate

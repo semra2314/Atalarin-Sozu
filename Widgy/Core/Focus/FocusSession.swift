@@ -1,6 +1,6 @@
 //
 //  FocusSession.swift
-//  Widgy  (shared: app + widget extension)
+//  Kare  (shared: app + widget extension)
 //
 //  A running focus session, shared through the App Group so the home-screen
 //  Focus widget can show a live countdown. Add this file's target membership to

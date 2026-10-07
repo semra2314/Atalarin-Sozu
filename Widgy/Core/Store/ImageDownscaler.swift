@@ -1,6 +1,6 @@
 //
 //  ImageDownscaler.swift
-//  Widgy
+//  Kare
 //
 //  WidgetKit extensions have a very tight memory budget (~30MB). A full-size
 //  photo embedded in the payload can blow it and leave the widget blank/gray.

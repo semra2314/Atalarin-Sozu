@@ -1,6 +1,6 @@
 //
 //  WidgetContent.swift
-//  Widgy
+//  Kare
 //
 //  The editable payload a user builds in the widget editor: some text with a
 //  chosen font/size/colour/alignment, a background (a colour gradient OR a

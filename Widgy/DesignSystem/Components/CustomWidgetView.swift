@@ -1,6 +1,6 @@
 //
 //  CustomWidgetView.swift
-//  Widgy
+//  Kare
 //
 //  Display-only renderer for user-built `WidgetContent`. Used both in the
 //  editor's live canvas and as a thumbnail in the library. Interaction
@@ -13,11 +13,30 @@ import UIKit
 #endif
 
 struct CustomWidgetView: View {
+    /// How much a design shrinks or grows inside a canvas of this size.
+    ///
+    /// Exposed as a static so the editor's drag handles can ask the renderer
+    /// rather than reimplement the formula. They were two separate copies of
+    /// `canvas.width / referenceWidth`, which is fine until one of them
+    /// changes: then every handle sits somewhere the user's finger is not.
+    static func scale(in canvas: CGSize, referenceWidth: CGFloat) -> CGFloat {
+        min(canvas.width, canvas.height) / referenceWidth
+    }
+
+    /// The canvas width every design is authored against.
+    ///
+    /// This number was written out four times: 329 in the widget extension,
+    /// 329 in the editor's metrics, and the default 320 here, which the
+    /// catalog previews and the share card both used. So a design drawn in the
+    /// editor rendered about three percent larger in a preview than on the
+    /// home screen. One constant, one truth.
+    static let authoringWidth: CGFloat = 329
+
     let content: WidgetContent
     var size: WidgetSize = .small
     /// Reference width the design was authored against, so font/sticker sizes
     /// scale proportionally when the view is rendered larger or smaller.
-    var referenceWidth: CGFloat = 320
+    var referenceWidth: CGFloat = CustomWidgetView.authoringWidth
     /// iOS home-screen widgets use a continuous ~22pt corner. Callers can tune it.
     var cornerRadius: CGFloat = 22
     /// When true, the view fills whatever space it's given (the widget container)
@@ -27,7 +46,19 @@ struct CustomWidgetView: View {
 
     private var canvas: some View {
         GeometryReader { geo in
-            let scale = geo.size.width / referenceWidth
+            // Scale from the *shorter* side, not the width.
+            //
+            // A medium widget is a small widget made wider: 360x170 against
+            // 170x170. Dividing by width made everything on a medium more than
+            // twice the size it was on a small, while the height stayed put, so
+            // type and photos authored on one family burst out of the other.
+            // The shorter side is the dimension that actually constrains a
+            // design, and it is nearly identical for small and medium, so the
+            // same design now renders at the same physical size on both and
+            // simply gets more room to breathe sideways. Large is genuinely
+            // twice the size and scales up, which is what anyone would expect.
+            let unit = min(geo.size.width, geo.size.height)
+            let scale = Self.scale(in: geo.size, referenceWidth: referenceWidth)
 
             ZStack {
                 content.background.view(direction: content.gradientDirection)
@@ -43,7 +74,7 @@ struct CustomWidgetView: View {
                 // Placed photos sit above the background but below the text and
                 // stickers, so type stays legible on top of them.
                 ForEach(content.photos) { photo in
-                    photoView(photo, in: geo.size)
+                    photoView(photo, in: geo.size, unit: unit)
                 }
 
                 ForEach(content.texts) { element in
@@ -102,6 +133,11 @@ struct CustomWidgetView: View {
             .foregroundStyle(Color(hex: element.colorHex))
             .multilineTextAlignment(element.alignment.textAlignment)
             .lineSpacing(element.lineSpacing * scale)
+            // A single long word cannot wrap, so `maxWidth` alone does not
+            // contain it: SwiftUI lets it overflow and the widget's clip mask
+            // slices it off mid-letter. Shrinking to fit is the only graceful
+            // answer, and people do type "isqwerqwerqwerq" into a text field.
+            .minimumScaleFactor(0.5)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: canvas.width * element.widthFraction)
             .padding(element.hasBackground ? element.backgroundPadding * scale : 0)
@@ -119,16 +155,24 @@ struct CustomWidgetView: View {
     }
 
     @ViewBuilder
-    private func photoView(_ photo: WidgetContent.PhotoElement, in canvas: CGSize) -> some View {
+    private func photoView(
+        _ photo: WidgetContent.PhotoElement,
+        in canvas: CGSize,
+        unit: CGFloat
+    ) -> some View {
         #if canImport(UIKit)
         if let image = UIImage(data: photo.imageData) {
-            let width = canvas.width * photo.scale
+            // Sized off the shorter side for the same reason the type is: a
+            // photo at 0.6 used to mean 60% of a medium widget's *width*,
+            // which is more than its whole height, so it bled off the top and
+            // bottom edges.
+            let width = unit * photo.scale
             let ratio = image.size.height / max(image.size.width, 1)
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: width, height: width * ratio)
-                .clipShape(.rect(cornerRadius: photo.cornerRadius * (canvas.width / referenceWidth),
+                .clipShape(.rect(cornerRadius: photo.cornerRadius * (unit / referenceWidth),
                                  style: .continuous))
                 .opacity(photo.opacity)
                 .rotationEffect(.degrees(photo.rotation))

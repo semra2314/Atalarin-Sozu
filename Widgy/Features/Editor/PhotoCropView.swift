@@ -1,6 +1,6 @@
 //
 //  PhotoCropView.swift
-//  Widgy
+//  Kare
 //
 //  Crops a photo by letting the user pan and zoom it inside a fixed frame,
 //  the way every photo app does it.

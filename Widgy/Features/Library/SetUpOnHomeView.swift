@@ -1,6 +1,6 @@
 //
 //  SetUpOnHomeView.swift
-//  Widgy
+//  Kare
 //
 //  Where a fixed-design widget (Aurora, ...) goes when tapped from the library.
 //
@@ -30,12 +30,15 @@ struct SetUpOnHomeView: View {
 
     private var isLockScreenSize: Bool { selectedSize.isLockScreen }
 
-    private var galleryName: String { template?.galleryName ?? template?.name ?? "Kare" }
+    /// As the iOS widget gallery shows it, which follows the phone's language.
+    private var galleryName: String {
+        NSLocalizedString(template?.galleryName ?? template?.name ?? "Kare", comment: "Widget gallery name")
+    }
 
     var body: some View {
         ScrollView {
             if let template {
-                content(template)
+                content(template).kareReadableWidth()
             } else if let errorMessage {
                 ErrorStateView(message: errorMessage) { Task { await load() } }
             } else {
@@ -75,7 +78,7 @@ struct SetUpOnHomeView: View {
     private var sizePicker: some View {
         VStack(alignment: .leading, spacing: Theme.Spacing.sm) {
             Text("Sizes")
-                .widgyCapsLabel()
+                .kareCapsLabel()
                 .foregroundStyle(Theme.Palette.subtleText)
                 .padding(.horizontal, Theme.Spacing.lg)
 
@@ -134,15 +137,15 @@ struct SetUpOnHomeView: View {
         .padding(.horizontal, Theme.Spacing.lg)
     }
 
-    /// The most common point of confusion: “Widgy” in the gallery is the
+    /// The most common point of confusion: “Kare” in the gallery is the
     /// build-your-own widget, not this one.
     @ViewBuilder
     private var calloutIfNeeded: some View {
-        if galleryName != "Kare" {
+        if (template?.galleryName ?? "Kare") != "Kare" {
             HStack(alignment: .top, spacing: Theme.Spacing.md) {
                 Image(systemName: "info.circle.fill")
                     .foregroundStyle(Theme.Palette.accent)
-                Text("In the gallery, pick **\(galleryName)** — not “Kare”. “Kare” is the make-your-own widget.")
+                Text("In the gallery, pick **\(galleryName)**, not “Kare”. “Kare” is the make-your-own widget.")
                     .font(Theme.Typography.body)
                     .foregroundStyle(Theme.Palette.ink)
                 Spacer(minLength: 0)

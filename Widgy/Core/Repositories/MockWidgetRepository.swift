@@ -1,6 +1,6 @@
 //
 //  MockWidgetRepository.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation
@@ -36,6 +36,15 @@ actor MockWidgetRepository: WidgetRepository {
                 templates: Array(sorted.prefix(3))
             ),
             CatalogSection(
+                id: "count",
+                title: "Count what matters",
+                subtitle: "Live widgets that keep score for you",
+                style: .carousel,
+                templates: SampleCatalog.liveKarePlusIDs.compactMap { id in
+                    templates.first { $0.id == id }
+                }
+            ),
+            CatalogSection(
                 id: "all",
                 title: "All widgets",
                 subtitle: "Everything that ships with Kare",
@@ -48,6 +57,23 @@ actor MockWidgetRepository: WidgetRepository {
                 subtitle: nil,
                 style: .carousel,
                 templates: templates.filter { $0.category == .minimal }
+            ),
+            // The paid designs, gathered in one place. Scattered through the
+            // other shelves they were invisible, which made Kare+ feel like a
+            // subscription to nothing in particular.
+            //
+            // Only while Kare+ is actually on sale. Before that, a shelf that
+            // says "Unlocked with a subscription" above widgets anyone can
+            // take for free is a promise about a product that does not exist,
+            // and App Review reads it as exactly that.
+            CatalogSection(
+                id: "plus",
+                title: "Kare+",
+                subtitle: "Buy one, or get them all with Kare+",
+                style: .carousel,
+                templates: SubscriptionStore.subscriptionsAreLive
+                    ? templates.filter { !$0.price.isFree }
+                    : []
             ),
             CatalogSection(
                 id: "free",

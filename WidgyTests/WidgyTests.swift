@@ -45,9 +45,10 @@ struct CatalogRepositoryTests {
     @Test("Search matches name, tag and author")
     func searchMatchesFields() async throws {
         let repository = makeRepository()
-        #expect(try await repository.search(query: "aurora", category: nil).count == 1)
+        #expect(try await repository.search(query: "aurora clock", category: nil).first?.id == "t-aurora")
         #expect(try await !repository.search(query: "gradient", category: nil).isEmpty)
-        #expect(try await !repository.search(query: "Nova", category: nil).isEmpty)
+        // The catalogue is credited to Kare itself now; "Nova Studio" is gone.
+        #expect(try await !repository.search(query: "Kare", category: nil).isEmpty)
     }
 
     @Test("Category filter narrows results", arguments: WidgetCategory.allCases)

@@ -1,6 +1,6 @@
 //
 //  DiscoverViewModel.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

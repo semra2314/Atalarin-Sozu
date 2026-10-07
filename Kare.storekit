@@ -1,0 +1,244 @@
+{
+  "identifier" : "4D5B754A-1D06-437C-B7FA-82324D50E3B5",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "5383E763-49ED-4DF6-A3F2-DAA4581B9B24",
+      "localizations" : [
+        {
+          "description" : "Every paid widget, forever.",
+          "displayName" : "Kare+ Lifetime",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Tüm ücretli widget'lar, sonsuza dek.",
+          "displayName" : "Kare+ Ömür Boyu",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.kareplus.lifetime",
+      "referenceName" : "Kare+ Lifetime",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "593EDD6B-612C-445C-88D2-054E01064F2D",
+      "localizations" : [
+        {
+          "description" : "The Exhale widget, yours to keep.",
+          "displayName" : "Exhale",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Nefes Al widget'ı, artık senin.",
+          "displayName" : "Nefes Al",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.exhale",
+      "referenceName" : "Exhale",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "E136A8C1-493E-44D8-A4FB-D5AC587214E2",
+      "localizations" : [
+        {
+          "description" : "The Countdown widget, yours to keep.",
+          "displayName" : "Countdown",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Geri Sayım widget'ı, artık senin.",
+          "displayName" : "Geri Sayım",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.countdown",
+      "referenceName" : "Countdown",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "1.99",
+      "familyShareable" : false,
+      "internalID" : "E53844DC-A818-498E-9B1E-698021D508AC",
+      "localizations" : [
+        {
+          "description" : "The Progress widget, yours to keep.",
+          "displayName" : "Progress",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "İlerleme widget'ı, artık senin.",
+          "displayName" : "İlerleme",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.progress",
+      "referenceName" : "Progress",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "23B46135-B1D9-4405-A350-EEA00F27A91E",
+      "localizations" : [
+        {
+          "description" : "The Momentum widget, yours to keep.",
+          "displayName" : "Momentum",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Momentum widget'ı, artık senin.",
+          "displayName" : "Momentum",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.momentum",
+      "referenceName" : "Momentum",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "3ECEC99F-09FA-4BEC-B72B-BFA81CAFBD9E",
+      "localizations" : [
+        {
+          "description" : "The Neon widget, yours to keep.",
+          "displayName" : "Neon",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Neon widget'ı, artık senin.",
+          "displayName" : "Neon",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.neon",
+      "referenceName" : "Neon",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "C628E7C6-5D8D-4A37-B02D-B4B6C11FA182",
+      "localizations" : [
+        {
+          "description" : "The Gratitude widget, yours to keep.",
+          "displayName" : "Gratitude",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Şükür widget'ı, artık senin.",
+          "displayName" : "Şükür",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.gratitude",
+      "referenceName" : "Gratitude",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "B534F442-BD63-43E0-96AB-2AF5F01CAA99",
+      "localizations" : [
+        {
+          "description" : "The Monochrome widget, yours to keep.",
+          "displayName" : "Monochrome",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Monokrom widget'ı, artık senin.",
+          "displayName" : "Monokrom",
+          "locale" : "tr"
+        }
+      ],
+      "productID" : "com.erdendereli.Widgy.widget.mono",
+      "referenceName" : "Monochrome",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "5CAFE42F-9A5D-43C9-8CF2-8FCA80A32DDD",
+      "localizations" : [],
+      "name" : "Kare+",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "1.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "1132A289-8539-483E-A683-92E3EA605BB4",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Every paid widget, one subscription.",
+              "displayName" : "Kare+ Monthly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Tüm ücretli widget'lar, tek abonelik.",
+              "displayName" : "Kare+ Aylık",
+              "locale" : "tr"
+            }
+          ],
+          "productID" : "com.erdendereli.Widgy.kareplus.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Kare+ Monthly",
+          "subscriptionGroupID" : "5CAFE42F-9A5D-43C9-8CF2-8FCA80A32DDD",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : []
+        },
+        {
+          "adHocOffers" : [],
+          "codeOffers" : [],
+          "displayPrice" : "14.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "9611D421-2F71-45F7-8FC5-2E5A24DAC16A",
+          "introductoryOffer" : {
+            "internalID" : "BA840408-096A-4CAC-B920-2BAEF0845F37",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Every paid widget, one subscription.",
+              "displayName" : "Kare+ Yearly",
+              "locale" : "en_US"
+            },
+            {
+              "description" : "Tüm ücretli widget'lar, tek abonelik.",
+              "displayName" : "Kare+ Yıllık",
+              "locale" : "tr"
+            }
+          ],
+          "productID" : "com.erdendereli.Widgy.kareplus.yearly",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Kare+ Yearly",
+          "subscriptionGroupID" : "5CAFE42F-9A5D-43C9-8CF2-8FCA80A32DDD",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : []
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

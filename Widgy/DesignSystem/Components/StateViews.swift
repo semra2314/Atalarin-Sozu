@@ -1,6 +1,6 @@
 //
 //  StateViews.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI

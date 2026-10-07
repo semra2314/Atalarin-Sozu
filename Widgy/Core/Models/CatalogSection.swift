@@ -1,6 +1,6 @@
 //
 //  CatalogSection.swift
-//  Widgy
+//  Kare
 //
 
 import Foundation

@@ -1,6 +1,6 @@
 //
 //  StarRating.swift
-//  Widgy
+//  Kare
 //
 
 import SwiftUI

@@ -1,6 +1,6 @@
 //
 //  SubjectLifter.swift
-//  Widgy
+//  Kare
 //
 //  Turns a photo into a sticker by cutting the subject out of its background —
 //  the same trick as iOS's "lift subject from background", done with Vision.

@@ -1,6 +1,6 @@
 //
 //  FocusAudioPlayer.swift
-//  Widgy  (app target only)
+//  Kare  (app target only)
 //
 //  Loops an ambient focus sound. Drop the mp3s into the app bundle with these
 //  names: rain.mp3, cafe.mp3, waves.mp3, whitenoise.mp3. Missing files are a safe

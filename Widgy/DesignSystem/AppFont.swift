@@ -1,6 +1,6 @@
 //
 //  AppFont.swift
-//  Widgy
+//  Kare
 //
 //  Typography bridge. The design calls for Fraunces (serif display/headings)
 //  and DM Sans (sans body/labels). Until those TTFs are bundled, we fall back
@@ -33,18 +33,49 @@ enum AppFont {
     private static let sansCandidates = ["DMSans-Regular", "DM Sans", "DMSans"]
     private static let sansName: String? = resolve(sansCandidates)
 
-    static func serif(size: CGFloat, weight: Font.Weight) -> Font {
+    /// `relativeTo` is the text style whose Dynamic Type curve this size
+    /// follows: at the default text size the font is exactly `size`.
+    static func serif(size: CGFloat, weight: Font.Weight, relativeTo style: Font.TextStyle = .body) -> Font {
         if let name = resolvedSerifName(for: weight) {
-            return .custom(name, fixedSize: size)
+            return .custom(name, size: size, relativeTo: style)
         }
-        return .system(size: size, weight: weight, design: .serif)
+        return .system(size: scaled(size, style), weight: weight, design: .serif)
     }
 
-    static func sans(size: CGFloat, weight: Font.Weight) -> Font {
+    static func sans(size: CGFloat, weight: Font.Weight, relativeTo style: Font.TextStyle = .body) -> Font {
         if let name = sansName {
-            return .custom(name, fixedSize: size).weight(weight)
+            return .custom(name, size: size, relativeTo: style).weight(weight)
         }
-        return .system(size: size, weight: weight, design: .default)
+        // SF Pro: the text style's own font when the size matches it exactly
+        // (it then scales live), otherwise the size scaled once.
+        if size == defaultSize(of: style) {
+            return .system(style, design: .default, weight: weight)
+        }
+        return .system(size: scaled(size, style), weight: weight, design: .default)
+    }
+
+    private static func defaultSize(of style: Font.TextStyle) -> CGFloat {
+        switch style {
+        case .largeTitle: 34
+        case .title: 28
+        case .title2: 22
+        case .title3: 20
+        case .headline, .body: 17
+        case .callout: 16
+        case .subheadline: 15
+        case .footnote: 13
+        case .caption: 12
+        case .caption2: 11
+        @unknown default: 17
+        }
+    }
+
+    private static func scaled(_ size: CGFloat, _ style: Font.TextStyle) -> CGFloat {
+        #if canImport(UIKit)
+        return UIFontMetrics(forTextStyle: style.uiKit).scaledValue(for: size)
+        #else
+        return size
+        #endif
     }
 
     /// The static file already carries its weight, so no `.weight()` is applied.
@@ -87,3 +118,23 @@ enum FontRegistrar {
         #endif
     }
 }
+
+#if canImport(UIKit)
+private extension Font.TextStyle {
+    var uiKit: UIFont.TextStyle {
+        switch self {
+        case .largeTitle: .largeTitle
+        case .title: .title1
+        case .title2: .title2
+        case .title3: .title3
+        case .headline: .headline
+        case .subheadline: .subheadline
+        case .callout: .callout
+        case .footnote: .footnote
+        case .caption: .caption1
+        case .caption2: .caption2
+        default: .body
+        }
+    }
+}
+#endif
