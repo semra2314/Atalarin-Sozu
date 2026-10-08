@@ -14,7 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 2 adds the bundled catalog, explicit JSON adapters and repository tests.
+Phase 3 adds Room-backed local library persistence.
+Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
 UI and platform integrations remain deferred.
 
 Phase 1 was limited to source analysis, coordination documentation, package
@@ -129,7 +130,7 @@ before a later phase if the iOS branch has advanced. The source is available at
 | async / await / Task | Kotlin Coroutines and structured cancellation |
 | AppEnvironment / environment injection | Explicit composition root and constructor injection |
 | WidgetRepository protocol | Kotlin suspend WidgetRepository interface |
-| LibraryStore | LibraryRepository and future Room implementation |
+| LibraryStore | LibraryRepository / RoomLibraryRepository with transactional DAO writes |
 | Firebase Auth | Firebase Auth behind an auth repository |
 | Firestore | Firestore SDK behind remote data sources |
 | Firebase Crashlytics | Firebase Crashlytics with controlled debug collection |
@@ -145,7 +146,7 @@ before a later phase if the iOS branch has advanced. The source is available at
 | Foundation Date | java.time.Instant for timestamps; explicit transport conversion |
 | Decimal | BigDecimal, never binary floating-point money |
 | Foundation Data | ImageData with value equality and defensive byte copies |
-| Codable | Explicit DTO/codecs at data boundaries (deferred) |
+| Codable | Explicit kotlinx.serialization adapters reused by database mappers |
 | AVAudioPlayer / AVAudioSession | Android media playback and audio-focus policy (deferred) |
 | Vision subject lifting | Evaluate an Android image-segmentation solution later; no direct API translation |
 | ShareLink / ImageRenderer | Android Sharesheet and native bitmap/file rendering |
@@ -168,8 +169,8 @@ and do not mean the associated technology or feature has been migrated.
 |---|---|
 | `core/model` | Catalog/editor/library/public-profile values; no Android or Compose imports |
 | `core/repository` | WidgetRepository, LibraryRepository, RepositoryException |
-| `core/data` | Future repository implementations, catalog sources, DTOs/codecs and mappings |
-| `core/database` | Future Room entities/DAOs/migrations; never exposed to UI |
+| `core/data` | Catalog, serialization and Room library repository/mappers |
+| `core/database` | KareDatabase v1, internal entity/DAO; exported schema; never exposed to UI |
 | `core/preferences` | Future DataStore implementations |
 | `core/firebase` | Future Firebase configuration and remote data sources |
 | `core/design` | Future Kare tokens/components and model-to-UI adapters |
@@ -197,7 +198,7 @@ annotations. Callers should pass owned snapshots rather than mutable collections
 Phase 2 implements explicit JSON-only kotlinx.serialization adapters in
 `core/data/serialization`, without annotations or SDK types in domain models.
 Swift-exported fixtures exercise the real Codable shapes. Firestore, PublicProfile
-and InstalledWidget adapters remain deferred. Never treat Codable Review JSON
+adapters remain deferred; InstalledWidget now has explicit Room mapping. Never treat Codable Review JSON
 as the Firestore document schema.
 
 | Boundary | Explicit boundary mapping |
@@ -211,7 +212,7 @@ as the Firestore document schema.
 | Data / UUID | Swift JSON Data uses base64; image values need explicit conversion; UUIDs use string representations |
 | Dates | The inspected stores use default JSONEncoder/JSONDecoder Date handling (seconds since Apple's 2001 reference date), while Firestore uses Timestamp. Do not reinterpret either as Unix milliseconds or assume ISO-8601 |
 | CatalogSection | iOS domain section contains resolved `templates` and is not Codable; the alternate CloudKit schema uses ordered `templateIds`. Do not treat it as a live Firestore document shape |
-| InstalledWidget | Typed domain snapshot replaces SwiftData raw enums/JSON blobs; future entities need converters and offline fallback metadata, not UI/computed catalog lookups |
+| InstalledWidget | Typed domain snapshot replaces SwiftData raw enums/JSON blobs; Room v1 uses explicit codecs and offline metadata; catalog metadata resolution is in the repository |
 
 The associated-value enum shapes follow Swift's
 [Codable synthesis specification](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0295-codable-synthesis-for-enums-with-associated-values.md).
@@ -248,22 +249,22 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 2;
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 3;
 Developer 2 retains the separately assigned design and localization work.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
 |---|---|---|---|---|---|
 | Project setup | KareApp / Xcode targets | Existing single module + reserved packages | Phase 1 agent | COMPLETED | Starter UI retained; production ID unresolved |
 | Core models | Core/Models | `core/model` values | Phase 1 agent | COMPLETED | Catalog codecs implemented separately; live models deferred |
-| Repository architecture | WidgetRepository / LibraryStore | Suspend catalog/review interface + library Flow contract | Phase 1 agent | COMPLETED | Bundled implementation available; library and remote implementations deferred |
+| Repository architecture | WidgetRepository / LibraryStore | Suspend catalog/review interface + library Flow contract | Phase 1 agent | COMPLETED | Bundled implementation available; Room library implemented; remote implementations deferred |
 | Bundled catalog | SampleCatalog / MockWidgetRepository | LocalCatalogDataSource + BundledWidgetRepository | Developer 1 | COMPLETED | 20 templates, 6 sections, lookup/filter/search; no UI |
 | Catalog serialization | Codable models | Explicit JSON adapters and Swift fixtures | Developer 1 | COMPLETED | Associated values, dates, images and legacy content; no Firestore adapters |
 | Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
 | Firebase Auth | AuthService | None | Unassigned | NOT STARTED | Providers/account linking/deletion policy open |
 | Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
 | Public profiles | PublicProfileService | Value only | Unassigned | NOT STARTED | No repository implementation/UI |
-| Local library | LibraryStore / InstalledWidget | Snapshot and interface only | Unassigned | NOT STARTED | Persistence and mirror synchronization deferred |
-| Room | SwiftData | Reserved `core/database` | Unassigned | NOT STARTED | No dependency, entities or DAO |
+| Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; widget synchronization deferred |
+| Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
 | DataStore | AppStorage / defaults | Reserved `core/preferences` | Unassigned | NOT STARTED | No dependency or implementation |
 | Navigation | Navigation/ | Reserved package | Unassigned | NOT STARTED | No graph or routes |
 | Discover | DiscoverView / ViewModel | Reserved package | Unassigned | NOT STARTED | Catalog sections ready; UI/ViewModel deferred |
@@ -286,7 +287,7 @@ Developer 2 retains the separately assigned design and localization work.
 | Localization | Both Localizable.xcstrings catalogs | Starter strings only | Developer 2 | NOT STARTED | English/Turkish migration pending |
 | Design system | Theme / AppFont / components | Starter theme; reserved `core/design` | Developer 2 | NOT STARTED | Visual identity not migrated in this phase |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
-| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 29 JVM tests; feature/integration/device coverage remains NOT STARTED |
+| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 46 JVM tests including Room integration; device/widget coverage remains NOT STARTED |
 
 ## Current work
 
@@ -294,13 +295,13 @@ Developer 2 retains the separately assigned design and localization work.
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 2 completed; no next task started. Catalog/serialization file
-reservations are released after validation. No branch operation is authorized.
+Current tasks: Phase 3 COMPLETED and validated. No next phase started.
+Reservations on core/database, core/data/library, persistence tests and schemas
+are released. Shared Gradle files and this document remain conflict hotspots.
 
-Files changed: `core/data/catalog`, `core/data/serialization`, bundled resources,
-catalog tests/fixtures, export script and this document. Shared Gradle files gained
-only the kotlinx.serialization JSON runtime dependency. These dependency files
-and this document remain coordination hotspots; preserve concurrent edits.
+Files changed: Room database/entity/DAO, library mapper/repository, schema export,
+persistence tests, two Gradle configuration files and this document. No changes
+to domain models, public repository contracts or Developer 2 areas.
 
 Areas reserved by Developer 2 must remain untouched.
 
@@ -313,7 +314,7 @@ and localization. Status: NOT STARTED in this checkout; external progress is not
 known and must be reported by Developer 2.
 
 Main files / areas reserved: `core/design`, `ui/theme`, typography/font assets,
-and localization resources. Developer 1 will not modify these areas in Phase 2.
+and localization resources. Developer 1 has not modified these areas in Phases 2 or 3.
 
 Areas that should not be modified by the other developer: the reserved design,
 theme, typography and localization areas. No takeover without authorization.
@@ -442,12 +443,11 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Phase 2 is complete. Recommended Phase 3 is the Room-backed local library using
-LibraryRepository, with explicit InstalledWidget storage converters, migration,
-transactional reorder/favorite tests and process-recreation coverage. Agree the
-storage schema before writing durable user data. Navigation and catalog
-ViewModels can follow when the design contracts are available. These are
-recommendations, not authorization to start or create branches.
+Recommended Phase 4: a composition root owning one database instance and catalog/
+library ViewModels with StateFlow, lifecycle and error-state tests. Add navigation
+and screens only within an explicitly approved scope after design contracts are
+available. App Widget configuration/rendering/synchronization remains a later
+feature. These recommendations do not authorize starting work or branch changes.
 
 Developer 2 can continue the assigned design system, theme tokens, typography
 and English/Turkish localization independently. Keep changes in design packages
@@ -469,7 +469,7 @@ and dedicated resources; coordinate shared Gradle and documentation edits.
 
 ## Open questions and blockers
 
-There is no known Phase 2 implementation blocker. The following are unresolved
+There is no known Phase 3 implementation blocker. The following are unresolved
 inputs or design questions for later phases, not claims that work has started:
 
 - Developer 2 branch/progress and any future feature branch authorization.
@@ -478,8 +478,9 @@ inputs or design questions for later phases, not claims that work has started:
   deletion consistency. Do not infer these from client Swift code.
 - Auth provider parity: how existing Apple-created Firebase accounts sign in on
   Android, and whether another provider/account-linking flow is wanted.
-- Durable library schema/version upgrades and InstalledWidget/PublicProfile adapters
-  remain undecided. Catalog JSON schema is version 1; unsupported versions fail.
+- Room schema and library payload format start at version 1. Future version upgrades
+  need explicit migrations and preservation tests. PublicProfile adapters remain
+  deferred. Catalog JSON schema is version 1; unsupported versions fail.
 - Play products, verification backend, restore/expiry behavior, and whether
   iOS purchases should grant Android access. App Store product IDs are not Play
   product definitions; catalog prices are not checkout prices.
@@ -728,3 +729,166 @@ serialization dependency adds one version notice compared with Phase 1. No lint
 rule, compiler setting or baseline was weakened. No device test was run: this
 phase implements data behavior only. The initial cache restriction required
 approved Gradle cache access. Build reports remain generated and ignored.
+
+## Phase 3 persistence architecture and source analysis
+
+Owner: Developer 1. Branch: `ANDROID`. Source IOS head reconfirmed as
+`41a8fbc67d2992f144383ede02c2ecfd6a73a1a1` on 2026-10-08.
+
+Inspected `Widgy/Core/Store/InstalledWidget.swift`, `LibraryStore.swift`,
+`SharedWidgetStore.swift`, `Core/LiveWidgets/KarePlusAccess.swift` (LibraryMirror),
+LibraryView removal/reordering/favorites, TemplateDetailView installation/removal,
+WidgetEditorView saving/downscaling/mirroring, and WidgyTests. Source tests cover
+theme JSON but contain no library persistence tests. Source comments about a
+remote catalog and initially nil preset content are stale: install seeds the
+actual template payload and current catalog is bundled.
+
+### SwiftData → Room
+
+The flow remains `UI → ViewModel → LibraryRepository → Room DAO/database`.
+KareDatabase is opened using the application context; a future composition root
+must retain one instance per process. This phase does not wire it into starter UI.
+Room entities and DAO are internal persistence types, and domain models/contracts
+are unchanged. Repository calls are main-safe, use structured coroutines and
+perform JSON work on Dispatchers.IO. Flow emits only committed ordered snapshots.
+No repository-owned CoroutineScope or main-thread database access is enabled.
+
+Schema version 1 has one table, `installed_widgets`:
+
+| Columns | Persistence meaning |
+|---|---|
+| `templateId` TEXT primary key | One installation per template; no catalog foreign key so retired designs survive |
+| `name`, `authorName` TEXT | Cached offline identity/display metadata |
+| `categoryRaw`, `sizeRaw` TEXT | Stable source raw enum tokens, never Kotlin ordinals |
+| `themeJson`, `contentJson` nullable TEXT | Existing Phase 2 codecs, including images/gradients/text/photo/sticker payloads |
+| `payloadVersion` INTEGER | Version 1; reject unsupported versions rather than reinterpret them |
+| `addedAtSeconds`, `addedAtNanos` INTEGER | Unix epoch seconds plus nanoseconds, preserving Instant precision |
+| `isFavorite`, `isCustomizable` INTEGER | Favorite state and cached fixed/editable metadata |
+| `sortIndex` INTEGER | Ordered by index, then templateId for deterministic ties |
+| `previewImageName` nullable TEXT | Cached source artwork identifier |
+
+Explicit mapper methods handle entity/domain conversion. No TypeConverter is
+needed: JSON is encoded exactly once at the boundary using established adapters.
+SQL timestamp columns deliberately differ from Swift Codable's Apple epoch;
+embedded content/theme retain the Phase 2 wire format. The nullable payload state
+is preserved; malformed data is an error, not silently converted to null.
+
+Room 2.8.4, KSP 2.3.6 and Robolectric 4.16.1 are pinned; the existing toolchain is
+unchanged. Configuration follows [Room's setup/schema guidance](https://developer.android.com/jetpack/androidx/releases/room)
+and [AGP built-in Kotlin guidance](https://developer.android.com/build/migrate-to-built-in-kotlin).
+Robolectric runs real generated Room DAO code with native SQLite on SDK 28.
+Schema export is enabled through the Room Gradle plugin and checked in under
+`app/schemas/com.example.kare.core.database.KareDatabase/1.json`. There is no
+previous Android database to migrate. Future changes must increment the schema
+version and add explicit migrations with preservation tests. No destructive
+migration fallback, downgrade wipe or prepackaged database is configured.
+
+### Repository behavior and intentional differences
+
+- Installation is transactional and idempotent, including simultaneous calls.
+  Existing content, favorite, size and installation date are retained. New entries
+  copy metadata/theme/content, validate supported size, and append after the
+  largest sortIndex instead of iOS's potentially colliding row count.
+- `widget(id) != null` determines installation; `observeWidgets()` supplies the
+  ordered library. No public interface additions are necessary.
+- `setFavorite(id, desiredState)` supports toggling by choosing the opposite state
+  while preserving retry idempotence. Missing IDs raise NotFound. No separate
+  read-modify-write toggle API was added.
+- Remove returns the previous domain snapshot, is idempotent, and compacts remaining
+  order within the same transaction. Removal survey timing stays outside persistence.
+- Reorder requires the entire current membership exactly once and writes atomically;
+  stale/partial/duplicate orders fail without changing rows.
+- Content updates reject missing or currently fixed designs. Author, editability
+  and fixed preview art resolve from the current bundled catalog in the repository,
+  matching iOS's computed metadata behavior without putting catalog access inside
+  models. Retired templates fall back to their stored metadata. User name, theme,
+  content, size and order are never overwritten by metadata resolution.
+- Persisted strings together are limited to 512 KiB per row to stay comfortably
+  below Android cursor-window limits, including base64 image expansion. Oversized
+  writes fail before mutation. Later photo/editor work must resize images or move
+  larger images into durable app-private files with migration/cleanup rules. This
+  is an intentional Android constraint, not silent image truncation.
+- Unknown raw enums/version, invalid timestamps/order and corrupt JSON fail
+  explicitly; iOS often substitutes defaults or ignores decode/save failures.
+  SQLite/I/O failures map to Persistence, serialization failures to InvalidData;
+  cancellation propagates. Corrupt rows remain stored for future recovery tooling.
+
+### App Groups / SharedWidgetStore → deferred Android widget-state architecture
+
+No App Group directories, mirror JSON files, LibraryMirror preferences or WidgetKit
+reload calls are ported. Android app and widget components can access app-private
+Room state through repository boundaries. Library membership remains distinct
+from launcher placement. A later widget phase needs durable appWidgetId-to-design
+configuration, deletion/reconfiguration/restore rules, suitable rendered images
+or URI access, and a post-commit refresh/reconciliation mechanism that survives
+process death. Prefer the same app process initially; multiple processes require
+an explicit invalidation/concurrency design. Room Flow alone does not schedule
+launcher refreshes. Do not mirror data in this phase or claim widget updates work.
+
+### 2026-10-08 — Phase 3 architectural decisions
+
+1. Keep LibraryRepository unchanged; implement native transactions and Flow.
+2. Store standalone offline snapshots; resolve the three live metadata fields in
+   the repository and retain fallback metadata for retired templates.
+3. Reuse versioned JSON codecs; export schema v1; forbid destructive fallback.
+4. Bound embedded row payloads and reject corruption explicitly rather than lose
+   user data silently. Defer file-backed images and recovery UI to dedicated work.
+5. Defer all App Widget synchronization and placement state; introduce no unused
+   synchronization abstraction or platform side effects.
+
+### Phase 3 work log / file manifest
+
+Date: 2026-10-08. Owner: Developer 1. Branch: `ANDROID`.
+
+Created:
+
+- `app/src/main/java/com/example/kare/core/database/InstalledWidgetEntity.kt`
+- `app/src/main/java/com/example/kare/core/database/LibraryDao.kt`
+- `app/src/main/java/com/example/kare/core/database/KareDatabase.kt`
+- `app/src/main/java/com/example/kare/core/data/library/InstalledWidgetMapper.kt`
+- `app/src/main/java/com/example/kare/core/data/library/RoomLibraryRepository.kt`
+- `app/schemas/com.example.kare.core.database.KareDatabase/1.json`
+- `app/src/test/java/com/example/kare/core/data/library/InstalledWidgetMapperTest.kt`
+- `app/src/test/java/com/example/kare/core/data/library/RoomLibraryRepositoryTest.kt`
+
+Modified:
+
+- `app/build.gradle.kts`: Room/KSP plugins, schema export, runtime/compiler/test dependencies and Android-resource unit tests.
+- `gradle/libs.versions.toml`: pinned Room/KSP/Robolectric aliases.
+- `docs/ANDROID_MIGRATION.md`: ownership, status, architecture, decisions, source analysis and work log.
+
+Shared-file risk was recorded before implementation. AGENTS.md, models, public
+contracts, catalog codecs and all Developer 2 areas are unchanged. No Git branch,
+commit, push, merge or history operation was performed. Initial test compilation
+caught an incorrect Robolectric getApplication type argument; corrected without
+weakening checks. Remaining work is application wiring, ViewModels/UI, widget
+state synchronization and future schema migrations/image storage policy.
+
+### Phase 3 final validation and completion
+
+Status: COMPLETED. Owner: Developer 1. Branch: `ANDROID`. Date: 2026-10-08.
+
+| Command | Result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS; 46 tests, zero failures/errors/skips; 17 new persistence tests |
+| `./gradlew lint` | PASS; zero errors, 26 warnings |
+| `git diff --check` | PASS |
+
+Final Gradle validation ran the three requested tasks together. The 17 new tests
+cover both mapper directions across all catalog templates, binary/null payloads,
+precise timestamps, invalid values, installation/retrieval, concurrent duplicates,
+favorite changes/retries, removal, content updates, fixed-design protection,
+reordering and invalid membership, current/retired metadata, reactive reads,
+corrupt JSON, payload limits, disk close/reopen, cancellation, and rollback after
+an injected SQLite failure during reorder. Room tests use native SQLite under
+Robolectric; no emulator/device test or actual prior-version migration was run.
+
+Lint warnings are dependency/tool version notices and starter resource/manifest
+warnings; no checks or compiler settings were disabled. Existing native symbol
+stripping warning remains. Dependency downloads/test runtime required approved
+Gradle access. No unresolved Phase 3 blocker. Remaining design questions include
+future file-backed images, corrupt-data recovery UX, widget refresh scheduling
+and production application identity. All completed reservations are released.
+Developer 2 can continue design/theme/typography/localization independently.
+Stop after Phase 3; no Phase 4 work has begun.
