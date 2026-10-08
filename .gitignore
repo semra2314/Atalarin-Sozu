@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Provision Firebase and signing configuration outside version control.
+google-services.json
+GoogleService-Info.plist
+*.jks
+*.keystore
+keystore.properties
+signing.properties
