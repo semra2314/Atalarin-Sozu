@@ -1,0 +1,101 @@
+{
+  "author": {
+    "avatarURL": "https://example.com/avatar.jpg",
+    "displayName": "Fixture",
+    "handle": "@fixture",
+    "id": "fixture-author",
+    "isVerified": true
+  },
+  "content": {
+    "alignment": "trailing",
+    "background": {
+      "photo": {
+        "_0": "AAH+/w=="
+      }
+    },
+    "fontSize": 29,
+    "fontStyle": "rounded",
+    "fontWeight": "semibold",
+    "gradientDirection": "topTrailing",
+    "lineSpacing": 3,
+    "photos": [
+      {
+        "cornerRadius": 17,
+        "id": "12345678-1234-5678-9ABC-123456789ABC",
+        "imageData": "AAH+/w==",
+        "opacity": 0.7,
+        "rotation": 45,
+        "scale": 0.6,
+        "x": 0.2,
+        "y": 0.8
+      }
+    ],
+    "stickers": [
+      {
+        "colorHex": "ABCDEF",
+        "emoji": "❤️",
+        "id": "12345678-1234-5678-9ABC-123456789ABC",
+        "imageData": "AAH+/w==",
+        "opacity": 0.6,
+        "rotation": -30,
+        "scale": 1.8,
+        "symbolName": "heart.fill",
+        "x": 0.1,
+        "y": 0.9
+      }
+    ],
+    "text": "legacy",
+    "textColorHex": "12345678",
+    "textScrim": true,
+    "texts": [
+      {
+        "alignment": "leading",
+        "backgroundCornerRadius": 7,
+        "backgroundHex": "112233",
+        "backgroundOpacity": 0.4,
+        "backgroundPadding": 6,
+        "colorHex": "FEDCBA",
+        "fontSize": 31,
+        "fontStyle": "monospaced",
+        "fontWeight": "heavy",
+        "hasBackground": true,
+        "id": "12345678-1234-5678-9ABC-123456789ABC",
+        "lineSpacing": 2,
+        "rotation": 20,
+        "text": "A\nB",
+        "widthFraction": 0.65,
+        "x": 0.3,
+        "y": 0.7
+      }
+    ],
+    "verticalAlign": "bottom"
+  },
+  "freePrice": {
+    "free": {}
+  },
+  "paidPrice": {
+    "paid": {
+      "amount": 1.99,
+      "currencyCode": "USD"
+    }
+  },
+  "review": {
+    "authorID": "fixture-uid",
+    "authorName": "Fixture",
+    "createdAt": -0.25,
+    "id": "fixture-review",
+    "stars": 4,
+    "templateID": "t-focus",
+    "text": "Useful"
+  },
+  "theme": {
+    "accentHex": "222222",
+    "backgroundHexes": [
+      "010203",
+      "040506"
+    ],
+    "cornerRadius": 19,
+    "foregroundHex": "111111",
+    "usesGlassEffect": true
+  }
+}

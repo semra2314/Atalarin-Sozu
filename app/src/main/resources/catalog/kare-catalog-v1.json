@@ -1,0 +1,1636 @@
+{
+  "liveKarePlusIds": [
+    "t-exhale",
+    "t-countdown",
+    "t-progress"
+  ],
+  "publicationAnchor": "2026-10-08T00:00:00Z",
+  "schemaVersion": 1,
+  "sections": [
+    {
+      "id": "spotlight",
+      "style": "spotlight",
+      "subtitle": "Hand-picked by the Kare team",
+      "templateIds": [
+        "t-aurora",
+        "t-focus",
+        "t-frame"
+      ],
+      "title": "Featured today"
+    },
+    {
+      "id": "count",
+      "style": "carousel",
+      "subtitle": "Live widgets that keep score for you",
+      "templateIds": [
+        "t-exhale",
+        "t-countdown",
+        "t-progress"
+      ],
+      "title": "Count what matters"
+    },
+    {
+      "id": "all",
+      "style": "carousel",
+      "subtitle": "Everything that ships with Kare",
+      "templateIds": [
+        "t-aurora",
+        "t-focus",
+        "t-frame",
+        "t-hush",
+        "t-daily",
+        "t-proverb",
+        "t-exhale",
+        "t-countdown",
+        "t-progress",
+        "t-custom",
+        "p-sunset",
+        "p-hydrate",
+        "p-deepwork",
+        "p-pastel",
+        "p-mood",
+        "p-us",
+        "p-momentum",
+        "p-neon",
+        "p-gratitude",
+        "p-mono"
+      ],
+      "title": "All widgets"
+    },
+    {
+      "id": "minimal",
+      "style": "carousel",
+      "templateIds": [
+        "t-aurora",
+        "t-hush",
+        "t-daily",
+        "t-proverb",
+        "t-progress",
+        "t-custom",
+        "p-sunset",
+        "p-mono"
+      ],
+      "title": "Quietly minimal"
+    },
+    {
+      "id": "plus",
+      "style": "carousel",
+      "subtitle": "Buy one, or get them all with Kare+",
+      "templateIds": [
+        "t-exhale",
+        "t-countdown",
+        "t-progress",
+        "p-momentum",
+        "p-neon",
+        "p-gratitude",
+        "p-mono"
+      ],
+      "title": "Kare+"
+    },
+    {
+      "id": "free",
+      "style": "compactList",
+      "templateIds": [
+        "t-aurora",
+        "t-focus",
+        "t-frame",
+        "t-hush",
+        "t-daily",
+        "t-proverb",
+        "t-custom",
+        "p-sunset",
+        "p-hydrate",
+        "p-deepwork",
+        "p-pastel",
+        "p-mood",
+        "p-us"
+      ],
+      "title": "Great and free"
+    }
+  ],
+  "setupTemplateIds": [
+    "t-countdown",
+    "t-daily",
+    "t-exhale",
+    "t-focus",
+    "t-frame",
+    "t-progress"
+  ],
+  "sourceRevision": "41a8fbc67d2992f144383ede02c2ecfd6a73a1a1",
+  "subscriptionsAreLive": true,
+  "templates": [
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "galleryName": "Aurora",
+      "id": "t-aurora",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Aurora Clock",
+      "previewImageName": "aurora_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 812073600,
+      "rating": 0,
+      "ratingCount": 0,
+      "sizePreviewBaseName": "aurora",
+      "summary": "A live clock whose aurora background follows the light of day. Also sits on your lock screen.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "clock",
+        "gradient",
+        "live"
+      ],
+      "theme": {
+        "accentHex": "FFD8A8",
+        "backgroundHexes": [
+          "2C1E5C",
+          "7B3FA0",
+          "E0639A"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": true
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "productivity",
+      "galleryName": "Focus Stack",
+      "id": "t-focus",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Focus Stack",
+      "previewImageName": "focus_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 810518400,
+      "rating": 0,
+      "ratingCount": 0,
+      "sizePreviewBaseName": "focus",
+      "summary": "A live deep-work timer. Start it, and the countdown follows you to the lock screen.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "focus",
+        "timer",
+        "live"
+      ],
+      "theme": {
+        "accentHex": "4CC9F0",
+        "backgroundHexes": [
+          "10151F",
+          "1E2B3C"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "photos",
+      "galleryName": "Frame",
+      "id": "t-frame",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Frame",
+      "previewImageName": "frame_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 812419200,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Your own photo on the home screen, with a caption if you want one. Pick it once and it stays.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "photo",
+        "personal",
+        "memories"
+      ],
+      "theme": {
+        "accentHex": "E5D5C8",
+        "backgroundHexes": [
+          "241C1C",
+          "5B4038"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "galleryName": "Hush",
+      "id": "t-hush",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Hush",
+      "previewImageName": "hush_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 812764800,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "One quiet word, changing through the day. Nothing to tap, nothing to manage.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "calm",
+        "minimal",
+        "mindful"
+      ],
+      "theme": {
+        "accentHex": "E8E6E3",
+        "backgroundHexes": [
+          "0A0A0A",
+          "1A1A1A"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "galleryName": "Daily",
+      "id": "t-daily",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Daily",
+      "previewImageName": "daily_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A passage a day, from the source you choose: scripture, Stoic philosophy, poetry or proverbs. Always shown with its reference.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "quote",
+        "daily",
+        "reflection"
+      ],
+      "theme": {
+        "accentHex": "2B2018",
+        "backgroundHexes": [
+          "FAF3E7",
+          "EBDCC4"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "galleryName": "Söz",
+      "id": "t-proverb",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Söz",
+      "previewImageName": "soz_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A Turkish proverb or idiom every four hours, with its meaning and an example. From 400 sayings.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "atasözü",
+        "deyim",
+        "türkçe"
+      ],
+      "theme": {
+        "accentHex": "C05A3E",
+        "backgroundHexes": [
+          "FBF4EA",
+          "F0E2CE"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "health",
+      "galleryName": "Exhale",
+      "id": "t-exhale",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Exhale",
+      "previewImageName": "exhale_widget",
+      "price": {
+        "paid": {
+          "amount": 1.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "For quitting smoking. Your lungs fill as your body recovers, with days smoke-free and the money you kept. Tap the lungs to breathe.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "quit smoking",
+        "sigara",
+        "sigarayı bırak",
+        "nefes al",
+        "health",
+        "lungs",
+        "live"
+      ],
+      "theme": {
+        "accentHex": "A7F3D0",
+        "backgroundHexes": [
+          "0B1F1D",
+          "124A42"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "productivity",
+      "galleryName": "Countdown",
+      "id": "t-countdown",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Countdown",
+      "previewImageName": "countdown_widget",
+      "price": {
+        "paid": {
+          "amount": 1.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Days until the day you are waiting for: a trip, a wedding, an exam. One dot per day, filling as it gets closer.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "countdown",
+        "geri sayım",
+        "days",
+        "event",
+        "live"
+      ],
+      "theme": {
+        "accentHex": "FFFFFF",
+        "backgroundHexes": [
+          "1E3A8A",
+          "312E81"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "galleryName": "Progress",
+      "id": "t-progress",
+      "installCount": 0,
+      "isEditable": false,
+      "name": "Progress",
+      "previewImageName": "progress_widget",
+      "price": {
+        "paid": {
+          "amount": 1.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "How much of the day, week, month or year has passed, or of your life. A big number and one dot per unit.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large",
+        "accessoryCircular",
+        "accessoryRectangular"
+      ],
+      "tags": [
+        "year progress",
+        "life in weeks",
+        "time",
+        "minimal",
+        "live"
+      ],
+      "theme": {
+        "accentHex": "D44A33",
+        "backgroundHexes": [
+          "F6F1E7",
+          "EDE4D3"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "1D1D1F",
+              "3A3A3C"
+            ]
+          }
+        },
+        "fontSize": 26,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "D44A33",
+            "id": "F129868D-E993-5FF5-B049-11A4F2862F37",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 1,
+            "symbolName": "sparkles",
+            "x": 0.82,
+            "y": 0.22
+          }
+        ],
+        "text": "Your\nwidget",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "t-custom",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Custom Widget",
+      "previewImageName": "custom_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Design your own from scratch: pick a background, add your text, drop in stickers, exactly how you want it.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "custom",
+        "editor",
+        "diy"
+      ],
+      "theme": {
+        "accentHex": "D44A33",
+        "backgroundHexes": [
+          "1D1D1F",
+          "3A3A3C"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "FF9A6C",
+              "F76B8A",
+              "8E44AD"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "FFFFFF",
+            "fontSize": 30,
+            "fontStyle": "serif",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "ACA704DA-942E-55C7-9CEB-239A2A769B9E",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "good\nevening",
+            "widthFraction": 0.72,
+            "x": 0.36,
+            "y": 0.32
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-sunset",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Sunset",
+      "previewImageName": "sunset_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A warm gradient and a soft greeting. Change the words to whatever you want to read at a glance.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "gradient",
+        "warm",
+        "greeting"
+      ],
+      "theme": {
+        "accentHex": "FFE3D0",
+        "backgroundHexes": [
+          "FF9A6C",
+          "F76B8A",
+          "8E44AD"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "health",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "7FD8F7",
+              "3AA9E0"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "FFFFFF",
+            "emoji": "💧",
+            "id": "C4A1C955-DECB-5F24-8310-70F7A5E1937E",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 1.7,
+            "symbolName": "star.fill",
+            "x": 0.76,
+            "y": 0.74
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "FFFFFF",
+            "fontSize": 28,
+            "fontStyle": "rounded",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "C687B5E1-3F39-5AC4-97F0-1CB58F649275",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "drink\nwater",
+            "widthFraction": 0.7,
+            "x": 0.35,
+            "y": 0.31
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-hydrate",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Hydrate",
+      "previewImageName": "hydrate_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A nudge to drink water, sitting where you already look a hundred times a day.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "water",
+        "habit",
+        "reminder"
+      ],
+      "theme": {
+        "accentHex": "F0FBFF",
+        "backgroundHexes": [
+          "7FD8F7",
+          "3AA9E0"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "productivity",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "0F2027",
+              "203A43",
+              "2C5364"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "9EE7FF",
+            "id": "8C5EF4AE-B3FC-5AB4-9EE5-F3DDD932ED32",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 0.9,
+            "symbolName": "moon.stars.fill",
+            "x": 0.79,
+            "y": 0.77
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "9EE7FF",
+            "fontSize": 27,
+            "fontStyle": "monospaced",
+            "fontWeight": "bold",
+            "hasBackground": false,
+            "id": "636C006F-5FAC-5300-9501-873B387A07EE",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "deep\nwork",
+            "widthFraction": 0.7,
+            "x": 0.34,
+            "y": 0.33
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-deepwork",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Deep Work",
+      "previewImageName": "deepwork_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "One instruction, in monospace, on a cold dark gradient. For the hours that matter.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "focus",
+        "mono",
+        "dark"
+      ],
+      "theme": {
+        "accentHex": "9EE7FF",
+        "backgroundHexes": [
+          "0F2027",
+          "203A43",
+          "2C5364"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "fun",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "FBC2EB",
+              "A6C1EE"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "center",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "4A2C5A",
+            "fontSize": 36,
+            "fontStyle": "rounded",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "0F312E2A-C9E7-5C33-9705-0F7578A4076D",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "hi :)",
+            "widthFraction": 0.85,
+            "x": 0.5,
+            "y": 0.5
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-pastel",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Pastel",
+      "previewImageName": "pastel_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Soft pink into periwinkle, with room for a short hello. The friendliest thing on the screen.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "pastel",
+        "soft",
+        "cute"
+      ],
+      "theme": {
+        "accentHex": "4A2C5A",
+        "backgroundHexes": [
+          "FBC2EB",
+          "A6C1EE"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "social",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "2C2C34",
+              "44444F"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "FFFFFF",
+            "emoji": "🌙",
+            "id": "91372B5D-73F6-54B0-8873-0D197FED4A46",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 1.4,
+            "symbolName": "star.fill",
+            "x": 0.78,
+            "y": 0.77
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "9A9AA5",
+            "fontSize": 12,
+            "fontStyle": "monospaced",
+            "fontWeight": "semibold",
+            "hasBackground": false,
+            "id": "D80567A2-BEEB-5515-B897-B2254B6613E8",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "today",
+            "widthFraction": 0.5,
+            "x": 0.3,
+            "y": 0.24
+          },
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "F2F2F5",
+            "fontSize": 30,
+            "fontStyle": "serif",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "92DD7994-65EB-5C40-84D5-552270757F75",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "calm",
+            "widthFraction": 0.7,
+            "x": 0.34,
+            "y": 0.5
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-mood",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Mood",
+      "previewImageName": "mood_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Today in one word and one emoji. Edit it whenever the mood turns.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "mood",
+        "emoji",
+        "status"
+      ],
+      "theme": {
+        "accentHex": "F2F2F5",
+        "backgroundHexes": [
+          "2C2C34",
+          "44444F"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "social",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "3B1D2E",
+              "8E3B5E"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "FFFFFF",
+            "emoji": "❤️",
+            "id": "7AA32310-2926-530F-A620-78267346854D",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 1.2,
+            "symbolName": "star.fill",
+            "x": 0.5,
+            "y": 0.72
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "center",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "FFD9E4",
+            "fontSize": 40,
+            "fontStyle": "serif",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "2E5C5E0A-8D2B-51E8-A57D-E1F199317211",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "us",
+            "widthFraction": 0.8,
+            "x": 0.5,
+            "y": 0.44
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-us",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Us",
+      "previewImageName": "us_widget",
+      "price": {
+        "free": {}
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A small private thing for a person you like. Two words and a heart.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "couple",
+        "heart",
+        "personal"
+      ],
+      "theme": {
+        "accentHex": "FFD9E4",
+        "backgroundHexes": [
+          "3B1D2E",
+          "8E3B5E"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "productivity",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "101010",
+              "2B2B2B"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "F5F5F5",
+            "id": "42545EC5-B61A-5428-8D1B-7B006E60632C",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 0.8,
+            "symbolName": "arrow.up.right",
+            "x": 0.82,
+            "y": 0.2
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "F5F5F5",
+            "fontSize": 26,
+            "fontStyle": "serif",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "D36B9160-864D-5477-875A-59EAE49C0D3B",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "one thing",
+            "widthFraction": 0.78,
+            "x": 0.39,
+            "y": 0.42
+          },
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "8A8A8A",
+            "fontSize": 26,
+            "fontStyle": "serif",
+            "fontWeight": "regular",
+            "hasBackground": false,
+            "id": "71B540DE-B871-5286-A1D9-DB5CDC58BCDA",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "at a time",
+            "widthFraction": 0.78,
+            "x": 0.38,
+            "y": 0.6
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-momentum",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Momentum",
+      "previewImageName": "momentum_widget",
+      "price": {
+        "paid": {
+          "amount": 0.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A single line to hold you to one thing at a time. Heavy serif on near-black.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "discipline",
+        "serif",
+        "minimal"
+      ],
+      "theme": {
+        "accentHex": "F5F5F5",
+        "backgroundHexes": [
+          "101010",
+          "2B2B2B"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "fun",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "1A0033",
+              "3D0066",
+              "FF00AA"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "FFFFFF",
+            "emoji": "⚡️",
+            "id": "C2159441-28F4-5AAB-874D-3E738B302961",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 1.3,
+            "symbolName": "star.fill",
+            "x": 0.8,
+            "y": 0.19
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "FFFFFF",
+            "fontSize": 34,
+            "fontStyle": "rounded",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "A23FDC34-821C-5024-BC2B-DBE9F9AF4983",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "stay",
+            "widthFraction": 0.7,
+            "x": 0.32,
+            "y": 0.38
+          },
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "00F0FF",
+            "fontSize": 34,
+            "fontStyle": "rounded",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "53D1BA11-981D-5D18-96D5-01672FB57F47",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "weird",
+            "widthFraction": 0.7,
+            "x": 0.38,
+            "y": 0.62
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-neon",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Neon",
+      "previewImageName": "neon_widget",
+      "price": {
+        "paid": {
+          "amount": 0.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Electric magenta bleeding into deep violet. Loud, on purpose.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "neon",
+        "night",
+        "bold"
+      ],
+      "theme": {
+        "accentHex": "FFFFFF",
+        "backgroundHexes": [
+          "1A0033",
+          "3D0066",
+          "FF00AA"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "health",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "FDF6E3",
+              "F5E6C8"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [
+          {
+            "colorHex": "9CAF88",
+            "id": "D11A910F-68C7-581C-ACF1-6D330B6AE19A",
+            "opacity": 1,
+            "rotation": 0,
+            "scale": 0.9,
+            "symbolName": "leaf.fill",
+            "x": 0.79,
+            "y": 0.78
+          }
+        ],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "3A2E1F",
+            "fontSize": 19,
+            "fontStyle": "serif",
+            "fontWeight": "semibold",
+            "hasBackground": false,
+            "id": "7BF96B6F-5B11-5181-A753-9D52CC5FC66B",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "today I'm\ngrateful for",
+            "widthFraction": 0.76,
+            "x": 0.4,
+            "y": 0.36
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-gratitude",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Gratitude",
+      "previewImageName": "gratitude_widget",
+      "price": {
+        "paid": {
+          "amount": 0.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "A warm paper card with a prompt you finish yourself. Rewrite it each morning.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "gratitude",
+        "journal",
+        "calm"
+      ],
+      "theme": {
+        "accentHex": "3A2E1F",
+        "backgroundHexes": [
+          "FDF6E3",
+          "F5E6C8"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    },
+    {
+      "author": {
+        "displayName": "Kare",
+        "handle": "@kare",
+        "id": "a-kare",
+        "isVerified": true
+      },
+      "category": "minimal",
+      "content": {
+        "alignment": "leading",
+        "background": {
+          "color": {
+            "_0": [
+              "FFFFFF",
+              "F0F0F0"
+            ]
+          }
+        },
+        "fontSize": 22,
+        "fontStyle": "serif",
+        "fontWeight": "bold",
+        "gradientDirection": "topLeading",
+        "lineSpacing": 0,
+        "photos": [],
+        "stickers": [],
+        "text": "",
+        "textColorHex": "FFFFFF",
+        "textScrim": false,
+        "texts": [
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "9A9A9A",
+            "fontSize": 12,
+            "fontStyle": "monospaced",
+            "fontWeight": "bold",
+            "hasBackground": false,
+            "id": "8393A50E-410C-52DF-B6B9-8A8B6417C53F",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "NOTE",
+            "widthFraction": 0.5,
+            "x": 0.29,
+            "y": 0.23
+          },
+          {
+            "alignment": "leading",
+            "backgroundCornerRadius": 10,
+            "backgroundHex": "1D1D1F",
+            "backgroundOpacity": 0.5,
+            "backgroundPadding": 8,
+            "colorHex": "111111",
+            "fontSize": 26,
+            "fontStyle": "serif",
+            "fontWeight": "heavy",
+            "hasBackground": false,
+            "id": "FD24FBBA-C34C-54C6-A766-7ADBDDBE5AC2",
+            "lineSpacing": 0,
+            "rotation": 0,
+            "text": "keep it\nsimple",
+            "widthFraction": 0.76,
+            "x": 0.38,
+            "y": 0.54
+          }
+        ],
+        "verticalAlign": "top"
+      },
+      "galleryName": "Kare",
+      "id": "p-mono",
+      "installCount": 0,
+      "isEditable": true,
+      "name": "Monochrome",
+      "previewImageName": "mono_widget",
+      "price": {
+        "paid": {
+          "amount": 0.99,
+          "currencyCode": "USD"
+        }
+      },
+      "publishedAt": 813110400,
+      "rating": 0,
+      "ratingCount": 0,
+      "summary": "Black type on off-white, and nothing else. The one that disappears into a clean home screen.",
+      "supportedSizes": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tags": [
+        "white",
+        "editorial",
+        "clean"
+      ],
+      "theme": {
+        "accentHex": "111111",
+        "backgroundHexes": [
+          "FFFFFF",
+          "F0F0F0"
+        ],
+        "cornerRadius": 22,
+        "foregroundHex": "FFFFFF",
+        "usesGlassEffect": false
+      }
+    }
+  ]
+}

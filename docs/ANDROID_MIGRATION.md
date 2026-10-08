@@ -14,7 +14,10 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 1 is limited to source analysis, coordination documentation, package
+Phase 2 adds the bundled catalog, explicit JSON adapters and repository tests.
+UI and platform integrations remain deferred.
+
+Phase 1 was limited to source analysis, coordination documentation, package
 boundaries, platform-independent models, and repository contracts. Full screens,
 Firebase implementations, Room, widgets, billing, and the editor are deferred.
 
@@ -191,13 +194,13 @@ all text/photo/sticker fields), `WidgetTheme`, `WidgetSize`, `WidgetCategory`,
 `ImageData`. Core models are read-only Kotlin values with no persistence
 annotations. Callers should pass owned snapshots rather than mutable collections.
 
-This phase preserves data meaning, source defaults, and explicit enum raw values;
-it does **not** implement JSON encoding/decoding or Firestore serialization.
-Do not use reflection-based serialization of these domain classes as a shared
-wire format. Add adapters and golden iOS payload tests before importing/exporting
-data or saving models to Room.
+Phase 2 implements explicit JSON-only kotlinx.serialization adapters in
+`core/data/serialization`, without annotations or SDK types in domain models.
+Swift-exported fixtures exercise the real Codable shapes. Firestore, PublicProfile
+and InstalledWidget adapters remain deferred. Never treat Codable Review JSON
+as the Firestore document schema.
 
-| Boundary | Required mapping for a later adapter |
+| Boundary | Explicit boundary mapping |
 |---|---|
 | Author | Kotlin `avatarUrl` maps to iOS Codable `avatarURL` |
 | Review | Kotlin `templateId` maps to `templateID`; `authorId` maps to Codable `authorID`, but Firestore uses `uid`; Firestore document ID is `{templateID}_{uid}` |
@@ -219,7 +222,7 @@ when `texts` is absent/null. It uses x = 0.34/0.5/0.66 for leading/center/traili
 y = 0.24/0.5/0.76 for top/middle/bottom, and carries the original font, size,
 weight, color, alignment and spacing. A present empty list stays empty. Missing
 new fields and nested element fields use the defaults in `WidgetContent.swift`.
-This migration behavior belongs to the future decoder, not the constructor for
+This migration behavior is implemented in the JSON decoder, not the constructor for
 new designs. The source default `Your text` is retained for parity; a future
 editor should supply localized starter text rather than display this default.
 
@@ -245,15 +248,16 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. The human developer identity of
-the Phase 1 agent was not supplied, so neither developer has been assigned work
-by assumption.
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 2;
+Developer 2 retains the separately assigned design and localization work.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
 |---|---|---|---|---|---|
 | Project setup | KareApp / Xcode targets | Existing single module + reserved packages | Phase 1 agent | COMPLETED | Starter UI retained; production ID unresolved |
-| Core models | Core/Models | `core/model` values | Phase 1 agent | COMPLETED | Phase 1 shared models only; codecs/live models deferred |
-| Repository architecture | WidgetRepository / LibraryStore | Suspend catalog/review interface + library Flow contract | Phase 1 agent | COMPLETED | Interfaces only; no production implementations |
+| Core models | Core/Models | `core/model` values | Phase 1 agent | COMPLETED | Catalog codecs implemented separately; live models deferred |
+| Repository architecture | WidgetRepository / LibraryStore | Suspend catalog/review interface + library Flow contract | Phase 1 agent | COMPLETED | Bundled implementation available; library and remote implementations deferred |
+| Bundled catalog | SampleCatalog / MockWidgetRepository | LocalCatalogDataSource + BundledWidgetRepository | Developer 1 | COMPLETED | 20 templates, 6 sections, lookup/filter/search; no UI |
+| Catalog serialization | Codable models | Explicit JSON adapters and Swift fixtures | Developer 1 | COMPLETED | Associated values, dates, images and legacy content; no Firestore adapters |
 | Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
 | Firebase Auth | AuthService | None | Unassigned | NOT STARTED | Providers/account linking/deletion policy open |
 | Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
@@ -262,14 +266,14 @@ by assumption.
 | Room | SwiftData | Reserved `core/database` | Unassigned | NOT STARTED | No dependency, entities or DAO |
 | DataStore | AppStorage / defaults | Reserved `core/preferences` | Unassigned | NOT STARTED | No dependency or implementation |
 | Navigation | Navigation/ | Reserved package | Unassigned | NOT STARTED | No graph or routes |
-| Discover | DiscoverView / ViewModel | Reserved package | Unassigned | NOT STARTED | Bundled catalog not migrated |
-| Search | SearchView / ViewModel | Reserved package | Unassigned | NOT STARTED | Debounce/search behavior not implemented |
+| Discover | DiscoverView / ViewModel | Reserved package | Unassigned | NOT STARTED | Catalog sections ready; UI/ViewModel deferred |
+| Search | SearchView / ViewModel | Reserved package | Unassigned | NOT STARTED | Repository search ready; UI/debounce deferred |
 | Template detail | TemplateDetailView | Reserved package | Unassigned | NOT STARTED | No preview/review/purchase UI |
 | Library UI | LibraryView | Reserved package | Unassigned | NOT STARTED | No screen |
 | Profile | ProfileView / EditProfileView | Reserved package | Unassigned | NOT STARTED | No screen |
 | Settings | SettingsView | Reserved package | Unassigned | NOT STARTED | No screen |
 | Onboarding | OnboardingView / RootGate | Reserved package | Unassigned | NOT STARTED | No screen or preference flags |
-| Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | No editor, renderer, codecs or image processing |
+| Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | Content codecs ready; no editor, renderer or image processing |
 | Daily | DailyStore / DailyWidget | Reserved feature package | Unassigned | NOT STARTED | No content/source persistence |
 | Focus | FocusSession / FocusView / FocusWidget | Reserved feature package | Unassigned | NOT STARTED | No timer/audio/session logic |
 | Frame | FramePhotoStore / FrameWidget | Reserved feature package | Unassigned | NOT STARTED | No photo picker/storage |
@@ -279,32 +283,40 @@ by assumption.
 | Android App Widgets | actual-widgetsExtension | Reserved `widget` | Unassigned | NOT STARTED | No receiver/provider/Glance dependency |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
-| Localization | Both Localizable.xcstrings catalogs | Starter strings only | Unassigned | NOT STARTED | English/Turkish migration pending |
-| Design system | Theme / AppFont / components | Starter theme; reserved `core/design` | Unassigned | NOT STARTED | Visual identity not migrated in this phase |
+| Localization | Both Localizable.xcstrings catalogs | Starter strings only | Developer 2 | NOT STARTED | English/Turkish migration pending |
+| Design system | Theme / AppFont / components | Starter theme; reserved `core/design` | Developer 2 | NOT STARTED | Visual identity not migrated in this phase |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
-| Tests | WidgyTests / WidgyUITests | Foundation model tests + starter tests | Phase 1 agent | COMPLETED | Phase 1: 9 JVM tests pass; feature/integration/device coverage remains NOT STARTED |
+| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 29 JVM tests; feature/integration/device coverage remains NOT STARTED |
 
 ## Current work
 
 ### Developer 1
 
-Branch: unassigned. No human developer identity has been supplied for this session.
+Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: unassigned.
+Current tasks: Phase 2 completed; no next task started. Catalog/serialization file
+reservations are released after validation. No branch operation is authorized.
 
-Main files / areas being modified: none assigned to this developer.
+Files changed: `core/data/catalog`, `core/data/serialization`, bundled resources,
+catalog tests/fixtures, export script and this document. Shared Gradle files gained
+only the kotlinx.serialization JSON runtime dependency. These dependency files
+and this document remain coordination hotspots; preserve concurrent edits.
 
-Areas that should not be modified by the other developer: none reserved.
+Areas reserved by Developer 2 must remain untouched.
 
 ### Developer 2
 
-Branch: unassigned.
+Branch: not reported; do not infer or change it.
 
-Current tasks: unassigned.
+Current tasks: independently assigned design system, theme tokens, typography,
+and localization. Status: NOT STARTED in this checkout; external progress is not
+known and must be reported by Developer 2.
 
-Main files / areas being modified: none.
+Main files / areas reserved: `core/design`, `ui/theme`, typography/font assets,
+and localization resources. Developer 1 will not modify these areas in Phase 2.
 
-Areas that should not be modified by the other developer: none reserved.
+Areas that should not be modified by the other developer: the reserved design,
+theme, typography and localization areas. No takeover without authorization.
 
 ### Phase 1 session record
 
@@ -329,6 +341,13 @@ Do not take over another developer's assigned work without explicit authorizatio
 Future agents must claim scope here before substantial work and release it on
 completion. This file and build configuration are shared conflict hotspots.
 
+### Phase 2 scope
+
+Developer 1 is now identified explicitly by the user. Phase 1 is accepted as
+complete. Phase 2 implements local catalog data and serialization only, with no
+UI, Room/DataStore, Firebase, widgets, billing or editor UI. Catalog artwork names
+and shipped text are source data, not a design-system or localization migration.
+
 ## Architectural decisions
 
 Chronological log; append a new dated decision when revising a choice rather
@@ -351,6 +370,33 @@ than relying on conversation history.
 | 2026-10-08 | Package and Git strategy | Keep existing namespace and single module. Reserve packages without empty implementation classes. Work on current ANDROID branch as requested; no new branch, commit, merge, or push |
 | 2026-10-08 | Ownership and language | Neither human developer is assigned by inference. All migration Markdown is English; feature ownership must be explicitly recorded before work begins |
 
+### 2026-10-08 — Phase 2 decisions
+
+- **Source-derived bundle:** export actual SampleCatalog and MockWidgetRepository
+  at the pinned iOS revision, verified against the remote IOS head. Preserve
+  ordering, text, prices, categories, themes, content and fixed IDs. Source hashes
+  and independently encoded Swift fixtures are checked in for reproducibility.
+- **Explicit JSON boundary:** use kotlinx.serialization JSON 1.9.0 with manual
+  KSerializer adapters; no compiler plugin, reflection or model annotations.
+  Associated values retain Swift case objects, including nested `_0` payloads.
+  Decimal amounts and Apple-epoch dates use unquoted numeric tokens to avoid
+  Double conversion. Dates retain nanoseconds on Android; Swift Date itself has
+  floating-point precision limits. Subnanosecond inputs round half-even.
+- **Compatibility policy:** preserve required Codable fields and optional/legacy
+  defaults. Ignore additional fields, reject unknown enum cases and wrong types.
+  Reject malformed/noncanonical base64, invalid UUIDs, nonfinite doubles, invalid
+  review stars and unsupported bundle versions. Numeric input is bounded to 128
+  characters and decimal scales -1000..1000 to avoid pathological expansion.
+- **Repository:** cache only validated immutable snapshots, perform I/O off the
+  caller thread, preserve source ordering and case-insensitive trimmed search
+  over name/summary/tags/author with optional category intersection. Unknown IDs
+  throw NotFound; malformed bundles throw InvalidData with suppressed diagnostic,
+  I/O throws Persistence, and coroutine cancellation propagates.
+- **Review boundary:** both review operations throw Unavailable. No in-memory
+  review fallback or successful no-op submission; real Firebase review support
+  belongs to a later phase. Paid shelf visibility is merchandising, never an
+  entitlement or billing implementation.
+
 ## Known platform differences
 
 | Concern | Android migration approach / limitation |
@@ -372,6 +418,22 @@ than relying on conversation history.
 | Subject lifting | Vision cutouts have no literal platform port. Evaluate quality, device support and licensing of a native Android solution in the editor phase |
 | Localization | Keep English and Turkish UI resources separate from user-authored content and Turkish proverb data; decide how app locale affects widgets and daily content |
 
+Phase 2 catalog differences:
+
+- Relative Swift `.now` publication dates are frozen at `2026-10-08T00:00:00Z`
+  with the original offsets; randomly initialized editor element UUIDs become
+  deterministic UUIDs. Template IDs are unchanged. This avoids changing identity
+  and publication time each time the app loads or the export runs.
+- CatalogSection is not Codable in iOS. The bundle uses ordered `templateIds`,
+  resolved to shared templates on load; its standalone Android adapter uses
+  resolved `templates`. Neither is asserted to be a Firestore section schema.
+- Swift Codable data compatibility does not imply Firestore compatibility.
+  Review `uid`/Timestamp/document-ID mappings remain future infrastructure work.
+- No mock network delay or generated reviews. Source artwork names and SF Symbol
+  tokens are metadata; their Android assets/rendering are not implemented.
+- Original catalog prose is preserved as source content. Developer 2's UI
+  localization resources are independent and unchanged.
+
 Android references checked during analysis:
 [Glance rendering boundary](https://developer.android.com/develop/ui/compose/glance),
 [widget update considerations](https://developer.android.com/develop/ui/views/appwidgets/advanced),
@@ -380,33 +442,16 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-These are proposals, not ownership assignments or authorization to begin them.
-First agree which person is Developer 1 and Developer 2, then record their actual
-branches, reservations and status here. Feature branches require explicit
-authorization; suggested names are not commands to create branches.
+Phase 2 is complete. Recommended Phase 3 is the Room-backed local library using
+LibraryRepository, with explicit InstalledWidget storage converters, migration,
+transactional reorder/favorite tests and process-recreation coverage. Agree the
+storage schema before writing durable user data. Navigation and catalog
+ViewModels can follow when the design contracts are available. These are
+recommendations, not authorization to start or create branches.
 
-1. **Recommended next phase: bundled catalog and persistence-ready data contracts.**
-   Port the pinned SampleCatalog and curated sections behind WidgetRepository,
-   separate the local catalog source from a future review source, and add search,
-   ordering, missing-ID and cancellation tests. Add serialization adapters with
-   fixtures for Swift enum/date/data shapes and legacy WidgetContent defaults
-   before any persistent editor data is written. Do not make review submission a
-   successful no-op while it is unavailable.
-2. **Safe Developer 2 parallel option: design tokens and localization inventory.**
-   Work in `core/design` and dedicated resources such as `values/kare_colors.xml`
-   and `values/kare_dimens.xml`; prepare the English/Turkish key mapping and font
-   asset audit. Keep it independent of MainActivity/theme wiring, navigation and
-   shared core models until agreed integration. No complete screens are needed.
-3. **Alternative Developer 2 option: Room library implementation after codec
-   agreement.** Own `core/database`, a dedicated `core/data/library` implementation
-   and its tests. Use the existing LibraryRepository; coordinate codec/model and
-   Gradle edits before beginning. Do not work on the same catalog/codec files as
-   the other developer.
-
-Later phases can add a navigation/ViewModel shell, library/preferences, then
-Discover/Search/detail, before accounts/reviews and complex widget/editor/billing
-work. Firebase and Google Play provisioning can be planned independently, but
-credentials and generated configuration must not be committed.
+Developer 2 can continue the assigned design system, theme tokens, typography
+and English/Turkish localization independently. Keep changes in design packages
+and dedicated resources; coordinate shared Gradle and documentation edits.
 
 ### Conflict hotspots
 
@@ -424,17 +469,17 @@ credentials and generated configuration must not be committed.
 
 ## Open questions and blockers
 
-There is no known Phase 1 implementation blocker. The following are unresolved
+There is no known Phase 2 implementation blocker. The following are unresolved
 inputs or design questions for later phases, not claims that work has started:
 
-- Human developer identities, feature ownership and authorized feature branches.
+- Developer 2 branch/progress and any future feature branch authorization.
 - Final Android application ID and Firebase Android registration; shared project
   access, deployed Firestore rules/indexes, moderation permissions and account
   deletion consistency. Do not infer these from client Swift code.
 - Auth provider parity: how existing Apple-created Firebase accounts sign in on
   Android, and whether another provider/account-linking flow is wanted.
-- Selected JSON library, unknown enum policy, date precision and migration version
-  strategy. Implement fixtures before declaring wire/storage compatibility.
+- Durable library schema/version upgrades and InstalledWidget/PublicProfile adapters
+  remain undecided. Catalog JSON schema is version 1; unsupported versions fail.
 - Play products, verification backend, restore/expiry behavior, and whether
   iOS purchases should grant Android access. App Store product IDs are not Play
   product definitions; catalog prices are not checkout prices.
@@ -598,3 +643,88 @@ Modified (3 files):
 - `gradle/libs.versions.toml`
 
 No existing source files were deleted or renamed.
+
+## Phase 2 work log and file manifest
+
+### 2026-10-08 — Bundled catalog and serialization completed
+
+Branch: `ANDROID`. Owner: Developer 1. Status: COMPLETED.
+
+Implemented 20 source templates, six discover shelves, stable lookup, category
+filtering, trimmed case-insensitive search and explicit unavailable review
+operations. Preserved all important live/custom/preset IDs and setup/Kare+ helper
+mappings. The bundle has 13 free and seven paid templates; paid prices are catalog
+metadata only. No UI, design, localization, persistence or backend implementation
+was changed. Existing model and repository contracts and AGENTS.md are unchanged.
+
+Created files:
+
+- `app/src/main/java/com/example/kare/core/data/catalog/LocalCatalogDataSource.kt`
+- `app/src/main/java/com/example/kare/core/data/catalog/BundledWidgetRepository.kt`
+- `app/src/main/java/com/example/kare/core/data/serialization/JsonFields.kt`
+- `app/src/main/java/com/example/kare/core/data/serialization/SwiftValueSerializers.kt`
+- `app/src/main/java/com/example/kare/core/data/serialization/WidgetContentSerializer.kt`
+- `app/src/main/java/com/example/kare/core/data/serialization/CatalogSerializers.kt`
+- `app/src/main/java/com/example/kare/core/data/serialization/CatalogJson.kt`
+- `app/src/main/resources/catalog/kare-catalog-v1.json`
+- `app/src/test/java/com/example/kare/core/data/CatalogTest.kt`
+- `app/src/test/java/com/example/kare/core/data/SerializationTest.kt`
+- `app/src/test/resources/catalog/ios-wire-fixtures.json`
+- `app/src/test/resources/catalog/ios-source-manifest.json`
+- `scripts/export_ios_catalog.py`
+
+Modified files:
+
+- `app/build.gradle.kts`: JSON runtime dependency only.
+- `gradle/libs.versions.toml`: serialization version and library alias only.
+- `docs/ANDROID_MIGRATION.md`: status, ownership, contracts, decisions, differences,
+  next phase, validation and this manifest.
+
+Reproduce the bundle and fixtures with a local checkout of the pinned iOS commit
+and a macOS Swift toolchain:
+
+```sh
+python3 scripts/export_ios_catalog.py /path/to/ios-checkout
+```
+
+The script verifies the revision and records input hashes; it neither downloads
+source nor modifies Git state. Use `--output-root /tmp/kare-export` to compare
+without replacing checked-in resources. Re-export was verified byte-for-byte
+identical for all three JSON files. The catalog resource was also verified inside
+the debug APK. Normal Android builds do not require Swift or the iOS checkout.
+
+Twenty new JVM tests cover catalog loading, unique/source IDs, known/missing
+lookup, all category filters, search/locale behavior, section membership/order,
+unavailable reviews, concurrent caching, retry after failure, malformed bundles,
+cancellation, all exported template round trips, Swift fixtures, exact decimal
+and date precision, both associated-value families, binary images, legacy text
+migration/defaults, invalid inputs and the explicit section shape.
+
+Initial validation caught numeric rounding through JsonPrimitive(Number) and
+attempting to initialize an exception cause already set by its base class. Both
+were fixed: explicit numeric literals preserve precision, and suppressed
+serialization diagnostics preserve the existing domain error contract.
+
+Remaining work: Room/library storage schema and converters, ViewModels and UI,
+real review infrastructure and resource rendering. No Phase 2 blocker remains.
+Shared conflict hotspots are the migration document and both Gradle files.
+Developer 2 retains design/theme/typography/localization ownership; Phase 2
+reservations are released. No commit, push, merge or branch change was made.
+
+### Phase 2 final validation
+
+Run on 2026-10-08 on `ANDROID`:
+
+| Command | Result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS; 29 JVM tests, zero failures/errors (20 new, 9 existing) |
+| `./gradlew lint` | PASS; zero errors, 21 warnings |
+| `git diff --check` | PASS |
+
+Gradle tasks were run together in the final successful invocation. Lint warnings
+are version/update notices and existing starter resource/manifest warnings; the
+serialization dependency adds one version notice compared with Phase 1. No lint
+rule, compiler setting or baseline was weakened. No device test was run: this
+phase implements data behavior only. The initial cache restriction required
+approved Gradle cache access. Build reports remain generated and ignored.

@@ -1,0 +1,41 @@
+{
+  "orderedTemplateIds": [
+    "t-aurora",
+    "t-focus",
+    "t-frame",
+    "t-hush",
+    "t-daily",
+    "t-proverb",
+    "t-exhale",
+    "t-countdown",
+    "t-progress",
+    "t-custom",
+    "p-sunset",
+    "p-hydrate",
+    "p-deepwork",
+    "p-pastel",
+    "p-mood",
+    "p-us",
+    "p-momentum",
+    "p-neon",
+    "p-gratitude",
+    "p-mono"
+  ],
+  "publicationAnchor": "2026-10-08T00:00:00Z",
+  "sha256": {
+    "Widgy/Core/Models/Author.swift": "a95369a5070506df9634257cced4a59e3941cc7a59bc472dbdcd385084a7c3e1",
+    "Widgy/Core/Models/CatalogSection.swift": "668ecdc194deb3b8bad547d99e7425805190eb4e4a11878ee1ae5a75bbbb96d8",
+    "Widgy/Core/Models/Review.swift": "7abcbf72bf3b87fe5f8cb36dc0429720ed62bff7cb8bc8ef6d44fa048882e4fe",
+    "Widgy/Core/Models/SampleCatalog.swift": "614080f7821e2fab964bbadd98d2089acbdcfe8f2e04d3fdb0d1df8e4b15a5e6",
+    "Widgy/Core/Models/WidgetCategory.swift": "ff6b0f85f15c0bf934fd54f1df9960ad3a09ae1d7a9ffb9effc851f77496f435",
+    "Widgy/Core/Models/WidgetContent.swift": "c6e3a322ccd8e6c9cab6be34b473ff4852504acf8318d8d69dd298514f9e9a36",
+    "Widgy/Core/Models/WidgetSize.swift": "a0930a65b28c93a16b2cd92a1206a83c568564a8d26a4bc734c836a5bec8380a",
+    "Widgy/Core/Models/WidgetTemplate.swift": "1041656ef15e3f930b874181ac09c26e068672655933ccdd362085034f12b8f8",
+    "Widgy/Core/Models/WidgetTheme.swift": "bc718e125b12f4d883714b01bfbf56f5915bbfadd2a4d6d96a07b419c67bc604",
+    "Widgy/Core/Repositories/FirebaseWidgetRepository.swift": "f15e3fab98aaa9fc689475113729fd14ec0c5538fe927e0d92d0b148a11e3d29",
+    "Widgy/Core/Repositories/MockWidgetRepository.swift": "1d0c071ccbf22f1233df121e0184bc3a0e8963bd498c237c440ffca805c3cbbc",
+    "Widgy/Core/Repositories/WidgetRepository.swift": "ef4de52aa7bd45799680ff826463c155e1eb2b5a34fc7df31e317c2ee260fffe",
+    "Widgy/Core/Store/SubscriptionStore.swift": "ffe91e5e9f50488a202d33fc85717b42e69623d8bb44ecaa58062173a5018d15"
+  },
+  "sourceRevision": "41a8fbc67d2992f144383ede02c2ecfd6a73a1a1"
+}
