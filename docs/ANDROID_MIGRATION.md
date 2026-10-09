@@ -14,11 +14,12 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 5 adds the Kare design/theme/font and English/Turkish localization foundation.
+Phase 6 adds typed Navigation Compose and functional Discover/Search/Library screens.
+Phase 5 added the Kare design/theme/font and English/Turkish localization foundation.
 Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
 Phase 3 added Room-backed local library persistence.
 Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
-UI and platform integrations remain deferred.
+Full Detail/Profile/Settings, onboarding and platform integrations remain deferred.
 
 Phase 1 was limited to source analysis, coordination documentation, package
 boundaries, platform-independent models, and repository contracts. Full screens,
@@ -26,7 +27,7 @@ Firebase implementations, Room, widgets, billing, and the editor are deferred.
 
 ## Android project analysis
 
-The starting project is a single Android application module, not an existing
+At Phase 1, the starting project was a single Android application module, not an existing
 feature implementation. `MainActivity` renders the generated greeting; the
 Material theme, launcher icons, resources, unit test, and instrumented test are
 Android Studio starter files. There is no navigation graph, ViewModel, repository,
@@ -37,9 +38,9 @@ The existing toolchain is retained: AGP 9.3.3, Gradle 9.5.0, Compose compiler pl
 2.2.10, Compose BOM 2026.02.01, compile SDK 36.1, target SDK 36, minimum SDK 26,
 and Java source/target compatibility 11. Namespace and application ID remain
 `com.example.kare`; choose the production application ID before Firebase/Play
-registration. The starter UI remains unchanged and does not demonstrate parity.
+registration. Phase 6 replaces the starter greeting with the application navigation graph.
 
-The only added runtime dependency is explicit `kotlinx-coroutines-core:1.9.0`
+In Phase 1, the only added runtime dependency was explicit `kotlinx-coroutines-core:1.9.0`
 for the library Flow contract, matching the version already available in the
 local dependency cache. Other selected technologies are architectural choices,
 not installed or implemented features. No toolchain upgrade is part of Phase 1.
@@ -127,7 +128,7 @@ before a later phase if the iOS branch has advanced. The source is available at
 | SwiftUI | Jetpack Compose |
 | SwiftData / ModelContainer / @Query | Room / DAO Flow behind repository |
 | UserDefaults / AppStorage | DataStore for lightweight preferences |
-| NavigationStack / NavigationPath | Navigation Compose with restorable destination IDs |
+| NavigationStack / NavigationPath | Typed Navigation Compose 2.9.7 routes, saved top-level entries and ID-only detail arguments |
 | Observable / @Observable | ViewModel + StateFlow |
 | async / await / Task | Kotlin Coroutines and structured cancellation |
 | AppEnvironment / environment injection | KareApplication-owned AppContainer and explicit ViewModel factory |
@@ -157,7 +158,7 @@ before a later phase if the iOS branch has advanced. The source is available at
 The enforced flow is `Screen → ViewModel → Repository → Data Source`. No screen
 may directly access Firebase, Firestore, Room, DataStore, networking, or billing.
 Repositories expose values, suspend operations, and Flow; SDK errors/types stay
-behind the boundary. ViewModels will expose StateFlow when screens are built.
+behind the boundary. ViewModels expose StateFlow, collected lifecycle-aware by route containers.
 The application-owned container composes real repositories. ViewModels consume
 repository interfaces; fake repositories exist only in tests.
 
@@ -176,10 +177,11 @@ and do not mean the associated technology or feature has been migrated.
 | `core/preferences` | Future DataStore implementations |
 | `core/firebase` | Future Firebase configuration and remote data sources |
 | `core/design` | Kare palettes, Material theme, typography, shapes, spacing and layout tokens |
-| `core/localization` | UI-only semantic error/category/section resource mappings |
-| `navigation` | Future route graph and cross-tab coordination |
-| `feature/discover`, `feature/search` | Catalog ViewModels/StateFlow; screens deferred |
-| `feature/library`, `feature/detail` | LibraryViewModel; library/detail UI deferred |
+| `core/localization` | UI-only error/category/section/catalog-copy and bundled-art resource mappings |
+| `core/ui` | Catalog cards, headings, category chips and loading/error/empty content |
+| `navigation` | Typed KareDestination routes, root scaffold and saved main-destination navigation |
+| `feature/discover`, `feature/search` | Catalog ViewModels/StateFlow, route containers and stateless screen content |
+| `feature/library`, `feature/detail` | LibraryViewModel and reactive screen; detail is a navigation placeholder |
 | `feature/editor` | Future editing state, actions and canvas |
 | `feature/profile`, `feature/settings`, `feature/onboarding` | Future identity/preferences/first-run UI |
 | `feature/daily`, `feature/focus`, `feature/frame` | Future live-widget setup/session UI |
@@ -252,18 +254,18 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 5. Developer 2 has not started implementation and
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 6. Developer 2 has not started implementation and
 has no active ownership; earlier reservations were reassigned for Phase 5.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
 |---|---|---|---|---|---|
-| Project setup | KareApp / Xcode targets | Existing single module + reserved packages | Phase 1 agent | COMPLETED | Starter UI retained; production ID unresolved |
+| Project setup | KareApp / Xcode targets | Existing single module + reserved packages | Phase 1 agent | COMPLETED | Application navigation active; production ID unresolved |
 | Core models | Core/Models | `core/model` values | Phase 1 agent | COMPLETED | Catalog codecs implemented separately; live models deferred |
 | Repository architecture | WidgetRepository / LibraryStore | Suspend catalog/review interface + library Flow contract | Phase 1 agent | COMPLETED | Bundled implementation available; Room library implemented; remote implementations deferred |
-| Bundled catalog | SampleCatalog / MockWidgetRepository | LocalCatalogDataSource + BundledWidgetRepository | Developer 1 | COMPLETED | 20 templates, 6 sections, lookup/filter/search; no UI |
+| Bundled catalog | SampleCatalog / MockWidgetRepository | LocalCatalogDataSource + BundledWidgetRepository | Developer 1 | COMPLETED | 20 templates, 6 sections, lookup/filter/search; consumed by screens |
 | Catalog serialization | Codable models | Explicit JSON adapters and Swift fixtures | Developer 1 | COMPLETED | Associated values, dates, images and legacy content; no Firestore adapters |
 | Application wiring | AppEnvironment | KareApplication / AppContainer / factory | Developer 1 | COMPLETED | Real repositories; no DI framework |
-| Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; UI remains NOT STARTED |
+| Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; consumed by LibraryRoute |
 | Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
 | Firebase Auth | AuthService | None | Unassigned | NOT STARTED | Providers/account linking/deletion policy open |
 | Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
@@ -271,13 +273,13 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; widget synchronization deferred |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
 | DataStore | AppStorage / defaults | Reserved `core/preferences` | Unassigned | NOT STARTED | No dependency or implementation |
-| Navigation | Navigation/ | Reserved package | Unassigned | NOT STARTED | No graph or routes |
-| Discover | DiscoverView / ViewModel | DiscoverViewModel / LoadState | Developer 1 | COMPLETED | Data/state layer only; Compose screen NOT STARTED |
-| Search | SearchView / ViewModel | SearchViewModel / SearchUiState | Developer 1 | COMPLETED | Debounce/cancellation/state complete; Compose screen NOT STARTED |
-| Template detail | TemplateDetailView | Reserved package | Unassigned | NOT STARTED | No preview/review/purchase UI |
-| Library UI | LibraryView | Reserved package | Unassigned | NOT STARTED | No screen |
-| Profile | ProfileView / EditProfileView | Reserved package | Unassigned | NOT STARTED | No screen |
-| Settings | SettingsView | Reserved package | Unassigned | NOT STARTED | No screen |
+| Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
+| Discover | DiscoverView / ViewModel | DiscoverRoute / DiscoverContent / ViewModel | Developer 1 | COMPLETED | Shelves/cards, loading/empty/error/retry |
+| Search | SearchView / ViewModel | SearchRoute / SearchContent / ViewModel | Developer 1 | COMPLETED | Query/categories/results, saved inputs |
+| Template detail | TemplateDetailView | Typed ID destination and localized placeholder only | Unassigned | NOT STARTED | Full detail, installation and setup remain deferred |
+| Library UI | LibraryView | LibraryRoute / LibraryContent | Developer 1 | COMPLETED | Reactive ordered list, favorites/remove/reorder |
+| Profile | ProfileView / EditProfileView | Main destination placeholder only | Unassigned | NOT STARTED | No account/profile implementation |
+| Settings | SettingsView | Main destination placeholder only | Unassigned | NOT STARTED | No preference implementation |
 | Onboarding | OnboardingView / RootGate | Reserved package | Unassigned | NOT STARTED | No screen or preference flags |
 | Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | Content codecs ready; no editor, renderer or image processing |
 | Daily | DailyStore / DailyWidget | Reserved feature package | Unassigned | NOT STARTED | No content/source persistence |
@@ -289,10 +291,10 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 | Android App Widgets | actual-widgetsExtension | Reserved `widget` | Unassigned | NOT STARTED | No receiver/provider/Glance dependency |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
-| Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural per locale; full app translation deferred |
-| Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens, three Fraunces weights, no full components/screens |
+| Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
+| Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
-| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 72 JVM tests including design/resources, Room, ViewModels and wiring; device/widget coverage remains NOT STARTED |
+| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
 ## Current work
 
@@ -300,10 +302,12 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 5 COMPLETED and validated. Owner: Developer 1.
-No Phase 6 work started. Completed design/theme/fonts/localization reservations
-are released. Future implementation must claim scope here before starting.
-Shared hotspots: core/design, theme entry point, string resources and this document.
+Current tasks: none. Phase 6 is COMPLETED, including closing visual review and
+validation. Owner: Developer 1. All Phase 6 reservations are released. No Phase 7
+work has started. Navigation, feature UI, shared catalog UI, MainActivity, Search
+saved state/factory, UI tests and resources were modified only within Phase 6.
+Shared risks remain Gradle configuration, the root navigation graph, resource names,
+ViewModel factory and this document; coordinate future ownership before edits.
 
 ### Developer 2
 
@@ -437,16 +441,17 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 6: Navigation Compose and initial Discover, Search and Library
-screens using the existing factory/ViewModels, core/design.KareTheme and localized
-resources. Include native Back, lifecycle-aware collection, query/filter restoration,
-accessibility and empty/error/action states. No navigation or full screen was added
-in Phase 5. These recommendations do not authorize starting work or branch changes.
+Recommended Phase 7: implement Template Detail and the local-library installation
+flow with a dedicated ViewModel. Resolve supported-size selection and entitlement
+policy before enabling paid installs; catalog prices are not purchase authorization.
+Keep editor, launcher widgets, reviews and billing out of that phase unless separately
+authorized. These recommendations do not authorize work or branch operations.
 
-Developer 2 has no active implementation ownership. Suitable future assignments
-include accessibility/localization review and tests, or Profile/Settings presentation
-after contracts are agreed. Reassign and reserve scope here before work begins;
-previous design/localization reservations no longer apply.
+Developer 2 has no active implementation ownership. An isolated future task is a
+localization/accessibility review with focused tests and findings in a separate
+English review document, without changing navigation, ViewModels or persistence.
+Reserve concrete scope here before starting; agree any resource/UI fixes with
+Developer 1. Previous design/localization reservations no longer apply.
 
 ### Conflict hotspots
 
@@ -464,7 +469,7 @@ previous design/localization reservations no longer apply.
 
 ## Open questions and blockers
 
-There is no known Phase 5 implementation blocker. The following are unresolved
+There is no known Phase 6 implementation blocker. The following are unresolved
 inputs or design questions for later phases, not claims that work has started:
 
 - Developer 2 future scope/branch must be assigned before implementation; no work
@@ -487,8 +492,9 @@ inputs or design questions for later phases, not claims that work has started:
 - Daily content attribution/licensing verification and timezone/day-index parity.
   Source comments are not a completed rights audit. Exhale health estimates and
   disclaimers need a dedicated content review when that feature is migrated.
-- No device/emulator UI, widget, billing or Firebase test has run in this phase;
-  those features do not exist on Android yet.
+- Advanced drag reordering, tablet-specific navigation, live previews and a full
+  TalkBack/large-font audit remain future work. Widget, billing and Firebase
+  implementations and their device tests remain deferred.
 
 ## Validation
 
@@ -1249,3 +1255,241 @@ deferred. Phase 6 should implement Navigation Compose and initial Discover/Searc
 Library screens using this foundation. Developer 2 could take an explicitly
 assigned accessibility/localization review or separate Profile/Settings work later;
 there is currently no active Developer 2 implementation ownership. Stop here.
+
+
+## Phase 6 navigation and initial screens
+
+Date: 2026-10-09. Owner: Developer 1. Branch: `ANDROID`.
+
+### Source inspection and mapping
+
+Inspected the pinned iOS revision's `Navigation/RootView.swift`, `RootGate.swift`,
+`AppRoute.swift`, `KareTabBar.swift`, Discover/Search views and ViewModels,
+`LibraryView.swift`, and reusable `WidgetCard`, `TemplateRow`, `CategoryChip`,
+`SectionHeader` and `StateViews`. Existing Android repositories/ViewModels remain
+the implementation contracts. No domain, catalog JSON, database/schema or
+repository implementation was changed.
+
+| iOS reference | Android Phase 6 equivalent |
+|---|---|
+| RootView tab stacks / AppRoute | KareApp NavHost with serializable typed destinations |
+| RootGate onboarding / widget mirror | Deferred; Android starts directly in Discover |
+| Floating glass bar with raised profile | Native Material NavigationBar, using Kare theme and requested Discover/Library/Search/Profile/Settings order |
+| Discover shelves / section styles | LazyColumn with spotlight/carousel LazyRows and compact rows |
+| Search chips / debounced search | CategoryChips and query field; existing ViewModel retains all debounce/cancellation behavior |
+| SwiftData @Query LibraryView | Lifecycle-aware LibraryViewModel state; stateless LibraryContent |
+| Swipe removal / edit reordering | Explicit text actions, removal confirmation, move-up/down controls |
+| SwiftUI state / tab restoration | Entry-scoped ViewModels, saved navigation entries, SavedStateHandle for search inputs |
+
+### Architecture and navigation decisions
+
+`MainActivity → KareApp → route container → stateless content → reusable UI`.
+The factory is obtained at the application entry point. Only route containers
+receive ViewModels and collect `StateFlow` through `collectAsStateWithLifecycle`.
+Content takes immutable state and explicit callbacks; it never receives AppContainer,
+repositories or Room. No new DI framework or unmanaged coroutine collector exists.
+
+Navigation Compose 2.9.7 uses Kotlin-serializable route types, avoiding raw route
+strings. The serialization compiler plugin applies to routes only; the explicit
+Swift-compatible model codecs remain unchanged. Detail arguments contain only a
+template ID, including safe round trips for reserved URL characters. Profile,
+Settings and Detail are clearly labeled localized placeholders, not feature claims.
+
+Main destination switches use saveState/restoreState and launchSingleTop with
+popUpTo the graph's Discover start. Scroll/query state survives ordinary tab switches;
+Back pops Detail to its caller and a main destination to Discover, then exits using
+normal Android dispatch. This is deliberately different from iOS tab-stack/back
+assumptions. Detail hides the bottom bar. Scaffold consumes system insets and IME
+padding. No onboarding, auth gate, deep links or shared-widget launch routing is
+implemented.
+
+Search stores only `search.query` (raw input) and `search.category` (stable enum raw
+value) in SavedStateHandle supplied by CreationExtras. Unknown categories fall back
+to all categories. Results/errors/loading/domain objects are not saved: a restored
+ViewModel reloads the repository. Unit tests reconstruct handles from saved scalar
+values; device tests exercise activity recreation. Activity recreation is not a
+claim of a full OS process-kill test. Favorites-only library filtering remains
+ViewModel session state; library items/order/favorites themselves are persisted by Room.
+
+### Screen behavior, design and localization
+
+Discover supports loading, empty catalog, repository failure, retry/manual refresh,
+localized curated section headings and all bundled catalog templates. Template
+clicks navigate to Detail. The iOS hero/tip strip, bespoke animations and separate
+Discover category shortcut strip are deferred; category filtering is available in
+Search. Search presents a native text field, clear action, all/category chips,
+results and loading/error/empty content. IME search dismisses the keyboard without
+starting a duplicate query. Search uses readable full-width cards rather than the
+iOS two-column grid. The catalog's existing source-text search semantics are
+unchanged; searching translated Turkish prose is not a new capability in this phase.
+
+Library observes domain snapshots, displays saved names/authors and order, filters
+favorites, toggles favorites, confirms removal, navigates by template ID and reorders
+through the existing ViewModel contract. Move controls are disabled at boundaries,
+during commands and while filtered to favorites (complete membership is required).
+Action errors retain the list and expose localized semantic messages; dismissal is
+explicit. No installation badge state is duplicated into Discover/Search. No UI
+installation path exists yet, so a fresh installation has an empty Library until
+Phase 7; tests supply library data through fake repositories.
+
+Shared components are TemplateCard, CategoryChips, SectionHeader, ScreenTitle and
+loading/error/empty content. They reuse Kare colors, Fraunces headings, sans body,
+spacing/shapes, and readable/wide maximums. Material controls supply interaction,
+focus and touch behavior. There are no new palette or typography systems.
+
+Each locale adds `screen_strings.xml`: 40 catalog names/summaries and 12 screen/action
+strings (52 total). Catalog prose uses the actual iOS xcstrings translations when
+present; untranslated preset brand names remain identical in English/Turkish.
+Known IDs map through UI-only CatalogResources, without changing domain values or
+repository search. Unknown future catalog content falls back to source metadata;
+user-authored installed names are preserved. Existing semantic error/category/section
+mappings are reused. Removal formatting uses `%1$s` in both languages. Full catalog
+copy includes future widget functionality as source descriptions; Detail explicitly
+states that details/installation are not yet available.
+
+Nineteen original catalog artwork assets were copied from the pinned iOS asset
+catalog to drawable-nodpi with explicit ID-to-resource mappings. They are static
+marketing previews, not Android live renders. `p-momentum` references a missing
+source image and uses a themed fallback. No editor renderer or image-loading/network
+library was added. Artwork may contain baked-in source-language text and is decorative
+for accessibility; localized card text supplies meaning. Asset redistribution rights
+remain a release-review question inherited from the migration, not a completed audit.
+
+Basic accessibility: heading semantics, labeled native controls, selected-state
+semantics for tabs/chips, 48dp chip targets, descriptive favorite/remove/reorder text,
+polite library action announcements, decorative image/icon descriptions omitted to
+avoid duplicate reading, scalable text and tested Phase 5 contrast roles. Move actions
+are stacked to avoid narrow-width label clipping. Full TalkBack, large-font and
+adaptive tablet navigation audits remain deferred.
+
+### 2026-10-09 — Phase 6 decisions and work log
+
+- Implemented typed navigation, three functional screens and minimal future destinations.
+- Reused ViewModels with lifecycle-aware collection; introduced no backend access in UI.
+- Resolved the Phase 4 search-restoration question with small saved inputs only.
+- Chose native Back, Material navigation and explicit reorder actions over iOS-specific UI.
+- Added original source artwork and localized catalog presentation without changing codecs.
+- Shared changes are Gradle dependencies/plugin, MainActivity, ViewModel factory/search
+  restoration, this coordination record and new resource names. No Developer 2 work
+  existed or was overwritten; Developer 1 owns all Phase 6 changes.
+- Validation caught a test expecting an unlocalized source shelf name; corrected the
+  assertion to the actual English resource. No production checks were suppressed.
+
+The first device run exposed Espresso 3.5.1 reflecting a removed InputManager
+API on the available Android 17 emulator, before screen interaction. Updated only
+Android test Espresso to 3.7.0 and AndroidX JUnit extension to 1.3.0. The stable
+[AndroidX Test release notes](https://developer.android.com/jetpack/androidx/releases/test)
+document the replacement of that reflection call. No production SDK/toolchain
+version was changed. The rerun passed; details follow below.
+
+### Phase 6 final validation and completion
+
+Date: 2026-10-09. Owner: Developer 1. Branch: `ANDROID`. Status: COMPLETED.
+The resumed closing pass inspected the existing working tree and made only
+coordination-document changes; it did not reimplement features or start Phase 7.
+
+| Check | Actual result |
+|---|---|
+| `./gradlew assembleDebug` | PASS; also passed in the combined final validation run |
+| `./gradlew test` | PASS; 82 JVM tests, zero failures/errors/skips |
+| `./gradlew lint` | PASS; zero errors, 66 warnings after report refresh |
+| `./gradlew connectedDebugAndroidTest` | PASS on Pixel_8 emulator, Android 17; two tests, zero failures/errors/skips |
+| `./gradlew lint installDebug --rerun-tasks` | PASS; refreshed stale lint quick-fix cache after test dependency changes and installed the debug app for visual review |
+| `git diff --check` | PASS in the closing pass |
+| Resource/art audit | English/Turkish screen resources contain the same 52 unique names; all 19 copied image hashes match the pinned iOS checkout |
+
+The existing passing build/test outputs were rechecked during closure; production
+code and tests were unchanged after validation. The ten added JVM tests comprise
+eight Compose/navigation tests and two SavedStateHandle tests. They cover Discover
+loading/empty/failure/retry/selection; Search input/categories/results/empty/failure;
+Library empty/installed/favorite/removal confirmation/selection/reorder/busy states;
+main destinations, detail IDs (including reserved characters), Back and tab state;
+and restoration of small search inputs with unknown-category fallback. The new
+instrumented test exercises the real AppContainer/bundled catalog, query input,
+Detail, native Back, activity recreation and all main destinations. The other
+instrumented test is the existing application-context smoke test. No full process
+kill, screenshot golden, Firebase, billing or widget testing is claimed.
+
+Lint warnings are dependency/version notices, existing/prepared unused resources,
+existing launcher XML/bitmap overlap and a redundant manifest label. Nothing was
+suppressed. Debug packaging also reports that libandroidx.graphics.path.so cannot
+be stripped and is packaged unchanged; this does not fail the build.
+
+Visual review on the available portrait Pixel_8 emulator covered Discover shelves
+and artwork, Search input/chips/results, empty Library, selected navigation labels,
+and the Detail placeholder with the bottom bar hidden. Content is readable and
+system insets keep the bottom navigation clear. The populated Library/action cases
+were exercised in Compose tests; no production database fixtures were injected for
+screenshots. This is a focused English/light-mode review, not a full Turkish/dark,
+large-font, TalkBack or tablet visual audit. Those remain follow-up review work.
+Screenshots were kept outside the repository in temporary storage.
+
+The complete untracked-file audit found only intended Phase 6 sources, tests,
+resources and artwork listed below. Build outputs, Gradle caches, IDE workspace
+files and local.properties remain ignored; no generated/sensitive configuration
+was added to the tracked changes. There are no deletions or unexpected source
+changes. AGENTS.md is unchanged. No commit, push, merge, branch change or history
+rewrite was performed. Developer 2 has no active ownership and receives no code
+attribution. All Phase 6 reservations are released.
+
+### Phase 6 file manifest
+
+Created (29 files):
+
+- `app/src/androidTest/java/com/example/kare/Phase6NavigationTest.kt`
+- `app/src/main/java/com/example/kare/core/localization/CatalogResources.kt`
+- `app/src/main/java/com/example/kare/core/ui/CatalogComponents.kt`
+- `app/src/main/java/com/example/kare/feature/discover/DiscoverScreen.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryScreen.kt`
+- `app/src/main/java/com/example/kare/feature/search/SearchScreen.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `app/src/main/res/drawable-nodpi/catalog_p_deepwork.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_gratitude.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_hydrate.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_mono.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_mood.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_neon.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_pastel.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_sunset.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_p_us.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_t_aurora.png`
+- `app/src/main/res/drawable-nodpi/catalog_t_countdown.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_t_custom.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_t_daily.png`
+- `app/src/main/res/drawable-nodpi/catalog_t_exhale.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_t_focus.png`
+- `app/src/main/res/drawable-nodpi/catalog_t_frame.png`
+- `app/src/main/res/drawable-nodpi/catalog_t_hush.png`
+- `app/src/main/res/drawable-nodpi/catalog_t_progress.jpg`
+- `app/src/main/res/drawable-nodpi/catalog_t_proverb.png`
+- `app/src/main/res/values-tr/screen_strings.xml`
+- `app/src/main/res/values/screen_strings.xml`
+- `app/src/test/java/com/example/kare/ui/ScreenNavigationTest.kt`
+
+Modified (7 files):
+
+- `app/build.gradle.kts`
+- `app/src/main/java/com/example/kare/MainActivity.kt`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/feature/search/SearchViewModel.kt`
+- `app/src/test/java/com/example/kare/presentation/ViewModelsTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+- `gradle/libs.versions.toml`
+
+### Remaining work and handoff
+
+Phase 6 is complete. Full Detail and installation/setup, Profile, Settings,
+onboarding, advanced reordering, editor, billing, auth/reviews and App Widgets are
+still deferred. The missing Momentum source image uses a theme fallback; copied
+marketing artwork includes iOS device chrome and baked-in text. Library empty-state
+copy describes the future installation flow, which is not available until Phase 7.
+Search still matches source catalog metadata rather than localized presentation
+copy. These are documented limitations, not silently implemented features.
+
+Recommended Phase 7 is Template Detail plus a deliberate local installation flow,
+after clarifying paid access and supported-size selection. Developer 2 can be
+explicitly assigned a separate accessibility/localization audit with tests and an
+English findings document; implementation fixes should then be coordinated with
+Developer 1. No such task is currently assigned. Hotspots are KareNavigation,
+MainActivity, AppContainer/factory, Gradle files, shared component/resource names and
+this migration document. Stop after Phase 6 and wait for authorization.

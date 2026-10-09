@@ -1,6 +1,7 @@
 package com.example.kare.feature.search
 
 import androidx.annotation.MainThread
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kare.core.model.WidgetCategory
@@ -19,8 +20,13 @@ data class SearchUiState(
     val isEmpty: Boolean get() = (results as? LoadState.Loaded)?.value?.isEmpty() == true
 }
 
-class SearchViewModel(private val repository: WidgetRepository, private val errors: ErrorReporter) : ViewModel() {
-    private val mutableState = MutableStateFlow(SearchUiState())
+class SearchViewModel(private val repository: WidgetRepository, private val errors: ErrorReporter,
+    private val savedState: SavedStateHandle = SavedStateHandle(),
+) : ViewModel() {
+    private val mutableState = MutableStateFlow(SearchUiState(
+        query = savedState["search.query"] ?: "",
+        category = WidgetCategory.entries.find { it.rawValue == savedState.get<String>("search.category") },
+    ))
     val state = mutableState.asStateFlow()
     private var request: Job? = null
     private var generation = 0L
@@ -29,6 +35,7 @@ class SearchViewModel(private val repository: WidgetRepository, private val erro
 
     @MainThread
     fun setQuery(query: String) {
+        savedState["search.query"] = query
         val previous = mutableState.value.query.normalized()
         mutableState.update { it.copy(query = query) }
         if (query.normalized() != previous) search(debounce = true)
@@ -38,6 +45,7 @@ class SearchViewModel(private val repository: WidgetRepository, private val erro
     @MainThread
     fun setCategory(category: WidgetCategory?) {
         if (category == mutableState.value.category) return
+        savedState["search.category"] = category?.rawValue
         mutableState.update { it.copy(category = category) }
         search(debounce = true)
     }

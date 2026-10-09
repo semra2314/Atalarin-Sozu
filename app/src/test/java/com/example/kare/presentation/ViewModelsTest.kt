@@ -202,6 +202,27 @@ class ViewModelsTest {
         try { factory.create(ViewModel::class.java); fail("Unknown model accepted") }
         catch (_: IllegalArgumentException) { }
     }
+    @Test fun savedSearchCriteriaRestoreWithoutPersistingResults() = runTest {
+        val handle = androidx.lifecycle.SavedStateHandle()
+        val vm = keep(SearchViewModel(catalog, reporter, handle)); runCurrent()
+        vm.setQuery("focus"); vm.setCategory(WidgetCategory.PRODUCTIVITY); advanceUntilIdle()
+        assertEquals(setOf("search.query", "search.category"), handle.keys())
+        val restored = androidx.lifecycle.SavedStateHandle(handle.keys().associateWith { handle.get<Any?>(it) })
+        val next = keep(SearchViewModel(catalog, reporter, restored))
+        assertEquals("focus", next.state.value.query)
+        assertEquals(WidgetCategory.PRODUCTIVITY, next.state.value.category)
+        assertEquals(LoadState.Loading, next.state.value.results)
+        runCurrent()
+        assertEquals("focus" to WidgetCategory.PRODUCTIVITY, catalog.searches.last())
+    }
+
+    @Test fun unknownSavedCategoryFallsBackToAll() = runTest {
+        val handle = androidx.lifecycle.SavedStateHandle(mapOf("search.category" to "retired-category"))
+        val vm = keep(SearchViewModel(catalog, reporter, handle)); runCurrent()
+        assertNull(vm.state.value.category)
+        assertEquals("" to null, catalog.searches.last())
+    }
+
     @Test fun everyRepositoryErrorMapsWithoutExposingExceptions() {
         val mappings = listOf(
             RepositoryException.NotFound("id") to UiError.NOT_FOUND,

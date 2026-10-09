@@ -3,6 +3,9 @@ package com.example.kare.app
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.ViewModelProvider
 import com.example.kare.core.data.catalog.BundledWidgetRepository
 import com.example.kare.core.data.catalog.LocalCatalogDataSource
@@ -36,9 +39,16 @@ class KareViewModelFactory(
     private val errors: ErrorReporter,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return createModel(modelClass, SavedStateHandle())
+    }
+
+    override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T =
+        createModel(modelClass, extras.createSavedStateHandle())
+
+    private fun <T : ViewModel> createModel(modelClass: Class<T>, savedState: SavedStateHandle): T {
         val model = when (modelClass) {
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
-            SearchViewModel::class.java -> SearchViewModel(widgets, errors)
+            SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
             LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
             else -> throw IllegalArgumentException("Unsupported ViewModel: ${modelClass.name}")
         }
