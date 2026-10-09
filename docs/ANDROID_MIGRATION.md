@@ -14,12 +14,13 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 6 adds typed Navigation Compose and functional Discover/Search/Library screens.
+Phase 7 adds Template Detail and free local-library installation.
+Phase 6 added typed Navigation Compose and functional Discover/Search/Library screens.
 Phase 5 added the Kare design/theme/font and English/Turkish localization foundation.
 Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
 Phase 3 added Room-backed local library persistence.
 Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
-Full Detail/Profile/Settings, onboarding and platform integrations remain deferred.
+Profile/Settings, onboarding, billing, editor and platform integrations remain deferred.
 
 Phase 1 was limited to source analysis, coordination documentation, package
 boundaries, platform-independent models, and repository contracts. Full screens,
@@ -181,7 +182,7 @@ and do not mean the associated technology or feature has been migrated.
 | `core/ui` | Catalog cards, headings, category chips and loading/error/empty content |
 | `navigation` | Typed KareDestination routes, root scaffold and saved main-destination navigation |
 | `feature/discover`, `feature/search` | Catalog ViewModels/StateFlow, route containers and stateless screen content |
-| `feature/library`, `feature/detail` | LibraryViewModel and reactive screen; detail is a navigation placeholder |
+| `feature/library`, `feature/detail` | LibraryViewModel and reactive screen; DetailViewModel handles catalog lookup and free installation |
 | `feature/editor` | Future editing state, actions and canvas |
 | `feature/profile`, `feature/settings`, `feature/onboarding` | Future identity/preferences/first-run UI |
 | `feature/daily`, `feature/focus`, `feature/frame` | Future live-widget setup/session UI |
@@ -254,8 +255,8 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 6. Developer 2 has not started implementation and
-has no active ownership; earlier reservations were reassigned for Phase 5.
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 7. Developer 2 owns authentication foundation on
+`android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
 |---|---|---|---|---|---|
@@ -267,7 +268,7 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 | Application wiring | AppEnvironment | KareApplication / AppContainer / factory | Developer 1 | COMPLETED | Real repositories; no DI framework |
 | Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; consumed by LibraryRoute |
 | Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
-| Firebase Auth | AuthService | None | Unassigned | NOT STARTED | Providers/account linking/deletion policy open |
+| Firebase Auth | AuthService | Separate auth foundation branch | Developer 2 | IN PROGRESS | `android/auth-foundation`; not integrated or validated by Phase 7 |
 | Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
 | Public profiles | PublicProfileService | Value only | Unassigned | NOT STARTED | No repository implementation/UI |
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; widget synchronization deferred |
@@ -276,7 +277,7 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 | Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
 | Discover | DiscoverView / ViewModel | DiscoverRoute / DiscoverContent / ViewModel | Developer 1 | COMPLETED | Shelves/cards, loading/empty/error/retry |
 | Search | SearchView / ViewModel | SearchRoute / SearchContent / ViewModel | Developer 1 | COMPLETED | Query/categories/results, saved inputs |
-| Template detail | TemplateDetailView | Typed ID destination and localized placeholder only | Unassigned | NOT STARTED | Full detail, installation and setup remain deferred |
+| Template detail | TemplateDetailView | DetailViewModel / DetailRoute / DetailContent | Developer 1 | COMPLETED | Free local installs, size choice, paid lock; billing/editor/widget setup deferred |
 | Library UI | LibraryView | LibraryRoute / LibraryContent | Developer 1 | COMPLETED | Reactive ordered list, favorites/remove/reorder |
 | Profile | ProfileView / EditProfileView | Main destination placeholder only | Unassigned | NOT STARTED | No account/profile implementation |
 | Settings | SettingsView | Main destination placeholder only | Unassigned | NOT STARTED | No preference implementation |
@@ -302,20 +303,20 @@ has no active ownership; earlier reservations were reassigned for Phase 5.
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: none. Phase 6 is COMPLETED, including closing visual review and
-validation. Owner: Developer 1. All Phase 6 reservations are released. No Phase 7
-work has started. Navigation, feature UI, shared catalog UI, MainActivity, Search
-saved state/factory, UI tests and resources were modified only within Phase 6.
-Shared risks remain Gradle configuration, the root navigation graph, resource names,
-ViewModel factory and this document; coordinate future ownership before edits.
+Current tasks: none. Phase 7 is COMPLETED. Owner: Developer 1. Branch: `ANDROID`.
+Detail/navigation/access-policy/resources/test reservations are released. Developer 1
+maintains this main migration record; Developer 2 retains authentication ownership.
+Shared-file risks: AppContainer factory and navigation may later integrate auth;
+coordinate these integration points before editing or merging. No Phase 8 work started.
 
 ### Developer 2
 
-Developer 2 has not started implementation. Design system, typography and
-localization were initially reserved for Developer 2, but the user temporarily
-reassigned them to Developer 1 for Phase 5 on 2026-10-09. Developer 2 currently has
-no active implementation ownership. Future work must be explicitly reassigned and
-recorded here before Developer 2 starts. No code is attributed to Developer 2.
+Branch: `android/auth-foundation`. Status: IN PROGRESS (user-reported assignment).
+Owner: Developer 2. Scope: authentication foundation, AuthRepository, AuthViewModel,
+auth models and `docs/AUTH_MIGRATION_NOTES.md`. Developer 1 must not modify these
+areas or depend on unfinished auth work. Authentication is not required for local
+free-library installation. Future integration in AppContainer/navigation must be
+coordinated before merging. Earlier Phase 5/6 no-ownership entries are historical.
 
 ### Phase 1 session record
 
@@ -441,17 +442,17 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 7: implement Template Detail and the local-library installation
-flow with a dedicated ViewModel. Resolve supported-size selection and entitlement
-policy before enabling paid installs; catalog prices are not purchase authorization.
-Keep editor, launcher widgets, reviews and billing out of that phase unless separately
-authorized. These recommendations do not authorize work or branch operations.
+Recommended Phase 8: a separately scoped Android home-screen widget foundation
+(configuration and appWidgetId mapping for one free supported design), with explicit
+launcher-size and refresh decisions. Do not mistake catalog accessory sizes or a
+Library install for an Android widget placement. Editor and Billing remain separate
+future phases. These recommendations are not authorization to begin.
 
-Developer 2 has no active implementation ownership. An isolated future task is a
-localization/accessibility review with focused tests and findings in a separate
-English review document, without changing navigation, ViewModels or persistence.
-Reserve concrete scope here before starting; agree any resource/UI fixes with
-Developer 1. Previous design/localization reservations no longer apply.
+Developer 2 should continue the independent authentication foundation on
+`android/auth-foundation`, including its own contracts, tests and
+`docs/AUTH_MIGRATION_NOTES.md`. Free local installation does not require sign-in.
+Coordinate future composition-root and navigation integration; do not infer an
+entitlement from an authenticated account. Phase 7 did not inspect or modify auth work.
 
 ### Conflict hotspots
 
@@ -469,11 +470,11 @@ Developer 1. Previous design/localization reservations no longer apply.
 
 ## Open questions and blockers
 
-There is no known Phase 6 implementation blocker. The following are unresolved
+There is no known Phase 7 implementation blocker. The following are unresolved
 inputs or design questions for later phases, not claims that work has started:
 
-- Developer 2 future scope/branch must be assigned before implementation; no work
-  has started. Any feature branch operation still requires authorization.
+- Developer 2 owns auth foundation on `android/auth-foundation`. Its integration
+  is future coordinated work; Phase 7 makes no claim about its completion or validation.
 - Final Android application ID and Firebase Android registration; shared project
   access, deployed Firestore rules/indexes, moderation permissions and account
   deletion consistency. Do not infer these from client Swift code.
@@ -1493,3 +1494,176 @@ English findings document; implementation fixes should then be coordinated with
 Developer 1. No such task is currently assigned. Hotspots are KareNavigation,
 MainActivity, AppContainer/factory, Gradle files, shared component/resource names and
 this migration document. Stop after Phase 6 and wait for authorization.
+
+
+## Phase 7 Template Detail and local installation
+
+Date: 2026-10-09. Owner: Developer 1. Branch: `ANDROID`. Status: COMPLETED.
+The working tree was clean at Phase 7 start. No branch operations were performed.
+
+### Source inspection and Android mapping
+
+Re-read `Widgy/Features/Detail/TemplateDetailView.swift`, `Core/Store/InstalledWidget.swift`,
+`LibraryStore.swift`, `Core/Models/WidgetTemplate.swift` and SubscriptionStore's
+unlock policy at the pinned IOS revision. Detail has local SwiftUI state, loads by
+ID, chooses `primarySize` (the first supported size), queries local membership and
+uses SubscriptionStore for free/subscription/individual purchase access. It renders
+WidgetPreview and uses actual reviews for ratings rather than fabricated catalog
+statistics. There is no separate Detail ViewModel in that implementation.
+
+`LibraryStore.install` returns an existing unique-template row unchanged, otherwise
+stores metadata, selected size, encoded theme/content and ordering, then mirrors
+content/library membership into the App Group. Setup-required live widgets and
+editable presets navigate into the Library's feature/editor destination after a
+celebration; other live widgets show placement guidance. Existing-library routing
+maps Focus, Frame, Daily, Exhale, Countdown and Progress to dedicated features,
+editable templates to the editor and other fixed designs to home-screen setup.
+
+Android retains only the local installation behavior in this phase. No App Group
+mirror, celebration delay, editor, feature setup, widget placement or review fetch
+is implemented. The screen remains visible with committed installed state and an
+explicit Open Library action; Library receives the same write reactively. Removal
+continues through Library's existing confirmation flow.
+
+### Application architecture and persistence
+
+`ID-only typed route → entry-scoped DetailViewModel → WidgetRepository + LibraryRepository`.
+The existing factory reads `templateId` from navigation's SavedStateHandle; the
+ViewModel receives that stable ID explicitly. No full model crosses navigation.
+DetailRoute collects StateFlow lifecycle-aware and DetailContent receives immutable
+state/callbacks. Compose never receives repositories or Room.
+
+DetailUiState has separate template and membership LoadStates, a selected size,
+and Idle/Installing/Failed command state. Template load/retry cancels obsolete
+loads; library observation uses the existing Flow for installs, removals and changes
+made elsewhere. Installation updates from the repository's committed return value
+immediately and continues observing authoritative membership. Repeated clicks are
+blocked while writing. Already-installed rows are not reinstalled; concurrent
+callers are also protected by the existing Room transaction/unique ID semantics.
+Theme/content, dates, sort order and metadata are stored by the unchanged Phase 3
+repository and Phase 2 serializers. No database/schema/codec changes were needed.
+
+Not-found, transport, persistence and invalid-data errors use existing semantic
+UiError mappings. Original exceptions go to ErrorReporter, never user text.
+Observation failures disable installation until an explicit observation retry;
+write failures retain the template and permit explicit retry. Cancellation propagates.
+An unsupported/missing size cannot reach persistence through the ViewModel.
+
+### Size and access decisions
+
+- One supported size is selected automatically. Multiple sizes require explicit
+  selection; this intentionally differs from iOS's first-size default and follows
+  the Phase 7 requirement. Only catalog sizes are shown, including accessory metadata.
+- `detail.size` saves only a raw size token in SavedStateHandle. It is validated
+  against the fetched template; retired/invalid saved values are discarded. Existing
+  installations display their persisted size and disable size editing. No row is
+  created before installation and no results/domain objects are saved in the handle.
+- Catalog accessory sizes are preserved as metadata, not advertised as implemented
+  Android launcher sizes. Localized explanatory text states this distinction.
+- InstallationAccess is a small shared application policy: Free allows installation;
+  Paid yields PURCHASE_UNAVAILABLE. Both DetailViewModel and the pre-existing
+  LibraryViewModel install entry point enforce it. Persistence itself does not
+  authorize purchases or derive entitlements from library membership.
+- Paid templates remain previewable, show locked status and a disabled future-purchase
+  action. No purchase, local unlock flag, entitlement, fake checkout price or auth
+  requirement is introduced. A later verified Billing entitlement service must
+  replace this catalog-only decision at both command boundaries; authentication
+  alone never grants access. Existing paid rows, if imported/test-created elsewhere,
+  represent membership only and do not unlock functionality.
+
+### Presentation, localization and accessibility
+
+Detail displays the existing marketing preview (or a localized unavailable-preview
+fallback), localized catalog title/summary, author, category, sizes, free/locked
+status, membership and install actions. Artwork remains static source art, not a
+size-specific live Android rendering. Rating information appears only when the
+catalog supplies a positive rating count; the shipping bundle has zero counts,
+so no score/reviews are invented. No review backend or public-profile link is added.
+
+Reuses Kare shapes/spacing/palette, Fraunces titles, Material body text and existing
+catalog/error/category resource mappings. Seventeen new strings per locale in
+`detail_strings.xml` cover sizes, installation states, locked state and deferred
+setup. Default English and Turkish have matching names and rating-format arguments.
+Existing Install, Back, Retry, Free and author strings are reused.
+
+Title/section heading semantics, selected-state size chips, minimum chip targets,
+meaningful action text and polite installed/error announcements are included.
+Preview images are decorative because nearby text supplies meaning. Disabled purchase
+and installation controls expose native disabled semantics. Full TalkBack, large-font,
+Turkish visual and tablet reviews are still deferred.
+
+### 2026-10-09 — Decisions, tests and validation
+
+The Phase 7 changes added no dependencies and did not alter AGENTS.md, repositories,
+Room, serialization, authentication, Firebase, Profile or auth migration notes.
+Shared risks were recorded before editing AppContainer/navigation; Developer 2's
+assigned auth work remained isolated. Discover/Search navigation still uses the same
+Detail ID route. Installed badges on catalog cards remain deferred to avoid duplicate
+membership state. Open Library removes Detail from the back stack before switching
+to the saved Library entry, preserving native main-destination behavior.
+
+Added ten ViewModel tests for loading/not-found/retry, single/multiple/restored/invalid
+sizes, successful/duplicate/concurrent installation, existing membership/removal,
+paid denial through both application entry points, persistence/serialization failure,
+observation retry and cancellation. Three Compose tests cover content, size selection,
+install callbacks, installed/open-library state, paid-disabled state and errors/retry.
+Extended the existing instrumented navigation test class with a real AppContainer +
+Room flow: Discover → Aurora Detail → size choice → install → Library → favorite →
+reopen Detail → verify membership/size → remove. Existing Search/Detail/back/recreation
+coverage remains passing. No parallel persistence implementation or duplicate Room
+mapper tests were introduced.
+
+| Command/check | Actual result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS; 95 JVM tests, zero failures/errors/skips |
+| `./gradlew lint` | PASS; zero errors, 68 warnings |
+| `./gradlew connectedDebugAndroidTest` | PASS; three tests on Pixel_8 emulator, Android 17, zero failures/errors/skips |
+| `./gradlew installDebug` | PASS for focused visual review |
+| `git diff --check` | PASS |
+| English/Turkish resource audit | PASS; 17 matching detail resource names |
+
+Warnings remain dependency notices, prepared/unused resources and starter manifest/
+launcher issues. The two previous placeholder resources are now unused; retained for
+separate cleanup rather than changing unrelated Phase 6 resources. No checks were
+disabled and no suppressions were added. Device tests exercised real Room persistence;
+this is not a claim of a full OS process-kill or launcher widget test.
+A focused English/light-mode emulator review confirmed the Detail heading, original
+preview, metadata, size controls and install area. Screenshots remain outside the
+repository in temporary storage. All untracked files are intentional Phase 7 source,
+resource or test files; generated outputs and local configuration remain ignored.
+
+### Phase 7 file manifest
+
+Created:
+
+- `app/src/main/java/com/example/kare/core/presentation/InstallationAccess.kt`
+- `app/src/main/java/com/example/kare/feature/detail/DetailScreen.kt`
+- `app/src/main/java/com/example/kare/feature/detail/DetailViewModel.kt`
+- `app/src/main/res/values-tr/detail_strings.xml`
+- `app/src/main/res/values/detail_strings.xml`
+- `app/src/test/java/com/example/kare/feature/detail/DetailUiTest.kt`
+- `app/src/test/java/com/example/kare/feature/detail/DetailViewModelTest.kt`
+
+Modified:
+
+- `app/src/androidTest/java/com/example/kare/Phase6NavigationTest.kt`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryViewModel.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+### Completion and deferred work
+
+Phase 7 reservations are released; no Phase 8 implementation started. Developer 2
+continues auth foundation on `android/auth-foundation`; its work and
+`docs/AUTH_MIGRATION_NOTES.md` were not modified. Hotspots for later integration are
+AppContainer's factory, KareNavigation, LibraryViewModel install policy and the main
+migration record. Separate detail resource files reduce localization conflicts.
+
+No Phase 7 blocker remains. Future decisions include verified Billing entitlement
+integration and cross-store policy, actual launcher-size mapping, missing Momentum
+artwork and live preview rendering. Full editor, Focus/Frame/Daily/other setup,
+SharedWidgetStore/App Widget synchronization and purchase UI remain deferred. Phase 8
+is recommended to scope one free Android widget/configuration path separately from
+Developer 2's auth foundation. No commit, push, merge or Git history change was made.

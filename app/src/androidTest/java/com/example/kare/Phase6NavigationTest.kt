@@ -36,4 +36,41 @@ class Phase6NavigationTest {
         pressBack()
         compose.onNodeWithTag("nav-${R.string.discover_title}").assertIsSelected()
     }
+    private fun detailNode(tag: String): SemanticsNodeInteraction {
+        compose.onNodeWithTag("detail-t-aurora").performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag)
+    }
+
+    @Test fun discoverDetailInstallLibraryAndReopen() {
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("template-t-aurora").fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onAllNodesWithTag("template-t-aurora")[0].performScrollTo().performClick()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithText("Aurora Clock").fetchSemanticsNodes().isNotEmpty()
+        }
+        detailNode("size-small").performClick()
+        detailNode("detail-install").performClick()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("detail-install").fetchSemanticsNodes().isEmpty()
+        }
+        detailNode("open-library").performClick()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("installed-t-aurora").fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithTag("favorite-t-aurora").performScrollTo().performClick()
+        compose.onNodeWithTag("installed-t-aurora").performScrollTo().performClick()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithText("Aurora Clock").fetchSemanticsNodes().isNotEmpty()
+        }
+        detailNode("detail-installed").assertExists()
+        detailNode("size-small").assertIsSelected()
+        pressBack()
+        compose.onNodeWithTag("remove-t-aurora").performScrollTo().performClick()
+        compose.onNodeWithTag("confirm-remove").performClick()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("installed-t-aurora").fetchSemanticsNodes().isEmpty()
+        }
+    }
+
 }

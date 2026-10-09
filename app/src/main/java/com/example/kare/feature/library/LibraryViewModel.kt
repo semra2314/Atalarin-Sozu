@@ -65,7 +65,9 @@ class LibraryViewModel(
 
     @MainThread
     fun install(templateId: String, size: WidgetSize): Boolean = mutate(LibraryAction(LibraryOperation.INSTALL, templateId)) {
-        repository.install(catalog.template(templateId), size)
+        val template = catalog.template(templateId)
+        if (template.installationAccess() != InstallationAccess.FREE) throw RepositoryException.Unavailable("paid installation")
+        repository.install(template, size)
     }
 
     @MainThread

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_sizes">Supported sizes</string>
+    <string name="detail_choose_size">Choose a size before installing.</string>
+    <string name="detail_size_small">Small</string>
+    <string name="detail_size_medium">Medium</string>
+    <string name="detail_size_large">Large</string>
+    <string name="detail_size_circular">Circular accessory</string>
+    <string name="detail_size_rectangular">Rectangular accessory</string>
+    <string name="detail_size_note">Catalog sizes describe the saved design. Android home-screen placement is not available yet.</string>
+    <string name="detail_installed">Installed in Library</string>
+    <string name="detail_open_library">Open Library</string>
+    <string name="detail_local_only">Saved on this device. Editor and home-screen setup will arrive later.</string>
+    <string name="detail_locked">Paid widget · Locked</string>
+    <string name="detail_purchase_unavailable">Purchases coming later</string>
+    <string name="detail_installing">Installing…</string>
+    <string name="detail_install_failed">Could not install widget</string>
+    <string name="detail_preview_unavailable">Preview unavailable</string>
+    <string name="detail_rating">%1$.1f out of 5 · %2$d ratings</string>
+</resources>

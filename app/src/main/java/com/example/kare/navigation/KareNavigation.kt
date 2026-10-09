@@ -18,7 +18,7 @@ import androidx.navigation.compose.*
 import androidx.navigation.toRoute
 import com.example.kare.R
 import com.example.kare.core.design.KareSpacing
-import com.example.kare.core.localization.catalogCopy
+import com.example.kare.feature.detail.DetailRoute
 import com.example.kare.core.ui.ScreenTitle
 import com.example.kare.feature.discover.*
 import com.example.kare.feature.library.*
@@ -75,14 +75,15 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
             }
             composable<KareDestination.Profile> { PendingContent(R.string.profile_title) }
             composable<KareDestination.Settings> { PendingContent(R.string.settings_title) }
-            composable<KareDestination.Detail> { entry ->
-                val id = entry.toRoute<KareDestination.Detail>().templateId
-                Column(Modifier.fillMaxSize().padding(KareSpacing.lg).testTag("detail-$id"),
-                    verticalArrangement = Arrangement.spacedBy(KareSpacing.lg)) {
-                    TextButton(onClick = { navController.popBackStack() }) { Text(stringResource(R.string.action_back)) }
-                    ScreenTitle(catalogCopy(id)?.let { stringResource(it.name) } ?: stringResource(R.string.detail_title))
-                    Text(stringResource(R.string.detail_pending))
-                }
+            composable<KareDestination.Detail> {
+                DetailRoute(viewModel(factory = factory), onBack = { navController.popBackStack() }, onLibrary = {
+                    navController.popBackStack()
+                    navController.navigate(KareDestination.Library) {
+                        popUpTo(navController.graph.findStartDestination().id) { saveState = true }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                })
             }
         }
     }

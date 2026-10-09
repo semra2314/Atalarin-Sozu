@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detail_sizes">Desteklenen boyutlar</string>
+    <string name="detail_choose_size">Yüklemeden önce bir boyut seç.</string>
+    <string name="detail_size_small">Küçük</string>
+    <string name="detail_size_medium">Orta</string>
+    <string name="detail_size_large">Büyük</string>
+    <string name="detail_size_circular">Dairesel aksesuar</string>
+    <string name="detail_size_rectangular">Dikdörtgen aksesuar</string>
+    <string name="detail_size_note">Katalog boyutları kaydedilen tasarımı tanımlar. Android ana ekranına yerleştirme henüz kullanılamıyor.</string>
+    <string name="detail_installed">Kitaplığa yüklendi</string>
+    <string name="detail_open_library">Kitaplığı aç</string>
+    <string name="detail_local_only">Bu cihaza kaydedildi. Düzenleyici ve ana ekran kurulumu daha sonra gelecek.</string>
+    <string name="detail_locked">Ücretli widget · Kilitli</string>
+    <string name="detail_purchase_unavailable">Satın alma daha sonra gelecek</string>
+    <string name="detail_installing">Yükleniyor…</string>
+    <string name="detail_install_failed">Widget yüklenemedi</string>
+    <string name="detail_preview_unavailable">Önizleme kullanılamıyor</string>
+    <string name="detail_rating">5 üzerinden %1$.1f · %2$d değerlendirme</string>
+</resources>

@@ -14,6 +14,7 @@ import com.example.kare.core.database.KareDatabase
 import com.example.kare.core.presentation.ErrorReporter
 import com.example.kare.core.repository.LibraryRepository
 import com.example.kare.core.repository.WidgetRepository
+import com.example.kare.feature.detail.DetailViewModel
 import com.example.kare.feature.discover.DiscoverViewModel
 import com.example.kare.feature.library.LibraryViewModel
 import com.example.kare.feature.search.SearchViewModel
@@ -47,6 +48,7 @@ class KareViewModelFactory(
 
     private fun <T : ViewModel> createModel(modelClass: Class<T>, savedState: SavedStateHandle): T {
         val model = when (modelClass) {
+            DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState)
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
             LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
