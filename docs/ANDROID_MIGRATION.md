@@ -14,7 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 4 adds application dependency wiring and Discover/Search/Library ViewModels.
+Phase 5 adds the Kare design/theme/font and English/Turkish localization foundation.
+Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
 Phase 3 added Room-backed local library persistence.
 Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
 UI and platform integrations remain deferred.
@@ -174,7 +175,8 @@ and do not mean the associated technology or feature has been migrated.
 | `core/database` | KareDatabase v1, internal entity/DAO; exported schema; never exposed to UI |
 | `core/preferences` | Future DataStore implementations |
 | `core/firebase` | Future Firebase configuration and remote data sources |
-| `core/design` | Future Kare tokens/components and model-to-UI adapters |
+| `core/design` | Kare palettes, Material theme, typography, shapes, spacing and layout tokens |
+| `core/localization` | UI-only semantic error/category/section resource mappings |
 | `navigation` | Future route graph and cross-tab coordination |
 | `feature/discover`, `feature/search` | Catalog ViewModels/StateFlow; screens deferred |
 | `feature/library`, `feature/detail` | LibraryViewModel; library/detail UI deferred |
@@ -183,8 +185,8 @@ and do not mean the associated technology or feature has been migrated.
 | `feature/daily`, `feature/focus`, `feature/frame` | Future live-widget setup/session UI |
 | `widget` | Future Android providers, rendering, actions and configuration |
 
-The existing `ui/theme` remains the starter theme until an assigned design-system
-phase migrates it. Additional live-feature packages should be created when those
+The existing `ui/theme/Theme.kt` delegates to core/design.KareTheme for starter
+entry-point compatibility; generated purple tokens and default typography were removed. Additional live-feature packages should be created when those
 features are assigned. Keep a single module for now; split modules only when
 ownership or build boundaries justify it.
 
@@ -250,8 +252,8 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 4;
-Developer 2 retains the separately assigned design and localization work.
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 5. Developer 2 has not started implementation and
+has no active ownership; earlier reservations were reassigned for Phase 5.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
 |---|---|---|---|---|---|
@@ -287,10 +289,10 @@ Developer 2 retains the separately assigned design and localization work.
 | Android App Widgets | actual-widgetsExtension | Reserved `widget` | Unassigned | NOT STARTED | No receiver/provider/Glance dependency |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
-| Localization | Both Localizable.xcstrings catalogs | Starter strings only | Developer 2 | NOT STARTED | English/Turkish migration pending |
-| Design system | Theme / AppFont / components | Starter theme; reserved `core/design` | Developer 2 | NOT STARTED | Visual identity not migrated in this phase |
+| Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural per locale; full app translation deferred |
+| Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens, three Fraunces weights, no full components/screens |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
-| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 66 JVM tests including Room, ViewModels and wiring; device/widget coverage remains NOT STARTED |
+| Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | 72 JVM tests including design/resources, Room, ViewModels and wiring; device/widget coverage remains NOT STARTED |
 
 ## Current work
 
@@ -298,27 +300,18 @@ Developer 2 retains the separately assigned design and localization work.
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 4 COMPLETED and validated. No Phase 5 work started.
-Reservations on application composition, core/presentation, Discover/Search/Library
-ViewModels and tests are released. Shared-file changes were limited to Application
-registration, two dependency aliases and this document. Gradle, AndroidManifest.xml
-and the migration record remain coordination hotspots.
-
-Areas reserved by Developer 2 must remain untouched.
+Current tasks: Phase 5 COMPLETED and validated. Owner: Developer 1.
+No Phase 6 work started. Completed design/theme/fonts/localization reservations
+are released. Future implementation must claim scope here before starting.
+Shared hotspots: core/design, theme entry point, string resources and this document.
 
 ### Developer 2
 
-Branch: not reported; do not infer or change it.
-
-Current tasks: independently assigned design system, theme tokens, typography,
-and localization. Status: NOT STARTED in this checkout; external progress is not
-known and must be reported by Developer 2.
-
-Main files / areas reserved: `core/design`, `ui/theme`, typography/font assets,
-and localization resources. Developer 1 has not modified these areas in Phases 2, 3 or 4.
-
-Areas that should not be modified by the other developer: the reserved design,
-theme, typography and localization areas. No takeover without authorization.
+Developer 2 has not started implementation. Design system, typography and
+localization were initially reserved for Developer 2, but the user temporarily
+reassigned them to Developer 1 for Phase 5 on 2026-10-09. Developer 2 currently has
+no active implementation ownership. Future work must be explicitly reassigned and
+recorded here before Developer 2 starts. No code is attributed to Developer 2.
 
 ### Phase 1 session record
 
@@ -444,16 +437,16 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 5: a Navigation Compose shell and initial Discover/Search/Library
-screens consuming the existing ViewModels through the application factory. Agree
-Developer 2 design/localization contracts first; define lifecycle collection and
-SavedStateHandle restoration for search/filter state during that integration.
-App Widget configuration/rendering/synchronization remains a later feature. These
-recommendations do not authorize starting work or branch changes.
+Recommended Phase 6: Navigation Compose and initial Discover, Search and Library
+screens using the existing factory/ViewModels, core/design.KareTheme and localized
+resources. Include native Back, lifecycle-aware collection, query/filter restoration,
+accessibility and empty/error/action states. No navigation or full screen was added
+in Phase 5. These recommendations do not authorize starting work or branch changes.
 
-Developer 2 can continue the assigned design system, theme tokens, typography
-and English/Turkish localization independently. Keep changes in design packages
-and dedicated resources; coordinate shared Gradle and documentation edits.
+Developer 2 has no active implementation ownership. Suitable future assignments
+include accessibility/localization review and tests, or Profile/Settings presentation
+after contracts are agreed. Reassign and reserve scope here before work begins;
+previous design/localization reservations no longer apply.
 
 ### Conflict hotspots
 
@@ -471,10 +464,11 @@ and dedicated resources; coordinate shared Gradle and documentation edits.
 
 ## Open questions and blockers
 
-There is no known Phase 4 implementation blocker. The following are unresolved
+There is no known Phase 5 implementation blocker. The following are unresolved
 inputs or design questions for later phases, not claims that work has started:
 
-- Developer 2 branch/progress and any future feature branch authorization.
+- Developer 2 future scope/branch must be assigned before implementation; no work
+  has started. Any feature branch operation still requires authorization.
 - Final Android application ID and Firebase Android registration; shared project
   access, deployed Firestore rules/indexes, moderation permissions and account
   deletion consistency. Do not infer these from client Swift code.
@@ -1053,3 +1047,205 @@ Developer 2 can independently continue design tokens, typography and localizatio
 including mapping UiError keys to copy, while coordinating shared Gradle/manifest/
 documentation changes. Phase 4 ownership reservations are released. No further work
 is started until explicitly requested.
+
+## Phase 5 design and localization foundation
+
+Date: 2026-10-09. Owner: Developer 1. Branch: `ANDROID`.
+
+### Ownership change
+
+Developer 2 has not started any implementation. Design system, typography and
+localization were initially reserved for Developer 2. The user temporarily
+reassigned these areas to Developer 1 for Phase 5 so future UI work can proceed.
+All Phase 5 code is Developer 1 work. Developer 2 currently has no active
+implementation ownership. Future scope must be reassigned and recorded before
+Developer 2 starts. Earlier work-log suggestions are historical, not active claims.
+
+### Source analysis and design mapping
+
+Inspected the pinned IOS Theme.swift, AppFont.swift, Color+Hex.swift, MacScale.swift,
+CategoryChip, SectionHeader and StateViews, plus source font binaries/README,
+AccentColor asset, application Localizable.xcstrings and relevant Discover/Search/
+Library/Profile/Settings call sites. The AccentColor asset has no explicit color;
+Theme.Palette is the actual semantic source. MacScale applies 1.25 scaling only
+for iOS-on-Mac. Color+Hex uses RRGGBBAA; Android tint constants are AARRGGBB.
+
+| iOS palette | Android KareColors | Light | Dark |
+|---|---|---|---|
+| background | background | FDF8F8 | 141111 |
+| surface | surface | FFFFFF | 1F1B1B |
+| surfaceMuted | surfaceMuted | F1EDEC | 2B2626 |
+| ink | textPrimary | 1D1D1F | F5F1F0 |
+| subtleText | textSecondary | 5E5E63 | A8A2A1 |
+| hairline | border | E5E2E1 | 3A3434 |
+| accent | accent | D44A33 | E25A42 |
+| accentTint (RRGGBBAA) | accentTint | D44A331F | E25A422E |
+| onInk | onInk | FFFFFF | 1D1D1F |
+| stageTop | stageTop | EFE9E7 | 2A2525 |
+| stageBottom | stageBottom | E2DAD8 | 1F1B1B |
+
+MaterialTheme integrates background/surface/text/outline roles and keeps the
+original brand palette available through `KareDesign.colors`. Material primary
+uses CC442E in light mode: source D44A33 with white text measures about 4.35:1,
+so this small darkening gives normal button labels at least 4.5:1. Dark primary
+retains E25A42 with dark on-primary text. Decorative accent tokens are unchanged;
+use Material primary for interactive text/fills requiring the tested contrast.
+Secondary uses ink/onInk, tertiary uses subtle text, and error roles retain native
+Material light/dark defaults because iOS has no shared error palette. Containers
+composite translucent source tint over surface to produce opaque Material colors.
+Dynamic wallpaper colors are not enabled: the default theme preserves Kare identity.
+
+Spacing is 4/8/12/20/24/40 dp, matching source xs through xxl. Card radius is 20 dp;
+hero/sheet radius is 28 dp; pills use 50% corners instead of a magic 999 radius.
+Material small-control corners retain native defaults. Optional layout maximums
+are 680/1040 dp for readable/wide content; screens choose responsive arrangements.
+No full screen, button wrapper, custom chip or unused component library was created.
+
+### Typography and fonts
+
+Three unmodified source Fraunces 72pt Soft static fonts are bundled in res/font:
+SemiBold (600), Bold (700), Black (900). Source heavy maps to the Black file.
+Regular is used by later Daily/widget/editor features, not the shared heading
+scale, so it is deliberately not copied now. DM Sans is absent from the iOS bundle;
+Android uses FontFamily.SansSerif instead of importing Apple's SF Pro.
+
+| Source style | KareTextStyles | Size / line height (sp) | Weight |
+|---|---|---|---|
+| displayLarge / hero | display | 34 / 42 | Fraunces Black |
+| headline | headline | 24 / 32 | Fraunces Bold |
+| headlineSmall / sectionTitle | headlineSmall | 20 / 28 | Fraunces Bold |
+| title | title | 17 / 24 | Fraunces SemiBold |
+| body | body | 15 / 22 | System sans regular |
+| bodyLarge | bodyLarge | 17 / 24 | System sans regular |
+| label / caption | label | 13 / 18 | System sans medium |
+| labelCaps | labelCaps | 12 / 16 | System sans bold, 0.6 sp tracking |
+| cardTitle | cardTitle | 15 / 22 | System sans semibold |
+
+All Material typography roles are explicitly mapped to this compact scale; the
+extra Material display slots do not invent new oversized headings. Source sizes
+become scalable sp. Line heights are deliberate Android choices, not Swift values.
+Text casing remains locale-aware UI work; styles do not uppercase Turkish strings.
+No MacScale, UIKit font registration, Dynamic Type curve emulation, Apple shadow
+blur, glass materials or SwiftUI motion is copied. Native Compose font scaling,
+Material interaction/accessibility and elevation remain the Android approach.
+
+Font name-table records confirm Fraunces72ptSoft-SemiBold/Bold/Black, copyright
+2020 The Fraunces Project Authors, and SIL Open Font License 1.1. The unmodified
+[upstream license](https://github.com/undercasetype/Fraunces/blob/master/OFL.txt)
+is packaged as assets/licenses/fraunces_ofl.txt. Android uses bundled resources
+as described in [Compose font guidance](https://developer.android.com/develop/ui/compose/text/fonts).
+Font hashes below pin the copied iOS assets:
+
+- `fraunces_soft_black.ttf`: `882c17d17f47101702556ff5365d5e2bd98eaae7de6e59f4398e1f1e29445e19`
+- `fraunces_soft_bold.ttf`: `af10e7e2bcfae5a8e638e944f22c63b50fd8e769a4f54095fa3a3480512ff9ea`
+- `fraunces_soft_semibold.ttf`: `736e4db7b979ea31cd46baaa365a7f4776ce976204b15dce0c873b190217c812`
+
+### Localization mapping and boundaries
+
+The source app actively contains English and Turkish only. Android default
+`values/strings.xml` is English; `values-tr/strings.xml` supplies Turkish, with
+normal Android fallback for other locales. No per-app language picker, locale
+persistence or widget-language synchronization is implemented here.
+
+Each locale has 86 strings and one widget-count plural. Seventy-three strings
+come directly from the iOS catalog, including navigation labels, library actions,
+favorites, category names, six discover shelf titles and available subtitles,
+profile/settings basics, errors and author attribution. Thirteen are explicit
+Android additions: generic semantic errors, search/favorite empty states, loading,
+back/edit, language self-names and the localized starter greeting. Source loading
+copy exists in StateViews but is absent from xcstrings; Search's empty message is
+system-provided on iOS. Added Turkish copy preserves the app's informal tone and
+should receive normal native-speaker review with the first screens.
+
+`app/src/test/resources/localization/source-mapping.json` lists every resource,
+its iOS key (or null for additions), and English/Turkish values. `%@` attribution
+becomes Android `%1$s`. Widget counts use quantity resources (`one`/`other`);
+Turkish count nouns remain singular. XML escapes apostrophes and markup; tests
+verify compiled text matches source meaning. Existing inconsistent source terms
+such as Kitaplık/Kütüphane are not silently rewritten across unrelated content.
+
+`core/localization/UiStrings.kt` maps every UiError and WidgetCategory exhaustively
+to @StringRes IDs. A UI imports the extension and calls
+`stringResource(error.stringResource())`; ViewModels continue to emit semantic
+keys, with no Context or resource IDs. Known catalog section IDs map to localized
+title/subtitle resources; unknown IDs return null for caller-provided source copy.
+Template prose and user-authored content remain unchanged. No review/auth/billing
+copy or all 609 app/147 widget entries are blindly imported.
+
+### 2026-10-09 — Phase 5 decisions and work log
+
+- Reassigned previously reserved Developer 2 areas to Developer 1 before editing.
+- Ported exact semantic tokens and relevant fonts, with native Material integration
+  and documented contrast/type/shape differences.
+- Kept stateless UI resource mappings outside domain, repositories and ViewModels.
+- Replaced starter purple tokens/default typography; retained a thin ui/theme
+  delegate so MainActivity's theme entry point remains compatible.
+- Localized the existing starter greeting without building a feature screen.
+- Added no Gradle dependency and changed no repository, Room schema, catalog,
+  serializer, ViewModel, Firebase, navigation, widget or billing implementation.
+- Initial compile caught two nonexistent shelf subtitles; corrected to null to
+  match the actual catalog rather than invent subtitle text.
+
+Created:
+
+- `app/src/main/java/com/example/kare/core/design/KareColors.kt`
+- `app/src/main/java/com/example/kare/core/design/KareTypography.kt`
+- `app/src/main/java/com/example/kare/core/design/KareTheme.kt`
+- `app/src/main/java/com/example/kare/core/localization/UiStrings.kt`
+- `app/src/main/res/font/fraunces_soft_semibold.ttf`
+- `app/src/main/res/font/fraunces_soft_bold.ttf`
+- `app/src/main/res/font/fraunces_soft_black.ttf`
+- `app/src/main/assets/licenses/fraunces_ofl.txt`
+- `app/src/main/res/values-tr/strings.xml`
+- `app/src/test/java/com/example/kare/design/DesignResourcesTest.kt`
+- `app/src/test/resources/localization/source-mapping.json`
+
+Modified:
+
+- `app/src/main/java/com/example/kare/ui/theme/Theme.kt`
+- `app/src/main/java/com/example/kare/MainActivity.kt` (starter string resource only)
+- `app/src/main/res/values/strings.xml`
+- `docs/ANDROID_MIGRATION.md`
+
+Removed obsolete starter files:
+
+- `app/src/main/java/com/example/kare/ui/theme/Color.kt`
+- `app/src/main/java/com/example/kare/ui/theme/Type.kt`
+
+No commits, pushes, merges, branch operations or history changes. Shared conflict
+hotspots are core/design tokens, resource names, the theme entry point and this
+migration record. Future Developer 2 work must be assigned explicitly first.
+
+### Phase 5 final validation and completion
+
+Date: 2026-10-09. Owner: Developer 1. Branch: `ANDROID`. Status: COMPLETED.
+The read-only remote check confirmed IOS still points to the pinned source commit.
+
+| Command | Result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS; 72 tests, zero failures/errors/skips; six new resource/design tests |
+| `./gradlew lint` | PASS; zero errors, 85 warnings |
+| `git diff --check` | PASS |
+
+Six Robolectric tests cover compiled English/Turkish values against the source
+mapping, formatting contracts/fallback, exhaustive semantic-error/category/shelf
+mappings, plurals, bundled font loading/weight assignment/license presence, and
+light/dark Material token/contrast checks. A separate XML audit confirmed identical
+87-name/type resource structures without duplicates in both locales. APK inspection
+confirmed all three fonts and their license are packaged. No screenshot/golden,
+physical-device or full-screen visual validation is claimed in this foundation.
+
+Lint has 64 unused-resource warnings (including starter resources and prepared
+near-term strings), 12 dependency notices, five newer-version notices, two AGP
+notices, one target-SDK notice and one existing redundant-label warning. Prepared
+strings are intentionally unused until Phase 6; no resource warnings were suppressed
+and no checks were disabled. No new Gradle dependency/configuration was needed.
+
+No Phase 5 blocker remains. Native-speaker review of new Turkish messages and
+large-font/real-device UI review belong with initial screens. Full catalog prose,
+widget/editor copy, app-language selection and future Fraunces Regular usage remain
+deferred. Phase 6 should implement Navigation Compose and initial Discover/Search/
+Library screens using this foundation. Developer 2 could take an explicitly
+assigned accessibility/localization review or separate Profile/Settings work later;
+there is currently no active Developer 2 implementation ownership. Stop here.

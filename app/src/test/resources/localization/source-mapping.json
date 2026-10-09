@@ -1,0 +1,432 @@
+{
+  "app_name": {
+    "source": "Kare",
+    "en": "Kare",
+    "tr": "Kare"
+  },
+  "discover_title": {
+    "source": "Discover",
+    "en": "Discover",
+    "tr": "Keşfet"
+  },
+  "search_title": {
+    "source": "Search",
+    "en": "Search",
+    "tr": "Ara"
+  },
+  "library_title": {
+    "source": "Library",
+    "en": "Library",
+    "tr": "Kitaplık"
+  },
+  "profile_title": {
+    "source": "Profile",
+    "en": "Profile",
+    "tr": "Profil"
+  },
+  "settings_title": {
+    "source": "Settings",
+    "en": "Settings",
+    "tr": "Ayarlar"
+  },
+  "action_add": {
+    "source": "Add",
+    "en": "Add",
+    "tr": "Ekle"
+  },
+  "action_install": {
+    "source": "Add to library",
+    "en": "Add to library",
+    "tr": "Kitaplığa ekle"
+  },
+  "action_remove": {
+    "source": "Remove",
+    "en": "Remove",
+    "tr": "Kaldır"
+  },
+  "action_cancel": {
+    "source": "Cancel",
+    "en": "Cancel",
+    "tr": "Vazgeç"
+  },
+  "action_done": {
+    "source": "Done",
+    "en": "Done",
+    "tr": "Tamam"
+  },
+  "action_save": {
+    "source": "Save",
+    "en": "Save",
+    "tr": "Kaydet"
+  },
+  "action_close": {
+    "source": "Close",
+    "en": "Close",
+    "tr": "Kapat"
+  },
+  "action_continue": {
+    "source": "Continue",
+    "en": "Continue",
+    "tr": "Devam et"
+  },
+  "action_share": {
+    "source": "Share",
+    "en": "Share",
+    "tr": "Paylaş"
+  },
+  "action_retry": {
+    "source": "Try again",
+    "en": "Try again",
+    "tr": "Tekrar dene"
+  },
+  "action_see_all": {
+    "source": "See all",
+    "en": "See all",
+    "tr": "Tümünü gör"
+  },
+  "action_dismiss": {
+    "source": "Dismiss",
+    "en": "Dismiss",
+    "tr": "Kapat"
+  },
+  "search_hint": {
+    "source": "Widgets, creators, tags",
+    "en": "Widgets, creators, tags",
+    "tr": "Widget, tasarımcı, etiket"
+  },
+  "search_clear": {
+    "source": "Clear search",
+    "en": "Clear search",
+    "tr": "Aramayı temizle"
+  },
+  "library_empty_title": {
+    "source": "Nothing here yet",
+    "en": "Nothing here yet",
+    "tr": "Burada henüz bir şey yok"
+  },
+  "library_empty_message": {
+    "source": "Widgets you add from Discover will collect here, ready for your home screen.",
+    "en": "Widgets you add from Discover will collect here, ready for your home screen.",
+    "tr": "Keşfet'ten eklediğin widget'lar burada toplanır, ana ekranın için hazır bekler."
+  },
+  "favorite": {
+    "source": "Favorite",
+    "en": "Favorite",
+    "tr": "Favori"
+  },
+  "favorites": {
+    "source": "Favorites",
+    "en": "Favorites",
+    "tr": "Favoriler"
+  },
+  "favorite_add": {
+    "source": "Add to favorites",
+    "en": "Add to favorites",
+    "tr": "Favorilere ekle"
+  },
+  "favorite_remove": {
+    "source": "Remove from favorites",
+    "en": "Remove from favorites",
+    "tr": "Favorilerden çıkar"
+  },
+  "favorites_show_only": {
+    "source": "Show favorites only",
+    "en": "Show favorites only",
+    "tr": "Sadece favorileri göster"
+  },
+  "favorites_show_all": {
+    "source": "Show all widgets",
+    "en": "Show all widgets",
+    "tr": "Tüm widget'ları göster"
+  },
+  "favorites_empty_message": {
+    "source": "Tap the heart on any widget to keep it here.",
+    "en": "Tap the heart on any widget to keep it here.",
+    "tr": "Burada tutmak için herhangi bir widget'ın kalbine dokun."
+  },
+  "library_installed": {
+    "source": "In library",
+    "en": "In library",
+    "tr": "Kitaplıkta"
+  },
+  "library_adding": {
+    "source": "Adding…",
+    "en": "Adding…",
+    "tr": "Ekleniyor…"
+  },
+  "library_added": {
+    "source": "Added!",
+    "en": "Added!",
+    "tr": "Eklendi!"
+  },
+  "discover_widget_of_day": {
+    "source": "Widget of the Day",
+    "en": "Widget of the Day",
+    "tr": "Günün Widget'ı"
+  },
+  "discover_hint": {
+    "source": "Tap any widget to make it yours.",
+    "en": "Tap any widget to make it yours.",
+    "tr": "Seninki olması için herhangi bir widget'a dokun."
+  },
+  "profile_edit": {
+    "source": "Edit profile",
+    "en": "Edit profile",
+    "tr": "Profili düzenle"
+  },
+  "profile_my_widgets": {
+    "source": "My Widgets",
+    "en": "My Widgets",
+    "tr": "Widget'larım"
+  },
+  "profile_made": {
+    "source": "Made",
+    "en": "Made",
+    "tr": "Yaptığım"
+  },
+  "profile_name": {
+    "source": "Name",
+    "en": "Name",
+    "tr": "Ad"
+  },
+  "profile_username": {
+    "source": "Username",
+    "en": "Username",
+    "tr": "Kullanıcı adı"
+  },
+  "settings_language": {
+    "source": "Language",
+    "en": "Language",
+    "tr": "Dil"
+  },
+  "settings_appearance": {
+    "source": "Appearance",
+    "en": "Appearance",
+    "tr": "Görünüm"
+  },
+  "settings_account": {
+    "source": "Account",
+    "en": "Account",
+    "tr": "Hesap"
+  },
+  "settings_notifications": {
+    "source": "Notifications",
+    "en": "Notifications",
+    "tr": "Bildirimler"
+  },
+  "settings_privacy": {
+    "source": "Privacy",
+    "en": "Privacy",
+    "tr": "Gizlilik"
+  },
+  "settings_help": {
+    "source": "Help & Support",
+    "en": "Help & Support",
+    "tr": "Yardım ve Destek"
+  },
+  "appearance_system": {
+    "source": "Same as phone",
+    "en": "Same as phone",
+    "tr": "Telefonla aynı"
+  },
+  "appearance_light": {
+    "source": "Light mode",
+    "en": "Light mode",
+    "tr": "Açık mod"
+  },
+  "appearance_dark": {
+    "source": "Dark mode",
+    "en": "Dark mode",
+    "tr": "Koyu mod"
+  },
+  "language_system": {
+    "source": "Phone language",
+    "en": "Phone language",
+    "tr": "Telefon dili"
+  },
+  "error_title": {
+    "source": "Something went wrong",
+    "en": "Something went wrong",
+    "tr": "Bir şeyler ters gitti"
+  },
+  "error_not_found": {
+    "source": "Widget not found",
+    "en": "Widget not found",
+    "tr": "Widget bulunamadı"
+  },
+  "error_connection": {
+    "source": "No connection. Check your internet and try again.",
+    "en": "No connection. Check your internet and try again.",
+    "tr": "Bağlantı yok. İnternetini kontrol edip tekrar dene."
+  },
+  "error_sign_in_required": {
+    "source": "You're not signed in.",
+    "en": "You're not signed in.",
+    "tr": "Giriş yapmamışsın."
+  },
+  "category_productivity": {
+    "source": "Productivity",
+    "en": "Productivity",
+    "tr": "Üretkenlik"
+  },
+  "category_health": {
+    "source": "Health",
+    "en": "Health",
+    "tr": "Sağlık"
+  },
+  "category_finance": {
+    "source": "Finance",
+    "en": "Finance",
+    "tr": "Finans"
+  },
+  "category_weather": {
+    "source": "Weather",
+    "en": "Weather",
+    "tr": "Hava"
+  },
+  "category_photos": {
+    "source": "Photos",
+    "en": "Photos",
+    "tr": "Fotoğraf"
+  },
+  "category_minimal": {
+    "source": "Minimal",
+    "en": "Minimal",
+    "tr": "Sade"
+  },
+  "category_social": {
+    "source": "Social",
+    "en": "Social",
+    "tr": "Sosyal"
+  },
+  "category_fun": {
+    "source": "Fun",
+    "en": "Fun",
+    "tr": "Eğlence"
+  },
+  "price_free": {
+    "source": "Free",
+    "en": "Free",
+    "tr": "Ücretsiz"
+  },
+  "author_by": {
+    "source": "by %@",
+    "en": "by %1$s",
+    "tr": "yapan %1$s"
+  },
+  "section_spotlight_title": {
+    "source": "Featured today",
+    "en": "Featured today",
+    "tr": "Bugünün seçkisi"
+  },
+  "section_spotlight_subtitle": {
+    "source": "Hand-picked by the Kare team",
+    "en": "Hand-picked by the Kare team",
+    "tr": "Kare ekibinin seçtikleri"
+  },
+  "section_count_title": {
+    "source": "Count what matters",
+    "en": "Count what matters",
+    "tr": "Önemli olanı say"
+  },
+  "section_count_subtitle": {
+    "source": "Live widgets that keep score for you",
+    "en": "Live widgets that keep score for you",
+    "tr": "Senin yerine takip eden canlı widget'lar"
+  },
+  "section_all_title": {
+    "source": "All widgets",
+    "en": "All widgets",
+    "tr": "Bütün widget'lar"
+  },
+  "section_all_subtitle": {
+    "source": "Everything that ships with Kare",
+    "en": "Everything that ships with Kare",
+    "tr": "Kare ile gelen her şey"
+  },
+  "section_minimal_title": {
+    "source": "Quietly minimal",
+    "en": "Quietly minimal",
+    "tr": "Sakin ve sade"
+  },
+  "section_plus_title": {
+    "source": "Kare+",
+    "en": "Kare+",
+    "tr": "Kare+"
+  },
+  "section_plus_subtitle": {
+    "source": "Buy one, or get them all with Kare+",
+    "en": "Buy one, or get them all with Kare+",
+    "tr": "Tek tek al ya da Kare+ ile hepsini aç"
+  },
+  "section_free_title": {
+    "source": "Great and free",
+    "en": "Great and free",
+    "tr": "Güzel ve ücretsiz"
+  },
+  "loading_widgets": {
+    "source": null,
+    "en": "Loading widgets…",
+    "tr": "Widget’lar yükleniyor…"
+  },
+  "search_empty_title": {
+    "source": null,
+    "en": "No results",
+    "tr": "Sonuç bulunamadı"
+  },
+  "search_empty_message": {
+    "source": null,
+    "en": "Try another search or category.",
+    "tr": "Başka bir arama veya kategori dene."
+  },
+  "favorites_empty_title": {
+    "source": null,
+    "en": "No favorites yet",
+    "tr": "Henüz favori yok"
+  },
+  "error_unavailable": {
+    "source": null,
+    "en": "This action is unavailable right now. Please try again later.",
+    "tr": "Bu işlem şu anda kullanılamıyor. Lütfen daha sonra tekrar dene."
+  },
+  "error_invalid_data": {
+    "source": null,
+    "en": "This data could not be used. Please try again.",
+    "tr": "Bu veri kullanılamadı. Lütfen tekrar dene."
+  },
+  "error_storage": {
+    "source": null,
+    "en": "Your library could not be read or saved. Please try again.",
+    "tr": "Kitaplığın okunamadı veya kaydedilemedi. Lütfen tekrar dene."
+  },
+  "error_unexpected": {
+    "source": null,
+    "en": "Something went wrong. Please try again.",
+    "tr": "Bir şeyler ters gitti. Lütfen tekrar dene."
+  },
+  "action_edit": {
+    "source": null,
+    "en": "Edit",
+    "tr": "Düzenle"
+  },
+  "action_back": {
+    "source": null,
+    "en": "Back",
+    "tr": "Geri"
+  },
+  "language_english": {
+    "source": null,
+    "en": "English",
+    "tr": "English"
+  },
+  "language_turkish": {
+    "source": null,
+    "en": "Türkçe",
+    "tr": "Türkçe"
+  },
+  "starter_greeting": {
+    "source": null,
+    "en": "Hello %1$s!",
+    "tr": "Merhaba %1$s!"
+  }
+}
