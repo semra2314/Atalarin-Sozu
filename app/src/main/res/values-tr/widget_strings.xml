@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proverb_widget_name">Kare · Söz</string>
+    <string name="proverb_widget_description">Dört saatte bir değişen atasözleri, deyimler ve anlamları.</string>
+    <string name="proverb_configuration_info">Bu ana ekran widget’ının içeriğini seç. Gerekirse Söz kitaplığına eklenir. Sözler Türkçe olarak gösterilir.</string>
+    <string name="proverb_all">Tüm sözler</string>
+    <string name="proverb_proverbs">Atasözleri</string>
+    <string name="proverb_idioms">Deyimler</string>
+    <string name="proverb_kind">ATASÖZÜ</string>
+    <string name="proverb_idiom">DEYİM</string>
+    <string name="proverb_needs_configuration">Bu widget’ı başlatıcından yapılandır.</string>
+    <string name="proverb_library_missing">Sözleri görmek için Söz’ü Kare kitaplığına ekle.</string>
+    <string name="proverb_unavailable">Widget kullanılamıyor. Kare’yi aç veya yeniden denemek için yenile.</string>
+    <string name="proverb_open_app">Kare’yi aç</string>
+</resources>

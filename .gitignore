@@ -21,3 +21,6 @@ GoogleService-Info.plist
 *.keystore
 keystore.properties
 signing.properties
+
+# Kotlin compiler session/cache files.
+.kotlin/

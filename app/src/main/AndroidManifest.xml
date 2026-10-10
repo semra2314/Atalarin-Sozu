@@ -12,6 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kare">
+        <receiver android:name=".widget.ProverbReceiver" android:exported="false"
+            android:label="@string/proverb_widget_name">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/proverb_widget_info" />
+        </receiver>
+        <activity android:name=".widget.ProverbConfigurationActivity" android:exported="true"
+            android:theme="@style/Theme.Kare">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /></intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"

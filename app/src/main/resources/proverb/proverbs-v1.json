@@ -1,0 +1,2802 @@
+[
+  {
+    "id": 1,
+    "isProverb": true,
+    "title": "Ağaç yaşken eğilir.",
+    "meaning": "İnsanlar küçük yaşta kolayca eğitilirler.",
+    "example": "Çocuğuna yabancı dili şimdi öğretmelisin, sonuçta ağaç yaşken eğilir."
+  },
+  {
+    "id": 2,
+    "isProverb": true,
+    "title": "Damlaya damlaya göl olur.",
+    "meaning": "Küçük ve önemsiz şeyler birikerek büyük ve önemli sonuçlar doğurabilir.",
+    "example": "Harcamalarına dikkat et ve kumbarana bozuk paraları at, unutma damlaya damlaya göl olur."
+  },
+  {
+    "id": 3,
+    "isProverb": false,
+    "title": "Etekleri zil çalmak.",
+    "meaning": "Çok sevinmek ve sevinçle telaş içinde olmak.",
+    "example": "Sınavdan yüz aldığını öğrenince etekleri zil çalmaya başladı."
+  },
+  {
+    "id": 4,
+    "isProverb": false,
+    "title": "Göze girmek.",
+    "meaning": "Davranışları ve yetenekleriyle ilgi ve sevgi kazanmak.",
+    "example": "Yeni projeyi hatasız tamamlayarak yöneticisinin gözüne girdi."
+  },
+  {
+    "id": 5,
+    "isProverb": true,
+    "title": "Sakla samanı gelir zamanı.",
+    "meaning": "Değersiz gibi görünen bir şey ileride işe yarayabilir.",
+    "example": "Eski kabloları atma bence çekmeceye koy, sakla samanı gelir zamanı."
+  },
+  {
+    "id": 6,
+    "isProverb": true,
+    "title": "Abanın kadri yağmurda bilinir.",
+    "meaning": "Bir şeyin değeri ona ihtiyaç duyulduğunda daha iyi anlaşılır.",
+    "example": "Şemsiyemi evde unutunca abanın kadri yağmurda bilinir sözünün doğruluğunu anladım."
+  },
+  {
+    "id": 7,
+    "isProverb": false,
+    "title": "Göze batmak.",
+    "meaning": "Uygunsuz davranışlarıyla başkalarını rahatsız etmek.",
+    "example": "Toplantıdaki laubali tavırlarıyla herkesin gözüne battı."
+  },
+  {
+    "id": 8,
+    "isProverb": true,
+    "title": "Acele işe şeytan karışır.",
+    "meaning": "Düşünülüp taşınılmadan acele ile yapılan işten iyi sonuç alınmaz.",
+    "example": "Projeyi bir günde bitirmeye çalışma acele işe şeytan karışır."
+  },
+  {
+    "id": 9,
+    "isProverb": false,
+    "title": "Küplere binmek.",
+    "meaning": "Çok öfkelenmek sinirlenmek.",
+    "example": "Arabasının çizildiğini görünce adeta küplere bindi."
+  },
+  {
+    "id": 10,
+    "isProverb": true,
+    "title": "Aç ayı oynamaz.",
+    "meaning": "İnsanlardan iş bekleniyorsa önce onların karınları doyurulmalıdır.",
+    "example": "İşçilere yemek molası verelim sonuçta aç ayı oynamaz."
+  },
+  {
+    "id": 11,
+    "isProverb": false,
+    "title": "İpe un sermek.",
+    "meaning": "İstenilen işi yapmamak için çeşitli bahaneler uydurmak.",
+    "example": "Ödevi yapmamak için yine ipe un seriyor."
+  },
+  {
+    "id": 12,
+    "isProverb": true,
+    "title": "Ak akçe kara gün içindir.",
+    "meaning": "Kazanılan para insanın sıkıntılı zamanlarında kullanması içindir.",
+    "example": "Maaşından biraz kenara ayır ak akçe kara gün içindir."
+  },
+  {
+    "id": 13,
+    "isProverb": false,
+    "title": "Çam devirmek.",
+    "meaning": "Farkında olmadan karşısındakini kıracak ya da pot kıracak söz söylemek.",
+    "example": "Patronun yanında öyle bir çam devirdi ki herkes şok oldu."
+  },
+  {
+    "id": 14,
+    "isProverb": true,
+    "title": "Alma mazlumun ahını çıkar aheste aheste.",
+    "meaning": "Kimseye haksızlık etme yaptığın kötülük gün gelir senden yavaş yavaş çıkar.",
+    "example": "Ona haksızlık ettin ama unutma alma mazlumun ahını çıkar aheste aheste."
+  },
+  {
+    "id": 15,
+    "isProverb": false,
+    "title": "Göz kulak olmak.",
+    "meaning": "Görüp gözetmek korumak bakmak.",
+    "example": "Ben yokken kardeşine göz kulak ol lütfen."
+  },
+  {
+    "id": 16,
+    "isProverb": true,
+    "title": "Altın yere düşmekle pul olmaz.",
+    "meaning": "Değerli bir kişi bulunduğu yüksek makamdan düşse de değerini yitirmez.",
+    "example": "İşten çıkarılması onun değerini düşürmez altın yere düşmekle pul olmaz."
+  },
+  {
+    "id": 17,
+    "isProverb": false,
+    "title": "Etekleri tutuşmak.",
+    "meaning": "Çok telaşlanmak heyecanlanmak.",
+    "example": "Sınavın yarın olduğunu öğrenince etekleri tutuştu."
+  },
+  {
+    "id": 18,
+    "isProverb": true,
+    "title": "Aslan yattığı yerden belli olur.",
+    "meaning": "Bir kimsenin karakteri oturduğu yerin temizliğinden ve düzeninden anlaşılır.",
+    "example": "Odanı biraz topla aslan yattığı yerden belli olur."
+  },
+  {
+    "id": 19,
+    "isProverb": false,
+    "title": "Ağzı kulaklarına varmak.",
+    "meaning": "Çok sevinmek.",
+    "example": "İstediği oyuncağı alınca ağzı kulaklarına vardı."
+  },
+  {
+    "id": 20,
+    "isProverb": true,
+    "title": "Ateş düştüğü yeri yakar.",
+    "meaning": "Bir felaket en çok ona uğrayanları üzer ve etkiler.",
+    "example": "Biz ne kadar üzülsek de boş ateş düştüğü yeri yakar."
+  },
+  {
+    "id": 21,
+    "isProverb": false,
+    "title": "Gözden düşmek.",
+    "meaning": "Eski değerini sevgisini yitirmek.",
+    "example": "Son hatalarından sonra yöneticilerin gözünden düştü."
+  },
+  {
+    "id": 22,
+    "isProverb": true,
+    "title": "Ayağını yorganına göre uzat.",
+    "meaning": "Harcamalarını gelirine uygun yapmalısın.",
+    "example": "Bu ay çok harcama yaptık biraz ayağımızı yorganımıza göre uzatmalıyız."
+  },
+  {
+    "id": 23,
+    "isProverb": false,
+    "title": "Burnu havada olmak.",
+    "meaning": "Kibirlenmek büyüklenmek.",
+    "example": "Terfi aldığından beri burnu havada kimseyi beğenmiyor."
+  },
+  {
+    "id": 24,
+    "isProverb": true,
+    "title": "Bal bal demekle ağız tatlanmaz.",
+    "meaning": "Sadece sözünü etmekle güzel bir şey gerçekleşmez eylem gerekir.",
+    "example": "Sürekli plan yapıyorsun ama bal bal demekle ağız tatlanmaz icraat lazım."
+  },
+  {
+    "id": 25,
+    "isProverb": false,
+    "title": "Pabucu dama atılmak.",
+    "meaning": "Kendinden daha üstün birinin gelmesiyle gözden düşmek.",
+    "example": "Yeni kardeş doğunca abinin pabucu dama atıldı."
+  },
+  {
+    "id": 26,
+    "isProverb": true,
+    "title": "Bakarsan bağ bakmazsan dağ olur.",
+    "meaning": "Bir şeye emek verirsen güzelleşir ilgilenmezsen bozulur.",
+    "example": "Bahçeyle ilgilenmezsen kurur gider bakarsan bağ bakmazsan dağ olur."
+  },
+  {
+    "id": 27,
+    "isProverb": false,
+    "title": "Dişini sıkmak.",
+    "meaning": "Zorluklara sıkıntılara dayanmak katlanmak.",
+    "example": "Birkaç ay daha dişini sıkarsan borçların bitecek."
+  },
+  {
+    "id": 28,
+    "isProverb": true,
+    "title": "Besle kargayı oysun gözünü.",
+    "meaning": "İyilik yaptığın nankör bir kişi gün gelir sana kötülük yapar.",
+    "example": "Ona o kadar yardım ettim bana ihanet etti besle kargayı oysun gözünü."
+  },
+  {
+    "id": 29,
+    "isProverb": false,
+    "title": "Kulak misafiri olmak.",
+    "meaning": "Yanında konuşulanları belli etmeden dinliyormuş gibi görünmeden dinlemek.",
+    "example": "Otobüste iki kişinin konuşmasına kulak misafiri oldum."
+  },
+  {
+    "id": 30,
+    "isProverb": true,
+    "title": "Bir elin nesi var iki elin sesi var.",
+    "meaning": "Birlikte çalışmak dayanışma içinde olmak daha büyük başarılar getirir.",
+    "example": "Bu işi tek başına yapamazsın gel beraber yapalım bir elin nesi var iki elin sesi var."
+  },
+  {
+    "id": 31,
+    "isProverb": false,
+    "title": "Eli ayağına dolaşmak.",
+    "meaning": "Şaşkınlıktan veya telaştan ne yapacağını bilememek.",
+    "example": "Karşısında onu görünce heyecandan eli ayağına dolaştı."
+  },
+  {
+    "id": 32,
+    "isProverb": true,
+    "title": "Can çıkmayınca huy çıkmaz.",
+    "meaning": "İnsanın karakteri ve alışkanlıkları ölene kadar değişmez.",
+    "example": "Yıllar geçti ama hala aynı can çıkmayınca huy çıkmaz."
+  },
+  {
+    "id": 33,
+    "isProverb": false,
+    "title": "Havadan sudan konuşmak.",
+    "meaning": "Önemli olmayan rastgele konulardan bahsetmek.",
+    "example": "Kafede oturup saatlerce havadan sudan konuştuk."
+  },
+  {
+    "id": 34,
+    "isProverb": true,
+    "title": "Davulun sesi uzaktan hoş gelir.",
+    "meaning": "İşin içinde olmayanlara o işin zorlukları kolay görünür.",
+    "example": "Sen o işi kolay sanıyorsun ama davulun sesi uzaktan hoş gelir."
+  },
+  {
+    "id": 35,
+    "isProverb": false,
+    "title": "Göz atmak.",
+    "meaning": "Kısaca üstünkörü bakmak.",
+    "example": "Toplantıdan önce rapora şöyle bir göz attım."
+  },
+  {
+    "id": 36,
+    "isProverb": true,
+    "title": "Denize düşen yılana sarılır.",
+    "meaning": "Çok zor durumda kalan kişi kurtulmak için tehlikeli çarelere bile başvurur.",
+    "example": "Tefeciden borç almış ama ne yapsın denize düşen yılana sarılır."
+  },
+  {
+    "id": 37,
+    "isProverb": false,
+    "title": "Kan beynine sıçramak.",
+    "meaning": "Çok öfkelenmek sinir krizine girmek.",
+    "example": "Bana yalan söylediğini öğrenince kan beynime sıçradı."
+  },
+  {
+    "id": 38,
+    "isProverb": true,
+    "title": "Dikensiz gül olmaz.",
+    "meaning": "Her güzel şeyin mutlaka bir kusuru veya zorluğu vardır.",
+    "example": "Yeni evinin bazı eksikleri var ama dikensiz gül olmaz."
+  },
+  {
+    "id": 39,
+    "isProverb": false,
+    "title": "İğne atsan yere düşmez.",
+    "meaning": "Çok kalabalık adım atacak yer olmayan yerler için kullanılır.",
+    "example": "Konser alanı o kadar kalabalıktı ki iğne atsan yere düşmezdi."
+  },
+  {
+    "id": 40,
+    "isProverb": true,
+    "title": "Doğru söyleyeni dokuz köyden kovarlar.",
+    "meaning": "Gerçekleri çekinmeden söyleyen kişiler genellikle başkaları tarafından istenmez.",
+    "example": "O hep dürüsttür ama doğru söyleyeni dokuz köyden kovarlar işte."
+  },
+  {
+    "id": 41,
+    "isProverb": false,
+    "title": "Dudak uçuklatmak.",
+    "meaning": "Çok şaşırtmak hayretler içinde bırakmak.",
+    "example": "Arabanın fiyatı resmen dudak uçuklatıyor."
+  },
+  {
+    "id": 42,
+    "isProverb": true,
+    "title": "Dost kara günde belli olur.",
+    "meaning": "Gerçek dost insanın zor zamanlarında yanında olandır.",
+    "example": "Hastalandığımda sadece o aradı dost kara günde belli olurmuş."
+  },
+  {
+    "id": 43,
+    "isProverb": false,
+    "title": "Nabza göre şerbet vermek.",
+    "meaning": "Karşısındakinin hoşuna gidecek şekilde davranmak.",
+    "example": "Müşterileri ikna etmek için nabza göre şerbet vermek gerekir."
+  },
+  {
+    "id": 44,
+    "isProverb": true,
+    "title": "El elden üstündür.",
+    "meaning": "Her zaman senden daha yetenekli veya bilgili biri bulunabilir.",
+    "example": "Ben çok iyi bilirim deme el elden üstündür."
+  },
+  {
+    "id": 45,
+    "isProverb": false,
+    "title": "Yüz bulmak.",
+    "meaning": "Gösterilen ilgiden cesaret alarak şımarmak.",
+    "example": "Çocuğa biraz güler yüz gösterdik hemen yüz buldu."
+  },
+  {
+    "id": 46,
+    "isProverb": true,
+    "title": "Ev alma komşu al.",
+    "meaning": "İyi bir komşu güzel bir evden daha değerlidir.",
+    "example": "Ev çok güzel ama komşular kötü ev alma komşu al demişler."
+  },
+  {
+    "id": 47,
+    "isProverb": false,
+    "title": "Saman altından su yürütmek.",
+    "meaning": "Belli etmeden gizlice iş çevirmek.",
+    "example": "O çok kurnazdır saman altından su yürütür."
+  },
+  {
+    "id": 48,
+    "isProverb": true,
+    "title": "Fazla mal göz çıkarmaz.",
+    "meaning": "Ne kadar çok malın veya paran olursa olsun zararı dokunmaz.",
+    "example": "Bu kazağı da alalım indirimde sonuçta fazla mal göz çıkarmaz."
+  },
+  {
+    "id": 49,
+    "isProverb": false,
+    "title": "Zıvanadan çıkmak.",
+    "meaning": "Aşırı derecede sinirlenip kontrolünü kaybetmek.",
+    "example": "Adamın lafları üzerine iyice zıvanadan çıktı."
+  },
+  {
+    "id": 50,
+    "isProverb": true,
+    "title": "Gülü seven dikenine katlanır.",
+    "meaning": "Sevdiği kişi veya iş için karşılaşılan zorluklara katlanmak gerekir.",
+    "example": "Bu işin de böyle zorlukları var gülü seven dikenine katlanır."
+  },
+  {
+    "id": 51,
+    "isProverb": true,
+    "title": "Ağlamayan çocuğa meme vermezler.",
+    "meaning": "Hakkını arayıp istemeyene kimse yardım etmez.",
+    "example": "İhtiyaçlarını açıkça belirtmelisin, sonuçta ağlamayan çocuğa meme vermezler."
+  },
+  {
+    "id": 52,
+    "isProverb": false,
+    "title": "Abayı yakmak.",
+    "meaning": "Birine çok aşık olmak tutulmak.",
+    "example": "Onu ilk gördüğü günden beri kıza abayı yakmış durumda."
+  },
+  {
+    "id": 53,
+    "isProverb": true,
+    "title": "Rüzgar eken fırtına biçer.",
+    "meaning": "Çevresine kötülük yapan kimse sonunda büyük bir felaketle karşılaşır.",
+    "example": "İnsanlara bu kadar kötü davranma rüzgar eken fırtına biçer."
+  },
+  {
+    "id": 54,
+    "isProverb": false,
+    "title": "Ağzında bakla ıslanmamak.",
+    "meaning": "Sır saklayamamak her şeyi hemen başkalarına anlatmak.",
+    "example": "Ona hiçbir sırrını verme çünkü ağzında bakla ıslanmaz."
+  },
+  {
+    "id": 55,
+    "isProverb": true,
+    "title": "Tatlı dil yılanı deliğinden çıkarır.",
+    "meaning": "Gönül alıcı güzel sözlerle en inatçı kişiler bile ikna edilebilir.",
+    "example": "Onunla tartışmak yerine sakin konuş tatlı dil yılanı deliğinden çıkarır."
+  },
+  {
+    "id": 56,
+    "isProverb": false,
+    "title": "Baltayı taşa vurmak.",
+    "meaning": "Farkında olmadan birine dokunacak veya onu kızdıracak söz söylemek.",
+    "example": "Patronun yanında öyle bir konuştu ki resmen baltayı taşa vurdu."
+  },
+  {
+    "id": 57,
+    "isProverb": true,
+    "title": "Görünen köy kılavuz istemez.",
+    "meaning": "Açıkça belli olan bir durumu açıklamak için başka kanıta gerek yoktur.",
+    "example": "Bu işin sonunun kötü olacağı belliydi görünen köy kılavuz istemez."
+  },
+  {
+    "id": 58,
+    "isProverb": false,
+    "title": "Bindiği dalı kesmek.",
+    "meaning": "Kendisine yararı dokunan bir şeyi kendi eliyle yok etmek.",
+    "example": "O işten ayrılarak aslında bindiği dalı kestiğinin farkında değil."
+  },
+  {
+    "id": 59,
+    "isProverb": true,
+    "title": "Minareyi çalan kılıfını hazırlar.",
+    "meaning": "Yolsuzluk yapan kişi yakalanmamak için önceden bahanelerini hazırlar.",
+    "example": "O her şeyi kitabına uydurmuştur minareyi çalan kılıfını hazırlar."
+  },
+  {
+    "id": 60,
+    "isProverb": false,
+    "title": "Çamur atmak.",
+    "meaning": "Birine asılsız suçlamalarda bulunmak iftira atmak.",
+    "example": "Rakipleri başarılı olamayınca ona çamur atmaya başladılar."
+  },
+  {
+    "id": 61,
+    "isProverb": true,
+    "title": "Ne ekersen onu biçersin.",
+    "meaning": "İnsan nasıl davranırsa karşılığında da öyle muamele görür.",
+    "example": "İnsanlara yardım edersen sen de yardım görürsün ne ekersen onu biçersin."
+  },
+  {
+    "id": 62,
+    "isProverb": false,
+    "title": "Dört gözle beklemek.",
+    "meaning": "Bir şeyi büyük bir özlem ve istekle beklemek.",
+    "example": "Tatilin gelmesini dört gözle bekliyorum."
+  },
+  {
+    "id": 63,
+    "isProverb": true,
+    "title": "Körle yatan şaşı kalkar.",
+    "meaning": "Kötü huylu biriyle arkadaşlık eden onun kötü huylarını kapar.",
+    "example": "O çocukla fazla gezme körle yatan şaşı kalkar demişler."
+  },
+  {
+    "id": 64,
+    "isProverb": false,
+    "title": "Hapı yutmak.",
+    "meaning": "Kötü bir duruma düşmek başı belaya girmek.",
+    "example": "Sınava hiç çalışmadım bu gidişle hapı yuttuk."
+  },
+  {
+    "id": 65,
+    "isProverb": true,
+    "title": "Üzüm üzüme baka baka kararır.",
+    "meaning": "Her zaman bir arada bulunan kimseler birbirlerinin huylarını kaparlar.",
+    "example": "Kardeşin de senin gibi inatçı olmaya başladı üzüm üzüme baka baka kararır."
+  },
+  {
+    "id": 66,
+    "isProverb": false,
+    "title": "İçi içine sığmamak.",
+    "meaning": "Sevinçten veya heyecandan çok coşkulu olmak.",
+    "example": "Üniversiteyi kazandığını öğrenince içi içine sığmadı."
+  },
+  {
+    "id": 67,
+    "isProverb": true,
+    "title": "Komşu komşunun külüne muhtaçtır.",
+    "meaning": "İnsanlar en ufak şeylerde bile komşularının yardımına ihtiyaç duyarlar.",
+    "example": "Komşularımızla iyi geçinmeliyiz komşu komşunun külüne muhtaçtır."
+  },
+  {
+    "id": 68,
+    "isProverb": false,
+    "title": "Karnı zil çalmak.",
+    "meaning": "Çok acıkmak.",
+    "example": "Sabahtan beri hiçbir şey yemedim karnım zil çalıyor."
+  },
+  {
+    "id": 69,
+    "isProverb": true,
+    "title": "Sütten ağzı yanan yoğurdu üfleyerek yer.",
+    "meaning": "Bir olaydan zarar gören kişi benzer durumlarda çok dikkatli davranır.",
+    "example": "Eski ortağından kazık yediği için artık kimseye güvenmiyor sütten ağzı yanan yoğurdu üfleyerek yer."
+  },
+  {
+    "id": 70,
+    "isProverb": false,
+    "title": "Göz boyamak.",
+    "meaning": "Gösterişle birini kandırmak yanıltmak.",
+    "example": "Müşterilerin gözünü boyamak için ambalajı çok şık yapmışlar."
+  },
+  {
+    "id": 71,
+    "isProverb": true,
+    "title": "İşleyen demir ışıldar.",
+    "meaning": "Çalışan insan yeteneklerini geliştirir ve daha başarılı olur.",
+    "example": "Boş oturmak yerine bir şeyler üretmelisin işleyen demir ışıldar."
+  },
+  {
+    "id": 72,
+    "isProverb": false,
+    "title": "Nuh deyip peygamber dememek.",
+    "meaning": "Çok inatçı olmak söylenenleri kabul etmemek.",
+    "example": "Ne dediysek ikna edemedik adam Nuh diyor peygamber demiyor."
+  },
+  {
+    "id": 73,
+    "isProverb": true,
+    "title": "Meyve veren ağaç taşlanır.",
+    "meaning": "Başarılı ve yetenekli kişiler her zaman kıskanılır ve eleştirilir.",
+    "example": "Hakkında çıkan dedikodulara üzülme meyve veren ağaç taşlanır."
+  },
+  {
+    "id": 74,
+    "isProverb": false,
+    "title": "Ocağına incir ağacı dikmek.",
+    "meaning": "Birinin evini barkını dağıtmak büyük zarar vermek.",
+    "example": "O tefeci adamın resmen ocağına incir ağacı dikti."
+  },
+  {
+    "id": 75,
+    "isProverb": true,
+    "title": "Taşıma su ile değirmen dönmez.",
+    "meaning": "Başkalarının küçük yardımlarıyla sürekli bir iş yürütülemez.",
+    "example": "Kendi sermayen olmadan bu işi büyütemezsin taşıma su ile değirmen dönmez."
+  },
+  {
+    "id": 76,
+    "isProverb": false,
+    "title": "Saçını süpürge etmek.",
+    "meaning": "Biri için çok büyük fedakarlıklarda bulunmak.",
+    "example": "Annem bizi okutmak için yıllarca saçını süpürge etti."
+  },
+  {
+    "id": 77,
+    "isProverb": true,
+    "title": "Yalancının mumu yatsıya kadar yanar.",
+    "meaning": "Yalan er geç ortaya çıkar.",
+    "example": "Bana yalan söylediğin ortaya çıktı yalancının mumu yatsıya kadar yanar."
+  },
+  {
+    "id": 78,
+    "isProverb": false,
+    "title": "Taşı gediğine koymak.",
+    "meaning": "Söylenmesi gereken sözü tam zamanında ve yerinde söylemek.",
+    "example": "Toplantıda öyle bir cevap verdi ki taşı gediğine koydu."
+  },
+  {
+    "id": 79,
+    "isProverb": true,
+    "title": "Zorla güzellik olmaz.",
+    "meaning": "Birine zorla bir şey yaptırmak iyi sonuç vermez.",
+    "example": "Çocuğu o bölüme gitmesi için zorlama zorla güzellik olmaz."
+  },
+  {
+    "id": 80,
+    "isProverb": false,
+    "title": "Ucuz atlatmak.",
+    "meaning": "Tehlikeli bir durumu az zararla geçiştirmek.",
+    "example": "O kazadan yara almadan kurtulduk çok ucuz atlattık."
+  },
+  {
+    "id": 81,
+    "isProverb": true,
+    "title": "Zararın neresinden dönülse kârdır.",
+    "meaning": "Yanlış bir işten ne kadar erken vazgeçilirse o kadar iyidir.",
+    "example": "Bu yatırımdan hemen vazgeçelim zararın neresinden dönülse kârdır."
+  },
+  {
+    "id": 82,
+    "isProverb": false,
+    "title": "Yüz akı.",
+    "meaning": "Birinin veya bir kurumun övünç kaynağı gururu.",
+    "example": "O bizim okulumuzun yüz akı öğrencilerinden biridir."
+  },
+  {
+    "id": 83,
+    "isProverb": true,
+    "title": "Vakitsiz öten horozun başını keserler.",
+    "meaning": "Yersiz ve zamansız konuşan veya davranan kişi zarar görür.",
+    "example": "Her şeye atlama vakitsiz öten horozun başını keserler."
+  },
+  {
+    "id": 84,
+    "isProverb": false,
+    "title": "Burun kıvırmak.",
+    "meaning": "Bir şeyi beğenmemek küçümsemek.",
+    "example": "Önüne konan yemeğe burun kıvırdı."
+  },
+  {
+    "id": 85,
+    "isProverb": true,
+    "title": "Keskin sirke küpüne zarar.",
+    "meaning": "Çok öfkeli olmak en çok kişinin kendisine zarar verir.",
+    "example": "Bu kadar sinirlenme keskin sirke küpüne zarar."
+  },
+  {
+    "id": 86,
+    "isProverb": false,
+    "title": "Çamurda debelenmek.",
+    "meaning": "Kötü bir durumdan kurtulamamak çırpındıkça daha da batmak.",
+    "example": "Borç batağına düştük resmen çamurda debeleniyoruz."
+  },
+  {
+    "id": 87,
+    "isProverb": true,
+    "title": "Kendi düşen ağlamaz.",
+    "meaning": "Kendi hatası yüzünden zarar gören kişinin şikayet etmeye hakkı yoktur.",
+    "example": "Seni uyarmıştık ama dinlemedin kendi düşen ağlamaz."
+  },
+  {
+    "id": 88,
+    "isProverb": false,
+    "title": "Damarına basmak.",
+    "meaning": "Birinin hassas olduğu bir konuda onu kızdıracak şeyler söylemek.",
+    "example": "Onun damarına basarsan çok sert tepki verir."
+  },
+  {
+    "id": 89,
+    "isProverb": true,
+    "title": "Gün doğmadan neler doğar.",
+    "meaning": "Beklenmedik zamanlarda güzel ve umut verici şeyler olabilir.",
+    "example": "Umudunu kaybetme gün doğmadan neler doğar."
+  },
+  {
+    "id": 90,
+    "isProverb": false,
+    "title": "Elini taşın altına koymak.",
+    "meaning": "Zor ve sorumluluk gerektiren bir işe girişmek.",
+    "example": "Bu projeyi bitirmek için hepimiz elimizi taşın altına koymalıyız."
+  },
+  {
+    "id": 91,
+    "isProverb": true,
+    "title": "Lafla peynir gemisi yürümez.",
+    "meaning": "Sadece konuşarak hiçbir iş yapılmaz icraat gerekir.",
+    "example": "Sürekli plan yapıyorsun ama lafla peynir gemisi yürümez."
+  },
+  {
+    "id": 92,
+    "isProverb": false,
+    "title": "Gözü yükseklerde olmak.",
+    "meaning": "Çok büyük hedefleri ve hırsları olmak.",
+    "example": "Onun gözü hep yükseklerde küçük başarılarla yetinmez."
+  },
+  {
+    "id": 93,
+    "isProverb": true,
+    "title": "Mum dibine ışık vermez.",
+    "meaning": "Bilgili ve faydalı kişiler başkalarına yararlı olurken yakınlarına o kadar faydalı olamayabilirler.",
+    "example": "Kendi çocuğuna ders çalıştıramıyor mum dibine ışık vermez."
+  },
+  {
+    "id": 94,
+    "isProverb": false,
+    "title": "Havlu atmak.",
+    "meaning": "Mücadeleden vazgeçmek pes etmek.",
+    "example": "Maçın son dakikalarında bizim takım iyice havlu attı."
+  },
+  {
+    "id": 95,
+    "isProverb": true,
+    "title": "Öfkeyle kalkan zararla oturur.",
+    "meaning": "Sinirle ve düşünmeden hareket eden kişi sonunda pişman olur.",
+    "example": "Karar vermeden önce sakinleş öfkeyle kalkan zararla oturur."
+  },
+  {
+    "id": 96,
+    "isProverb": false,
+    "title": "İçi kan ağlamak.",
+    "meaning": "Dışarıdan belli etmese de çok büyük bir üzüntü içinde olmak.",
+    "example": "Gülümsemeye çalışıyor ama aslında içi kan ağlıyor."
+  },
+  {
+    "id": 97,
+    "isProverb": true,
+    "title": "Parayı veren düdüğü çalar.",
+    "meaning": "Parasını veren kişi istediği şeye sahip olur veya istediğini yaptırır.",
+    "example": "Kaliteli hizmet istiyorsan ödeme yapmalısın parayı veren düdüğü çalar."
+  },
+  {
+    "id": 98,
+    "isProverb": false,
+    "title": "Kafeslemek.",
+    "meaning": "Birini tatlı sözlerle veya hileyle kandırarak istediğini yaptırmak.",
+    "example": "Adamı kafesleyip bütün parasını elinden almışlar."
+  },
+  {
+    "id": 99,
+    "isProverb": true,
+    "title": "Su uyur düşman uyumaz.",
+    "meaning": "Düşmana karşı her zaman uyanık ve tedbirli olunmalıdır.",
+    "example": "Rakip firmalara dikkat etmeliyiz su uyur düşman uyumaz."
+  },
+  {
+    "id": 100,
+    "isProverb": false,
+    "title": "Gözden çıkarmak.",
+    "meaning": "Bir şeyden veya birinden vazgeçmeyi göze almak.",
+    "example": "Bu arabayı satmayı artık gözden çıkardım."
+  },
+  {
+    "id": 101,
+    "isProverb": true,
+    "title": "Acı patlıcanı kırağı çalmaz.",
+    "meaning": "Kötü durumlara alışkın olanlar, yeni zorluklardan pek etkilenmezler.",
+    "example": "O kadar zorluk çekti ki bu küçük kriz ona vız gelir, acı patlıcanı kırağı çalmaz."
+  },
+  {
+    "id": 102,
+    "isProverb": true,
+    "title": "Akıl akıldan üstündür.",
+    "meaning": "Bir kimsenin düşünemediğini bir başkası düşünebilir.",
+    "example": "Bu konuyu bir de ona danışalım, akıl akıldan üstündür."
+  },
+  {
+    "id": 103,
+    "isProverb": true,
+    "title": "Armut dibine düşer.",
+    "meaning": "Çocuklar huy ve davranış olarak anne babalarına benzerler.",
+    "example": "Babası gibi o da çok inatçı, armut dibine düşer."
+  },
+  {
+    "id": 104,
+    "isProverb": true,
+    "title": "Ava giden avlanır.",
+    "meaning": "Başkasına kötülük yapmak isteyen kimse, kendi kazdığı kuyuya düşebilir.",
+    "example": "Rakiplerini alt etmeye çalışırken kendi şirketi battı, ava giden avlanır."
+  },
+  {
+    "id": 105,
+    "isProverb": true,
+    "title": "Balık baştan kokar.",
+    "meaning": "Bir toplumda veya kurumda bozukluk, yöneticilerden başlar.",
+    "example": "Şirketin müdürü rüşvet alıyorsa çalışanlar ne yapsın, balık baştan kokar."
+  },
+  {
+    "id": 106,
+    "isProverb": true,
+    "title": "Bedava sirke baldan tatlıdır.",
+    "meaning": "Para verilmeden elde edilen şeyler insana çok hoş gelir.",
+    "example": "Bu promosyon ürünlerini herkes kapış kapış aldı, bedava sirke baldan tatlıdır."
+  },
+  {
+    "id": 107,
+    "isProverb": true,
+    "title": "Bin bilsen de bir bilene danış.",
+    "meaning": "İnsan ne kadar çok şey bilirse bilsin, yine de başkalarının fikrini almalıdır.",
+    "example": "Kendi kararlarından eminsin ama bin bilsen de bir bilene danış."
+  },
+  {
+    "id": 108,
+    "isProverb": true,
+    "title": "Boş çuval ayakta durmaz.",
+    "meaning": "Bilgisiz, yeteneksiz veya desteksiz kişi bir işte tutunamaz.",
+    "example": "Hiçbir tecrübesi olmadan o pozisyonda kalamazdı, boş çuval ayakta durmaz."
+  },
+  {
+    "id": 109,
+    "isProverb": true,
+    "title": "Bugünün işini yarına bırakma.",
+    "meaning": "Yapılması gereken bir işi zamanında yapmak gerekir.",
+    "example": "Ödevini hemen bitir, bugünün işini yarına bırakma."
+  },
+  {
+    "id": 110,
+    "isProverb": true,
+    "title": "Büyük lokma ye büyük söz söyleme.",
+    "meaning": "İnsan başaramayacağı, altından kalkamayacağı konularda kesin konuşmamalıdır.",
+    "example": "Asla oraya gitmem diyordun ama bak şimdi oradasın, büyük lokma ye büyük söz söyleme."
+  },
+  {
+    "id": 111,
+    "isProverb": true,
+    "title": "Çıkmadık candan umut kesilmez.",
+    "meaning": "İnsan, en kötü durumlarda bile düzelme umudunu korumalıdır.",
+    "example": "Hastanın durumu ağır ama çıkmadık candan umut kesilmez."
+  },
+  {
+    "id": 112,
+    "isProverb": true,
+    "title": "Çivi çiviyi söker.",
+    "meaning": "Zorlu bir durum veya kişi, ancak başka bir zorlu durum veya kişiyle alt edilebilir.",
+    "example": "O inatçıysa sen daha inatçı ol, çivi çiviyi söker."
+  },
+  {
+    "id": 113,
+    "isProverb": true,
+    "title": "Dağ dağa kavuşmaz, insan insana kavuşur.",
+    "meaning": "Ne kadar uzak olurlarsa olsunlar, insanlar bir gün bir yerde karşılaşabilirler.",
+    "example": "Yıllar sonra onu karşımda görünce dağ dağa kavuşmaz insan insana kavuşur sözünü hatırladım."
+  },
+  {
+    "id": 114,
+    "isProverb": true,
+    "title": "Damdan düşen damdan düşenin halinden anlar.",
+    "meaning": "Bir sıkıntıyı çeken, aynı sıkıntıyı çeken kişinin duygularını daha iyi anlar.",
+    "example": "Senin derdini en iyi ben anlarım, damdan düşen damdan düşenin halinden anlar."
+  },
+  {
+    "id": 115,
+    "isProverb": true,
+    "title": "Deliye her gün bayram.",
+    "meaning": "Hiçbir şeyi dert etmeyen, sorumluluk taşımayan kişiler her zaman neşelidir.",
+    "example": "Onun umurunda mı dünya, deliye her gün bayram."
+  },
+  {
+    "id": 116,
+    "isProverb": true,
+    "title": "Dert ağlatır, aşk söyletir.",
+    "meaning": "Sıkıntılar insanı üzerken, aşk insanı dertli dertli konuşturur, şiir yazdırır.",
+    "example": "Son günlerde hep şiir okuyor, dert ağlatır aşk söyletirmiş."
+  },
+  {
+    "id": 117,
+    "isProverb": true,
+    "title": "Doğmadık çocuğa don biçilmez.",
+    "meaning": "Henüz gerçekleşmemiş, kesinleşmemiş bir iş için hazırlık yapılmaz.",
+    "example": "Daha işi almadan arabayı değiştirmeyi düşünüyorsun, doğmadık çocuğa don biçilmez."
+  },
+  {
+    "id": 118,
+    "isProverb": true,
+    "title": "Düşenin dostu olmaz.",
+    "meaning": "İnsan varlıklı ve güçlüyken çevresinde çok kişi olur, ama zor duruma düşünce kimse kalmaz.",
+    "example": "İflas edince etrafındaki herkes kayboldu, düşenin dostu olmaz."
+  },
+  {
+    "id": 119,
+    "isProverb": true,
+    "title": "Ecel geldi cihane, baş ağrısı bahane.",
+    "meaning": "Ölüm vakti geldiğinde, basit bir hastalık bile buna sebep gibi görünür.",
+    "example": "Adam sapasağlamdı ama aniden kalp krizinden gitti, ecel geldi cihane baş ağrısı bahane."
+  },
+  {
+    "id": 120,
+    "isProverb": true,
+    "title": "Eğilen baş kesilmez.",
+    "meaning": "Hatasını anlayıp özür dileyen, bağışlanma dileyen kişiye ceza verilmez.",
+    "example": "Gelip senden af diledi, artık uzatma eğilen baş kesilmez."
+  },
+  {
+    "id": 121,
+    "isProverb": true,
+    "title": "El elin eşeğini türkü çağırarak arar.",
+    "meaning": "İnsan, başkasının derdiyle kendi derdi gibi ilgilenmez.",
+    "example": "Kendi işini kendin halletmelisin, el elin eşeğini türkü çağırarak arar."
+  },
+  {
+    "id": 122,
+    "isProverb": true,
+    "title": "El yarası onulur, dil yarası onulmaz.",
+    "meaning": "Fiziksel yaralar iyileşir ama kötü sözün kalpte açtığı yara kolay kolay geçmez.",
+    "example": "Ona öyle ağır laflar ettin ki, el yarası onulur dil yarası onulmaz."
+  },
+  {
+    "id": 123,
+    "isProverb": true,
+    "title": "Eski çamlar bardak oldu.",
+    "meaning": "Devir değişti, eski durumlar ve kurallar geçerliliğini yitirdi.",
+    "example": "Sen hala o eski yöntemleri kullanıyorsun ama eski çamlar bardak oldu."
+  },
+  {
+    "id": 124,
+    "isProverb": true,
+    "title": "Fare çıktığı deliği bilir.",
+    "meaning": "Bir kabahat işleyen kişi, yakalanmamak için nereye saklanacağını iyi bilir.",
+    "example": "O paraları alıp çoktan kaçmıştır, fare çıktığı deliği bilir."
+  },
+  {
+    "id": 125,
+    "isProverb": true,
+    "title": "Fukaranın tavuğu tek tek yumurtlar.",
+    "meaning": "Fakir veya şanssız kişilerin işleri yavaş ilerler, kazançları az olur.",
+    "example": "Bizim işler bir türlü açılmadı, fukaranın tavuğu tek tek yumurtlar."
+  },
+  {
+    "id": 126,
+    "isProverb": true,
+    "title": "Garibe acımak sevaptır.",
+    "meaning": "Kimsesiz ve zavallı kişilere yardım etmek büyük bir iyiliktir.",
+    "example": "Sokaktaki o yaşlı adama yardım et, garibe acımak sevaptır."
+  },
+  {
+    "id": 127,
+    "isProverb": true,
+    "title": "Gelen gideni aratır.",
+    "meaning": "Yeni gelen bir kişi veya durum, eskisinin değerini daha iyi anlamamıza neden olur.",
+    "example": "Yeni müdür eskisinden de katı çıktı, gelen gideni aratır."
+  },
+  {
+    "id": 128,
+    "isProverb": true,
+    "title": "Göğe direk, denize kapak olmaz.",
+    "meaning": "Gerçekleşmesi imkansız olan şeylerle uğraşmak boşunadır.",
+    "example": "Bu projeyi o bütçeyle yapamazsın, göğe direk denize kapak olmaz."
+  },
+  {
+    "id": 129,
+    "isProverb": true,
+    "title": "Göz görmeyince gönül katlanır.",
+    "meaning": "İnsan, sevdiği birinden uzak kaldığında zamanla bu ayrılığa alışır.",
+    "example": "Yurtdışına taşınınca onu unuttu, göz görmeyince gönül katlanır."
+  },
+  {
+    "id": 130,
+    "isProverb": true,
+    "title": "Güneş balçıkla sıvanmaz.",
+    "meaning": "Herkesin bildiği gerçekler yalan dolanla gizlenemez.",
+    "example": "Olayın aslı ortaya çıktı, güneş balçıkla sıvanmaz."
+  },
+  {
+    "id": 131,
+    "isProverb": true,
+    "title": "Hamama giren terler.",
+    "meaning": "Bir işe girişen kişi, o işin getireceği zorluklara ve masraflara katlanmak zorundadır.",
+    "example": "Bu ihaleye girdik bir kere, hamama giren terler."
+  },
+  {
+    "id": 132,
+    "isProverb": true,
+    "title": "Harman yel ile, düğün el ile olur.",
+    "meaning": "Her işin gerçekleşmesi için gereken uygun koşullar ve yardımlar vardır.",
+    "example": "Bu kadar misafiri tek başına ağırlayamazsın, harman yel ile düğün el ile olur."
+  },
+  {
+    "id": 133,
+    "isProverb": true,
+    "title": "Hazıra dağ dayanmaz.",
+    "meaning": "Sürekli tüketmek, ne kadar çok birikim olursa olsun sonunda onu tüketir.",
+    "example": "Çalışmadan babanın parasıyla geçinemezsin, hazıra dağ dayanmaz."
+  },
+  {
+    "id": 134,
+    "isProverb": true,
+    "title": "Her koyun kendi bacağından asılır.",
+    "meaning": "Herkes kendi yaptığı işten ve hatalarından kendisi sorumludur.",
+    "example": "O cezasını çekecek, sonuçta her koyun kendi bacağından asılır."
+  },
+  {
+    "id": 135,
+    "isProverb": true,
+    "title": "Horozu çok olan köyün sabahı geç olur.",
+    "meaning": "Karışanı ve akıl vereni çok olan işlerde sonuca ulaşmak zorlaşır.",
+    "example": "Herkes bir fikir söylüyor proje ilerlemiyor, horozu çok olan köyün sabahı geç olur."
+  },
+  {
+    "id": 136,
+    "isProverb": true,
+    "title": "Irmak kenarına çeşme yapılmaz.",
+    "meaning": "Zaten var olan ve bol bulunan bir şeyin yanına aynısından yapmak gereksizdir.",
+    "example": "Zaten iki araban var, üçüncüyü almak ırmak kenarına çeşme yapmak gibi."
+  },
+  {
+    "id": 137,
+    "isProverb": true,
+    "title": "Isıracak köpek dişini göstermez.",
+    "meaning": "Gerçekten kötülük yapacak kişi, niyetini önceden belli etmez.",
+    "example": "O çok bağırıp çağırıyor ama korkma, ısıracak köpek dişini göstermez."
+  },
+  {
+    "id": 138,
+    "isProverb": true,
+    "title": "İki cambaz bir ipte oynamaz.",
+    "meaning": "Kurnazlıkta ve hilede eşit olan iki kişi aynı işte birlikte çalışamaz.",
+    "example": "İkisi de çok uyanık, bu ortaklık yürümez, iki cambaz bir ipte oynamaz."
+  },
+  {
+    "id": 139,
+    "isProverb": true,
+    "title": "İyilik yap denize at, balık bilmezse Halik bilir.",
+    "meaning": "İyiliği karşılık beklemeden yapmalısın, kimse bilmese de Allah bilir.",
+    "example": "Sen yine de yardım et, iyilik yap denize at balık bilmezse Halik bilir."
+  },
+  {
+    "id": 140,
+    "isProverb": true,
+    "title": "Kaçan balık büyük olur.",
+    "meaning": "Elden kaçırılan fırsatlar, genellikle gözde büyütülür ve daha değerli görünür.",
+    "example": "O evi almadığına çok pişman, kaçan balık büyük olurmuş."
+  },
+  {
+    "id": 141,
+    "isProverb": true,
+    "title": "Kanaat gibi devlet olmaz.",
+    "meaning": "Elindekiyle yetinmeyi bilmek, en büyük zenginliktir.",
+    "example": "Çok para hırsına kapılma, kanaat gibi devlet olmaz."
+  },
+  {
+    "id": 142,
+    "isProverb": true,
+    "title": "Kara haber tez duyulur.",
+    "meaning": "Kötü ve üzücü haberler insanlar arasında çok çabuk yayılır.",
+    "example": "Kaza haberini anında öğrendik, kara haber tez duyulur."
+  },
+  {
+    "id": 143,
+    "isProverb": true,
+    "title": "Kardeş kardeşi bıçaklamış, dönmüş yine kucaklamış.",
+    "meaning": "Kardeşler arasında ne kadar büyük kavgalar olursa olsun, sonunda yine barışırlar.",
+    "example": "Onlar bugün kavga eder yarın barışır, kardeş kardeşi bıçaklamış dönmüş yine kucaklamış."
+  },
+  {
+    "id": 144,
+    "isProverb": true,
+    "title": "Kaynayan kazan kapak tutmaz.",
+    "meaning": "İçinde büyük bir coşku veya öfke biriken kişi, duygularını gizleyemez.",
+    "example": "O kadar sinirlendi ki sonunda patladı, kaynayan kazan kapak tutmaz."
+  },
+  {
+    "id": 145,
+    "isProverb": true,
+    "title": "Kel başa şimşir tarak.",
+    "meaning": "Duruma veya kişinin konumuna hiç uygun düşmeyen, gereksiz ve lüks şeyler için kullanılır.",
+    "example": "Evde yiyecek ekmek yok, sen gidip pahalı telefon alıyorsun, kel başa şimşir tarak."
+  },
+  {
+    "id": 146,
+    "isProverb": true,
+    "title": "Kılavuzu karga olanın burnu pislikten çıkmaz.",
+    "meaning": "Kötü ve yetersiz kişilerden akıl alanların başı dertten kurtulmaz.",
+    "example": "Onun aklıyla iş yaparsan batarsın, kılavuzu karga olanın burnu pislikten çıkmaz."
+  },
+  {
+    "id": 147,
+    "isProverb": true,
+    "title": "Kır atın yanında duran ya huyundan ya suyundan.",
+    "meaning": "İnsan, arkadaşlık ettiği kişinin alışkanlıklarından ve huylarından etkilenir.",
+    "example": "Sen de onun gibi konuşmaya başladın, kır atın yanında duran ya huyundan ya suyundan."
+  },
+  {
+    "id": 148,
+    "isProverb": true,
+    "title": "Kızını dövmeyen dizini döver.",
+    "meaning": "Çocuklarına zamanında gerekli eğitimi ve terbiyeyi vermeyen anne babalar ileride çok pişman olurlar.",
+    "example": "Çocuğu çok şımarttınız, kızını dövmeyen dizini döver."
+  },
+  {
+    "id": 149,
+    "isProverb": true,
+    "title": "Korkunun ecele faydası yoktur.",
+    "meaning": "Başımıza gelecek kötü bir olaydan korkmak, o olayın gerçekleşmesini engellemez.",
+    "example": "Cesur ol ve gerçeklerle yüzleş, korkunun ecele faydası yoktur."
+  },
+  {
+    "id": 150,
+    "isProverb": true,
+    "title": "Kurt kocayınca köpeklerin maskarası olur.",
+    "meaning": "Gücünü ve yetkilerini kaybeden kişiler, eskiden kendilerinden çekinenlerin alay konusu olurlar.",
+    "example": "Eskiden herkes ondan korkardı şimdi kimse takmıyor, kurt kocayınca köpeklerin maskarası olur."
+  },
+  {
+    "id": 151,
+    "isProverb": false,
+    "title": "Abuk sabuk konuşmak.",
+    "meaning": "Düşünmeden, anlamsız ve tutarsız sözler söylemek.",
+    "example": "Toplantıda heyecandan abuk sabuk konuştu."
+  },
+  {
+    "id": 152,
+    "isProverb": false,
+    "title": "Açık kapı bırakmak.",
+    "meaning": "Bir konuda ileride anlaşma veya uzlaşma ihtimalini ortadan kaldırmamak.",
+    "example": "Kararını verirken biraz esnek ol, açık kapı bırak."
+  },
+  {
+    "id": 153,
+    "isProverb": false,
+    "title": "Adam yerine koymak.",
+    "meaning": "Birine değer vermek, saygı göstermek.",
+    "example": "Beni dinlemiyor bile, adam yerine koyduğu yok."
+  },
+  {
+    "id": 154,
+    "isProverb": false,
+    "title": "Ağzı var dili yok.",
+    "meaning": "Çok sessiz, sakin ve kendi halinde olan kimseler için kullanılır.",
+    "example": "O kadar uysal bir çocuk ki, ağzı var dili yok sanki."
+  },
+  {
+    "id": 155,
+    "isProverb": false,
+    "title": "Ağzından bal damlamak.",
+    "meaning": "Çok tatlı, güzel ve hoşa giden sözler söylemek.",
+    "example": "O kadar güzel anlattı ki, adeta ağzından bal damlıyordu."
+  },
+  {
+    "id": 156,
+    "isProverb": false,
+    "title": "Akla karayı seçmek.",
+    "meaning": "Bir işi başarabilmek için çok büyük zorluklar çekmek.",
+    "example": "O raporu bitirene kadar akla karayı seçtim."
+  },
+  {
+    "id": 157,
+    "isProverb": false,
+    "title": "Alnının akıyla çıkmak.",
+    "meaning": "Zor bir işi veya durumu başarıyla, lekesiz ve dürüstçe tamamlamak.",
+    "example": "Bu zorlu projeden de alnının akıyla çıkmayı başardı."
+  },
+  {
+    "id": 158,
+    "isProverb": false,
+    "title": "Altından kalkmak.",
+    "meaning": "Zor bir işi başarıyla sonuçlandırmak, üstesinden gelmek.",
+    "example": "Bu kadar borcun altından nasıl kalkacaksın?"
+  },
+  {
+    "id": 159,
+    "isProverb": false,
+    "title": "Aralarından su sızmamak.",
+    "meaning": "İki kişinin birbirine çok yakın, çok samimi dost olması.",
+    "example": "Onlar çok iyi arkadaştır, aralarından su sızmaz."
+  },
+  {
+    "id": 160,
+    "isProverb": false,
+    "title": "Ateşle oynamak.",
+    "meaning": "Çok tehlikeli bir işe girişmek, büyük risk almak.",
+    "example": "O adamla iş yapmak ateşle oynamaktır."
+  },
+  {
+    "id": 161,
+    "isProverb": false,
+    "title": "Ayak bağı olmak.",
+    "meaning": "Birinin işini yapmasına engel olmak, onu yavaşlatmak.",
+    "example": "Yanımda gelip bana ayak bağı olma."
+  },
+  {
+    "id": 162,
+    "isProverb": false,
+    "title": "Ayaklarına kara sular inmek.",
+    "meaning": "Çok yürümekten veya ayakta durmaktan çok yorulmak.",
+    "example": "Bütün gün mağazaları gezmekten ayaklarıma kara sular indi."
+  },
+  {
+    "id": 163,
+    "isProverb": false,
+    "title": "Başı göğe ermek.",
+    "meaning": "Beklenmedik bir başarı veya mutluluk elde ederek çok sevinmek.",
+    "example": "Terfi edince başı göğe erdi sanki."
+  },
+  {
+    "id": 164,
+    "isProverb": false,
+    "title": "Başına çorap örmek.",
+    "meaning": "Birine gizlice kötülük yapmak, onu tuzağa düşürmek.",
+    "example": "Rakipleri onun başına çorap örmek için plan yapıyor."
+  },
+  {
+    "id": 165,
+    "isProverb": false,
+    "title": "Başından kaynar sular dökülmek.",
+    "meaning": "Kötü ve beklenmedik bir olay karşısında büyük bir şok yaşamak.",
+    "example": "Sınavdan kaldığını öğrenince başından kaynar sular döküldü."
+  },
+  {
+    "id": 166,
+    "isProverb": false,
+    "title": "Bel bağlamak.",
+    "meaning": "Birine veya bir şeye çok güvenmek, umudunu ona bağlamak.",
+    "example": "Sadece onun yardımlarına bel bağlayarak iş yapılmaz."
+  },
+  {
+    "id": 167,
+    "isProverb": false,
+    "title": "Bıçak kemiğe dayanmak.",
+    "meaning": "Çekilen sıkıntıların veya zorlukların artık dayanılamaz hale gelmesi.",
+    "example": "Artık sabrım kalmadı, bıçak kemiğe dayandı."
+  },
+  {
+    "id": 168,
+    "isProverb": false,
+    "title": "Boş bulunmak.",
+    "meaning": "Dikkatsiz bir anına denk gelip düşünmeden hareket etmek veya söz söylemek.",
+    "example": "Boş bulunup sırrımızı ona da söyledim."
+  },
+  {
+    "id": 169,
+    "isProverb": false,
+    "title": "Boyun eğmek.",
+    "meaning": "Birinin gücünü veya üstünlüğünü kabul ederek itaat etmek.",
+    "example": "Haksızlıklara asla boyun eğmeyeceğiz."
+  },
+  {
+    "id": 170,
+    "isProverb": false,
+    "title": "Burnundan solumak.",
+    "meaning": "Çok öfkeli ve sinirli olmak.",
+    "example": "Patron bugün çok gergin, burnundan soluyor."
+  },
+  {
+    "id": 171,
+    "isProverb": false,
+    "title": "Cana yakın.",
+    "meaning": "Sevimli, sıcakkanlı ve insanlarla kolay anlaşan.",
+    "example": "Yeni komşumuz çok cana yakın biri."
+  },
+  {
+    "id": 172,
+    "isProverb": false,
+    "title": "Can damarına basmak.",
+    "meaning": "Bir işin en önemli, en hassas noktasına dokunmak.",
+    "example": "Eleştirileriyle tam da can damarına bastı."
+  },
+  {
+    "id": 173,
+    "isProverb": false,
+    "title": "Canını dişine takmak.",
+    "meaning": "Bir işi başarmak için her türlü zorluğu göze alarak var gücüyle çalışmak.",
+    "example": "Sınavı kazanmak için canını dişine takıp çalıştı."
+  },
+  {
+    "id": 174,
+    "isProverb": false,
+    "title": "Çantada keklik.",
+    "meaning": "Elde edilmesi çok kolay olan, kesin gözüyle bakılan şey.",
+    "example": "Bu maçı kazanırız, rakip bizim için çantada keklik."
+  },
+  {
+    "id": 175,
+    "isProverb": false,
+    "title": "Çileden çıkmak.",
+    "meaning": "Çok sinirlenip kendini kontrol edemez duruma gelmek.",
+    "example": "Çocuğun yaramazlıkları onu iyice çileden çıkardı."
+  },
+  {
+    "id": 176,
+    "isProverb": false,
+    "title": "Çizmeden yukarı çıkmak.",
+    "meaning": "Kendi yetki ve uzmanlık alanını aşarak bilmediği konularda ahkam kesmek.",
+    "example": "Sen bu işlere karışma, çizmeden yukarı çıkıyorsun."
+  },
+  {
+    "id": 177,
+    "isProverb": false,
+    "title": "Daldan dala konmak.",
+    "meaning": "Sık sık iş, konu veya düşünce değiştirmek, kararsız olmak.",
+    "example": "Bir işte sebat etmiyor, sürekli daldan dala konuyor."
+  },
+  {
+    "id": 178,
+    "isProverb": false,
+    "title": "Deliye dönmek.",
+    "meaning": "Çok öfkelenmek, sinirden ne yapacağını bilememek.",
+    "example": "Arabasının çalındığını duyunca deliye döndü."
+  },
+  {
+    "id": 179,
+    "isProverb": false,
+    "title": "Diken üstünde oturmak.",
+    "meaning": "Her an kötü bir şey olacakmış gibi tedirgin ve huzursuz olmak.",
+    "example": "Sonuçlar açıklanana kadar diken üstünde oturduk."
+  },
+  {
+    "id": 180,
+    "isProverb": false,
+    "title": "Dilinde tüy bitmek.",
+    "meaning": "Aynı şeyi tekrar tekrar söylemekten bıkmak, yorulmak.",
+    "example": "Sana odanı topla demekten dilimde tüy bitti."
+  },
+  {
+    "id": 181,
+    "isProverb": false,
+    "title": "Ecel terleri dökmek.",
+    "meaning": "Çok korkmak, büyük bir tehlike karşısında heyecanlanmak ve terlemek.",
+    "example": "Uçak türbülansa girince hepimiz ecel terleri döktük."
+  },
+  {
+    "id": 182,
+    "isProverb": false,
+    "title": "El açmak.",
+    "meaning": "Birinden yardım veya para dilenmek.",
+    "example": "Gururundan kimseye el açmazdı."
+  },
+  {
+    "id": 183,
+    "isProverb": false,
+    "title": "El üstünde tutmak.",
+    "meaning": "Birine çok değer vermek, onu şımartmak ve özen göstermek.",
+    "example": "Ailesi onu her zaman el üstünde tutmuştur."
+  },
+  {
+    "id": 184,
+    "isProverb": false,
+    "title": "Ensesinde boza pişirmek.",
+    "meaning": "Birini sürekli rahatsız etmek, sıkıştırmak ve zorlamak.",
+    "example": "Borcunu ödemesi için adamın ensesinde boza pişirdiler."
+  },
+  {
+    "id": 185,
+    "isProverb": false,
+    "title": "Eski tas eski hamam.",
+    "meaning": "Hiçbir şeyin değişmediğini, her şeyin eskisi gibi olduğunu belirtmek için kullanılır.",
+    "example": "Yıllar geçti ama o şirkette eski tas eski hamam."
+  },
+  {
+    "id": 186,
+    "isProverb": false,
+    "title": "Fırsat kollamak.",
+    "meaning": "Bir işi yapmak için en uygun zamanı veya durumu beklemek.",
+    "example": "Ondan intikam almak için fırsat kolluyor."
+  },
+  {
+    "id": 187,
+    "isProverb": false,
+    "title": "Göze almak.",
+    "meaning": "Gelebilecek her türlü zararı veya tehlikeyi önceden kabul etmek.",
+    "example": "Bu işin risklerini göze alarak yola çıktık."
+  },
+  {
+    "id": 188,
+    "isProverb": false,
+    "title": "Gözdağı vermek.",
+    "meaning": "Birini korkutmak, tehdit etmek.",
+    "example": "Rakiplerine gözdağı vermek için büyük bir kampanya başlattı."
+  },
+  {
+    "id": 189,
+    "isProverb": false,
+    "title": "Gözü dönmek.",
+    "meaning": "Öfkeden veya hırstan ne yaptığını bilemez hale gelmek.",
+    "example": "Para hırsından gözü dönmüş durumda."
+  },
+  {
+    "id": 190,
+    "isProverb": false,
+    "title": "Havanda su dövmek.",
+    "meaning": "Boşuna uğraşmak, sonuç vermeyecek işlerle vakit kaybetmek.",
+    "example": "Bu projeyle aslında havanda su dövüyoruz."
+  },
+  {
+    "id": 191,
+    "isProverb": false,
+    "title": "İçine dert olmak.",
+    "meaning": "Bir olayın veya durumun kişiye sürekli üzüntü vermesi.",
+    "example": "Ona o sözleri söyleyememek içime dert oldu."
+  },
+  {
+    "id": 192,
+    "isProverb": false,
+    "title": "İğneyle kuyu kazmak.",
+    "meaning": "Yetersiz araçlarla çok zor ve sabır gerektiren bir işi başarmaya çalışmak.",
+    "example": "Bu kadar az veriyle bu araştırmayı yapmak iğneyle kuyu kazmak gibi."
+  },
+  {
+    "id": 193,
+    "isProverb": false,
+    "title": "İpi göğüslemek.",
+    "meaning": "Bir yarışta veya mücadelede birinci olmak, başarıya ulaşmak.",
+    "example": "Zorlu maratonu ipi göğüsleyerek tamamladı."
+  },
+  {
+    "id": 194,
+    "isProverb": false,
+    "title": "Kabuğuna çekilmek.",
+    "meaning": "İnsanlardan uzaklaşmak, kendi içine kapanmak.",
+    "example": "Emekli olduktan sonra iyice kabuğuna çekildi."
+  },
+  {
+    "id": 195,
+    "isProverb": false,
+    "title": "Kafadan atmak.",
+    "meaning": "Bilmediği bir konuda rastgele, tahminen konuşmak.",
+    "example": "Sorunun cevabını bilmeyince kafadan attı."
+  },
+  {
+    "id": 196,
+    "isProverb": false,
+    "title": "Kan kusup kızılcık şerbeti içtim demek.",
+    "meaning": "Çok büyük sıkıntılar çekmesine rağmen halinden şikayet etmemek, dışarıya belli etmemek.",
+    "example": "O kadar zorluk çekti ama hep kan kusup kızılcık şerbeti içtim dedi."
+  },
+  {
+    "id": 197,
+    "isProverb": false,
+    "title": "Kemerleri sıkmak.",
+    "meaning": "Harcamaları kısmak, tutumlu davranmaya başlamak.",
+    "example": "Ekonomik kriz yüzünden şirket kemerleri sıkma kararı aldı."
+  },
+  {
+    "id": 198,
+    "isProverb": false,
+    "title": "Kılı kırk yarmak.",
+    "meaning": "Bir konuyu çok detaylı, ince eleyip sık dokuyarak incelemek.",
+    "example": "Sözleşmeyi imzalarken kılı kırk yardı."
+  },
+  {
+    "id": 199,
+    "isProverb": false,
+    "title": "Kulak asmamak.",
+    "meaning": "Söylenenlere önem vermemek, dinlememek.",
+    "example": "Benim uyarılarıma hiç kulak asmadı."
+  },
+  {
+    "id": 200,
+    "isProverb": false,
+    "title": "Meydan okumak.",
+    "meaning": "Birine karşı çıkmak, onu yarışmaya veya kavgaya çağırmak.",
+    "example": "Yeni şirket pazarın devlerine meydan okuyor."
+  },
+  {
+    "id": 201,
+    "isProverb": true,
+    "title": "Perşembenin gelişi çarşambadan bellidir.",
+    "meaning": "Bir işin sonunun nasıl olacağı şimdiki gidişatından anlaşılır.",
+    "example": "Projenin gecikeceği başından belliydi, perşembenin gelişi çarşambadan bellidir."
+  },
+  {
+    "id": 202,
+    "isProverb": true,
+    "title": "Demir tavında dövülür.",
+    "meaning": "Her işin yapılması için en uygun bir zaman vardır.",
+    "example": "Bu teklifi şimdi yapmalıyız, demir tavında dövülür."
+  },
+  {
+    "id": 203,
+    "isProverb": true,
+    "title": "Erken kalkan yol alır.",
+    "meaning": "İşine erken başlayan kişi başarıya daha çabuk ulaşır.",
+    "example": "Sabah erkenden çalışmaya başladı, erken kalkan yol alır."
+  },
+  {
+    "id": 204,
+    "isProverb": true,
+    "title": "Gün ola harman ola.",
+    "meaning": "Zamanla her şey yoluna girer, bekleyip görmek lazım.",
+    "example": "Şimdiden üzülme, gün ola harman ola."
+  },
+  {
+    "id": 205,
+    "isProverb": true,
+    "title": "Her yiğidin bir yoğurt yiyişi vardır.",
+    "meaning": "Herkesin kendine özgü bir çalışma veya iş yapma tarzı vardır.",
+    "example": "O işi farklı yapıyor ama her yiğidin bir yoğurt yiyişi vardır."
+  },
+  {
+    "id": 206,
+    "isProverb": true,
+    "title": "İyilik eden iyilik bulur.",
+    "meaning": "Başkalarına yardım eden kişi, gün gelir kendisi de yardım görür.",
+    "example": "Sen insanlara yardım etmeye devam et, iyilik eden iyilik bulur."
+  },
+  {
+    "id": 207,
+    "isProverb": true,
+    "title": "Sabreden derviş muradına ermiş.",
+    "meaning": "Zorluklara sabreden kişi sonunda istediğine ulaşır.",
+    "example": "Çok bekledi ama sonunda kazandı, sabreden derviş muradına ermiş."
+  },
+  {
+    "id": 208,
+    "isProverb": true,
+    "title": "Su testisi su yolunda kırılır.",
+    "meaning": "Bir kişi hangi kötü yola sapmışsa o yolda zarar görür.",
+    "example": "Sürekli tehlikeli işler yapıyordu, su testisi su yolunda kırılır."
+  },
+  {
+    "id": 209,
+    "isProverb": true,
+    "title": "Söz gümüşse sükut altındır.",
+    "meaning": "Konuşmak bazen iyi olsa da susmak çoğu zaman daha değerlidir.",
+    "example": "Bazen cevap vermemek en iyisidir, söz gümüşse sükut altındır."
+  },
+  {
+    "id": 210,
+    "isProverb": true,
+    "title": "Tok açın halinden anlamaz.",
+    "meaning": "Sıkıntı çekmeyen kişi, sıkıntı çekenin durumunu kavrayamaz.",
+    "example": "Onun bu derdini zenginler bilemez, tok açın halinden anlamaz."
+  },
+  {
+    "id": 211,
+    "isProverb": true,
+    "title": "Ummadığın taş baş yarar.",
+    "meaning": "Önemsenmeyen küçük şeyler bazen büyük zararlar verebilir.",
+    "example": "O küçük çocuğu hafife alma, ummadığın taş baş yarar."
+  },
+  {
+    "id": 212,
+    "isProverb": true,
+    "title": "Yalancının evi yanmış kimse inanmamış.",
+    "meaning": "Yalan söylemeyi alışkanlık haline getiren birine, doğru söylese bile kimse inanmaz.",
+    "example": "Gerçekten hasta ama yalancının evi yanmış kimse inanmamış işte."
+  },
+  {
+    "id": 213,
+    "isProverb": true,
+    "title": "Yalnız taş duvar olmaz.",
+    "meaning": "İnsan tek başına büyük işler başaramaz, başkalarının yardımına ihtiyaç duyar.",
+    "example": "Bu projeyi tek başına bitiremezsin, yalnız taş duvar olmaz."
+  },
+  {
+    "id": 214,
+    "isProverb": true,
+    "title": "Yerin kulağı vardır.",
+    "meaning": "Gizli konuşulan şeyler bile bir şekilde başkaları tarafından duyulabilir.",
+    "example": "Burada böyle şeyler konuşma, yerin kulağı vardır."
+  },
+  {
+    "id": 215,
+    "isProverb": true,
+    "title": "Yol sormakla bulunur.",
+    "meaning": "Bilmediğin bir şeyi bilene sormak en doğrusudur.",
+    "example": "Kaybolduk diye üzülme, yol sormakla bulunur."
+  },
+  {
+    "id": 216,
+    "isProverb": true,
+    "title": "Bana dokunmayan yılan bin yaşasın.",
+    "meaning": "Bana zararı olmayan kötü bir kişi ne yaparsa yapsın umurumda değil.",
+    "example": "Adamın ne yaptığı beni ilgilendirmez, bana dokunmayan yılan bin yaşasın."
+  },
+  {
+    "id": 217,
+    "isProverb": true,
+    "title": "Zenginin malı züğürdün çenesini yorar.",
+    "meaning": "Zengin insanların serveti, fakir insanların sürekli konuştuğu bir konudur.",
+    "example": "Onların ne kadar kazandığını konuşmayı bırak, zenginin malı züğürdün çenesini yorar."
+  },
+  {
+    "id": 218,
+    "isProverb": true,
+    "title": "Mızrak çuvala sığmaz.",
+    "meaning": "Herkesin bildiği gerçekler gizlenemez.",
+    "example": "Olayı örtbas etmeye çalışıyorlar ama mızrak çuvala sığmaz."
+  },
+  {
+    "id": 219,
+    "isProverb": true,
+    "title": "Ağaç yaprağıyla gürler.",
+    "meaning": "İnsan akrabası, yakınları ve dostlarıyla birlikteyken daha güçlüdür.",
+    "example": "Ailenin kıymetini bil, ağaç yaprağıyla gürler."
+  },
+  {
+    "id": 220,
+    "isProverb": true,
+    "title": "Akıntıya kürek çekilmez.",
+    "meaning": "Olmayacak bir iş için inatla uğraşmak boşunadır.",
+    "example": "Bu işin olmayacağı belli, akıntıya kürek çekilmez."
+  },
+  {
+    "id": 221,
+    "isProverb": true,
+    "title": "Altın anahtar her kapıyı açar.",
+    "meaning": "Para veya rüşvetle pek çok zorluğun üstesinden gelinebilir.",
+    "example": "Parasıyla her işini hallediyor, altın anahtar her kapıyı açar."
+  },
+  {
+    "id": 222,
+    "isProverb": true,
+    "title": "Araba devrilince yol gösteren çok olur.",
+    "meaning": "İş işten geçtikten sonra akıl veren çok olur.",
+    "example": "Kaza yaptıktan sonra herkes bir şey söyledi, araba devrilince yol gösteren çok olur."
+  },
+  {
+    "id": 223,
+    "isProverb": true,
+    "title": "Başa gelen çekilir.",
+    "meaning": "İnsanın elinde olmayan felaketlere katlanmak zorundadır.",
+    "example": "Yapacak bir şey yok, başa gelen çekilir."
+  },
+  {
+    "id": 224,
+    "isProverb": true,
+    "title": "Bükemediğin bileği öpeceksin.",
+    "meaning": "Gücünün yetmediği kişiye saygı göstermek ve boyun eğmek gerekir.",
+    "example": "Rakibinin senden üstün olduğunu kabul et, bükemediğin bileği öpeceksin."
+  },
+  {
+    "id": 225,
+    "isProverb": true,
+    "title": "Cana gelecek mala gelsin.",
+    "meaning": "Mal kaybı can kaybından daha iyidir.",
+    "example": "Araban hasar gördü ama sen iyisin, cana gelecek mala gelsin."
+  },
+  {
+    "id": 226,
+    "isProverb": false,
+    "title": "Ağzı açık kalmak.",
+    "meaning": "Çok şaşırmak.",
+    "example": "Olayı duyunca herkesin ağzı açık kaldı."
+  },
+  {
+    "id": 227,
+    "isProverb": false,
+    "title": "Akıntıya kürek çekmek.",
+    "meaning": "Olmayacak bir iş için boşuna çabalamak.",
+    "example": "O projeyi kurtarmak için akıntıya kürek çekiyor."
+  },
+  {
+    "id": 228,
+    "isProverb": false,
+    "title": "Altından çapanoğlu çıkmak.",
+    "meaning": "Bir işin içinde gizli ve tehlikeli bir durum bulunmak.",
+    "example": "Bu kadar ucuz olmasının altından çapanoğlu çıkmasın."
+  },
+  {
+    "id": 229,
+    "isProverb": false,
+    "title": "Avucunu yalamak.",
+    "meaning": "Beklediğini bulamamak, umduğunu elde edememek.",
+    "example": "Mirastan pay alacağını sanıyordu ama avucunu yaladı."
+  },
+  {
+    "id": 230,
+    "isProverb": false,
+    "title": "Bağrına taş basmak.",
+    "meaning": "Büyük bir acıya katlanmak, ses çıkarmamak.",
+    "example": "Evladını kaybeden anne bağrına taş bastı."
+  },
+  {
+    "id": 231,
+    "isProverb": false,
+    "title": "Başına devlet kuşu konmak.",
+    "meaning": "Beklenmedik bir şekilde büyük bir şansa veya zenginliğe kavuşmak.",
+    "example": "Piyangoyu kazanınca başına devlet kuşu kondu."
+  },
+  {
+    "id": 232,
+    "isProverb": false,
+    "title": "Burnunda tütmek.",
+    "meaning": "Birini veya bir şeyi çok özlemek.",
+    "example": "Memleketim burnumda tütüyor."
+  },
+  {
+    "id": 233,
+    "isProverb": false,
+    "title": "Cebi delik.",
+    "meaning": "Elinde avucunda parası olmayan, çok harcayan.",
+    "example": "O hep cebi delik gezer, para tutamaz."
+  },
+  {
+    "id": 234,
+    "isProverb": false,
+    "title": "Çark etmek.",
+    "meaning": "Düşüncesinden veya kararından aniden vazgeçip tersini savunmak.",
+    "example": "Dün destekliyordu, bugün çark etti."
+  },
+  {
+    "id": 235,
+    "isProverb": false,
+    "title": "Çenesi düşmek.",
+    "meaning": "Çok konuşmak, susmak bilmemek.",
+    "example": "Bugün yine çenesi düştü, susmak bilmedi."
+  },
+  {
+    "id": 236,
+    "isProverb": false,
+    "title": "Dış kapının dış mandalı.",
+    "meaning": "Bir konuyla veya kişiyle uzaktan yakından ilgisi olmayan kimse.",
+    "example": "O aile için sadece dış kapının dış mandalı."
+  },
+  {
+    "id": 237,
+    "isProverb": false,
+    "title": "Ekmeğine yağ sürmek.",
+    "meaning": "Birinin işine yarayacak, ona avantaj sağlayacak şekilde davranmak.",
+    "example": "Bu yaptığınla sadece rakibinin ekmeğine yağ sürüyorsun."
+  },
+  {
+    "id": 238,
+    "isProverb": false,
+    "title": "Ensesi kalın.",
+    "meaning": "Varlıklı, güçlü ve sözü geçen kimse.",
+    "example": "Ensesi kalın adamlarla iş yapıyor."
+  },
+  {
+    "id": 239,
+    "isProverb": false,
+    "title": "Faka basmak.",
+    "meaning": "Tuzağa düşmek, aldatılmak.",
+    "example": "Dolandırıcıların oyununa gelip faka bastı."
+  },
+  {
+    "id": 240,
+    "isProverb": false,
+    "title": "Gözünü dört açmak.",
+    "meaning": "Çok dikkatli olmak, uyanık davranmak.",
+    "example": "Bu mahallede gözünü dört açmalısın."
+  },
+  {
+    "id": 241,
+    "isProverb": false,
+    "title": "İçi gitmek.",
+    "meaning": "Bir şeyi çok istemek veya bir şeye çok üzülmek.",
+    "example": "Vitrindeki elbiseye içi gitti."
+  },
+  {
+    "id": 242,
+    "isProverb": false,
+    "title": "İncir çekirdeğini doldurmaz.",
+    "meaning": "Çok önemsiz, değersiz, küçük şey.",
+    "example": "İncir çekirdeğini doldurmayacak meseleler yüzünden kavga ettiler."
+  },
+  {
+    "id": 243,
+    "isProverb": false,
+    "title": "Kafasına dank etmek.",
+    "meaning": "Bir gerçeği veya durumu sonradan, geç de olsa anlamak.",
+    "example": "Hata yaptığını çok sonra kafasına dank etti."
+  },
+  {
+    "id": 244,
+    "isProverb": false,
+    "title": "Kanı kaynamak.",
+    "meaning": "Birine birdenbire yakınlık ve sevgi duymak.",
+    "example": "O çocuğa ilk görüşte kanım kaynadı."
+  },
+  {
+    "id": 245,
+    "isProverb": false,
+    "title": "Kulağına küpe olmak.",
+    "meaning": "Başa gelen bir olaydan ders çıkarmak ve unutmamak.",
+    "example": "Bu yaşadıkların sana kulağına küpe olsun."
+  },
+  {
+    "id": 246,
+    "isProverb": false,
+    "title": "Lafa tutmak.",
+    "meaning": "Konuşarak birini işinden alıkoymak.",
+    "example": "Beni kapıda lafa tutup geciktirdi."
+  },
+  {
+    "id": 247,
+    "isProverb": false,
+    "title": "Maskesi düşmek.",
+    "meaning": "Gerçek yüzü, gizlediği niyeti ortaya çıkmak.",
+    "example": "Yalanları ortaya çıkınca maskesi düştü."
+  },
+  {
+    "id": 248,
+    "isProverb": false,
+    "title": "Ocağına düşmek.",
+    "meaning": "Çaresiz kalarak birinin yardımına muhtaç olmak ve ona sığınmak.",
+    "example": "Borç batağına saplanınca babasının ocağına düştü."
+  },
+  {
+    "id": 249,
+    "isProverb": false,
+    "title": "Ödü kopmak.",
+    "meaning": "Çok korkmak.",
+    "example": "Karanlıkta o sesi duyunca ödüm koptu."
+  },
+  {
+    "id": 250,
+    "isProverb": false,
+    "title": "Püf noktası.",
+    "meaning": "Bir işin en ince, en önemli ve hassas kısmı.",
+    "example": "Bu yemeğin püf noktası baharatında gizlidir."
+  },
+  {
+    "id": 251,
+    "isProverb": true,
+    "title": "Rüzgara tüküren kendi yüzüne tükürür.",
+    "meaning": "Kendinden güçlü birine zarar vermeye çalışan kişi, sonunda kendine zarar verir.",
+    "example": "Ona zarar vermek istedin ama rüzgara tüküren kendi yüzüne tükürür."
+  },
+  {
+    "id": 252,
+    "isProverb": true,
+    "title": "Mart kapıdan baktırır kazma kürek yaktırır.",
+    "meaning": "Mart ayında havalar çok soğuk olabilir, hazırlıklı olmak gerekir.",
+    "example": "Havaya aldanma, mart kapıdan baktırır kazma kürek yaktırır."
+  },
+  {
+    "id": 253,
+    "isProverb": true,
+    "title": "Kedinin boynuna ciğer asılmaz.",
+    "meaning": "Güvenilmeyen birine değerli veya emanet bir şey teslim edilmez.",
+    "example": "O adama para teslim edilir mi, kedinin boynuna ciğer asılmaz."
+  },
+  {
+    "id": 254,
+    "isProverb": true,
+    "title": "Ağaç düşse de yakınına yaslanır.",
+    "meaning": "İnsan kötü durumunda bile yakınlarından destek bulur.",
+    "example": "Zor günlerinde ailen yanındaydı, ağaç düşse de yakınına yaslanır."
+  },
+  {
+    "id": 255,
+    "isProverb": true,
+    "title": "Altın eşik gümüş eşiğe muhtaç olur.",
+    "meaning": "En zengin ve güçlü kişiler bile gün gelip yoksul birine muhtaç olabilir.",
+    "example": "Kimseyi küçümseme, altın eşik gümüş eşiğe muhtaç olur."
+  },
+  {
+    "id": 256,
+    "isProverb": true,
+    "title": "Arı bal alacak çiçeği bilir.",
+    "meaning": "İşini bilen kişi, nerede ve nasıl kazanç sağlayacağını bilir.",
+    "example": "O bu işten kârlı çıkar, arı bal alacak çiçeği bilir."
+  },
+  {
+    "id": 257,
+    "isProverb": true,
+    "title": "Baca eğri de olsa dumanı doğru çıkar.",
+    "meaning": "İyi ve dürüst bir insan, kötü bir çevrede bile dürüstlüğünü korur.",
+    "example": "Onun geçmişine bakma, baca eğri de olsa dumanı doğru çıkar."
+  },
+  {
+    "id": 258,
+    "isProverb": true,
+    "title": "Bağa bak üzüm olsun yemeye yüzün olsun.",
+    "meaning": "Bir şeyden verim bekliyorsan ona emek vermelisin.",
+    "example": "Tarlayla hiç ilgilenmedin, bağa bak üzüm olsun yemeye yüzün olsun."
+  },
+  {
+    "id": 259,
+    "isProverb": true,
+    "title": "Bir çöplükte iki horoz ötmez.",
+    "meaning": "Aynı yerde eşit yetkiye sahip iki kişi anlaşamaz.",
+    "example": "İki müdür sürekli kavga ediyor, bir çöplükte iki horoz ötmez."
+  },
+  {
+    "id": 260,
+    "isProverb": true,
+    "title": "Can boğazdan gelir.",
+    "meaning": "İnsanın yaşamak ve güçlenmek için iyi beslenmesi gerekir.",
+    "example": "Yemeğini bitir, can boğazdan gelir."
+  },
+  {
+    "id": 261,
+    "isProverb": true,
+    "title": "Çok bilen çok yanılır.",
+    "meaning": "İnsan ne kadar bilgili olursa olsun her şeyi bilemez ve hata yapabilir.",
+    "example": "Kendine bu kadar güvenme, çok bilen çok yanılır."
+  },
+  {
+    "id": 262,
+    "isProverb": true,
+    "title": "Dağ ne kadar yüce olsa yol üstünden aşar.",
+    "meaning": "Aşılması imkansız gibi görünen engellerin bile bir çözüm yolu vardır.",
+    "example": "Bu sorunu da çözeceğiz, dağ ne kadar yüce olsa yol üstünden aşar."
+  },
+  {
+    "id": 263,
+    "isProverb": true,
+    "title": "Danışan dağı aşmış, danışmayan düz yolda şaşmış.",
+    "meaning": "Bilmediği şeyi başkalarına soranlar zorlukları aşar, sormayanlar başarısız olur.",
+    "example": "Fikir almaktan çekinme, danışan dağı aşmış danışmayan düz yolda şaşmış."
+  },
+  {
+    "id": 264,
+    "isProverb": true,
+    "title": "Deveye boynun eğri demişler nerem doğru ki demiş.",
+    "meaning": "Bir kişinin her işi kusurlu ve bozuksa sadece bir hatasını söylemek anlamsızdır.",
+    "example": "O adamın her işi yalan, deveye boynun eğri demişler nerem doğru ki demiş."
+  },
+  {
+    "id": 265,
+    "isProverb": true,
+    "title": "Dilin kemiği yoktur.",
+    "meaning": "İnsan her türlü yalanı veya kırıcı sözü kolayca söyleyebilir.",
+    "example": "Onun söylediklerine inanma, dilin kemiği yoktur."
+  },
+  {
+    "id": 266,
+    "isProverb": true,
+    "title": "Eşeğe altın semer vursalar eşek yine eşektir.",
+    "meaning": "İnsanın değeri giydiği kıyafetle veya makamla değil karakteriyle ölçülür.",
+    "example": "Zengin oldu ama huyu değişmedi, eşeğe altın semer vursalar eşek yine eşektir."
+  },
+  {
+    "id": 267,
+    "isProverb": true,
+    "title": "Gözden ırak olan gönülden de ırak olur.",
+    "meaning": "Görüşülmeyen veya uzakta olan kişilere duyulan sevgi zamanla azalır.",
+    "example": "Uzun zamandır görüşmüyoruz, gözden ırak olan gönülden de ırak olur."
+  },
+  {
+    "id": 268,
+    "isProverb": true,
+    "title": "Gülme komşuna gelir başına.",
+    "meaning": "Başkasının kötü durumuna sevinenin başına da aynı şey gelebilir.",
+    "example": "Onunla alay etme, gülme komşuna gelir başına."
+  },
+  {
+    "id": 269,
+    "isProverb": true,
+    "title": "Her kuşun eti yenmez.",
+    "meaning": "Herkes kolayca kandırılamaz veya alt edilemez.",
+    "example": "Onu da dolandırabileceğini sandı ama her kuşun eti yenmez."
+  },
+  {
+    "id": 270,
+    "isProverb": true,
+    "title": "Irmaktan geçerken at değiştirilmez.",
+    "meaning": "Tehlikeli veya kritik bir durumun ortasındayken yöntem veya yönetici değiştirilmez.",
+    "example": "Projenin ortasında ekibi değiştirmeyelim, ırmaktan geçerken at değiştirilmez."
+  },
+  {
+    "id": 271,
+    "isProverb": true,
+    "title": "İnsan beşer, kuldur şaşar.",
+    "meaning": "İnsanlar hata yapmaya meyillidir, kusursuz insan olmaz.",
+    "example": "O da bir hata yaptı sonuçta, insan beşer kuldur şaşar."
+  },
+  {
+    "id": 272,
+    "isProverb": true,
+    "title": "Kedi uzanamadığı ciğere mundar der.",
+    "meaning": "İnsanlar elde edemedikleri şeyleri kötüleyerek kendilerini avuturlar.",
+    "example": "O arabayı alamayınca kötülemeye başladı, kedi uzanamadığı ciğere mundar der."
+  },
+  {
+    "id": 273,
+    "isProverb": true,
+    "title": "Kurunun yanında yaş da yanar.",
+    "meaning": "Suçluların cezalandırıldığı bir durumda bazen masumlar da zarar görür.",
+    "example": "O kavgada suçsuzlar da ceza aldı, kurunun yanında yaş da yanar."
+  },
+  {
+    "id": 274,
+    "isProverb": true,
+    "title": "Öfke baldan tatlıdır.",
+    "meaning": "İnsanın sinirlendiğinde bağırıp çağırması ona anlık bir rahatlama verir.",
+    "example": "O an sinirle her şeyi söyledi çünkü öfke baldan tatlıdır."
+  },
+  {
+    "id": 275,
+    "isProverb": true,
+    "title": "Sakınan göze çöp batar.",
+    "meaning": "Üzerine çok fazla titrenilen, çok korunan şeylerin başına daha çabuk kaza gelir.",
+    "example": "Çocuğu o kadar korudular ama yine hasta oldu, sakınan göze çöp batar."
+  },
+  {
+    "id": 276,
+    "isProverb": false,
+    "title": "Renk vermemek.",
+    "meaning": "Duygularını, düşüncelerini veya bildiği bir şeyi belli etmemek.",
+    "example": "Olayı biliyordu ama hiç renk vermedi."
+  },
+  {
+    "id": 277,
+    "isProverb": false,
+    "title": "Saman alevi gibi parlamak.",
+    "meaning": "Birdenbire çok öfkelenip kısa süre sonra sakinleşmek.",
+    "example": "Siniri saman alevi gibi parlar, hemen geçer."
+  },
+  {
+    "id": 278,
+    "isProverb": false,
+    "title": "Sırra kadem basmak.",
+    "meaning": "Ortadan kaybolmak, izini kaybettirmek.",
+    "example": "Adam paraları alıp sırra kadem bastı."
+  },
+  {
+    "id": 279,
+    "isProverb": false,
+    "title": "Sinek avlamak.",
+    "meaning": "Müşterisi olmadığı için boş oturmak.",
+    "example": "Bugün dükkan sinek avlıyor, hiç iş yok."
+  },
+  {
+    "id": 280,
+    "isProverb": false,
+    "title": "Şeytanın bacağını kırmak.",
+    "meaning": "Uzun süren bir şanssızlığı yenmek, ilk başarıyı elde etmek.",
+    "example": "Sonunda o sınavı geçip şeytanın bacağını kırdı."
+  },
+  {
+    "id": 281,
+    "isProverb": false,
+    "title": "Tahtası eksik.",
+    "meaning": "Aklı kıt, dengesiz davranışları olan kimse.",
+    "example": "Onun söylediklerine bakma, tahtası eksiktir."
+  },
+  {
+    "id": 282,
+    "isProverb": false,
+    "title": "Tepesi atmak.",
+    "meaning": "Birdenbire çok sinirlenmek.",
+    "example": "O lafı duyunca tepesi attı."
+  },
+  {
+    "id": 283,
+    "isProverb": false,
+    "title": "Tuzu kuru olmak.",
+    "meaning": "Maddi sıkıntısı olmamak, keyfi yerinde olmak.",
+    "example": "Senin tuzun kuru tabii, derdimizi anlamazsın."
+  },
+  {
+    "id": 284,
+    "isProverb": false,
+    "title": "Ucu ucuna getirmek.",
+    "meaning": "Bir işi, zamanı veya parayı tam yetecek kadar, zorlukla denkleştirmek.",
+    "example": "Bu ay maaşı ucu ucuna getirdik."
+  },
+  {
+    "id": 285,
+    "isProverb": false,
+    "title": "Üzerine titremek.",
+    "meaning": "Birine veya bir şeye çok özen göstermek, zarar gelmesinden korkmak.",
+    "example": "Annesi o çocuğun üzerine titriyor."
+  },
+  {
+    "id": 286,
+    "isProverb": false,
+    "title": "Vaktini öldürmek.",
+    "meaning": "Zamanını boş ve yararsız işlerle geçirmek.",
+    "example": "Bütün gün oyun oynayarak vaktini öldürdü."
+  },
+  {
+    "id": 287,
+    "isProverb": false,
+    "title": "Yakayı ele vermek.",
+    "meaning": "Suç işleyip saklanırken yakalanmak.",
+    "example": "Hırsızlar sonunda polise yakayı ele verdi."
+  },
+  {
+    "id": 288,
+    "isProverb": false,
+    "title": "Yarı yolda bırakmak.",
+    "meaning": "Birlikte başlanan bir işte sözünden dönüp arkadaşını yalnız bırakmak.",
+    "example": "Ortaklıkta beni yarı yolda bıraktı."
+  },
+  {
+    "id": 289,
+    "isProverb": false,
+    "title": "Yüz çevirmek.",
+    "meaning": "İlgisini kesmek, darılıp uzaklaşmak.",
+    "example": "Zor günümde bütün dostlarım benden yüz çevirdi."
+  },
+  {
+    "id": 290,
+    "isProverb": false,
+    "title": "Zılgıt yemek.",
+    "meaning": "Azarlanmak, sert sözler işitmek.",
+    "example": "Babasından fena zılgıt yedi."
+  },
+  {
+    "id": 291,
+    "isProverb": false,
+    "title": "Aba altından sopa göstermek.",
+    "meaning": "Yumuşak ve sakin görünerek üstü kapalı bir şekilde tehdit etmek.",
+    "example": "Adam güya dostça konuşuyor ama aba altından sopa gösteriyor."
+  },
+  {
+    "id": 292,
+    "isProverb": false,
+    "title": "Afallamak.",
+    "meaning": "Şaşkınlıktan ne yapacağını bilememek.",
+    "example": "O soruyu duyunca birden afalladı."
+  },
+  {
+    "id": 293,
+    "isProverb": false,
+    "title": "Ağzını aramak.",
+    "meaning": "Birinin bir konu hakkındaki düşüncesini kurnazca öğrenmeye çalışmak.",
+    "example": "Konu hakkında ne düşündüğünü öğrenmek için ağzını aradı."
+  },
+  {
+    "id": 294,
+    "isProverb": false,
+    "title": "Aklı kesmemek.",
+    "meaning": "Bir işin olabileceğine inanmamak.",
+    "example": "Bu projenin başarılı olacağına aklım kesmiyor."
+  },
+  {
+    "id": 295,
+    "isProverb": false,
+    "title": "Aklını peynir ekmekle yemek.",
+    "meaning": "Delice, mantıksızca davranışlarda bulunmak.",
+    "example": "Bütün parasını o işe yatırdı, aklını peynir ekmekle yemiş olmalı."
+  },
+  {
+    "id": 296,
+    "isProverb": false,
+    "title": "Altını üstüne getirmek.",
+    "meaning": "Bir yeri çok dağınık hale getirmek veya her yeri aramak.",
+    "example": "Anahtarını bulmak için evin altını üstüne getirdi."
+  },
+  {
+    "id": 297,
+    "isProverb": false,
+    "title": "Baş tacı etmek.",
+    "meaning": "Birine çok değer vermek, çok saygı göstermek.",
+    "example": "Misafirleri baş tacı ettiler."
+  },
+  {
+    "id": 298,
+    "isProverb": false,
+    "title": "Boy ölçüşmek.",
+    "meaning": "Biriyle yetenek veya güç bakımından yarışmak.",
+    "example": "Onunla bilgi konusunda boy ölçüşemezsin."
+  },
+  {
+    "id": 299,
+    "isProverb": false,
+    "title": "Can atmak.",
+    "meaning": "Bir şeyi çok fazla istemek.",
+    "example": "O konsere gitmek için can atıyor."
+  },
+  {
+    "id": 300,
+    "isProverb": false,
+    "title": "Çorbada tuzu bulunmak.",
+    "meaning": "Bir işin yapılmasına küçük de olsa bir katkısı olmak.",
+    "example": "Bu başarıda bizim de çorbada tuzumuz bulunsun istedik."
+  },
+  {
+    "id": 301,
+    "isProverb": true,
+    "title": "Son pişmanlık fayda etmez.",
+    "meaning": "İş işten geçtikten sonra üzülmenin bir yararı yoktur.",
+    "example": "O hatayı yapmadan düşünecektin, son pişmanlık fayda etmez."
+  },
+  {
+    "id": 302,
+    "isProverb": true,
+    "title": "Sürüden ayrılanı kurt kapar.",
+    "meaning": "Arkadaşlarından ve toplumdan kopan kişi tehlikelere açık hale gelir.",
+    "example": "Birlikte hareket edelim, sürüden ayrılanı kurt kapar."
+  },
+  {
+    "id": 303,
+    "isProverb": true,
+    "title": "Tencere yuvarlanmış kapağını bulmuş.",
+    "meaning": "Kötü huylu veya kusurlu kişilerin birbirine uygun arkadaş veya eş bulması.",
+    "example": "İkisi de aynı kafada, tencere yuvarlanmış kapağını bulmuş."
+  },
+  {
+    "id": 304,
+    "isProverb": true,
+    "title": "Terzi kendi söküğünü dikemez.",
+    "meaning": "İnsanlar başkalarına yaptıkları uzmanlık gerektiren işleri kendi ihtiyaçları için yapamazlar.",
+    "example": "Bilgisayarcının kendi bilgisayarı bozuk, terzi kendi söküğünü dikemez işte."
+  },
+  {
+    "id": 305,
+    "isProverb": true,
+    "title": "Ucuz etin yahnisi yavan olur.",
+    "meaning": "Ucuza alınan kalitesiz malzemeden iyi bir sonuç elde edilmez.",
+    "example": "Bu kadar ucuz ayakkabı hemen yırtılır, ucuz etin yahnisi yavan olur."
+  },
+  {
+    "id": 306,
+    "isProverb": true,
+    "title": "Vakit nakittir.",
+    "meaning": "Zaman çok değerlidir ve para gibi idareli kullanılmalıdır.",
+    "example": "Boş oturma çalış, vakit nakittir."
+  },
+  {
+    "id": 307,
+    "isProverb": true,
+    "title": "Yarası olan gocunur.",
+    "meaning": "Bir kusuru veya kabahati olan kişi, o konuda konuşulduğunda alınır ve tepki gösterir.",
+    "example": "Ben isim vermedim ama o hemen savunmaya geçti, yarası olan gocunur."
+  },
+  {
+    "id": 308,
+    "isProverb": true,
+    "title": "Yazın başı pişenin kışın aşı pişer.",
+    "meaning": "Gençliğinde veya zamanında çok çalışan kişi ileride rahat eder.",
+    "example": "Şimdi yoruluyorsun ama yazın başı pişenin kışın aşı pişer."
+  },
+  {
+    "id": 309,
+    "isProverb": true,
+    "title": "Yolcu yolunda gerek.",
+    "meaning": "Yola çıkmış veya bir işe başlamış kişi oyalanmadan hedefine gitmelidir.",
+    "example": "Bize müsaade, yolcu yolunda gerek."
+  },
+  {
+    "id": 310,
+    "isProverb": true,
+    "title": "Yuvarlanan taş yosun tutmaz.",
+    "meaning": "Sürekli iş veya yer değiştiren kişi birikim yapamaz ve mal mülk sahibi olamaz.",
+    "example": "O işten bu işe atlıyor, yuvarlanan taş yosun tutmaz."
+  },
+  {
+    "id": 311,
+    "isProverb": true,
+    "title": "Zahmetsiz rahmet olmaz.",
+    "meaning": "Sıkıntı ve zorluk çekmeden iyi ve güzel şeylere ulaşılamaz.",
+    "example": "Bu sınavı kazanmak için yorulacaksın, zahmetsiz rahmet olmaz."
+  },
+  {
+    "id": 312,
+    "isProverb": true,
+    "title": "Akıl yaşta değil baştadır.",
+    "meaning": "İnsanın aklı ve olgunluğu yaşıyla değil, zekası ve tecrübesiyle ölçülür.",
+    "example": "O genç yaşına rağmen çok mantıklı, akıl yaşta değil baştadır."
+  },
+  {
+    "id": 313,
+    "isProverb": true,
+    "title": "Al elmaya taş atan çok olur.",
+    "meaning": "Değerli, güzel veya başarılı kişilere kıskançlık duyup zarar vermek isteyen çok olur.",
+    "example": "Başarını kıskananlar olacak, al elmaya taş atan çok olur."
+  },
+  {
+    "id": 314,
+    "isProverb": true,
+    "title": "Altın adını bakır etme.",
+    "meaning": "Sahip olduğun iyi ünü ve saygınlığı yapacağın hatalarla yok etme.",
+    "example": "Bu yanlış işlere girip altın adını bakır etme."
+  },
+  {
+    "id": 315,
+    "isProverb": true,
+    "title": "Aş taşınca kepçeye paha biçilmez.",
+    "meaning": "Bir şeye çok ihtiyaç duyulduğunda onun değeri kat kat artar.",
+    "example": "O an bir arabaya ihtiyacımız vardı, aş taşınca kepçeye paha biçilmez."
+  },
+  {
+    "id": 316,
+    "isProverb": true,
+    "title": "Ayranım ekşi diyen olmaz.",
+    "meaning": "Kimse kendi yaptığı işi veya kendi malını kötülemez.",
+    "example": "Satıcı tabii ki malını övecek, ayranım ekşi diyen olmaz."
+  },
+  {
+    "id": 317,
+    "isProverb": true,
+    "title": "Baba koruk yer, oğlunun dişi kamaşır.",
+    "meaning": "Babanın yaptığı kötü işlerin sıkıntısını çocuğu çeker.",
+    "example": "Adamın borçları yüzünden çocuğu perişan oldu, baba koruk yer oğlunun dişi kamaşır."
+  },
+  {
+    "id": 318,
+    "isProverb": true,
+    "title": "Baş dille tartılır.",
+    "meaning": "İnsanın aklı ve değeri söylediği sözlerle belli olur.",
+    "example": "Konuşmadan önce düşün, baş dille tartılır."
+  },
+  {
+    "id": 319,
+    "isProverb": true,
+    "title": "Beş parmağın beşi bir olmaz.",
+    "meaning": "Aynı anne babadan doğan çocuklar bile huy ve yetenek bakımından farklıdır.",
+    "example": "Kardeşi çok çalışkan ama o tembel, beş parmağın beşi bir olmaz."
+  },
+  {
+    "id": 320,
+    "isProverb": true,
+    "title": "Biri yer biri bakar kıyamet ondan kopar.",
+    "meaning": "Bir şeyden herkesin eşit şekilde yararlanmaması kavga ve huzursuzluk çıkarır.",
+    "example": "Pastayı herkese eşit paylaştır, biri yer biri bakar kıyamet ondan kopar."
+  },
+  {
+    "id": 321,
+    "isProverb": true,
+    "title": "Borç yiğidin kamçısıdır.",
+    "meaning": "Borcu olan kişi, borcunu ödemek için daha çok ve gayretli çalışır.",
+    "example": "Borca girmekten korkma çalışıp ödersin, borç yiğidin kamçısıdır."
+  },
+  {
+    "id": 322,
+    "isProverb": true,
+    "title": "Bülbülü altın kafese koymuşlar ah vatanım demiş.",
+    "meaning": "İnsan ne kadar rahat bir ortamda olsa da kendi yurdunu ve alıştığı yeri özler.",
+    "example": "Yurt dışında çok zengin ama bülbülü altın kafese koymuşlar ah vatanım demiş."
+  },
+  {
+    "id": 323,
+    "isProverb": true,
+    "title": "Canı yanan eşek atı geçer.",
+    "meaning": "Can acısıyla veya zor bir durumda kalan kişi normalden çok daha büyük bir güç gösterir.",
+    "example": "O korkuyla nasıl koştuğunu görmeliydin, canı yanan eşek atı geçer."
+  },
+  {
+    "id": 324,
+    "isProverb": true,
+    "title": "Çobansız koyunu kurt kapar.",
+    "meaning": "Yöneticisi veya koruyucusu olmayan topluluklar tehlikeye düşer.",
+    "example": "Ekibin başına birini seçmeliyiz, çobansız koyunu kurt kapar."
+  },
+  {
+    "id": 325,
+    "isProverb": true,
+    "title": "Çürük tahta çivi tutmaz.",
+    "meaning": "Özü bozulmuş, işe yaramaz hale gelmiş bir şeyi onarmak veya düzeltmek mümkün değildir.",
+    "example": "O adamdan hayır gelmez artık, çürük tahta çivi tutmaz."
+  },
+  {
+    "id": 326,
+    "isProverb": false,
+    "title": "Çuvallamak.",
+    "meaning": "Bir işte başarısız olmak, işi eline yüzüne bulaştırmak.",
+    "example": "Sınavda heyecandan çuvalladı."
+  },
+  {
+    "id": 327,
+    "isProverb": false,
+    "title": "Dalavere çevirmek.",
+    "meaning": "Hile, yalan ve dolanla gizli işler yapmak.",
+    "example": "Arkamdan ne dalavereler çevirdiğini biliyorum."
+  },
+  {
+    "id": 328,
+    "isProverb": false,
+    "title": "Dört elle sarılmak.",
+    "meaning": "Bir işe büyük bir heves, önem ve gayretle girişmek.",
+    "example": "Yeni işine dört elle sarıldı."
+  },
+  {
+    "id": 329,
+    "isProverb": false,
+    "title": "Dudak bükmek.",
+    "meaning": "Bir şeyi beğenmemek, küçümsemek.",
+    "example": "Önüne konan yemeğe dudak büktü."
+  },
+  {
+    "id": 330,
+    "isProverb": false,
+    "title": "Eli açık.",
+    "meaning": "Cömert, parasını esirgemeyen.",
+    "example": "Çok eli açık biridir, herkese yardım eder."
+  },
+  {
+    "id": 331,
+    "isProverb": false,
+    "title": "Fevri davranmak.",
+    "meaning": "Düşünmeden, aniden ve öfkeyle hareket etmek.",
+    "example": "Fevri davranıp herkesi kırdı."
+  },
+  {
+    "id": 332,
+    "isProverb": false,
+    "title": "Gözü tok.",
+    "meaning": "Mala mülke açgözlülük etmeyen, elindekiyle yetinen.",
+    "example": "O çok gözü tok bir insandır."
+  },
+  {
+    "id": 333,
+    "isProverb": false,
+    "title": "Hayal kırıklığına uğramak.",
+    "meaning": "Beklediği sonucu alamayınca çok üzülmek.",
+    "example": "Sınav sonucunu görünce hayal kırıklığına uğradı."
+  },
+  {
+    "id": 334,
+    "isProverb": false,
+    "title": "İçi cız etmek.",
+    "meaning": "Birdenbire çok üzülmek, acımak.",
+    "example": "O zavallı çocuğu görünce içim cız etti."
+  },
+  {
+    "id": 335,
+    "isProverb": false,
+    "title": "Kafayı yemek.",
+    "meaning": "Delirmek, aklını kaçıracak duruma gelmek.",
+    "example": "Bu gürültüden kafayı yiyeceğim."
+  },
+  {
+    "id": 336,
+    "isProverb": false,
+    "title": "Kan kusmak.",
+    "meaning": "Çok büyük acılar ve sıkıntılar çekmek.",
+    "example": "O işte çalışırken adeta kan kustu."
+  },
+  {
+    "id": 337,
+    "isProverb": false,
+    "title": "Kendini naza çekmek.",
+    "meaning": "İstediği halde istemiyormuş gibi davranıp yalvartmak.",
+    "example": "Hemen kabul etmedi, biraz kendini naza çekti."
+  },
+  {
+    "id": 338,
+    "isProverb": false,
+    "title": "Kök söktürmek.",
+    "meaning": "Birine çok eziyet etmek, büyük zorluklar çıkarmak.",
+    "example": "Yeni müdür çalışanlara kök söktürüyor."
+  },
+  {
+    "id": 339,
+    "isProverb": false,
+    "title": "Kulak kabartmak.",
+    "meaning": "Belli etmemeye çalışarak dinlemek.",
+    "example": "Yan masadaki konuşmalara kulak kabarttı."
+  },
+  {
+    "id": 340,
+    "isProverb": false,
+    "title": "Midesi bulanmak.",
+    "meaning": "Birinden veya bir şeyden iğrenmek, tiksinmek.",
+    "example": "O adamın yalanlarından artık midem bulanıyor."
+  },
+  {
+    "id": 341,
+    "isProverb": false,
+    "title": "Nabız yoklamak.",
+    "meaning": "Birinin bir konudaki niyetini ve düşüncesini anlamaya çalışmak.",
+    "example": "Konuyu açmadan önce biraz nabız yokladı."
+  },
+  {
+    "id": 342,
+    "isProverb": false,
+    "title": "Omuz silkme.",
+    "meaning": "Umursamamak, önem vermemek.",
+    "example": "Uyarılarıma sadece omuz silkti."
+  },
+  {
+    "id": 343,
+    "isProverb": false,
+    "title": "Ödü patlamak.",
+    "meaning": "Çok korkmak.",
+    "example": "Aniden karşıma çıkınca ödüm patladı."
+  },
+  {
+    "id": 344,
+    "isProverb": false,
+    "title": "Paçayı kurtarmak.",
+    "meaning": "Tehlikeli veya zor bir durumdan kurtulmak.",
+    "example": "O kazadan zor paçayı kurtardık."
+  },
+  {
+    "id": 345,
+    "isProverb": false,
+    "title": "Renkden renge girmek.",
+    "meaning": "Utanç, korku veya heyecandan yüzünün rengi değişmek.",
+    "example": "Yalanı ortaya çıkınca renkten renge girdi."
+  },
+  {
+    "id": 346,
+    "isProverb": false,
+    "title": "Saç baş yoldurmak.",
+    "meaning": "Birini çok sinirlendirmek, çileden çıkarmak.",
+    "example": "Bu çocuğun yaramazlıkları bana saç baş yolduruyor."
+  },
+  {
+    "id": 347,
+    "isProverb": false,
+    "title": "Tası tarağı toplamak.",
+    "meaning": "Bütün eşyalarını toplayıp bulunduğu yerden ayrılmak.",
+    "example": "İşten kovulunca tası tarağı toplayıp gitti."
+  },
+  {
+    "id": 348,
+    "isProverb": false,
+    "title": "Üstesinden gelmek.",
+    "meaning": "Zor bir işi başarıyla tamamlamak.",
+    "example": "Bu zor projenin de üstesinden geldi."
+  },
+  {
+    "id": 349,
+    "isProverb": false,
+    "title": "Vız gelmek.",
+    "meaning": "Hiç önemsememek, aldırış etmemek.",
+    "example": "Senin tehditlerin bana vız gelir."
+  },
+  {
+    "id": 350,
+    "isProverb": false,
+    "title": "Yüzsüzlük etmek.",
+    "meaning": "Utanmadan, sıkılmadan arsızca davranmak.",
+    "example": "O kadar laf yedi hala yüzsüzlük edip geliyor."
+  },
+  {
+    "id": 351,
+    "isProverb": true,
+    "title": "Davetsiz gelen döşeksiz oturur.",
+    "meaning": "Çağrılmadan bir yere giden kişi iyi ağırlanmayı beklememelidir.",
+    "example": "Kimse seni çağırmadı, davetsiz gelen döşeksiz oturur."
+  },
+  {
+    "id": 352,
+    "isProverb": true,
+    "title": "Deli dostun olacağına akıllı düşmanın olsun.",
+    "meaning": "Akılsız bir dost, yapacağı hatalarla sana düşmandan daha çok zarar verebilir.",
+    "example": "O adamla arkadaşlık etme, deli dostun olacağına akıllı düşmanın olsun."
+  },
+  {
+    "id": 353,
+    "isProverb": true,
+    "title": "Deniz dalgasız olmaz, gönül sevdasız olmaz.",
+    "meaning": "Her şeyin doğasında var olan bir özelliği vardır.",
+    "example": "Gençlikte böyle şeyler olur, deniz dalgasız olmaz gönül sevdasız olmaz."
+  },
+  {
+    "id": 354,
+    "isProverb": true,
+    "title": "Derdini söylemeyen derman bulamaz.",
+    "meaning": "İnsan sıkıntısını başkalarıyla paylaşmazsa ona çözüm bulamaz.",
+    "example": "Bana ne olduğunu anlat, derdini söylemeyen derman bulamaz."
+  },
+  {
+    "id": 355,
+    "isProverb": true,
+    "title": "Dost ile ye iç alışveriş etme.",
+    "meaning": "Arkadaşlık ilişkilerini para veya ticaret ilişkileriyle bozmamak gerekir.",
+    "example": "Onunla ortak olma, dost ile ye iç alışveriş etme."
+  },
+  {
+    "id": 356,
+    "isProverb": true,
+    "title": "Doğru söz yemin istemez.",
+    "meaning": "Gerçekten doğru ve dürüst olan bir sözün kanıta veya yemine ihtiyacı yoktur.",
+    "example": "Sana inanıyorum yemin etmene gerek yok, doğru söz yemin istemez."
+  },
+  {
+    "id": 357,
+    "isProverb": true,
+    "title": "Dost acı söyler.",
+    "meaning": "Gerçek dost, insanın hatalarını ve eksiklerini yüzüne karşı söylemekten çekinmez.",
+    "example": "Söylediklerime kırılma, dost acı söyler."
+  },
+  {
+    "id": 358,
+    "isProverb": true,
+    "title": "Dünya malı dünyada kalır.",
+    "meaning": "İnsan öldüğünde malını mülkünü beraberinde götüremez, bu yüzden mala çok tamah etmemelidir.",
+    "example": "Bu kadar hırs yapma, dünya malı dünyada kalır."
+  },
+  {
+    "id": 359,
+    "isProverb": true,
+    "title": "Eken biçer, konan göçer.",
+    "meaning": "Her şeyin doğal bir süreci ve sonucu vardır.",
+    "example": "Bu dünyada kalıcı değiliz, eken biçer konan göçer."
+  },
+  {
+    "id": 360,
+    "isProverb": true,
+    "title": "El için ağlayan gözden olur.",
+    "meaning": "Başkaları için gereğinden fazla fedakarlık yapan kişi sonunda kendi zararlı çıkar.",
+    "example": "Onun için bu kadar üzülme, el için ağlayan gözden olur."
+  },
+  {
+    "id": 361,
+    "isProverb": true,
+    "title": "Emanet ata binen tez iner.",
+    "meaning": "Başkasına ait olan bir şeye veya güce güvenerek iş yapılamaz.",
+    "example": "Kendi arabanı almalısın, emanet ata binen tez iner."
+  },
+  {
+    "id": 362,
+    "isProverb": true,
+    "title": "Er olan ekmeğini taştan çıkarır.",
+    "meaning": "Çalışkan ve azimli kişi en zor şartlarda bile geçimini sağlar.",
+    "example": "O aç kalmaz, er olan ekmeğini taştan çıkarır."
+  },
+  {
+    "id": 363,
+    "isProverb": true,
+    "title": "Eşeği düğüne çağırmışlar, ya su lazımdır ya odun demiş.",
+    "meaning": "Değer verilmeyen kişiler sadece iş düşüldüğünde hatırlanır.",
+    "example": "Beni sadece işleri düşünce arıyorlar, eşeği düğüne çağırmışlar ya su lazımdır ya odun demiş."
+  },
+  {
+    "id": 364,
+    "isProverb": true,
+    "title": "Et tırnaktan ayrılmaz.",
+    "meaning": "Birbirine çok yakın olan, kan bağı olan kişiler arasına kimse giremez.",
+    "example": "Kardeşinle küs kalamazsın, et tırnaktan ayrılmaz."
+  },
+  {
+    "id": 365,
+    "isProverb": true,
+    "title": "Evdeki hesap çarşıya uymadı.",
+    "meaning": "Önceden yapılan planlar ve hesaplar uygulamada her zaman tutmayabilir.",
+    "example": "Bütçemiz bu ay yetmedi, evdeki hesap çarşıya uymadı."
+  },
+  {
+    "id": 366,
+    "isProverb": true,
+    "title": "Fukaranın düşkünü, beyaz giyer kış günü.",
+    "meaning": "Fakir veya görgüsüz kişi, durumuna uygun olmayan, yersiz davranışlarda bulunur.",
+    "example": "Parası yok ama en pahalı telefonu almış, fukaranın düşkünü beyaz giyer kış günü."
+  },
+  {
+    "id": 367,
+    "isProverb": true,
+    "title": "Garip kuşun yuvasını Allah yapar.",
+    "meaning": "Kimsesiz ve çaresiz kişilere Allah yardım eder.",
+    "example": "O yetim çocuğun da bir rızkı var, garip kuşun yuvasını Allah yapar."
+  },
+  {
+    "id": 368,
+    "isProverb": true,
+    "title": "Gelen ağam, giden paşam.",
+    "meaning": "İktidarda veya başta kim olursa olsun ona boyun eğen, dalkavukluk eden kişiler için kullanılır.",
+    "example": "Onun bir duruşu yok, gelen ağam giden paşam der."
+  },
+  {
+    "id": 369,
+    "isProverb": true,
+    "title": "Gözü tanede olan kuşun ayağı tuzaktan kurtulmaz.",
+    "meaning": "Sadece kendi çıkarını düşünen ve açgözlü davranan kişi sonunda belaya bulaşır.",
+    "example": "O kadar hırslı ki sonunda batacak, gözü tanede olan kuşun ayağı tuzaktan kurtulmaz."
+  },
+  {
+    "id": 370,
+    "isProverb": true,
+    "title": "Güvenme varlığa, düşersin darlığa.",
+    "meaning": "İnsan zenginliğine güvenip savurganlık yapmamalıdır, bir gün yoksul düşebilir.",
+    "example": "Paranı idareli harca, güvenme varlığa düşersin darlığa."
+  },
+  {
+    "id": 371,
+    "isProverb": true,
+    "title": "Harman döven öküzün ağzı bağlanmaz.",
+    "meaning": "Bir işte çalışan ve emek veren kişinin o işin nimetlerinden faydalanması engellenemez.",
+    "example": "Çalışanlara ikramiyelerini verin, harman döven öküzün ağzı bağlanmaz."
+  },
+  {
+    "id": 372,
+    "isProverb": true,
+    "title": "Hasta olmayan sağlığın kadrini bilmez.",
+    "meaning": "İnsanlar ellerindeki nimetlerin değerini ancak onları kaybettiklerinde anlarlar.",
+    "example": "Hastalanınca sağlığın önemini anladı, hasta olmayan sağlığın kadrini bilmez."
+  },
+  {
+    "id": 373,
+    "isProverb": true,
+    "title": "Her ağacın meyvesi olmaz.",
+    "meaning": "Görünüşte işe yarar gibi duran her insandan veya her şeyden fayda beklenmez.",
+    "example": "O adamdan sana fayda gelmez, her ağacın meyvesi olmaz."
+  },
+  {
+    "id": 374,
+    "isProverb": true,
+    "title": "İğneyi kendine, çuvaldızı başkasına batır.",
+    "meaning": "Başkalarını eleştirmeden önce kendi hatalarını ve kusurlarını düşünmelisin.",
+    "example": "Hep başkalarını suçluyorsun, önce iğneyi kendine çuvaldızı başkasına batır."
+  },
+  {
+    "id": 375,
+    "isProverb": true,
+    "title": "İşten artmaz, dişten artar.",
+    "meaning": "İnsan ne kadar çok kazanırsa kazansın, tutumlu olmazsa birikim yapamaz.",
+    "example": "Çok kazanıyor ama hiç para biriktiremiyor, işten artmaz dişten artar."
+  },
+  {
+    "id": 376,
+    "isProverb": false,
+    "title": "Aklı başından gitmek.",
+    "meaning": "Çok şaşırmak, korkmak veya sevinmekten ne yapacağını bilememek.",
+    "example": "Kazayı görünce aklı başından gitti."
+  },
+  {
+    "id": 377,
+    "isProverb": false,
+    "title": "Alttan almak.",
+    "meaning": "Tartışmayı büyütmemek için yumuşak davranmak, taviz vermek.",
+    "example": "O sinirliyken sen alttan almalısın."
+  },
+  {
+    "id": 378,
+    "isProverb": false,
+    "title": "Ayak diremek.",
+    "meaning": "Bir konuda inat etmek, düşüncesinden vazgeçmemek.",
+    "example": "Oraya gitmemek için ayak diriyor."
+  },
+  {
+    "id": 379,
+    "isProverb": false,
+    "title": "Baş ütülemek.",
+    "meaning": "Çok konuşarak karşısındakini rahatsız etmek.",
+    "example": "Sabahtan beri başımı ütüledi."
+  },
+  {
+    "id": 380,
+    "isProverb": false,
+    "title": "Boynu bükük kalmak.",
+    "meaning": "Çaresiz, kimsesiz ve üzgün bir durumda olmak.",
+    "example": "Yetim çocuklar boynu bükük kaldı."
+  },
+  {
+    "id": 381,
+    "isProverb": false,
+    "title": "Can kulağıyla dinlemek.",
+    "meaning": "Bütün dikkatini vererek çok iyi dinlemek.",
+    "example": "Öğretmenin anlattıklarını can kulağıyla dinledi."
+  },
+  {
+    "id": 382,
+    "isProverb": false,
+    "title": "Çiçeği burnunda.",
+    "meaning": "Çok yeni, taze.",
+    "example": "Çiçeği burnunda bir öğretmen olarak göreve başladı."
+  },
+  {
+    "id": 383,
+    "isProverb": false,
+    "title": "Dili çözülmek.",
+    "meaning": "Suskunluğunu bozup konuşmaya başlamak.",
+    "example": "Olaydan sonra nihayet dili çözüldü."
+  },
+  {
+    "id": 384,
+    "isProverb": false,
+    "title": "Ekmeğinden olmak.",
+    "meaning": "İşini kaybetmek, geçim sağladığı kaynaktan mahrum kalmak.",
+    "example": "O hatası yüzünden ekmeğinden oldu."
+  },
+  {
+    "id": 385,
+    "isProverb": false,
+    "title": "Gözü yaşlı.",
+    "meaning": "Çok ağlayan, üzüntülü.",
+    "example": "Gözü yaşlı bir şekilde evden ayrıldı."
+  },
+  {
+    "id": 386,
+    "isProverb": false,
+    "title": "Göz yummak.",
+    "meaning": "Birinin hatasını görmezden gelmek, affetmek.",
+    "example": "Çocuğun yaramazlıklarına göz yumuyor."
+  },
+  {
+    "id": 387,
+    "isProverb": false,
+    "title": "Havalara uçmak.",
+    "meaning": "Çok sevinmek.",
+    "example": "Sınavı kazandığını duyunca havalara uçtu."
+  },
+  {
+    "id": 388,
+    "isProverb": false,
+    "title": "İçi açılmak.",
+    "meaning": "Ferahlamak, sıkıntısı dağılmak.",
+    "example": "Bahçeye çıkınca içim açıldı."
+  },
+  {
+    "id": 389,
+    "isProverb": false,
+    "title": "İçi sızlamak.",
+    "meaning": "Çok üzülmek, acımak.",
+    "example": "O zavallı hayvanı görünce içim sızladı."
+  },
+  {
+    "id": 390,
+    "isProverb": false,
+    "title": "Kafasına takmak.",
+    "meaning": "Bir şeyi sürekli düşünerek kendine dert etmek.",
+    "example": "Sınav sonucunu çok kafasına takıyor."
+  },
+  {
+    "id": 391,
+    "isProverb": false,
+    "title": "Kanı donmak.",
+    "meaning": "Çok korkunç bir olay karşısında dehşete düşmek.",
+    "example": "Cinayet haberini okuyunca kanım dondu."
+  },
+  {
+    "id": 392,
+    "isProverb": false,
+    "title": "Kulak ardı etmek.",
+    "meaning": "Söylenenleri dikkate almamak, önemsememek.",
+    "example": "Benim uyarılarımı kulak ardı etti."
+  },
+  {
+    "id": 393,
+    "isProverb": false,
+    "title": "Lafa karışmak.",
+    "meaning": "Başkalarının konuşmasına izinsiz ve yersiz olarak katılmak.",
+    "example": "Büyükler konuşurken lafa karışma."
+  },
+  {
+    "id": 394,
+    "isProverb": false,
+    "title": "Maskara olmak.",
+    "meaning": "Gülünç ve alay edilecek duruma düşmek.",
+    "example": "O kıyafetle herkese maskara oldu."
+  },
+  {
+    "id": 395,
+    "isProverb": false,
+    "title": "Omuz vermek.",
+    "meaning": "Birine yardım etmek, destek olmak.",
+    "example": "Bu zor günlerde birbirimize omuz vermeliyiz."
+  },
+  {
+    "id": 396,
+    "isProverb": false,
+    "title": "Ömrü billah.",
+    "meaning": "Hayatı boyunca, hiçbir zaman.",
+    "example": "Ömrü billah böyle bir rezalet görmedim."
+  },
+  {
+    "id": 397,
+    "isProverb": false,
+    "title": "Pupa yelken.",
+    "meaning": "Hiçbir engele takılmadan, çok hızlı bir şekilde.",
+    "example": "Proje pupa yelken ilerliyor."
+  },
+  {
+    "id": 398,
+    "isProverb": false,
+    "title": "Rest çekmek.",
+    "meaning": "Birine karşı kesin tavır alıp meydan okumak.",
+    "example": "Şartları kabul etmeyince rest çekti."
+  },
+  {
+    "id": 399,
+    "isProverb": false,
+    "title": "Suya düşmek.",
+    "meaning": "Gerçekleşememek, boşa gitmek.",
+    "example": "Bütün tatil planlarımız suya düştü."
+  },
+  {
+    "id": 400,
+    "isProverb": false,
+    "title": "Taşkınlık yapmak.",
+    "meaning": "Aşırı ve kontrolsüz davranışlarda bulunmak.",
+    "example": "Maçtan sonra taraftarlar taşkınlık yaptı."
+  }
+]

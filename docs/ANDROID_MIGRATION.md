@@ -14,7 +14,9 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
-Phase 7 adds Template Detail and free local-library installation.
+Phase 8 adds the first Android home-screen widget: free Proverb / Söz, persistent
+per-instance configuration, Library integration, refresh and deletion cleanup.
+Phase 7 added Template Detail and free local-library installation.
 Phase 6 added typed Navigation Compose and functional Discover/Search/Library screens.
 Phase 5 added the Kare design/theme/font and English/Turkish localization foundation.
 Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
@@ -255,7 +257,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 7. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 8. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -271,7 +273,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 7. D
 | Firebase Auth | AuthService | Separate auth foundation branch | Developer 2 | IN PROGRESS | `android/auth-foundation`; not integrated or validated by Phase 7 |
 | Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
 | Public profiles | PublicProfileService | Value only | Unassigned | NOT STARTED | No repository implementation/UI |
-| Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; widget synchronization deferred |
+| Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; Proverb membership changes refresh launcher instances |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
 | DataStore | AppStorage / defaults | Reserved `core/preferences` | Unassigned | NOT STARTED | No dependency or implementation |
 | Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
@@ -287,9 +289,9 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 7. D
 | Focus | FocusSession / FocusView / FocusWidget | Reserved feature package | Unassigned | NOT STARTED | No timer/audio/session logic |
 | Frame | FramePhotoStore / FrameWidget | Reserved feature package | Unassigned | NOT STARTED | No photo picker/storage |
 | Aurora | AuroraWidget | None | Unassigned | NOT STARTED | Native clock/update design needed |
-| Proverb | ProverbLibrary / ProverbWidget | None | Unassigned | NOT STARTED | Turkish source dataset not copied |
+| Proverb | ProverbLibrary / ProverbWidget | Glance ProverbWidget, 400 source entries | Developer 1 | COMPLETED | Phase 8 reference widget; independent content selection |
 | Other live widgets | Hush / Exhale / Countdown / Progress | None | Unassigned | NOT STARTED | Models, setup, renderers and actions deferred |
-| Android App Widgets | actual-widgetsExtension | Reserved `widget` | Unassigned | NOT STARTED | No receiver/provider/Glance dependency |
+| Android App Widgets | actual-widgetsExtension | Glance receiver, configuration Activity and instance repository | Developer 1 | COMPLETED | First-widget foundation only; other providers deferred |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
@@ -303,11 +305,13 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 7. D
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: none. Phase 7 is COMPLETED. Owner: Developer 1. Branch: `ANDROID`.
-Detail/navigation/access-policy/resources/test reservations are released. Developer 1
-maintains this main migration record; Developer 2 retains authentication ownership.
-Shared-file risks: AppContainer factory and navigation may later integrate auth;
-coordinate these integration points before editing or merging. No Phase 8 work started.
+Current tasks: none. Phase 8 is COMPLETED; implementation reservations released.
+Owner: Developer 1. Scope delivered: Proverb widget, persistent instance state,
+configuration, Library refresh integration, tests and Pixel Launcher validation.
+Shared files changed: AppContainer, manifest, Gradle configuration, .gitignore and
+this migration record. Existing auth wiring was preserved. Coordinate any future
+composition-root edits with Developer 2; no auth changes are part of Phase 8.
+Pre-existing untracked `.idea/markdown.xml` is unrelated and remains untouched.
 
 ### Developer 2
 
@@ -397,6 +401,17 @@ than relying on conversation history.
   belongs to a later phase. Paid shelf visibility is merchandising, never an
   entitlement or billing implementation.
 
+### 2026-10-10 — First Android widget (Phase 8)
+
+Use Glance 1.1.1 with native AppWidget lifecycle/configuration APIs for Proverb.
+App Groups/SharedWidgetStore become app-private atomic, versioned JSON files keyed
+by launcher instance ID, plus the existing Room library as the membership source.
+No duplicate library database or long-lived Activity is required. Configuration is
+excluded from backup because launcher IDs are installation-specific; cross-device
+restore requires reconfiguration until explicit ID remapping is implemented.
+Use four-hour, inexact AppWidget updates and explicit invalidation after relevant
+app changes; no custom polling worker or exact alarm. See the Phase 8 record below.
+
 ## Known platform differences
 
 | Concern | Android migration approach / limitation |
@@ -442,17 +457,17 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 8: a separately scoped Android home-screen widget foundation
-(configuration and appWidgetId mapping for one free supported design), with explicit
-launcher-size and refresh decisions. Do not mistake catalog accessory sizes or a
-Library install for an Android widget placement. Editor and Billing remain separate
-future phases. These recommendations are not authorization to begin.
+Recommended Phase 9: harden the existing Proverb experience across launcher sizes,
+font scales and supported Android versions; add a useful widget-picker preview and
+an app-side placement guide. Define backup/restore ID remapping before expanding
+widget types. This recommendation does not authorize implementation. Editor,
+Billing, Daily/Focus scheduling and other widgets remain separate future work.
 
-Developer 2 should continue the independent authentication foundation on
-`android/auth-foundation`, including its own contracts, tests and
-`docs/AUTH_MIGRATION_NOTES.md`. Free local installation does not require sign-in.
-Coordinate future composition-root and navigation integration; do not infer an
-entitlement from an authenticated account. Phase 7 did not inspect or modify auth work.
+Developer 2 continues independent authentication/Firebase work on
+`android/auth-foundation`, including its contracts, tests and
+`docs/AUTH_MIGRATION_NOTES.md`. The existing AppContainer auth wiring was retained;
+Phase 8 does not certify the completeness of that work. Widgets require no sign-in.
+Coordinate shared Gradle, manifest and AppContainer edits before integration.
 
 ### Conflict hotspots
 
@@ -1667,3 +1682,234 @@ artwork and live preview rendering. Full editor, Focus/Frame/Daily/other setup,
 SharedWidgetStore/App Widget synchronization and purchase UI remain deferred. Phase 8
 is recommended to scope one free Android widget/configuration path separately from
 Developer 2's auth foundation. No commit, push, merge or Git history change was made.
+
+
+## Phase 8 — Proverb Android home-screen widget
+
+Date: 2026-10-10. Branch: `ANDROID`. Owner: Developer 1. Status: COMPLETED.
+Developer 2 retains authentication/Firebase ownership; no auth files or auth notes
+were changed. No commit, push, merge, branch operation or history rewrite occurred.
+
+### Source inspection and selection
+
+Inspected the pinned IOS revision listed above: `actual-widgets/ProverbWidget.swift`,
+`actual-widgets/KareSelection.swift`, `Widgy/Core/Proverb/ProverbLibrary.swift`,
+`Widgy/Core/WidgetViews/ProverbWidgetView.swift`, `SharedWidgetStore.swift`,
+`InstalledWidget.swift`, `LibraryStore.swift` and the older `WidgyWidget/` examples.
+The shipping target is `actual-widgetsExtension`; the older sample target is not
+used as the implementation reference.
+
+Proverb (`t-proverb`, Söz) is free, requires no photos/editor/network/auth, and is
+therefore the smallest complete architecture demonstration. The source contains
+**400** ordered entries (despite its older 399-entry comment), preserving IDs,
+proverb/idiom flags, Turkish titles, meanings and examples in `proverbs-v1.json`.
+Selection uses the source's epoch-based four-hour bucket and positive modulo.
+The default ALL selection preserves source ordering and rotation; optional
+PROVERBS/IDIOMS filters use the same algorithm over their ordered subsets.
+
+### Architecture and persistence mapping
+
+| iOS responsibility | Phase 8 Android implementation |
+|---|---|
+| WidgetKit provider/view | ProverbWidget / ProverbReceiver using Glance RemoteViews |
+| App Groups / SharedWidgetStore files | WidgetInstanceStore, app-private AtomicFile JSON, default app process |
+| Shared installed-design membership | Existing Room LibraryRepository; domain InstalledWidget only |
+| Per-instance configuration | Native ProverbConfigurationActivity → WidgetConfigurationViewModel → ProverbWidgetRepository |
+| WidgetCenter reload | Repository invalidation plus Glance update/updateAll |
+| Timeline entries | OS-managed four-hour inexact AppWidget update; content derived from current time |
+| Extension deletion | Glance onDelete removes only the instance configuration |
+
+Glance fits text, buttons and simple adaptive layout without a custom framework.
+The receiver/configuration Activity use native AppWidget IDs; rendering never
+reads screen ViewModels or Room entities. AppContainer owns one store and composes
+catalog/library dependencies. Glance can create a process to read persisted state
+when the application UI is closed. Public GlanceAppWidgetManager APIs map IDs.
+References: [Glance lifecycle](https://developer.android.com/develop/ui/compose/glance/glance-app-widget),
+[configuration](https://developer.android.com/develop/ui/compose/glance/configuration),
+[Glance releases](https://developer.android.com/jetpack/androidx/releases/glance).
+
+Each `noBackupFilesDir/widget-instances/<appWidgetId>.json` stores schema version 1,
+`templateId: t-proverb` and `selection: all|proverbs|idioms`. Explicit kotlinx JSON
+mapping rejects unknown versions, template IDs and selection values. AtomicFile,
+an application-owned mutex and IO dispatching protect operations. The in-memory
+revision Flow is only an invalidation signal; files remain the persistent truth.
+This is Android-specific configuration, not an iOS shared-file interchange format.
+No images, serialized domain graphs or second library database are stored.
+Future types can extend the versioned format deliberately with migrations.
+Components currently share one process; introducing a separate process requires
+revisiting the lock/invalidation architecture.
+
+### Configuration and Library relationship
+
+The launcher starts a focused configuration Activity. It validates the supplied
+ID/provider, initially returns cancellation, restores small selection state, and
+returns RESULT_OK only after save/refresh. English and Turkish UI resources are
+provided. All sayings, Proverbs and Idioms are independent per-instance choices.
+Android 12+ hosts can expose reconfiguration through widget Settings.
+
+Saving uses the actual bundled free template and the existing idempotent Room
+LibraryRepository install. For a newly installed item, MEDIUM is preferred if
+supported, otherwise the first supported size; an existing item is not overwritten.
+This library size is not the launcher's physical dimensions. One Library item can
+support many launcher instances. Removing one instance never removes that item.
+Removing Söz from Library displays a localized membership message on its remaining
+instances; reinstalling restores content. Missing or invalid configuration renders
+safe localized states, with diagnostics reported. Corrupt configuration currently
+requires removing/re-adding the launcher widget. If the library commit succeeds but
+configuration save fails, the Library item remains; retry is duplicate-safe.
+
+### Refresh and deletion
+
+- Initial configuration saves then invalidates and updates all Proverb instances.
+- Configuration changes, launcher updates and size changes re-read persistent state.
+- The app's LibraryRepository decorator refreshes after committed Proverb install
+  or removal; unrelated favorite/reorder changes do not trigger updates.
+- Refresh re-evaluates the current four-hour bucket; it is not a random/next button.
+- AppWidget `updatePeriodMillis=14400000` requests battery-aware inexact updates.
+  No custom WorkManager job, exact alarm or background network fetch was added;
+  Glance's own session infrastructure may use WorkManager internally.
+- Deletion removes only the specified instance file. Pixel Launcher can defer the
+  actual deletion callback until its Undo window expires.
+- A refresh failure is logged without reporting a committed Library mutation as
+  failed. A process death between commit and notification is reconciled by the
+  next platform/manual refresh.
+
+Daily/Focus will need their own calendar/session and background scheduling design;
+this phase does not provide precise timeline deadlines or per-second updates.
+
+### Visual, localization and accessibility differences
+
+The launcher widget uses source paper FBF4EA and ink 2A211C. Accent is deliberately
+darkened from C05A3E to AA4C32 for small-text contrast. System serif replaces
+Fraunces in RemoteViews; the configuration Activity uses the existing KareTheme.
+No iOS time-of-day artwork, gradient, accessory families or lock-screen layouts
+were copied. The widget starts at 4 × 3 cells, supports native resizing within its
+minimum bounds, and omits the example at shorter heights. Long text is bounded;
+full typography/font-scale and launcher-size coverage remains future validation.
+
+Twelve new strings exist in both English and Turkish. Source sayings remain
+Turkish, including in English UI. Native text semantics and labeled Refresh/Open
+Kare buttons are exposed; configuration chips expose checked state. Open Kare
+starts MainActivity through a native Glance action without serialized objects or
+auth dependencies. This is basic accessibility support, not a TalkBack audit.
+The picker currently uses the existing application icon fallback, not a designed
+widget preview. A polished preview and production app icon remain follow-up work.
+
+### Tests and executed validation
+
+Seven new Robolectric/JVM tests cover persisted round-trip/reopening, independent
+IDs, deletion isolation, retained Library membership, source-to-domain mapping,
+missing/corrupt/unsupported configuration, deterministic rotation, reactive refresh,
+reconfiguration, membership removal/reinstall and post-commit refresh failures.
+The source test checks all 400 entries, unique IDs and representative source text.
+
+One new instrumented AppWidgetHost test binds two real instances, renders actual
+RemoteViews, checks independently selected kinds, deletes one and checks cleanup
+without deleting the Library item or the other instance.
+
+Executed against the final implementation:
+
+| Command | Result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS: 135 JVM tests, zero failures/errors/skips |
+| `./gradlew lint` | PASS: zero errors, 78 warnings; no disabled checks or new suppressions |
+| `./gradlew connectedDebugAndroidTest` | PASS: 4 tests, including the new widget-host test |
+| `./gradlew installDebug` | PASS |
+| `git diff --check` | PASS |
+
+Lint initially found an internal Glance ID API; it was replaced with the public
+manager API. Remaining warnings include dependency/version and unused-resource
+warnings; they do not prevent the build. Build-generated `.kotlin/` is now ignored.
+
+### Actual launcher validation
+
+Device: Pixel_8 AVD, emulator-5554, Android 17 / API 37.1, Pixel Launcher
+(`com.google.android.apps.nexuslauncher`). This was real launcher interaction,
+in addition to the instrumented host test.
+
+| Check | Observed result |
+|---|---|
+| Install and widget picker | Debug app installed; Kare · Söz appeared with 4 × 3 sizing and description |
+| Add/configure | Launcher Add opened configuration; Save completed and rendered real content |
+| First instance | ID 20, Proverbs: “Ağaç yaşken eğilir.” with meaning/example |
+| Second instance | ID 21, Idioms: “Gözü yükseklerde olmak.”; separate JSON selections verified |
+| Process death | Killed app PID with debug run-as SIGKILL; pidof returned no process; launcher content remained |
+| Refresh after death | Refresh restarted a new app PID and retained saved content/selection |
+| Deletion | Removed ID 21 through launcher; after Undo expired only 20.json remained |
+| Isolation | ID 20 continued rendering the proverb after ID 21 removal |
+| Library retention | Open Kare worked; Library still contained the single Söz item |
+
+No device reboot, cross-device backup restore, four-hour elapsed scheduling run,
+TalkBack session, OEM launcher matrix or manual Turkish-locale session was executed.
+Those are limitations of validation, not claimed passes. The remaining first test
+widget and Söz Library item were left on the emulator for review. Screenshots were
+kept under /tmp, not added to the repository.
+
+### Files created
+
+Paths are relative to repository root:
+
+- `app/src/main/java/com/example/kare/core/model/Proverb.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/ProverbSource.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/WidgetInstanceStore.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/ProverbWidgetRepository.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/WidgetRefreshingLibraryRepository.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbWidget.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetConfigurationViewModel.kt`
+- `app/src/main/res/xml/proverb_widget_info.xml`
+- `app/src/main/res/values/widget_strings.xml`
+- `app/src/main/res/values-tr/widget_strings.xml`
+- `app/src/main/resources/proverb/proverbs-v1.json`
+- `app/src/test/java/com/example/kare/widget/WidgetStateTest.kt`
+- `app/src/androidTest/java/com/example/kare/ProverbWidgetHostTest.kt`
+
+### Files modified
+
+- `.gitignore` — ignore generated Kotlin compiler cache.
+- `app/build.gradle.kts` — Glance dependency.
+- `gradle/libs.versions.toml` — Glance 1.1.1 alias.
+- `app/src/main/AndroidManifest.xml` — receiver and configuration Activity.
+- `app/src/main/java/com/example/kare/app/AppContainer.kt` — widget repository and Library refresh composition; auth wiring preserved.
+- `docs/ANDROID_MIGRATION.md` — ownership, status, decisions and complete Phase 8 record.
+
+### Work log and remaining work
+
+2026-10-10 — Phase 8 completed by Developer 1 on ANDROID. Implemented the selected
+free Proverb widget, imported actual source data, defined versioned independent
+instance storage, connected existing Library persistence, implemented configuration,
+refresh and deletion, and validated JVM/platform/launcher behavior. Reservations
+are released. The unrelated pre-existing `.idea/markdown.xml` remains untracked.
+No generated screenshots, machine settings or sensitive configuration were added.
+
+Open decisions: backup/restore ID remapping, final picker preview/app icon,
+large-font/small-layout support, additional launcher/API coverage and eventual
+app-side placement guidance. Device-specific restore needs reconfiguration because
+instance files are intentionally excluded from backup. No blocker remains for the
+scoped first widget. Billing, editor, photos, additional widgets and precise
+Daily/Focus scheduling are deferred. Authentication is a future integration point
+only for any later authenticated widget content.
+
+Conflict hotspots: AppContainer, AndroidManifest, Gradle files and this migration
+record. Developer 2 can continue auth/Firebase repositories, models, screens and
+its own tests/notes independently; coordinate any shared-file changes. Phase 9 is
+recommended above but has not started.
+
+
+### Phase 8 closing audit — 2026-10-10
+
+Resumed from the existing working tree without reimplementation. Re-read agent
+instructions, migration records, tracked diffs, all Phase 8 source/resources/tests,
+and validation reports. Confirmed the receiver/provider, persistent per-ID state,
+configuration, creation/update/deletion, domain mapping, localized accessibility
+labels, launcher actions, independent instances and process-death recovery are
+complete within the stated scope. A full extraction comparison against the pinned
+Swift source confirmed all 400 JSON records match exactly, including order and all
+fields. English/Turkish widget resource key sets match.
+
+No implementation changes followed the successful build/JVM/lint/device run, so
+those results remain applicable; checks were not presented as newly rerun. Final
+`git diff --check` passed. File inventory contains only the 14 Phase 8 additions,
+six documented modified files and the pre-existing unrelated `.idea/markdown.xml`.
+No authentication files were changed. No Phase 9 work was started.

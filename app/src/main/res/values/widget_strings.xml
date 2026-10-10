@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proverb_widget_name">Kare · Söz</string>
+    <string name="proverb_widget_description">Turkish sayings and meanings, rotating every four hours.</string>
+    <string name="proverb_configuration_info">Choose content for this home-screen instance. Söz will be added to your Library if needed. Sayings remain in Turkish.</string>
+    <string name="proverb_all">All sayings</string>
+    <string name="proverb_proverbs">Proverbs</string>
+    <string name="proverb_idioms">Idioms</string>
+    <string name="proverb_kind">PROVERB</string>
+    <string name="proverb_idiom">IDIOM</string>
+    <string name="proverb_needs_configuration">Configure this widget from your launcher.</string>
+    <string name="proverb_library_missing">Add Söz to your Kare Library to display sayings.</string>
+    <string name="proverb_unavailable">Widget unavailable. Open Kare or refresh to try again.</string>
+    <string name="proverb_open_app">Open Kare</string>
+</resources>
