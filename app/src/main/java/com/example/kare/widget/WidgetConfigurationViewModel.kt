@@ -11,6 +11,7 @@ data class WidgetConfigurationState(
     val selection: LoadState<ProverbSelection> = LoadState.Loading,
     val saving: Boolean = false,
     val saved: Boolean = false,
+    val recovering: Boolean = false,
     val error: UiError? = null,
 )
 class WidgetConfigurationViewModel(
@@ -32,7 +33,9 @@ class WidgetConfigurationViewModel(
                 mutable.value = WidgetConfigurationState(LoadState.Loaded(selected))
             } catch (error: Exception) {
                 if (error is CancellationException) throw error
-                mutable.value = WidgetConfigurationState(LoadState.Failed(error.toUiError("widget.configure.load", errors)))
+                errors.report("widget.configure.load", error)
+                // Do not delete or overwrite until the user explicitly saves a new choice.
+                mutable.value = WidgetConfigurationState(LoadState.Loaded(ProverbSelection.ALL), recovering = true)
             }
         }
     }

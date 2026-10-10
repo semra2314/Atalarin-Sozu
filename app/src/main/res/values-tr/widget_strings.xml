@@ -12,4 +12,9 @@
     <string name="proverb_library_missing">Sözleri görmek için Söz’ü Kare kitaplığına ekle.</string>
     <string name="proverb_unavailable">Widget kullanılamıyor. Kare’yi aç veya yeniden denemek için yenile.</string>
     <string name="proverb_open_app">Kare’yi aç</string>
+    <string name="proverb_configure">Söz’ü yapılandır</string>
+    <string name="proverb_placement_guidance">Boyutunu değiştirmek için widget’a uzun bas. Bu widget’ı değiştirmek için ayarlar düğmesini kullan. Küçük widget’larda metni kaydır.</string>
+    <string name="proverb_recovery">Kayıtlı ayarlar okunamadı. Bu widget’ı onarmak için içerik seçip kaydet. Kitaplığın değişmedi.</string>
+    <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
+    <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
 </resources>

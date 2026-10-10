@@ -12,4 +12,9 @@
     <string name="proverb_library_missing">Add Söz to your Kare Library to display sayings.</string>
     <string name="proverb_unavailable">Widget unavailable. Open Kare or refresh to try again.</string>
     <string name="proverb_open_app">Open Kare</string>
+    <string name="proverb_configure">Configure Söz</string>
+    <string name="proverb_placement_guidance">Long-press the widget to resize it. Use its settings button to change this instance. Scroll the text on smaller widgets.</string>
+    <string name="proverb_recovery">Saved settings could not be read. Choose content and save to repair this instance. Your Library is unchanged.</string>
+    <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
+    <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
 </resources>

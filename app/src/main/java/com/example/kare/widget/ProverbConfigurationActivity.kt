@@ -50,6 +50,8 @@ class ProverbConfigurationActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.spacedBy(KareSpacing.md)) {
                         ScreenTitle(stringResource(R.string.proverb_widget_name))
                         Text(stringResource(R.string.proverb_configuration_info))
+                        Text(stringResource(R.string.proverb_placement_guidance))
+                        if (state.recovering) Text(stringResource(R.string.proverb_recovery))
                         when (val choice = state.selection) {
                             LoadState.Loading -> LoadingContent()
                             is LoadState.Failed -> ErrorContent(choice.error, vm::load)

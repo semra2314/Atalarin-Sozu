@@ -14,6 +14,7 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 9 hardens Proverb sizing, recovery, picker presentation and accessibility.
 Phase 8 adds the first Android home-screen widget: free Proverb / Söz, persistent
 per-instance configuration, Library integration, refresh and deletion cleanup.
 Phase 7 added Template Detail and free local-library installation.
@@ -257,7 +258,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 8. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 9. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -297,6 +298,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 8. D
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
 | Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
+| Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
 | Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
 ## Current work
@@ -305,13 +307,11 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 8. D
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: none. Phase 8 is COMPLETED; implementation reservations released.
-Owner: Developer 1. Scope delivered: Proverb widget, persistent instance state,
-configuration, Library refresh integration, tests and Pixel Launcher validation.
-Shared files changed: AppContainer, manifest, Gradle configuration, .gitignore and
-this migration record. Existing auth wiring was preserved. Coordinate any future
-composition-root edits with Developer 2; no auth changes are part of Phase 8.
-Pre-existing untracked `.idea/markdown.xml` is unrelated and remains untouched.
+Current tasks: None. Phase 9 Proverb hardening is COMPLETED (2026-10-11).
+Owner: Developer 1. Widget/resource/test reservations are released. Phase 10 has
+not started. Closing checks required no production or test changes. Shared-file
+risk remains this migration record; future widget changes should coordinate the
+widget package/resources. Authentication/Firebase remains owned by Developer 2.
 
 ### Developer 2
 
@@ -457,11 +457,11 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 9: harden the existing Proverb experience across launcher sizes,
-font scales and supported Android versions; add a useful widget-picker preview and
-an app-side placement guide. Define backup/restore ID remapping before expanding
-widget types. This recommendation does not authorize implementation. Editor,
-Billing, Daily/Focus scheduling and other widgets remain separate future work.
+Recommended Phase 10: connect the existing Proverb widget to app-side placement
+from Library/Detail using native pin-widget support and a launcher-picker fallback.
+Keep Library membership distinct from launcher instances; retain explicit per-instance
+configuration. This is a recommendation, not authorization or an active assignment.
+No additional widget, editor, billing or scheduling work has started.
 
 Developer 2 continues independent authentication/Firebase work on
 `android/auth-foundation`, including its contracts, tests and
@@ -1913,3 +1913,132 @@ those results remain applicable; checks were not presented as newly rerun. Final
 `git diff --check` passed. File inventory contains only the 14 Phase 8 additions,
 six documented modified files and the pre-existing unrelated `.idea/markdown.xml`.
 No authentication files were changed. No Phase 9 work was started.
+
+
+## Phase 9 — Proverb hardening — COMPLETED
+
+Owner: Developer 1. Branch: `ANDROID`. Implementation and primary validation:
+2026-10-10. Closing accessibility/deletion audit and documentation: 2026-10-11.
+The continuation preserved all working code and tests; only this document changed
+during closure. No authentication/Firebase files or Auth migration notes changed.
+
+### Architecture decisions and platform differences
+
+- **2026-10-10 — Responsive presentation:** retain Glance `SizeMode.Exact`; use
+  `LocalSize` and Android font scale for presentation decisions. Padding is 12 dp
+  below 250 dp width, otherwise 16 dp. Kind appears at effective height >= 220 dp;
+  example requires effective width >= 220 dp and height >= 300 dp, dividing by
+  font scale (minimum 1). No size is persisted and resize never creates configuration.
+- **2026-10-10 — Text accessibility:** a weighted Glance LazyColumn keeps full
+  proverb/meaning scrollable; optional secondary text is omitted on tight layouts.
+  Three fixed 48 dp actions remain visible with localized labels and decorative
+  icons. System serif remains the supported widget font; body text uses 14 sp.
+  This follows launcher dimensions rather than iOS small/medium/large families.
+- **2026-10-10 — Provider/picker:** retain initial 250 x 220 dp / 4 x 3 target;
+  allow both resize axes, minimum 180 x 180 dp and maximum 600 x 600 dp metadata.
+  API 31+ max-size and native preview-layout attributes are ignored on older APIs.
+  Launcher grid/padding ultimately controls available sizes. Portable XML preview
+  uses actual source proverb text, Kare colors and localized labels; no bitmap asset.
+- **2026-10-10 — Recovery:** missing state can be configured; corrupt state reports
+  a diagnostic and opens an explicit recovery flow. Reading does not overwrite the
+  file; Save repairs only that instance. No stale backup IDs are mapped to new IDs.
+  Version 1 atomic JSON in no-backup storage, Room Library, and four-hour inexact
+  refresh remain unchanged. Resize, configuration, explicit refresh and Library
+  notifications reuse the existing update path. No new scheduler or storage layer.
+- **2026-10-11 — Closing audit:** no concrete production defect was found in the
+  remaining checks. Keep the implementation and record the limits of accessibility
+  automation rather than treating unverified speech as a passing TalkBack audit.
+
+### Actual emulator and accessibility validation
+
+Pixel_8 AVD (`emulator-5554`), Android 17 / API 37.1, Pixel Launcher
+(`com.google.android.apps.nexuslauncher`). These observations came from real
+launcher interaction, supplemented by the instrumented host test:
+
+| Check | Observed result |
+|---|---|
+| Picker/add/configure | New paper preview, label/description and 4 x 3 target displayed; added ID 24 with Proverbs and ID 25 with Idioms |
+| Resize | ID 24 resized smaller to 3 x 2 and larger to 4 x 3 using launcher handles; usable content, unchanged category file; second instance independent |
+| Large font | At 200% Android font scale, text scrolled to reveal full content and fixed action targets remained visible; secondary metadata reduced; restored 100% |
+| Corrupt recovery | Deliberately corrupted only 25.json; refresh failed safely, Configure showed recovery notice, explicit Idioms Save repaired it; 24.json unchanged |
+| Reboot/process restart | Executed emulator reboot, waited for boot/unlock and revisited both widget pages; both rendered with their original categories/files; launcher process recreation included |
+| Accessibility structure | Inspected localized Refresh, Configure Söz and Open Kare nodes; 126 px targets at 2.625 density equal 48 dp; configuration chips expose native checkable/selected state |
+| TalkBack | Service bound and touch exploration enabled; visual accessibility focus appeared on configuration content. Spoken output and complete traversal order could not be reliably verified by automation |
+| Contrast/focus | Warm paper with dark ink and accent remained readable in reviewed layouts; actual actions and configuration selection worked. No claim of exhaustive contrast/device or spoken-focus testing |
+| Closing deletion | Resized the repaired ID 25 to 3 x 3, removed it through launcher, waited for Undo expiration; only 24.json remained, still selecting Proverbs |
+| Surviving instance | ID 24 rendered “Sakla samanı gelir zamanı.” after deletion; Refresh and Open Kare remained functional |
+| Library retention | Opened Library after deletion; one Söz item remained with favorite/remove/reorder controls. No Library data was removed |
+| Settings restoration | Verified enabled_accessibility_services=null, accessibility_enabled=0, font_scale=1.0, matching the original temporary-test settings |
+
+The remaining ID 24 and Library item are left for review. Unrelated launcher
+widgets/data were untouched. Screenshots/UI dumps stayed under `/tmp`, outside
+source control. Placement guidance is concise in configuration; app-side pinning
+is deferred. English/Turkish widget strings receive the same five keys.
+
+### Tests and validation
+
+Added three `ProverbHardeningTest` JVM tests for layout/large-font decisions and
+corrupt/missing-state recovery, explicit repair, isolation and Library retention.
+Extended the existing `ProverbWidgetHostTest` with real host size-option changes
+(180 x 180 and 500 x 500), refresh, isolation and deletion; no duplicated host test.
+
+| Command | Result and provenance |
+|---|---|
+| `./gradlew assembleDebug` | PASS in the completed Phase 9 validation run; unchanged implementation during closing audit |
+| `./gradlew test` | PASS: 138 JVM tests, zero failures/errors/skips; inherited, not rerun during closure |
+| `./gradlew lint` | PASS: zero errors, 81 warnings; inherited. Three additional API-level UnusedAttribute warnings concern API 31+ provider metadata; no checks disabled |
+| `./gradlew connectedDebugAndroidTest` | PASS: four tests, zero failures/skips on the emulator; inherited, not rerun during closure |
+| `./gradlew installDebug` | PASS during primary Phase 9 validation |
+| `git diff --check` | PASS, rerun after closing documentation changes |
+
+### Complete Phase 9 file manifest
+
+Paths are relative to repository root. Created (7):
+
+- `app/src/main/java/com/example/kare/widget/ProverbLayout.kt`
+- `app/src/main/res/drawable/widget_configure.xml`
+- `app/src/main/res/drawable/widget_open.xml`
+- `app/src/main/res/drawable/widget_paper.xml`
+- `app/src/main/res/drawable/widget_refresh.xml`
+- `app/src/main/res/layout/proverb_widget_preview.xml`
+- `app/src/test/java/com/example/kare/widget/ProverbHardeningTest.kt`
+
+Modified (8):
+
+- `app/src/main/java/com/example/kare/widget/ProverbWidget.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetConfigurationViewModel.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbConfigurationActivity.kt`
+- `app/src/main/res/xml/proverb_widget_info.xml`
+- `app/src/main/res/values/widget_strings.xml`
+- `app/src/main/res/values-tr/widget_strings.xml`
+- `app/src/androidTest/java/com/example/kare/ProverbWidgetHostTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+No generated or accidental untracked files were found in the closing inventory;
+all seven additions above are intentional. No Gradle, manifest, Room, repository,
+AppContainer or authentication changes were required in Phase 9.
+
+### Remaining limitations and work log
+
+Full spoken TalkBack traversal, OEM/older-API launcher coverage, physical tablet
+maximum dimensions, cross-device backup restore and a controlled four-hour elapsed
+refresh test were not performed. App force-stop was not tested in Phase 9; it is
+not equivalent to ordinary process death because Android restricts stopped packages.
+Reboot was actually tested. Scrollable content is bounded by the launcher viewport;
+all text remains reachable instead of being shrunk or silently truncated. Backup
+restoration remains platform-controlled and missing instance state requires explicit
+configuration. These are documented validation/platform boundaries, not claimed passes.
+
+2026-10-11 — Closed Phase 9 on ANDROID as Developer 1. Reviewed existing changes,
+finished the accessibility assessment and repaired/resized-instance deletion check,
+confirmed Library retention and restored temporary accessibility/font settings.
+No implementation change or expensive validation rerun was necessary. Updated the
+complete record and released reservations. No commits, pushes, merges or branch
+changes were made. Phase 10 has not started.
+
+Conflict hotspots are widget rendering/configuration files, widget resources and
+this migration record. Developer 2 retains independent authentication/Firebase
+ownership on `android/auth-foundation`, including its own tests and notes. None of
+that work was changed or certified here. Future shared composition/manifest changes
+must be coordinated. Recommended Phase 10 is the isolated app-side Proverb placement
+integration described above; do not start it without a new assignment.

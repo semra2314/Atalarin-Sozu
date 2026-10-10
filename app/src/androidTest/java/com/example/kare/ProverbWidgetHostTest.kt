@@ -2,6 +2,8 @@ package com.example.kare
 
 import android.appwidget.*
 import android.content.ComponentName
+import android.os.Bundle
+import android.util.SizeF
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -34,6 +36,17 @@ class ProverbWidgetHostTest {
                 host.startListening()
                 ids.forEach { views += host.createView(context, it, manager.getAppWidgetInfo(it)) }
             }
+            fun resize(id: Int, width: Int, height: Int) {
+                manager.updateAppWidgetOptions(id, Bundle().apply {
+                    putInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, width)
+                    putInt(AppWidgetManager.OPTION_APPWIDGET_MAX_WIDTH, width)
+                    putInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, height)
+                    putInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT, height)
+                    if (android.os.Build.VERSION.SDK_INT >= 31) putParcelableArrayList(
+                        AppWidgetManager.OPTION_APPWIDGET_SIZES, arrayListOf(SizeF(width.toFloat(), height.toFloat())))
+                })
+            }
+            resize(ids[0], 300, 400); resize(ids[1], 300, 400)
             repository.configure(ids[0], ProverbSelection.PROVERBS)
             repository.configure(ids[1], ProverbSelection.IDIOMS)
             ProverbWidget.refreshAll(context)
@@ -52,10 +65,18 @@ class ProverbWidgetHostTest {
             }
             await {
                 var ready = false
-                instrumentation.runOnMainSync { ready = text(views[0]).contains(context.getString(R.string.proverb_kind)) &&
+                instrumentation.runOnMainSync {
+                    views.forEach { it.measure(View.MeasureSpec.makeMeasureSpec(900, View.MeasureSpec.EXACTLY),
+                        View.MeasureSpec.makeMeasureSpec(1200, View.MeasureSpec.EXACTLY)); it.layout(0, 0, 900, 1200) }
+                    ready = text(views[0]).contains(context.getString(R.string.proverb_kind)) &&
                     text(views[1]).contains(context.getString(R.string.proverb_idiom)) }
                 ready
             }
+            assertEquals(ProverbSelection.PROVERBS, repository.configuration(ids[0])!!.selection)
+            assertEquals(ProverbSelection.IDIOMS, repository.configuration(ids[1])!!.selection)
+            // Resize does not create or replace instance configuration; the other ID stays independent.
+            resize(ids[0], 180, 180); resize(ids[1], 500, 500)
+            ProverbWidget.refreshAll(context)
             assertEquals(ProverbSelection.PROVERBS, repository.configuration(ids[0])!!.selection)
             assertEquals(ProverbSelection.IDIOMS, repository.configuration(ids[1])!!.selection)
             host.deleteAppWidgetId(ids[0])
