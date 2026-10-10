@@ -17,7 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
 import androidx.navigation.toRoute
 import com.example.kare.R
-import com.example.kare.core.design.KareSpacing
+import com.example.kare.core.design.*
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.kare.feature.auth.*
 import com.example.kare.feature.detail.DetailRoute
 import com.example.kare.core.ui.ScreenTitle
 import com.example.kare.feature.discover.*
@@ -31,6 +33,8 @@ sealed interface KareDestination {
     @Serializable data object Search : KareDestination
     @Serializable data object Profile : KareDestination
     @Serializable data object Settings : KareDestination
+    @Serializable data object SignIn : KareDestination
+    @Serializable data object SignUp : KareDestination
     @Serializable data class Detail(val templateId: String) : KareDestination
 }
 private data class MainDestination(val route: KareDestination, val title: Int, val icon: ImageVector)
@@ -45,9 +49,13 @@ private val mainDestinations = listOf(
 @Composable
 fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController = rememberNavController()) {
     val current by navController.currentBackStackEntryAsState()
-    val detail = current?.destination?.hasRoute<KareDestination.Detail>() == true
+    val isDetail = current?.destination?.hasRoute<KareDestination.Detail>() == true
+    val isAuth = current?.destination?.hasRoute<KareDestination.SignIn>() == true ||
+        current?.destination?.hasRoute<KareDestination.SignUp>() == true
+    val hideBottomBar = isDetail || isAuth
+
     Scaffold(bottomBar = {
-        if (!detail) NavigationBar {
+        if (!hideBottomBar) NavigationBar {
             mainDestinations.forEach { destination ->
                 NavigationBarItem(selected = current?.destination?.hasRoute(destination.route::class) == true,
                     onClick = {
@@ -73,8 +81,33 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
             composable<KareDestination.Search> {
                 SearchRoute(viewModel(factory = factory)) { navController.navigate(KareDestination.Detail(it)) }
             }
-            composable<KareDestination.Profile> { PendingContent(R.string.profile_title) }
+            composable<KareDestination.Profile> {
+                PendingContent(
+                    title = R.string.profile_title,
+                    onSignInClick = { navController.navigate(KareDestination.SignIn) }
+                )
+            }
             composable<KareDestination.Settings> { PendingContent(R.string.settings_title) }
+            composable<KareDestination.SignIn> {
+                SignInRoute(
+                    viewModel = viewModel(factory = factory),
+                    onNavigateToSignUp = { navController.navigate(KareDestination.SignUp) },
+                    onSignInSuccess = { navController.popBackStack() },
+                    onBack = { navController.popBackStack() }
+                )
+            }
+            composable<KareDestination.SignUp> {
+                SignUpRoute(
+                    viewModel = viewModel(factory = factory),
+                    onNavigateToSignIn = {
+                        navController.navigate(KareDestination.SignIn) {
+                            popUpTo(KareDestination.SignUp) { inclusive = true }
+                        }
+                    },
+                    onSignUpSuccess = { navController.popBackStack() },
+                    onBack = { navController.popBackStack() }
+                )
+            }
             composable<KareDestination.Detail> {
                 DetailRoute(viewModel(factory = factory), onBack = { navController.popBackStack() }, onLibrary = {
                     navController.popBackStack()
@@ -90,9 +123,17 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
 }
 
 @Composable
-private fun PendingContent(title: Int) {
+private fun PendingContent(title: Int, onSignInClick: (() -> Unit)? = null) {
     Column(Modifier.fillMaxSize().padding(KareSpacing.lg), verticalArrangement = Arrangement.spacedBy(KareSpacing.lg)) {
         ScreenTitle(stringResource(title))
         Text(stringResource(R.string.feature_pending))
+        if (title == R.string.profile_title && onSignInClick != null) {
+            Spacer(Modifier.height(KareSpacing.sm))
+            AuthButton(
+                text = stringResource(R.string.auth_sign_in_action),
+                onClick = onSignInClick,
+                testTag = "profile-go-to-sign-in"
+            )
+        }
     }
 }

@@ -145,3 +145,34 @@ When integrating with the rest of the application:
 2. **Navigation (`KareNavigation.kt`)**: Add authentication routes (e.g. `AuthRoute`, `SignInRoute`, `SignUpRoute`) to the navigation graph and gate authenticated actions.
 3. **Profile Feature (`feature/profile`)**: Connect `ProfileViewModel` with `AuthRepository` for user identity, avatar updates, and sign-out triggers.
 4. **Reviews & Firestore**: Wire authenticated user UID into `WidgetRepository.submitReview` and `PublicProfileService`.
+
+---
+
+## 8. Phase 2: Auth UI & Navigation (Plan A)
+
+**Owner:** Developer 2
+**Branch:** `feature/auth-ui`
+**Status:** COMPLETED
+**Date:** 2026-10-09
+
+### Objective
+Implement the native Jetpack Compose user interfaces and navigation flow for Authentication, fully integrated with the Kare design system (`KareColors`, `KareTypography`, `KareShapes`), localized in English and Turkish, and wired to the application container.
+
+### Files Created
+- `app/src/main/res/values/auth_strings.xml`: English localization resources for headers, actions, labels, and semantic error banners.
+- `app/src/main/res/values-tr/auth_strings.xml`: Matching Turkish localization resources.
+- `app/src/main/java/com/example/kare/core/data/auth/InMemoryAuthRepository.kt`: Thread-safe in-memory auth repository implementation powering the container runtime.
+- `app/src/main/java/com/example/kare/feature/auth/AuthComponents.kt`: Branded reusable UI components (`AuthTextField`, `PasswordTextField`, `AuthButton`, `AuthErrorBanner`, `AuthError.toLocalizedStringRes()`).
+- `app/src/main/java/com/example/kare/feature/auth/SignInScreen.kt`: `SignInRoute` and `SignInContent` composables with forgot-password sheet trigger and sign-up transition.
+- `app/src/main/java/com/example/kare/feature/auth/SignUpScreen.kt`: `SignUpRoute` and `SignUpContent` composables with 6-character password constraint and sign-in transition.
+- `app/src/main/java/com/example/kare/feature/auth/ForgotPasswordDialog.kt`: Modal password reset dialog with real-time feedback.
+- `app/src/test/java/com/example/kare/feature/auth/AuthScreensTest.kt`: Robolectric Compose UI tests for form interaction, validation, and error banner visibility.
+
+### Files Modified
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`: Exposed `auth: AuthRepository` and registered `AuthViewModel` in `KareViewModelFactory` with a backward-compatible default parameter preserving all existing tests.
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`: Added `KareDestination.SignIn` and `KareDestination.SignUp` typed destinations, concealed bottom bar on auth screens, and connected the Profile tab to the Sign In flow while preserving all existing test contracts.
+
+### Validation
+- `./gradlew test`: 128 JVM and Compose UI tests passed, 0 failures (`BUILD SUCCESSFUL in 58s`).
+- `./gradlew assembleDebug`: Debug APK compilation passed (`BUILD SUCCESSFUL in 18s`).
+- `git diff --check`: Zero whitespace or formatting issues.

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_sign_in_title">Tekrar Hoş Geldiniz</string>
+    <string name="auth_sign_in_subtitle">Kütüphanenizi, favorilerinizi ve yorumlarınızı eşitlemek için giriş yapın</string>
+    <string name="auth_sign_up_title">Hesap Oluştur</string>
+    <string name="auth_sign_up_subtitle">Şablonları özelleştirmek ve araç takımları paylaşmak için Kare\'ye katılın</string>
+    <string name="auth_email_label">E-posta</string>
+    <string name="auth_password_label">Şifre</string>
+    <string name="auth_name_label">İsim</string>
+    <string name="auth_sign_in_action">Giriş Yap</string>
+    <string name="auth_sign_up_action">Hesap Oluştur</string>
+    <string name="auth_sign_out_action">Çıkış Yap</string>
+    <string name="auth_forgot_password_action">Şifremi unuttum?</string>
+    <string name="auth_no_account_prompt">Hesabınız yok mu? Kayıt Olun</string>
+    <string name="auth_have_account_prompt">Zaten bir hesabınız var mı? Giriş Yapın</string>
+    <string name="auth_reset_password_title">Şifre Sıfırlama</string>
+    <string name="auth_reset_password_desc">E-posta adresinizi girin, şifrenizi sıfırlamanız için size bir bağlantı gönderelim.</string>
+    <string name="auth_send_reset_link">Sıfırlama Bağlantısı Gönder</string>
+    <string name="auth_reset_link_sent">Şifre sıfırlama e-postası gönderildi. Gelen kutunuzu kontrol edin.</string>
+    <string name="auth_guest_title">Misafir Oturumu</string>
+    <string name="auth_guest_desc">Araç takımlarınızı cihazlar arasında yedeklemek için giriş yapın veya hesap oluşturun.</string>
+
+    <!-- Semantik hata mesajları -->
+    <string name="auth_error_invalid_credentials">E-posta veya şifre hatalı.</string>
+    <string name="auth_error_email_already_in_use">Bu e-posta adresiyle kayıtlı bir hesap zaten var. Giriş yapmayı deneyin.</string>
+    <string name="auth_error_weak_password">Daha uzun bir şifre seçin, en az 6 karakter.</string>
+    <string name="auth_error_user_not_found">Bu e-posta adresiyle eşleşen bir hesap bulunamadı.</string>
+    <string name="auth_error_user_disabled">Bu hesap devre dışı bırakıldı.</string>
+    <string name="auth_error_too_many_requests">Çok fazla deneme yapıldı. Bir dakika bekleyip tekrar deneyin.</string>
+    <string name="auth_error_network">Bağlantı yok. İnternetinizi kontrol edip tekrar deneyin.</string>
+    <string name="auth_error_unavailable">Hesap hizmetleri şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.</string>
+    <string name="auth_error_invalid_input">Lütfen tüm gerekli alanları doldurun.</string>
+    <string name="auth_error_unauthenticated">Giriş yapmadınız.</string>
+    <string name="auth_error_unexpected">Bir şeyler ters gitti. Lütfen tekrar deneyin.</string>
+</resources>

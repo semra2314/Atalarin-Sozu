@@ -7,13 +7,16 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.ViewModelProvider
+import com.example.kare.core.data.auth.InMemoryAuthRepository
 import com.example.kare.core.data.catalog.BundledWidgetRepository
 import com.example.kare.core.data.catalog.LocalCatalogDataSource
 import com.example.kare.core.data.library.RoomLibraryRepository
 import com.example.kare.core.database.KareDatabase
 import com.example.kare.core.presentation.ErrorReporter
+import com.example.kare.core.repository.AuthRepository
 import com.example.kare.core.repository.LibraryRepository
 import com.example.kare.core.repository.WidgetRepository
+import com.example.kare.feature.auth.AuthViewModel
 import com.example.kare.feature.detail.DetailViewModel
 import com.example.kare.feature.discover.DiscoverViewModel
 import com.example.kare.feature.library.LibraryViewModel
@@ -27,8 +30,9 @@ class AppContainer(context: Context) {
     internal val database: KareDatabase get() = databaseDelegate.value
     val widgets: WidgetRepository by lazy { BundledWidgetRepository(catalog) }
     val library: LibraryRepository by lazy { RoomLibraryRepository(database, catalog) }
+    val auth: AuthRepository by lazy { InMemoryAuthRepository() }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
-    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors) }
+    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth) }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
     internal fun close() { if (databaseDelegate.isInitialized()) database.close() }
@@ -38,6 +42,7 @@ class KareViewModelFactory(
     private val widgets: WidgetRepository,
     private val library: LibraryRepository,
     private val errors: ErrorReporter,
+    private val auth: AuthRepository = InMemoryAuthRepository(),
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return createModel(modelClass, SavedStateHandle())
@@ -52,6 +57,7 @@ class KareViewModelFactory(
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
             LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
+            AuthViewModel::class.java -> AuthViewModel(auth, errors)
             else -> throw IllegalArgumentException("Unsupported ViewModel: ${modelClass.name}")
         }
         return modelClass.cast(model)!!

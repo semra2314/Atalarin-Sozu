@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_sign_in_title">Welcome Back</string>
+    <string name="auth_sign_in_subtitle">Sign in to sync your library, favorites, and reviews</string>
+    <string name="auth_sign_up_title">Create Account</string>
+    <string name="auth_sign_up_subtitle">Join Kare to customize templates and share widgets</string>
+    <string name="auth_email_label">Email</string>
+    <string name="auth_password_label">Password</string>
+    <string name="auth_name_label">Name</string>
+    <string name="auth_sign_in_action">Sign In</string>
+    <string name="auth_sign_up_action">Create Account</string>
+    <string name="auth_sign_out_action">Sign Out</string>
+    <string name="auth_forgot_password_action">Forgot password?</string>
+    <string name="auth_no_account_prompt">Don\'t have an account? Sign Up</string>
+    <string name="auth_have_account_prompt">Already have an account? Sign In</string>
+    <string name="auth_reset_password_title">Reset Password</string>
+    <string name="auth_reset_password_desc">Enter your email address and we\'ll send you a link to reset your password.</string>
+    <string name="auth_send_reset_link">Send Reset Link</string>
+    <string name="auth_reset_link_sent">Password reset email sent. Check your inbox.</string>
+    <string name="auth_guest_title">Guest Session</string>
+    <string name="auth_guest_desc">Sign in or create an account to back up your widgets across devices.</string>
+
+    <!-- Semantic error messages -->
+    <string name="auth_error_invalid_credentials">Email or password is wrong.</string>
+    <string name="auth_error_email_already_in_use">That email already has an account. Try logging in.</string>
+    <string name="auth_error_weak_password">Pick a longer password, at least 6 characters.</string>
+    <string name="auth_error_user_not_found">No account found with this email.</string>
+    <string name="auth_error_user_disabled">This account has been disabled.</string>
+    <string name="auth_error_too_many_requests">Too many attempts. Wait a minute and try again.</string>
+    <string name="auth_error_network">No connection. Check your internet and try again.</string>
+    <string name="auth_error_unavailable">Accounts are not available right now. Try again later.</string>
+    <string name="auth_error_invalid_input">Please fill in all required fields.</string>
+    <string name="auth_error_unauthenticated">You are not signed in.</string>
+    <string name="auth_error_unexpected">Something went wrong. Please try again.</string>
+</resources>
