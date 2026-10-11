@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.kare.widget.WidgetPlacementRoute
 import com.example.kare.R
 import com.example.kare.core.design.*
 import com.example.kare.core.localization.*
@@ -24,12 +25,12 @@ import com.example.kare.core.ui.*
 fun DetailRoute(viewModel: DetailViewModel, onBack: () -> Unit, onLibrary: () -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     DetailContent(viewModel.templateId, state, onBack, onLibrary, viewModel::reload,
-        viewModel::retryLibrary, viewModel::selectSize, viewModel::install)
+        viewModel::retryLibrary, viewModel::selectSize, viewModel::install, placement = { WidgetPlacementRoute(it) })
 }
 
 @Composable
 fun DetailContent(templateId: String, state: DetailUiState, onBack: () -> Unit, onLibrary: () -> Unit,
-    onRetry: () -> Unit, onRetryLibrary: () -> Unit, onSize: (WidgetSize) -> Unit, onInstall: () -> Unit) {
+    onRetry: () -> Unit, onRetryLibrary: () -> Unit, onSize: (WidgetSize) -> Unit, onInstall: () -> Unit, placement: @Composable (String) -> Unit = {}) {
     LazyColumn(Modifier.fillMaxSize().wrapContentWidth().widthIn(max = KareLayout.readableWidth)
         .fillMaxWidth().testTag("detail-$templateId"), contentPadding = PaddingValues(KareSpacing.lg),
         verticalArrangement = Arrangement.spacedBy(KareSpacing.lg)) {
@@ -83,6 +84,7 @@ fun DetailContent(templateId: String, state: DetailUiState, onBack: () -> Unit, 
                             Text(stringResource(R.string.detail_installed), Modifier.testTag("detail-installed")
                                 .semantics { liveRegion = LiveRegionMode.Polite })
                             Text(stringResource(R.string.detail_local_only))
+                            placement(template.id)
                             Button(onClick = onLibrary, modifier = Modifier.testTag("open-library")) {
                                 Text(stringResource(R.string.detail_open_library))
                             }

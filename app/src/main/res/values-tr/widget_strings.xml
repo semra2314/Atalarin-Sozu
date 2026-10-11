@@ -17,4 +17,9 @@
     <string name="proverb_recovery">Kayıtlı ayarlar okunamadı. Bu widget’ı onarmak için içerik seçip kaydet. Kitaplığın değişmedi.</string>
     <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
     <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
+    <string name="widget_add_home">Ana Ekrana Ekle</string>
+    <string name="widget_placement_requested">Yerleştirme isteği gönderildi. Başlatıcınızda onaylayın, ardından widget içeriğini seçin. Kurulum açılmazsa yerleştirilen widget üzerindeki Söz’ü Yapılandır düğmesine dokunun.</string>
+    <string name="widget_placement_unsupported">Başlatıcınız doğrudan widget yerleştirmeyi desteklemiyor.</string>
+    <string name="widget_placement_unavailable">Yerleştirme isteği başlatılamadı. Yeniden deneyin veya widget’ı elle ekleyin.</string>
+    <string name="widget_placement_manual">Elle eklemek için ana ekranınızda boş bir alana basılı tutun, Widget’ları açın ve Kare · Söz’ü seçin. Adımlar başlatıcıya göre değişebilir.</string>
 </resources>

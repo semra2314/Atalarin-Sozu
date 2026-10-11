@@ -14,6 +14,7 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 10 adds native Proverb placement from Detail and Library, with manual guidance.
 Phase 9 hardens Proverb sizing, recovery, picker presentation and accessibility.
 Phase 8 adds the first Android home-screen widget: free Proverb / Söz, persistent
 per-instance configuration, Library integration, refresh and deletion cleanup.
@@ -258,7 +259,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 9. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 10. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -280,7 +281,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 9. D
 | Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
 | Discover | DiscoverView / ViewModel | DiscoverRoute / DiscoverContent / ViewModel | Developer 1 | COMPLETED | Shelves/cards, loading/empty/error/retry |
 | Search | SearchView / ViewModel | SearchRoute / SearchContent / ViewModel | Developer 1 | COMPLETED | Query/categories/results, saved inputs |
-| Template detail | TemplateDetailView | DetailViewModel / DetailRoute / DetailContent | Developer 1 | COMPLETED | Free local installs, size choice, paid lock; billing/editor/widget setup deferred |
+| Template detail | TemplateDetailView | DetailViewModel / DetailRoute / DetailContent | Developer 1 | COMPLETED | Free local installs, size choice, paid lock; Proverb placement added in Phase 10; billing/editor deferred |
 | Library UI | LibraryView | LibraryRoute / LibraryContent | Developer 1 | COMPLETED | Reactive ordered list, favorites/remove/reorder |
 | Profile | ProfileView / EditProfileView | Main destination placeholder only | Unassigned | NOT STARTED | No account/profile implementation |
 | Settings | SettingsView | Main destination placeholder only | Unassigned | NOT STARTED | No preference implementation |
@@ -298,6 +299,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 9. D
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
 | Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
+| App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phase 10; Proverb only; launcher remains authoritative |
 | Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
 | Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
@@ -307,11 +309,12 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 9. D
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Phase 9 Proverb hardening is COMPLETED (2026-10-11).
-Owner: Developer 1. Widget/resource/test reservations are released. Phase 10 has
-not started. Closing checks required no production or test changes. Shared-file
-risk remains this migration record; future widget changes should coordinate the
-widget package/resources. Authentication/Firebase remains owned by Developer 2.
+Current tasks: None. Phase 10 app-side Proverb placement is COMPLETED.
+Owner: Developer 1. Baseline: ANDROID at 51cc5f3. All Phase 10 reservations are
+released. Closing work audited existing code, validated copy, reran automated
+checks and completed this record; no additional implementation change was needed.
+Shared-file risks remain Detail/Library screens, their resources and this document.
+Developer 2 retains authentication/Firebase ownership. Phase 11 has not started.
 
 ### Developer 2
 
@@ -457,11 +460,11 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 10: connect the existing Proverb widget to app-side placement
-from Library/Detail using native pin-widget support and a launcher-picker fallback.
-Keep Library membership distinct from launcher instances; retain explicit per-instance
-configuration. This is a recommendation, not authorization or an active assignment.
-No additional widget, editor, billing or scheduling work has started.
+Recommended Phase 11: a focused compatibility and accessibility pass for the
+existing Proverb placement/configuration flow on a second launcher and older
+supported Android APIs, including spoken TalkBack traversal and configuration
+cancellation/re-entry. This is an unassigned recommendation, not authorization.
+No new widget, billing, editor or authentication work is included.
 
 Developer 2 continues independent authentication/Firebase work on
 `android/auth-foundation`, including its contracts, tests and
@@ -2042,3 +2045,190 @@ ownership on `android/auth-foundation`, including its own tests and notes. None 
 that work was changed or certified here. Future shared composition/manifest changes
 must be coordinated. Recommended Phase 10 is the isolated app-side Proverb placement
 integration described above; do not start it without a new assignment.
+
+
+## Phase 10 — App-side Proverb placement — COMPLETED
+
+Owner: Developer 1. Branch: `ANDROID`. Date: 2026-10-11. Baseline: `51cc5f3`.
+The restored baseline was clean. The closing continuation preserved all working
+implementation and completed the audit, localization verification, final automated
+checks and this record. No production/test code changed during that continuation.
+
+### Reference and architectural decisions
+
+Inspected the pinned iOS `Features/Library/SetUpOnHomeView.swift`,
+`Features/Library/LibraryView.swift`, and `Features/Detail/TemplateDetailView.swift`.
+iOS sends fixed designs toward gallery instructions and offers a post-install
+home-screen action. Android uses native pinning rather than reproducing those
+manual iOS steps or promising automatic placement.
+
+- **2026-10-11 — Boundary:** Detail/Library route containers supply a placement UI
+  slot to stateless content. `WidgetPlacementRoute` composes a small coordinator
+  and `WidgetPlacementManager`; only `AndroidWidgetPlacementManager` calls the
+  platform. No repository, Room or launcher API access was added to stateless UI.
+  This synchronous user action needs no additional ViewModel, DI framework, global
+  singleton, coroutine scope or persisted placement flag.
+- **2026-10-11 — Capability:** one coordinator maps `t-proverb` to the implemented
+  provider. Other templates have no placement action. Each request checks
+  `isRequestPinAppWidgetSupported`; unsupported launchers get localized manual
+  guidance. False returns/exceptions become unavailable feedback, with diagnostic
+  logging and cancellation propagation. Existing minimum SDK 26 supports the API.
+- **2026-10-11 — Callback:** `requestPinAppWidget` does not invoke the declared
+  configuration Activity automatically. An explicit, unique, one-shot Activity
+  PendingIntent launches the existing `ProverbConfigurationActivity` on success.
+  It is mutable where required so Android can supply `EXTRA_APPWIDGET_ID`;
+  API 34+ creator background-activity launch opt-in is scoped to that callback.
+  The Activity checks the real ID and Proverb provider before accessing state.
+- **2026-10-11 — Results:** REQUESTED means only that a request was initiated.
+  It is not a success flag or a Room write. Confirmation is handled by the callback
+  opening configuration; no durable count of placed widgets is invented. Launcher
+  cancellation has no negative callback, so feedback may remain “Placement requested.”
+  It creates no instance configuration. Callback IDs are platform allocated; the
+  random URI distinguishes PendingIntents and is never a widget ID/storage key.
+
+Platform references used during implementation:
+[AppWidgetManager pinning contract](https://developer.android.com/reference/android/appwidget/AppWidgetManager#requestPinAppWidget(android.content.ComponentName,android.os.Bundle,android.app.PendingIntent)),
+[widget discoverability](https://developer.android.com/develop/ui/views/appwidgets/discoverability),
+and [PendingIntent background activity security](https://developer.android.com/guide/components/activities/secure-bal).
+
+### Entry points, state and fallback
+
+Installed Proverb Detail offers Add to Home Screen and retains Open Library.
+The installed Proverb Library row offers the same action without changing favorite,
+remove, reorder or selection behavior. Capability selection is centralized, not
+repeated template-specific conditions throughout the feature UI.
+
+Library installation and launcher placement remain distinct. Multiple launcher
+instances can reference the same installed template. No state is written before
+Android supplies a real ID and the user saves the existing configuration flow.
+The existing versioned atomic JSON repository, Glance renderer, resize/recovery,
+refresh and Room architecture are unchanged. Deleting an instance cleans only its
+file. Removing Library membership still shows the existing membership message on
+remaining launcher instances; it does not delete them. Reinstall restores content.
+
+Unsupported/unavailable results show concise instructions to long-press the home
+screen, open Widgets and choose Kare · Söz. No nonportable “open picker” intent or
+fake placement is offered. If a launcher fails to open callback configuration,
+the placed widget's existing Configure action remains a recovery path. Cancelling
+configuration after placement can leave an unconfigured launcher instance, which
+can be configured later or removed; it never silently receives default saved state.
+
+### Localization and accessibility
+
+Five placement strings were added per locale in `widget_strings.xml`. Two existing
+Detail messages were updated per locale: catalog size is separate from launcher
+dimensions, and placement is a separate action for supported widgets. Verified
+English/Turkish key parity, duplicate-key absence and format-placeholder contracts
+for all 17 Detail keys and 22 widget keys. No unrelated translations changed.
+
+Uses existing Kare/Material styles, labeled text controls, minimum 48 dp placement
+target and native dialog semantics. No icon-only action, new design token or raw
+semantic key is exposed. This phase does not claim a new spoken TalkBack audit.
+
+### Tests and final automated validation
+
+Ten new JVM/Robolectric tests in two files cover capability filtering, supported
+request delegation, unsupported/rejected/exception outcomes, coroutine cancellation,
+correct provider and unique callback IDs, English/Turkish resource resolution,
+Detail's installed-only action with Open Library retained, Library placement
+without favorite/removal calls, and fallback UI/dismissal. Existing four device
+tests remain unchanged; widget persistence tests were not duplicated.
+
+Closing validation invokes build/JVM/lint with `--rerun-tasks` to avoid relying on
+cached results after the copy changes. Device validation was attempted separately
+within the initial combined invocation, but no device was connected at closure.
+
+| Check | Final result |
+|---|---|
+| `./gradlew assembleDebug` | PASS, fresh closing run |
+| `./gradlew test` | PASS, 148 JVM tests; zero failures/errors/skips, fresh closing run |
+| `./gradlew lint` | PASS, zero errors and 81 warnings, fresh closing run |
+| `./gradlew connectedDebugAndroidTest` | Closing attempt could not execute: no connected devices, confirmed with adb. Earlier Phase 10 run on final implementation passed all four tests |
+| `git diff --check` | PASS after final documentation update |
+| Localization structure/format audit | PASS for both changed resource pairs |
+
+The earlier final combined run also passed after the latest copy and cancellation
+changes; those four device tests are historical results, not a claimed closing
+rerun. The device invocation used `-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true`.
+Initial development failures were a missing provider in the Robolectric fixture
+(fixed before the passing runs) and a device lifecycle test interrupted by manual
+interaction (passed when rerun without interaction). No checks were suppressed.
+The platform background-launch opt-in constant produces a compiler deprecation
+warning on the current SDK but remains compatible with API 34/35; no compiler
+settings were weakened. Existing lint warnings remain documented separately.
+
+### Actual Pixel Launcher validation (completed before closure)
+
+Pixel_8 AVD, emulator-5554, Android 17 / API 37.1, Pixel Launcher
+(`com.google.android.apps.nexuslauncher`). Not repeated during closure because
+no implementation changes affected these observations.
+
+| Check | Observed result |
+|---|---|
+| Detail entry | Installed Söz; Add to Home Screen appeared alongside Open Library |
+| Native request | Pixel Launcher displayed its own preview and confirmation |
+| Callback/configuration | Confirming opened the existing configuration Activity with a real ID |
+| First placement | ID 31 saved Proverbs in 31.json and rendered “Aç ayı oynamaz.” |
+| Library entry | Installed Söz row offered the same native placement action |
+| Cancellation | Cancelled launcher request left “Placement requested” feedback and created no configuration |
+| Second placement | ID 32 saved Idioms and rendered “Abuk sabuk konuşmak.”; 31.json retained Proverbs |
+| Isolation | Both version 1 files used templateId t-proverb and independently selected content |
+| Deletion | Removed ID 32 through launcher; after Undo expired only 31.json remained |
+| Retention | ID 31 still rendered; Open Kare worked and Library retained one Söz item |
+| Unsupported launcher | Covered structurally with fake capability and fallback UI tests; Pixel supports pinning |
+
+Earlier connected-test cleanup removed the debug app, so it was reinstalled before
+manual validation. Independence was validated between the two newly placed instances;
+continuity of Phase 9's old launcher IDs across test-tool uninstall is not claimed.
+No unrelated launcher widgets were deliberately modified. UI dumps/screenshots
+remained outside the repository. No manual OEM/older-API or Turkish-locale launcher
+session was performed. Launcher placement location, callback delivery, cancellation
+notification and background-start behavior remain platform-controlled.
+
+### Complete Phase 10 file manifest
+
+Created (4), paths relative to repository root:
+
+- `app/src/main/java/com/example/kare/widget/WidgetPlacement.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetPlacementUi.kt`
+- `app/src/test/java/com/example/kare/widget/WidgetPlacementTest.kt`
+- `app/src/test/java/com/example/kare/widget/WidgetPlacementUiTest.kt`
+
+Modified (7):
+
+- `app/src/main/java/com/example/kare/feature/detail/DetailScreen.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryScreen.kt`
+- `app/src/main/res/values/detail_strings.xml`
+- `app/src/main/res/values-tr/detail_strings.xml`
+- `app/src/main/res/values/widget_strings.xml`
+- `app/src/main/res/values-tr/widget_strings.xml`
+- `docs/ANDROID_MIGRATION.md`
+
+The closing continuation changed only this migration record. The already-present,
+unrelated `.idea/misc.xml` JDK-name edit was inspected and left untouched; it is
+not a Phase 10 deliverable. All four untracked files are intentional additions.
+No partial/debug files, screenshots or emulator artifacts were added. No auth,
+Firebase, Auth migration notes, Gradle, manifest, Room, AppContainer or existing
+widget storage/rendering/configuration implementation changed.
+
+### Work log, limitations and coordination
+
+2026-10-11 — Phase 10 completed by Developer 1 on ANDROID. Implemented placement
+through a shared platform boundary, reused real-ID configuration, integrated
+Detail/Library, localized feedback and added focused tests. Closing work verified
+the current diff and resource contracts, reran automated validation and finished
+this record without reimplementation. No fake IDs, speculative state, unsupported
+provider actions, false success claims or authentication dependency were found.
+
+No implementation blocker remains. The closing device rerun was unavailable;
+prior executed results and manual validation are recorded accurately above.
+A broader launcher/API matrix and spoken accessibility traversal remain future
+validation. Phase 11 is recommended above and has not started.
+
+Conflict hotspots: Detail/Library screens, detail/widget locale resources,
+placement files and this migration record. Developer 2 retains independent
+ownership of authentication/Firebase and `docs/AUTH_MIGRATION_NOTES.md`; none of
+that work was modified or certified by this phase. They can continue their
+repositories, screens and tests, coordinating shared composition/navigation edits
+before integration. All Phase 10 reservations are released. No commit, push,
+merge, branch operation or history rewrite was performed.

@@ -7,10 +7,10 @@
     <string name="detail_size_large">Large</string>
     <string name="detail_size_circular">Circular accessory</string>
     <string name="detail_size_rectangular">Rectangular accessory</string>
-    <string name="detail_size_note">Catalog sizes describe the saved design. Android home-screen placement is not available yet.</string>
+    <string name="detail_size_note">Catalog sizes describe the saved design. Your launcher controls home-screen widget dimensions.</string>
     <string name="detail_installed">Installed in Library</string>
     <string name="detail_open_library">Open Library</string>
-    <string name="detail_local_only">Saved on this device. Editor and home-screen setup will arrive later.</string>
+    <string name="detail_local_only">Saved on this device. Home-screen placement is a separate action for supported widgets.</string>
     <string name="detail_locked">Paid widget · Locked</string>
     <string name="detail_purchase_unavailable">Purchases coming later</string>
     <string name="detail_installing">Installing…</string>
