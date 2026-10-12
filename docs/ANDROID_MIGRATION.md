@@ -14,6 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 11 validates Proverb compatibility and accessibility, fixing large-text guidance
+and configuration announcement semantics without changing widget storage or placement.
 Phase 10 adds native Proverb placement from Detail and Library, with manual guidance.
 Phase 9 hardens Proverb sizing, recovery, picker presentation and accessibility.
 Phase 8 adds the first Android home-screen widget: free Proverb / Söz, persistent
@@ -259,7 +261,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 10. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 11. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -301,6 +303,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 10. 
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
 | App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phase 10; Proverb only; launcher remains authoritative |
 | Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
+| Widget compatibility/accessibility | Widget placement and configuration | Focused API 37 device and API 28 Robolectric validation | Developer 1 | COMPLETED | Phase 11; older real devices, other launchers and spoken TalkBack remain unverified |
 | Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
 ## Current work
@@ -309,12 +312,11 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 10. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Phase 10 app-side Proverb placement is COMPLETED.
-Owner: Developer 1. Baseline: ANDROID at 51cc5f3. All Phase 10 reservations are
-released. Closing work audited existing code, validated copy, reran automated
-checks and completed this record; no additional implementation change was needed.
-Shared-file risks remain Detail/Library screens, their resources and this document.
-Developer 2 retains authentication/Firebase ownership. Phase 11 has not started.
+Current tasks: None. Phase 11 COMPLETED by Developer 1 on ANDROID, from baseline
+`689eef2`. Widget validation and focused UI/test reservations are released.
+No Phase 12 implementation has started. Shared widget UI and this document remain
+likely conflict points for future changes. Authentication/Firebase remains
+Developer 2's area.
 
 ### Developer 2
 
@@ -460,11 +462,10 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 11: a focused compatibility and accessibility pass for the
-existing Proverb placement/configuration flow on a second launcher and older
-supported Android APIs, including spoken TalkBack traversal and configuration
-cancellation/re-entry. This is an unassigned recommendation, not authorization.
-No new widget, billing, editor or authentication work is included.
+Recommended Phase 12: close the remaining release-qualification gaps using a
+provisioned older supported API image, a second launcher, and a human spoken
+TalkBack traversal. Keep this separate from adding another widget. This is an
+unassigned recommendation, not an active task or authorization to start work.
 
 Developer 2 continues independent authentication/Firebase work on
 `android/auth-foundation`, including its contracts, tests and
@@ -2232,3 +2233,185 @@ that work was modified or certified by this phase. They can continue their
 repositories, screens and tests, coordinating shared composition/navigation edits
 before integration. All Phase 10 reservations are released. No commit, push,
 merge, branch operation or history rewrite was performed.
+
+
+## Phase 11 — Proverb compatibility and accessibility — COMPLETED
+
+Owner: Developer 1. Branch: `ANDROID`. Baseline: `689eef2`.
+Manual review and focused fixes: 2026-10-11. Closing validation: 2026-10-12.
+Developer 2 retains independent authentication/Firebase ownership on
+`android/auth-foundation`; no auth implementation or auth notes were modified.
+
+### Scope, decisions and defects
+
+Preserved Glance, Room Library membership, versioned atomic JSON per real
+`appWidgetId`, placement coordinator, configuration Activity, four-hour inexact
+updates, responsive rendering and explicit repair. No new widget, state format,
+SDK requirement, scheduling, resource translation or authentication dependency.
+
+Two concrete accessibility issues were addressed:
+
+- At 200% font scale and enlarged display density, the placement feedback dialog's
+  manual instructions extended beyond its available area. Its text body now
+  scrolls while Dismiss stays visible. The actual Turkish Pixel dialog was checked
+  before and after the fix; English and Turkish regression tests cover reachable
+  instructions and dismissal without reducing font scale.
+- Configuration recovery and save-error messages lacked explicit announcement
+  semantics. They now expose polite live regions. A device test checks the repair
+  message's live-region semantics, chip selection and explicit-save boundary.
+  This requests an accessibility announcement; it does not prove spoken output.
+
+2026-10-11 decision: retain the Phase 8–10 architecture and system-serif launcher
+rendering. Fix only these bounded UI defects; do not reproduce WidgetKit sizing,
+App Groups or iOS placement behavior. Android launcher allocation, confirmation,
+resize and configuration remain native platform responsibilities.
+
+### Environments and coverage boundaries
+
+| Environment | Executed coverage |
+|---|---|
+| Pixel_8 AVD, emulator-5554, Android 17 / API 37, arm64 Google Play image (android-37.1) | Real app, launcher and instrumentation checks |
+| Pixel Launcher (`com.google.android.apps.nexuslauncher`) | Only launcher actually tested; native pin preview/confirmation and configuration handoff |
+| API 28 Robolectric | JVM/shadow and Compose semantics tests; not an older Android device compatibility claim |
+| English system locale, app locale English or Turkish | App/configuration translations; launcher confirmation remains in the system language |
+| 1080 × 2400, default 420 dpi and enlarged 520 dpi; font scales 1.0 and 2.0 | Placement/configuration readability and scrolling, light baseline and dark review |
+
+Only the Pixel_8/API 37 image was installed. No older AVD/image or alternative
+launcher was available; SDK command-line tools were absent and the existing
+emulator already reported host memory pressure. No new image/toolchain was
+provisioned. Older-device and multi-launcher compatibility are not certified.
+The closed emulator was started for this work rather than treating it as unavailable.
+
+### Localization, dark mode, font scaling and accessibility
+
+English and Turkish widget/detail resource keys and formatting placeholders were
+checked for parity (22 widget keys and 17 detail keys); no missing translation or
+format-contract defect was found. Installation remains distinct from launcher
+placement. No unrelated translations or temporary debug strings were added.
+
+Dark-mode Template Detail and Library placement, configuration, missing/repair
+states and feedback were reviewed. At 200% font scale, configuration chips and
+Save/Cancel remain reachable through scrolling. Enlarged display scaling exposed
+the dialog defect described above; the fixed instructions can be scrolled fully
+while Dismiss remains available. Extreme scaling wraps some main-navigation
+labels to two lines; this cosmetic application-wide behavior was not redesigned.
+The launcher widget intentionally retains a light paper surface with readable dark
+ink in dark mode, rather than applying the app theme to remote widget rendering.
+
+Accessibility evidence is deliberately limited:
+
+- Code review: title headings, selected FilterChip semantics, localized action
+  labels, placement minimum touch height, and 48 dp widget action targets.
+- Device hierarchy: selected/unselected configuration chips and 48 dp targets at
+  enlarged density; controls remain reachable at 200% font scale.
+- TalkBack was enabled temporarily; a visible green focus rectangle was observed
+  on Turkish configuration guidance. Full traversal order and chip-by-chip focus
+  were not established. Spoken output was not verified (emulator started without
+  audio). This is not a complete TalkBack audit.
+- Device regression test verifies polite recovery live region, selected states,
+  enabled Save and that visiting/selecting alone does not overwrite corrupt state.
+
+Temporary settings were restored: font scale 1.0, default density 420, light mode,
+app locale override cleared, accessibility services cleared and accessibility
+turned off. No production accessibility/font restriction was introduced.
+
+### Launcher, recovery and independent-instance regression
+
+The earlier Phase 9/10 results remain valid and were not all repeated. Phase 11
+actually exercised the following on Pixel Launcher:
+
+1. Turkish dark-mode Library placement opened the native pin confirmation and
+   reused the existing configuration Activity with real instance ID 33.
+2. Cancelling pin confirmation created no configuration. Separately, cancelling
+   configuration after the launcher had placed ID 33 left only ID 31's JSON;
+   instance 33 displayed the recoverable missing-configuration state.
+3. Reopening Configure and saving Idioms created `33.json`; `31.json` retained
+   Proverbs. No global selection or speculative widget ID was introduced.
+4. Deliberately corrupting only test instance 33 displayed the explicit repair
+   notice. Choosing Idioms and Save repaired it; instance 31 stayed unchanged.
+   Missing, corrupt and valid state remain distinct; selection alone does not save.
+5. Instance 33 was resized from 4 × 3 to 3 × 2. Content remained readable with the
+   existing compact-layout omissions; instance 31's configuration/size was intact.
+6. The app process was killed, its absence confirmed, then the widget Refresh
+   action restarted it. Both instance configurations survived. A separate locale
+   change used force-stop followed by explicit app reopening; this does not claim
+   background refresh while a package remains force-stopped.
+7. Removing the resized/repaired instance 33 through Pixel Launcher removed only
+   `33.json`. Instance 31 remained functional and Söz remained in the Library.
+8. An actual emulator reboot completed (`sys.boot_completed=1`), and instance 31's
+   Proverbs configuration persisted. Phase 11 rechecked persisted state after boot;
+   it did not repeat Phase 9's complete visual post-reboot rendering review.
+
+Native pin preview was observed. Picker metadata/preview wiring was structurally
+reviewed and Phase 9's actual picker result retained; a fresh picker browse was not
+performed in Phase 11. Unsupported pinning is covered by existing fakes and UI
+checks rather than falsifying Pixel Launcher's capability. Manual instructions are
+localized; a request is not stored as success, no fake ID is created and state is
+not written before a real launcher instance exists. Existing fallback coverage was
+reused, not duplicated.
+
+### Regression tests and closing validation
+
+Added two JVM tests for English/Turkish large-text placement guidance and one
+instrumentation test for configuration recovery/selection semantics. Existing
+placement, repository, resize, deletion and Room tests were retained.
+
+Manual checks above were already complete before the closing continuation. The
+continuation inspected all changes, completed full automated checks and this record;
+it did not repeat successful launcher exercises or add further production code.
+The earlier final validation attempt was prevented by an automatic-approval usage
+limit; validation resumed through the normal approval path on October 12.
+
+| Check rerun on 2026-10-12 | Result |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS: 150 JVM tests, zero failures/errors/skips |
+| `./gradlew lint` | PASS: zero errors, 81 existing warnings |
+| `./gradlew connectedDebugAndroidTest` | Final full run PASS: five tests on Pixel_8 / Android 17 |
+| `git diff --check` | PASS |
+
+The first full device run passed four tests, including the new accessibility test,
+but the existing navigation test could not find the search field immediately after
+Activity recreation. That test passed in isolation and all five passed on a full
+rerun without code changes. Treat this as an intermittent test/restoration timing
+issue to monitor, not a suppressed failure or evidence of a diagnosed production
+regression. The original failure is retained here. No assertions were removed.
+The device runs used `-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true`
+to preserve the manually configured app. Automated results above are fresh; manual
+launcher evidence is retained from the unchanged October 11 implementation.
+
+### Complete Phase 11 file manifest
+
+Created:
+
+- `app/src/androidTest/java/com/example/kare/ProverbConfigurationAccessibilityTest.kt`
+
+Modified:
+
+- `app/src/main/java/com/example/kare/widget/ProverbConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetPlacementUi.kt`
+- `app/src/test/java/com/example/kare/widget/WidgetPlacementUiTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+Final audit: the new instrumentation test is the only intended untracked source.
+No screenshots, emulator output, generated/debug files, IDE changes, temporary
+strings or auth/Firebase files were introduced. Diagnostic captures stayed outside
+the repository. No unrelated user files were removed.
+
+### Remaining limitations and next work
+
+Not executed: older real Android APIs, non-Pixel launchers, physical/tablet devices,
+complete spoken TalkBack traversal, cross-device backup restoration, or waiting
+four hours to time an inexact refresh. Platform scheduling, widget host layout and
+pin acceptance remain launcher-controlled. No claim is made for those scenarios.
+
+Recommended Phase 12 is the remaining older-API/second-launcher and spoken TalkBack
+qualification above, with suitable environments supplied. No Phase 12 work began.
+Developer 2 can continue auth/Firebase contracts, implementations and tests without
+widget coupling. Coordinate future shared manifest/Gradle/AppContainer changes;
+current Phase 11 conflict points are the two widget UI files and this document.
+
+2026-10-12 work log: Developer 1 closed Phase 11 on ANDROID after preserving prior
+manual evidence, fixing the two focused accessibility defects, adding regression
+coverage and recording exact device/compatibility limitations. Reservations are
+released. No commit, push, merge, branch change or history rewrite was performed.

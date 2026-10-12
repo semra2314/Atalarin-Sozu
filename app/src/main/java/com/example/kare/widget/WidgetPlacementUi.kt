@@ -1,5 +1,7 @@
 package com.example.kare.widget
 
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.*
@@ -31,7 +33,7 @@ fun WidgetPlacementContent(available: Boolean, result: PlacementResult?, onPlace
     if (result != null) AlertDialog(onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.widget_add_home)) },
         text = {
-            Column {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
                 Text(stringResource(when (result) {
                     PlacementResult.REQUESTED -> R.string.widget_placement_requested
                     PlacementResult.UNSUPPORTED -> R.string.widget_placement_unsupported

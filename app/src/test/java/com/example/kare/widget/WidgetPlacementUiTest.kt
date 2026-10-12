@@ -1,6 +1,8 @@
 package com.example.kare.widget
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.kare.core.design.KareTheme
@@ -19,6 +21,32 @@ import org.robolectric.annotation.*
 @LooperMode(LooperMode.Mode.PAUSED)
 class WidgetPlacementUiTest {
     @get:Rule val compose = createComposeRule()
+    @Test @Config(qualifiers = "en-rUS-w320dp-h480dp-night")
+    fun englishLargeTextInstructionsScrollWithDismissStillVisible() = checkLargeTextGuidance()
+
+    @Test @Config(qualifiers = "tr-rTR-w320dp-h480dp-night")
+    fun turkishLargeTextInstructionsScrollWithDismissStillVisible() = checkLargeTextGuidance()
+
+    private fun checkLargeTextGuidance() {
+        var dismissed = false
+        compose.setContent {
+            val density = LocalDensity.current
+            CompositionLocalProvider(LocalDensity provides Density(density.density, 2f)) {
+                KareTheme(darkTheme = true) {
+                    WidgetPlacementContent(true, PlacementResult.REQUESTED, {}, { dismissed = true })
+                }
+            }
+        }
+        // The full instructions must be reachable, without shrinking accessible text.
+        compose.onNode(hasScrollAction()).assertExists()
+        val context = androidx.test.core.app.ApplicationProvider.getApplicationContext<android.content.Context>()
+        compose.onNodeWithText(context.getString(com.example.kare.R.string.widget_placement_manual))
+            .performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText(context.getString(com.example.kare.R.string.action_dismiss))
+            .assertIsDisplayed().performClick()
+        assertTrue(dismissed)
+    }
+
     @Test fun detailOffersPlacementOnlyAfterInstallationAndKeepsLibraryAction() {
         val state = mutableStateOf(DetailUiState(template = LoadState.Loaded(template.copy(id = "t-proverb")), installed = LoadState.Loaded(null)))
         var requests = 0

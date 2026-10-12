@@ -14,6 +14,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.lifecycle.*
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -51,7 +54,8 @@ class ProverbConfigurationActivity : ComponentActivity() {
                         ScreenTitle(stringResource(R.string.proverb_widget_name))
                         Text(stringResource(R.string.proverb_configuration_info))
                         Text(stringResource(R.string.proverb_placement_guidance))
-                        if (state.recovering) Text(stringResource(R.string.proverb_recovery))
+                        if (state.recovering) Text(stringResource(R.string.proverb_recovery),
+                            Modifier.semantics { liveRegion = LiveRegionMode.Polite })
                         when (val choice = state.selection) {
                             LoadState.Loading -> LoadingContent()
                             is LoadState.Failed -> ErrorContent(choice.error, vm::load)
@@ -64,7 +68,8 @@ class ProverbConfigurationActivity : ComponentActivity() {
                                             ProverbSelection.IDIOMS -> R.string.proverb_idioms
                                         })) })
                                 }
-                                state.error?.let { Text(stringResource(it.stringResource())) }
+                                state.error?.let { Text(stringResource(it.stringResource()),
+                                    Modifier.semantics { liveRegion = LiveRegionMode.Polite }) }
                                 Button(onClick = vm::save, enabled = !state.saving) { Text(stringResource(R.string.action_save)) }
                             }
                         }
