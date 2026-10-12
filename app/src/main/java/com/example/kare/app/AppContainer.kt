@@ -2,6 +2,7 @@ package com.example.kare.app
 
 import com.example.kare.core.data.widget.*
 import com.example.kare.widget.ProverbWidget
+import com.example.kare.widget.HushWidget
 import java.io.File
 import android.content.Context
 import android.util.Log
@@ -35,8 +36,10 @@ class AppContainer(context: Context) {
     private val localLibrary by lazy { RoomLibraryRepository(database, catalog) }
     private val widgetStore by lazy { WidgetInstanceStore(File(applicationContext.noBackupFilesDir, "widget-instances")) }
     val widgetInstances by lazy { ProverbWidgetRepository(widgetStore, localLibrary, widgets, errors) }
+    private val hushStore by lazy { HushInstanceStore(File(applicationContext.noBackupFilesDir, "widget-instances")) }
+    val hushInstances by lazy { HushWidgetRepository(hushStore, localLibrary, widgets, errors) }
     val library: LibraryRepository by lazy {
-        WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext) }, errors)
+        WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors)
     }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }

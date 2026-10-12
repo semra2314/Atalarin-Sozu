@@ -12,9 +12,9 @@ class WidgetRefreshingLibraryRepository(
     private val errors: ErrorReporter,
 ) : LibraryRepository by delegate {
     override suspend fun install(template: WidgetTemplate, size: WidgetSize): InstalledWidget =
-        delegate.install(template, size).also { if (template.id == "t-proverb") notifyWidgets() }
+        delegate.install(template, size).also { if (LauncherWidgetType.forTemplate(template.id) != null) notifyWidgets() }
     override suspend fun remove(templateId: String): InstalledWidget? =
-        delegate.remove(templateId).also { if (templateId == "t-proverb") notifyWidgets() }
+        delegate.remove(templateId).also { if (LauncherWidgetType.forTemplate(templateId) != null) notifyWidgets() }
     private suspend fun notifyWidgets() {
         try { refresh() }
         catch (error: Exception) {

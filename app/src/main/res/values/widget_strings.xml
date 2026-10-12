@@ -18,8 +18,8 @@
     <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
     <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
     <string name="widget_add_home">Add to Home Screen</string>
-    <string name="widget_placement_requested">Placement requested. Confirm with your launcher, then choose the widget content. If setup does not open, tap Configure Söz on the placed widget.</string>
+    <string name="widget_placement_requested">Placement requested. Confirm with your launcher, then choose the widget content. If setup does not open, tap the settings button on the placed widget.</string>
     <string name="widget_placement_unsupported">Your launcher does not support direct widget placement.</string>
     <string name="widget_placement_unavailable">The placement request could not be started. Try again or add the widget manually.</string>
-    <string name="widget_placement_manual">To add manually, touch and hold an empty area of your home screen, open Widgets, then choose Kare · Söz. Launcher steps may vary.</string>
+    <string name="widget_placement_manual">To add manually, touch and hold an empty area of your home screen, open Widgets, then choose the Kare widget you want. Launcher steps may vary.</string>
 </resources>

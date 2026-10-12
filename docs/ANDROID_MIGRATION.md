@@ -14,6 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 12 adds Hush as the second free Android widget using shared placement and
+atomic state mechanics, with independent per-instance language configuration.
 Phase 11 validates Proverb compatibility and accessibility, fixing large-text guidance
 and configuration announcement semantics without changing widget storage or placement.
 Phase 10 adds native Proverb placement from Detail and Library, with manual guidance.
@@ -261,7 +263,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 11. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 12. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -294,15 +296,16 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 11. 
 | Frame | FramePhotoStore / FrameWidget | Reserved feature package | Unassigned | NOT STARTED | No photo picker/storage |
 | Aurora | AuroraWidget | None | Unassigned | NOT STARTED | Native clock/update design needed |
 | Proverb | ProverbLibrary / ProverbWidget | Glance ProverbWidget, 400 source entries | Developer 1 | COMPLETED | Phase 8 reference widget; independent content selection |
-| Other live widgets | Hush / Exhale / Countdown / Progress | None | Unassigned | NOT STARTED | Models, setup, renderers and actions deferred |
-| Android App Widgets | actual-widgetsExtension | Glance receiver, configuration Activity and instance repository | Developer 1 | COMPLETED | First-widget foundation only; other providers deferred |
+| Other live widgets | Exhale / Countdown / Progress | None | Unassigned | NOT STARTED | Models, setup, renderers and actions deferred |
+| Android App Widgets | actual-widgetsExtension | Glance receiver, configuration Activity and instance repository | Developer 1 | COMPLETED | Proverb and Hush; further providers deferred |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
 | Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
-| App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phase 10; Proverb only; launcher remains authoritative |
+| App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phases 10/12; Proverb and Hush registry; launcher remains authoritative |
 | Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
+| Hush launcher widget | HushWidget / HushWidgetView | Typed state, localized hourly prompts, native configuration and shared placement | Developer 1 | COMPLETED | Phase 12; independent instances, resize, process death and deletion validated on Pixel |
 | Widget compatibility/accessibility | Widget placement and configuration | Focused API 37 device and API 28 Robolectric validation | Developer 1 | COMPLETED | Phase 11; older real devices, other launchers and spoken TalkBack remain unverified |
 | Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
@@ -312,11 +315,11 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 11. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Phase 11 COMPLETED by Developer 1 on ANDROID, from baseline
-`689eef2`. Widget validation and focused UI/test reservations are released.
-No Phase 12 implementation has started. Shared widget UI and this document remain
-likely conflict points for future changes. Authentication/Firebase remains
-Developer 2's area.
+Current tasks: None. Phase 12 COMPLETED by Developer 1 on ANDROID, from clean
+baseline `b5f0898`. Hush and shared-widget reservations are released. No Phase 13
+implementation started. Shared conflict points: widget placement/state files,
+AppContainer widget wiring, manifest, app Gradle configuration, localized widget
+resources, tests and this record. Developer 2 retains authentication/Firebase.
 
 ### Developer 2
 
@@ -462,10 +465,11 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 12: close the remaining release-qualification gaps using a
-provisioned older supported API image, a second launcher, and a human spoken
-TalkBack traversal. Keep this separate from adding another widget. This is an
-unassigned recommendation, not an active task or authorization to start work.
+Recommended Phase 13: evaluate Daily's attributed passage/source migration and
+calendar/timezone refresh contract as a separately scoped next widget. Older-API,
+second-launcher and spoken TalkBack qualification remain release gates before
+claiming broad compatibility. This recommendation is unassigned; no Phase 13 work
+is authorized or started by the Phase 12 implementation.
 
 Developer 2 continues independent authentication/Firebase work on
 `android/auth-foundation`, including its contracts, tests and
@@ -2415,3 +2419,253 @@ current Phase 11 conflict points are the two widget UI files and this document.
 manual evidence, fixing the two focused accessibility defects, adding regression
 coverage and recording exact device/compatibility limitations. Reservations are
 released. No commit, push, merge, branch change or history rewrite was performed.
+
+
+## Phase 12 — Second widget: Hush — COMPLETED
+
+2026-10-12 — Selection recorded before implementation. Developer 1, ANDROID.
+Reference: iOS revision `41a8fbc67d2992f144383ede02c2ecfd6a73a1a1`, cached IOS source.
+Inspected actual-widgets providers/bundle, older WidgyWidget sources, SampleCatalog,
+HushWidgetView, DailyPassage and extension Localizable.xcstrings. Current actual-widgets
+is the shipping target; older duplicated sources are not separate product features.
+
+| Candidate | Price / dependencies / complexity | Decision |
+|---|---|---|
+| Hush | Free; ten localized prompts selected by local hour + day-of-year; optional artwork with code gradient fallback; no content store/editor/account/audio | Selected: smallest useful independent second type |
+| Daily | Free; attributed passage corpus, source preference, midnight/calendar semantics; no images/account/editor | Good later candidate; more content and sourcing work |
+| Aurora | Free; live clock/date and time-of-day artwork; no account/editor | More RemoteViews clock/image adaptation |
+| Countdown | Paid; event CRUD/date/theme, per-event selection, midnight updates | Excluded: entitlement and event configuration |
+| Progress | Paid; measure/birthday/life inputs and hourly percentage rendering | Excluded: entitlement and extra domain behavior |
+| Focus | Free; durable timer/session actions and optional audio, timed transitions | Excluded: background/session complexity |
+| Frame | Free; photo acquisition, durable images/caption metadata | Excluded: photo pipeline |
+| Exhale / custom Kare | Paid cessation/recovery plan and timed interactions / full editor payload | Excluded: paid or editor dependency |
+
+Decision: reuse t-hush and existing catalog/Library. Persist a typed version-1 Hush
+configuration per real appWidgetId; allow app-language/English/Turkish content choice
+per instance (small Android-specific preference, not an editor). Default follows
+app language. Preserve exact iOS prompt order and translations. Extract only the
+existing atomic-file mechanics into a typed helper; Proverb version-1 bytes/path
+remain compatible. A single capability registry routes both providers through the
+existing pinning coordinator. No duplicate catalog or parallel persistence framework.
+
+Refresh: request inexact hourly platform updates and provide explicit refresh;
+recompute local calendar/hour on rendering, configuration, resize and Library updates.
+No exact alarms, background service, network, WorkManager or per-minute polling.
+Time-of-day gradients use the source fallback palette without photo/art assets;
+Glance uses system serif and flexible text rather than SwiftUI font shrinking.
+Platform timing is approximate: see [Android widget metadata](https://developer.android.com/develop/ui/compose/glance/create-app-widget).
+
+Phase 12 shared build decision: explicit per-instance English/Turkish selection must
+work offline even in Play-delivered bundles. Disable language resource splitting
+for this small two-language app; no dependency or SDK change. This requires a small
+app/build.gradle.kts edit, a shared-file conflict hotspot for Developer 2.
+
+
+### Implementation and compatibility contracts
+
+- `LauncherWidgetType` is the single supported-template capability list (t-proverb,
+  t-hush). `WidgetCapability` supplies Android receiver/configuration metadata.
+  Detail and Library reuse their existing placement slot without screen changes.
+  Both types use the same requestPinAppWidget and unique one-shot callback path;
+  configuration validates the platform-provided ID against its own provider.
+- `AtomicWidgetStateStore<T>` extracts only existing atomic write/read/delete,
+  IO dispatcher, Mutex and revision Flow mechanics. WidgetInstanceStore retains
+  its version-1 Proverb codec and existing file names. HushInstanceStore has its
+  own strict typed codec: `{version:1, templateId:"t-hush", language:"app|english|turkish"}`.
+  Both use `noBackupFilesDir/widget-instances/<appWidgetId>.json`; launcher IDs are
+  unique across providers. No Room migration or duplicate catalog is required.
+- HushWidgetRepository installs existing free t-hush idempotently through the
+  same Room Library, then saves instance language only after explicit Save. Removal
+  of a launcher instance deletes only its file. Removing Library membership gates
+  rendering; reinstalling restores it. Invalid/future/foreign state fails closed
+  with Configure available; explicit Save repairs only the target instance.
+- HushConfigurationViewModel owns loading, selection, saved-input restoration,
+  saving and semantic errors. The native Activity collects lifecycle-aware state,
+  uses Kare theme and scrollable controls, and exposes polite recovery/error live
+  regions. No Compose component queries storage directly.
+- HushWidget uses SizeMode.Exact, centered system-serif text in ordinary layouts,
+  scrolling for compact/large-font/error content, and three labeled 48 dp actions.
+  It shares the existing action primitive with an explicit Hush ink tint. Proverb
+  retains its default tint, renderer and source dataset.
+- Provider defaults to 3 × 3 cells, minimum 180 × 180 dp, both resize axes, and
+  600 dp maximum metadata on supported launchers. Older Android ignores newer
+  metadata; min sizes remain the fallback. The picker uses a native preview layout.
+- The exact iOS `(localHour + dayOfYear) % 10` prompt sequence and ten English/
+  Turkish meanings are preserved. Local timezone is resolved on each render;
+  hourly updates are inexact and do not promise an on-the-hour transition. Explicit
+  refresh recomputes the current prompt without rotating randomly. Configuration,
+  resize and relevant Library writes invalidate rendering. No wake locks or exact
+  alarm permission is requested.
+
+### Android differences and accessibility
+
+Hush has an optional per-instance language instead of the iOS shared language
+setting; APP remains the default. Its ten source translations are Android string
+resources, not hardcoded visible Kotlin text. Twenty Hush keys exist in both locales.
+Two existing placement messages per locale were generalized to supported Kare
+widgets, retaining request-versus-confirmed-placement wording and manual fallback.
+Key/placeholder parity passes for 20 Hush and 22 shared widget strings.
+
+Native XML gradients preserve the iOS fallback palette and C9C6C1 ink; optional
+raster artwork/radial overlay and lock-screen accessory families are not ported.
+Android uses system serif rather than unsupported custom Glance font families.
+Unlike the iOS noninteractive card, Android exposes real refresh/configuration/open
+controls to support recoverability. Text can wrap/scroll instead of shrinking
+accessibility font sizes. Configuration chips have selected semantics; headings,
+localized action names, fixed touch targets and polite errors follow Phase 11.
+No full spoken TalkBack validation is claimed for Hush.
+
+### Focused regression coverage
+
+Added eight Hush JVM tests covering reopen/independent language, Proverb byte
+compatibility, deletion and Library gating, missing/corrupt/foreign/future formats,
+local hour/day/year/palette boundaries, active-observer refresh, source translation,
+explicit repair and shared Library refresh capability. Two existing screen test
+helpers now exercise Hush as well as Proverb (two added tests). The native placement
+test covers both providers and real callback IDs; unsupported-template/fallback and
+cancellation tests remain intact.
+
+Added one device integration test with two real test-owned Hush IDs and one Proverb
+ID: native configuration, selected language, Save, option resize, refresh, deletion
+and Library separation. Cleanup is confined to test instances and newly installed
+test memberships. The full existing Proverb and navigation suites are retained.
+
+Manual installation of Hush exposed a Phase 6 test assumption: Aurora's Library
+row was expected in the first viewport. The test now scrolls the LazyColumn to its
+row before asserting/actions; no production Library change or assertion suppression.
+Only the Aurora fixture created by the failed run was removed before rerunning.
+
+
+### Actual device validation — 2026-10-12
+
+Pixel_8 AVD, emulator-5554, Android 17 / API 37 (android-37.1 Google Play arm64
+image), Pixel Launcher `com.google.android.apps.nexuslauncher`; English app/system
+UI, explicit English and Turkish Hush content, default 420 dpi, font scale 1.0 and
+2.0. The existing emulator was started when initially disconnected.
+
+| Flow actually exercised | Result |
+|---|---|
+| Picker | Searched Kare in the native Widgets picker; Söz and Hush listed together; Hush gradient/“breathe” preview, 3 × 3 label and description visible |
+| Detail → Library installation → pin | Search found existing t-hush, selected supported Small catalog size, installed through existing Detail; native launcher confirmation opened |
+| Callback/configuration | Confirmation launched HushConfigurationActivity with real ID 47; chose English and saved; English prompt rendered |
+| Library → pin | Hush Library row opened the same native confirmation; real ID 60 configured independently as Turkish |
+| Independent content | ID 47 retained `language:english`; ID 60 retained `language:turkish`; both simultaneously showed “notice” / “fark et” |
+| Proverb coexistence | Existing Proverb widget on adjacent launcher page rendered its saying/meaning/example; 31.json still contained t-proverb/proverbs; pre-existing 39.json was left untouched |
+| Resize | Resized only ID 60 from 3 × 3 to 3 × 2; content/actions usable, language unchanged, ID 47 stayed larger |
+| Process death | Killed Kare PID 6343 and confirmed no process; Refresh on Hush restarted PID 7482, both configurations and rendered prompts remained intact |
+| Large font | Set font scale to 2.0; inspected both launcher instances and Hush configuration. Prompt and fixed action targets remained readable; language chips, Save and Cancel reachable |
+| Cancellation/re-entry | Opened existing Hush configuration at large font and cancelled without saving; existing state remained intact |
+| Deletion | Removed resized ID 60 through Pixel Launcher. After Undo expired only 31.json, 39.json and 47.json remained; ID 47 still opened Kare |
+| Library separation | Reopened Library after deletion; both Hush and Söz remained installed with placement/favorite/remove/reorder controls |
+| Settings restoration | Restored font scale to 1.0 and confirmed it; no locale, density, dark-mode or TalkBack setting was changed during Phase 12 |
+
+The first visual review showed the prompt at the top of a spacious widget. Before
+final validation it was centered at ordinary sizes, matching the source design;
+compact/large-font/error layouts keep the scrolling body. Final screenshots showed
+the centered English/Turkish pair and readable 200% rendering.
+
+Not claimed: another launcher, older physical/emulated API, Hush reboot test,
+measured exact hourly delivery, new dark-mode session, or spoken TalkBack traversal.
+Process recreation is tested; Phase 9/11 Proverb reboot evidence is historical,
+not a Hush reboot claim. Repair is covered by JVM/ViewModel tests, not a fresh manual
+Hush corruption session. Picker and actual pinning were manually exercised; generic
+unsupported capability remains covered by fakes rather than altering Pixel Launcher.
+
+### Final validation and audit
+
+| Check | Result on final implementation |
+|---|---|
+| `./gradlew assembleDebug` | PASS |
+| `./gradlew test` | PASS: 160 JVM tests, zero failures/errors/skips |
+| `./gradlew lint` | PASS: zero errors, 87 warnings |
+| `./gradlew connectedDebugAndroidTest` | PASS: six device tests on Pixel_8 Android 17 |
+| `git diff --check` | PASS |
+| Locale key/format audit | PASS: 20 Hush and 22 shared widget keys in both locales |
+
+The six added lint warnings identify provider metadata ignored on older APIs
+(maxResize dimensions, previewLayout, targetCell dimensions, reconfigurable flag).
+Fallback minimum dimensions remain present. They are not suppressed. The dynamic
+locale/app-bundle warning discovered during implementation was fixed by shipping
+both language resource sets. The pre-existing pending-intent background-start
+constant deprecation remains; no SDK/strictness downgrade was made.
+
+Full validation ran after the final production layout/bundle changes. That run
+exposed the Library test viewport assumption described above; after correcting
+only its scroll step, build/test/lint/device commands all passed. The unchanged
+JVM/build tasks were up-to-date in that last invocation after their preceding
+successful execution; the changed device suite executed all six tests. Tests used
+`-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true` to preserve manual
+launcher state. No tests/assertions were disabled and no unrelated Library rows
+were cleared to make the suite pass.
+
+Proverb regression: existing serialization, source rotation, configuration repair,
+placement, resizing policy, deletion and UI tests passed; its version-1 codec is
+unchanged and a mixed-type test checks byte preservation. Actual Proverb rendering
+and persisted selection remained valid alongside Hush. No broad infrastructure
+rewrite or third widget was introduced.
+
+### Complete Phase 12 file manifest
+
+Paths relative to repository root. Created:
+
+- `app/src/androidTest/java/com/example/kare/HushWidgetIntegrationTest.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/AtomicWidgetStateStore.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/HushInstanceStore.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/HushWidgetRepository.kt`
+- `app/src/main/java/com/example/kare/core/model/Hush.kt`
+- `app/src/main/java/com/example/kare/core/model/LauncherWidgetType.kt`
+- `app/src/main/java/com/example/kare/widget/HushConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/HushConfigurationViewModel.kt`
+- `app/src/main/java/com/example/kare/widget/HushWidget.kt`
+- `app/src/main/res/drawable/hush_dawn.xml`
+- `app/src/main/res/drawable/hush_night.xml`
+- `app/src/main/res/drawable/hush_still.xml`
+- `app/src/main/res/layout/hush_widget_preview.xml`
+- `app/src/main/res/values-tr/hush_strings.xml`
+- `app/src/main/res/values/hush_strings.xml`
+- `app/src/main/res/xml/hush_widget_info.xml`
+- `app/src/test/java/com/example/kare/widget/HushStateTest.kt`
+
+Modified:
+
+- `app/build.gradle.kts`
+- `app/src/androidTest/java/com/example/kare/Phase6NavigationTest.kt`
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/WidgetInstanceStore.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/WidgetRefreshingLibraryRepository.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbWidget.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetPlacement.kt`
+- `app/src/main/res/values-tr/widget_strings.xml`
+- `app/src/main/res/values/widget_strings.xml`
+- `app/src/test/java/com/example/kare/widget/WidgetPlacementTest.kt`
+- `app/src/test/java/com/example/kare/widget/WidgetPlacementUiTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+Final audit: all new files are intentional source, resources or tests. Captures,
+UI dumps and helper scripts stayed under /tmp or on the emulator, outside source
+control. No generated build files, IDE configuration, debug strings, auth/Firebase
+implementation or AUTH_MIGRATION_NOTES edits are included. AppContainer changes
+are limited to widget wiring; existing auth bindings remain untouched.
+
+### Work log, remaining limitations and coordination
+
+2026-10-12 — Developer 1 completed Phase 12 on ANDROID: inspected candidate iOS
+widgets, recorded Hush selection before coding, reused typed atomic storage and
+native placement, implemented independent language configuration/Glance rendering,
+added regression tests, corrected a Library UI-test viewport assumption, and
+validated real Pixel placement, coexistence, resize, process recreation and removal.
+
+Remaining Android boundaries: hourly requests can be deferred by platform power
+management; no on-the-hour guarantee or exact alarm. Cross-device restore still
+requires reconfiguration because instance files are excluded from backup. OEM
+launchers may use different dimensions/pinning behavior and ignore newer metadata.
+The production app ID, release provisioning, broader launcher/API matrix and spoken
+accessibility review remain earlier documented work, not solved by this phase.
+
+Recommended Phase 13 is the separately scoped Daily evaluation above. No next
+widget or Phase 13 implementation has started. Developer 2 can safely continue
+AuthRepository/AuthViewModel/Firebase/auth-screen work and auth notes, coordinating
+shared manifest, Gradle and composition-root edits. Phase 12 added no authentication
+requirements or changes to their contracts. All Phase 12 reservations are released.
+No commit, push, merge, branch operation or history rewrite was performed.

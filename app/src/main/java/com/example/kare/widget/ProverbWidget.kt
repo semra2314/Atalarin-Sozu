@@ -123,10 +123,10 @@ private fun ProverbContent(context: Context, snapshot: ProverbSnapshot, appWidge
 }
 
 @Composable
-private fun WidgetAction(icon: Int, label: String, action: androidx.glance.action.Action) {
+internal fun WidgetAction(icon: Int, label: String, action: androidx.glance.action.Action, tint: ColorProvider = ink) {
     Box(GlanceModifier.size(48.dp).clickable(action).semantics { contentDescription = label },
         contentAlignment = Alignment.Center) {
         Image(ImageProvider(icon), contentDescription = null, modifier = GlanceModifier.size(24.dp),
-            colorFilter = ColorFilter.tint(ink))
+            colorFilter = ColorFilter.tint(tint))
     }
 }

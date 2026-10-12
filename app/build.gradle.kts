@@ -24,6 +24,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Both languages must be available offline for per-instance widget language choices.
+    bundle { language { enableSplit = false } }
+
     buildTypes {
         release {
             optimization {

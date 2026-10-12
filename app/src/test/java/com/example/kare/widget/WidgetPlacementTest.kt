@@ -3,6 +3,7 @@ package com.example.kare.widget
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
+import com.example.kare.core.model.LauncherWidgetType
 import androidx.test.core.app.ApplicationProvider
 import org.junit.Assert.*
 import org.junit.Test
@@ -20,11 +21,12 @@ class WidgetPlacementTest {
         var calls = 0
         var failure: RuntimeException? = null
         override fun supportsPinning(): Boolean { failure?.let { throw it }; return supported }
-        override fun requestProverb(): Boolean { calls++; return accepted }
+        override fun request(type: LauncherWidgetType): Boolean { calls++; return accepted }
     }
     @Test fun availabilityIsLimitedToImplementedProvider() {
         val fake = Fake(); val coordinator = WidgetPlacementCoordinator(fake)
         assertTrue(coordinator.hasWidget("t-proverb"))
+        assertTrue(coordinator.hasWidget("t-hush"))
         assertFalse(coordinator.hasWidget("t-focus"))
         assertEquals(PlacementResult.UNAVAILABLE, coordinator.request("t-focus"))
         assertEquals(0, fake.calls)
@@ -70,23 +72,25 @@ class WidgetPlacementTest {
     @Test fun nativeManagerUsesProverbProviderAndCallbackPassesRealIdsToExistingConfiguration() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val platform = AppWidgetManager.getInstance(context)
-        shadowOf(platform).addInstalledProvider(android.appwidget.AppWidgetProviderInfo().apply {
-            provider = ComponentName(context, ProverbReceiver::class.java)
-        })
+        LauncherWidgetType.entries.forEach { type ->
+            shadowOf(platform).addInstalledProvider(android.appwidget.AppWidgetProviderInfo().apply {
+                provider = ComponentName(context, WidgetCapability.forType(type).receiver)
+            })
+        }
         shadowOf(platform).setRequestPinAppWidgetSupported(false)
         val manager = AndroidWidgetPlacementManager(context)
         assertFalse(manager.supportsPinning())
         shadowOf(platform).setRequestPinAppWidgetSupported(true)
         assertTrue(manager.supportsPinning())
         val ids = mutableSetOf<Int>()
-        repeat(2) {
-            assertTrue(manager.requestProverb())
+        LauncherWidgetType.entries.forEach { type ->
+            assertTrue(manager.request(type))
             val intent = shadowOf(context as android.app.Application).nextStartedActivity
-            assertEquals(ComponentName(context, ProverbConfigurationActivity::class.java), intent.component)
+            assertEquals(ComponentName(context, WidgetCapability.forType(type).configuration), intent.component)
             val id = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1)
             assertTrue(id > 0)
             assertTrue(ids.add(id))
-            assertEquals(ComponentName(context, ProverbReceiver::class.java), platform.getAppWidgetInfo(id).provider)
+            assertEquals(ComponentName(context, WidgetCapability.forType(type).receiver), platform.getAppWidgetInfo(id).provider)
         }
     }
 }

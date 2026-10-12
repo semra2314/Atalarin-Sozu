@@ -55,9 +55,8 @@ class Phase6NavigationTest {
             compose.onAllNodesWithTag("detail-install").fetchSemanticsNodes().isEmpty()
         }
         detailNode("open-library").performClick()
-        compose.waitUntil(10_000) {
-            compose.onAllNodesWithTag("installed-t-aurora").fetchSemanticsNodes().isNotEmpty()
-        }
+        // Other installed widgets can place this row outside the LazyColumn viewport.
+        compose.onNode(hasScrollToIndexAction()).performScrollToNode(hasTestTag("installed-t-aurora"))
         compose.onNodeWithTag("favorite-t-aurora").performScrollTo().performClick()
         compose.onNodeWithTag("installed-t-aurora").performScrollTo().performClick()
         compose.waitUntil(10_000) {

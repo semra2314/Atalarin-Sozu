@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.kare.core.design.KareTheme
+import com.example.kare.core.model.LauncherWidgetType
 import com.example.kare.core.presentation.LoadState
 import com.example.kare.feature.detail.*
 import com.example.kare.feature.library.*
@@ -47,28 +48,32 @@ class WidgetPlacementUiTest {
         assertTrue(dismissed)
     }
 
-    @Test fun detailOffersPlacementOnlyAfterInstallationAndKeepsLibraryAction() {
-        val state = mutableStateOf(DetailUiState(template = LoadState.Loaded(template.copy(id = "t-proverb")), installed = LoadState.Loaded(null)))
+    @Test fun detailOffersPlacementOnlyAfterInstallationAndKeepsLibraryAction() = checkDetail("t-proverb")
+    @Test fun hushDetailOffersPlacementOnlyAfterInstallation() = checkDetail("t-hush")
+    private fun checkDetail(templateId: String) {
+        val state = mutableStateOf(DetailUiState(template = LoadState.Loaded(template.copy(id = templateId)), installed = LoadState.Loaded(null)))
         var requests = 0
         compose.setContent { KareTheme {
-            DetailContent("t-proverb", state.value, {}, {}, {}, {}, {}, {}, placement = { id ->
-                WidgetPlacementContent(id == "t-proverb", null, { requests++ }, {})
+            DetailContent(templateId, state.value, {}, {}, {}, {}, {}, {}, placement = { id ->
+                WidgetPlacementContent(LauncherWidgetType.forTemplate(id) != null, null, { requests++ }, {})
             })
         } }
         compose.onNodeWithTag("place-widget").assertDoesNotExist()
-        compose.runOnIdle { state.value = state.value.copy(installed = LoadState.Loaded(installed("t-proverb"))) }
-        compose.onNodeWithTag("detail-t-proverb").performScrollToNode(hasTestTag("place-widget"))
+        compose.runOnIdle { state.value = state.value.copy(installed = LoadState.Loaded(installed(templateId))) }
+        compose.onNodeWithTag("detail-$templateId").performScrollToNode(hasTestTag("place-widget"))
         compose.onNodeWithTag("place-widget").performClick()
         assertEquals(1, requests)
-        compose.onNodeWithTag("detail-t-proverb").performScrollToNode(hasTestTag("open-library"))
+        compose.onNodeWithTag("detail-$templateId").performScrollToNode(hasTestTag("open-library"))
         compose.onNodeWithTag("open-library").assertExists()
     }
-    @Test fun libraryPlacementDoesNotInvokeRemovalOrFavorite() {
+    @Test fun libraryPlacementDoesNotInvokeRemovalOrFavorite() = checkLibrary("t-proverb")
+    @Test fun hushLibraryPlacementPreservesMembershipActions() = checkLibrary("t-hush")
+    private fun checkLibrary(templateId: String) {
         var requests = 0; var otherActions = 0
         compose.setContent { KareTheme {
-            LibraryContent(LibraryUiState(widgets = LoadState.Loaded(listOf(installed("t-proverb")))), {}, {},
+            LibraryContent(LibraryUiState(widgets = LoadState.Loaded(listOf(installed(templateId)))), {}, {},
                 { otherActions++ }, { otherActions++ }, {}, {}, {}, placement = { id ->
-                    WidgetPlacementContent(id == "t-proverb", null, { requests++ }, {})
+                    WidgetPlacementContent(LauncherWidgetType.forTemplate(id) != null, null, { requests++ }, {})
                 })
         } }
         compose.onNodeWithTag("place-widget").performScrollTo().performClick()
