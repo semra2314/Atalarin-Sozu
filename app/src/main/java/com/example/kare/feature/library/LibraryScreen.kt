@@ -11,6 +11,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.kare.widget.WidgetPlacementRoute
 import com.example.kare.R
 import com.example.kare.core.design.*
 import com.example.kare.core.localization.stringResource
@@ -21,13 +22,13 @@ import com.example.kare.core.ui.*
 fun LibraryRoute(viewModel: LibraryViewModel, onTemplateClick: (String) -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     LibraryContent(state, viewModel::retryObservation, viewModel::setFavoritesOnly,
-        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick)
+        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick, placement = { WidgetPlacementRoute(it) })
 }
 
 @Composable
 fun LibraryContent(state: LibraryUiState, onRetry: () -> Unit, onFavoritesOnly: (Boolean) -> Unit,
     onFavoriteToggle: (String) -> Unit, onRemove: (String) -> Unit, onReorder: (List<String>) -> Unit,
-    onDismissAction: () -> Unit, onTemplateClick: (String) -> Unit) {
+    onDismissAction: () -> Unit, onTemplateClick: (String) -> Unit, placement: @Composable (String) -> Unit = {}) {
     var pendingRemoval by rememberSaveable { mutableStateOf<String?>(null) }
     val all = (state.widgets as? LoadState.Loaded)?.value.orEmpty()
     val busy = state.action is LibraryActionState.Running
@@ -73,6 +74,7 @@ fun LibraryContent(state: LibraryUiState, onRetry: () -> Unit, onFavoritesOnly: 
                             }
                         }
                         Column(Modifier.padding(horizontal = KareSpacing.md)) {
+                            placement(widget.templateId)
                             TextButton(enabled = !busy, onClick = { onFavoriteToggle(widget.templateId) },
                                 modifier = Modifier.testTag("favorite-${widget.templateId}")) {
                                 Text(stringResource(if (widget.isFavorite) R.string.favorite_remove else R.string.favorite_add))

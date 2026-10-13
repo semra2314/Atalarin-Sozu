@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hush_widget_name">Kare · Hush</string>
+    <string name="hush_widget_description">A quiet word that changes through the day.</string>
+    <string name="hush_configuration_info">Choose the language for this instance. Hush will be added to your Library if needed. Words follow the local hour; launcher updates may be delayed.</string>
+    <string name="hush_placement_guidance">Long-press to resize. Use Configure Hush to change this instance. Scroll if larger text does not fit.</string>
+    <string name="hush_language_app">App language</string>
+    <string name="hush_language_english">English</string>
+    <string name="hush_language_turkish">Turkish</string>
+    <string name="hush_configure">Configure Hush</string>
+    <string name="hush_library_missing">Add Hush to your Kare Library to display words.</string>
+    <string name="hush_recovery">Saved settings could not be read. Choose a language and save to repair this instance. Your Library is unchanged.</string>
+    <string name="hush_breathe">breathe</string>
+    <string name="hush_pause">pause</string>
+    <string name="hush_notice">notice</string>
+    <string name="hush_soften">soften</string>
+    <string name="hush_arrive">arrive</string>
+    <string name="hush_release">release</string>
+    <string name="hush_settle">settle</string>
+    <string name="hush_listen">listen</string>
+    <string name="hush_slow_down">slow down</string>
+    <string name="hush_be_here">be here</string>
+</resources>

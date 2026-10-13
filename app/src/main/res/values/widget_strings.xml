@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proverb_widget_name">Kare · Söz</string>
+    <string name="proverb_widget_description">Turkish sayings and meanings, rotating every four hours.</string>
+    <string name="proverb_configuration_info">Choose content for this home-screen instance. Söz will be added to your Library if needed. Sayings remain in Turkish.</string>
+    <string name="proverb_all">All sayings</string>
+    <string name="proverb_proverbs">Proverbs</string>
+    <string name="proverb_idioms">Idioms</string>
+    <string name="proverb_kind">PROVERB</string>
+    <string name="proverb_idiom">IDIOM</string>
+    <string name="proverb_needs_configuration">Configure this widget from your launcher.</string>
+    <string name="proverb_library_missing">Add Söz to your Kare Library to display sayings.</string>
+    <string name="proverb_unavailable">Widget unavailable. Open Kare or refresh to try again.</string>
+    <string name="proverb_open_app">Open Kare</string>
+    <string name="proverb_configure">Configure Söz</string>
+    <string name="proverb_placement_guidance">Long-press the widget to resize it. Use its settings button to change this instance. Scroll the text on smaller widgets.</string>
+    <string name="proverb_recovery">Saved settings could not be read. Choose content and save to repair this instance. Your Library is unchanged.</string>
+    <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
+    <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
+    <string name="widget_add_home">Add to Home Screen</string>
+    <string name="widget_placement_requested">Placement requested. Confirm with your launcher, then choose the widget content. If setup does not open, tap the settings button on the placed widget.</string>
+    <string name="widget_placement_unsupported">Your launcher does not support direct widget placement.</string>
+    <string name="widget_placement_unavailable">The placement request could not be started. Try again or add the widget manually.</string>
+    <string name="widget_placement_manual">To add manually, touch and hold an empty area of your home screen, open Widgets, then choose the Kare widget you want. Launcher steps may vary.</string>
+</resources>

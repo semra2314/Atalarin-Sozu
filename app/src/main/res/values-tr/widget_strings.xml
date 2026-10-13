@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proverb_widget_name">Kare · Söz</string>
+    <string name="proverb_widget_description">Dört saatte bir değişen atasözleri, deyimler ve anlamları.</string>
+    <string name="proverb_configuration_info">Bu ana ekran widget’ının içeriğini seç. Gerekirse Söz kitaplığına eklenir. Sözler Türkçe olarak gösterilir.</string>
+    <string name="proverb_all">Tüm sözler</string>
+    <string name="proverb_proverbs">Atasözleri</string>
+    <string name="proverb_idioms">Deyimler</string>
+    <string name="proverb_kind">ATASÖZÜ</string>
+    <string name="proverb_idiom">DEYİM</string>
+    <string name="proverb_needs_configuration">Bu widget’ı başlatıcından yapılandır.</string>
+    <string name="proverb_library_missing">Sözleri görmek için Söz’ü Kare kitaplığına ekle.</string>
+    <string name="proverb_unavailable">Widget kullanılamıyor. Kare’yi aç veya yeniden denemek için yenile.</string>
+    <string name="proverb_open_app">Kare’yi aç</string>
+    <string name="proverb_configure">Söz’ü yapılandır</string>
+    <string name="proverb_placement_guidance">Boyutunu değiştirmek için widget’a uzun bas. Bu widget’ı değiştirmek için ayarlar düğmesini kullan. Küçük widget’larda metni kaydır.</string>
+    <string name="proverb_recovery">Kayıtlı ayarlar okunamadı. Bu widget’ı onarmak için içerik seçip kaydet. Kitaplığın değişmedi.</string>
+    <string name="proverb_preview_text">Ağaç yaşken eğilir.</string>
+    <string name="proverb_preview_meaning">İnsanlar küçük yaşta kolayca eğitilirler.</string>
+    <string name="widget_add_home">Ana Ekrana Ekle</string>
+    <string name="widget_placement_requested">Yerleştirme isteği gönderildi. Başlatıcınızda onaylayın, ardından widget içeriğini seçin. Kurulum açılmazsa yerleştirilen widget üzerindeki ayarlar düğmesine dokunun.</string>
+    <string name="widget_placement_unsupported">Başlatıcınız doğrudan widget yerleştirmeyi desteklemiyor.</string>
+    <string name="widget_placement_unavailable">Yerleştirme isteği başlatılamadı. Yeniden deneyin veya widget’ı elle ekleyin.</string>
+    <string name="widget_placement_manual">Elle eklemek için ana ekranınızda boş bir alana basılı tutun, Widget’ları açın ve istediğiniz Kare widget’ını seçin. Adımlar başlatıcıya göre değişebilir.</string>
+</resources>

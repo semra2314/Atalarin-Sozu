@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.kare.widget.WidgetPlacementRoute
 import com.example.kare.R
 import com.example.kare.core.design.*
 import com.example.kare.core.localization.*
@@ -38,6 +39,7 @@ fun DetailRoute(
         viewModel::retryLibrary,
         viewModel::selectSize,
         viewModel::install,
+        placement = { WidgetPlacementRoute(it) },
         reviewsContent = reviewViewModel?.let { rvm ->
             { com.example.kare.feature.review.ReviewSection(viewModel.templateId, rvm, onSignIn) }
         },
@@ -54,6 +56,7 @@ fun DetailContent(
     onRetryLibrary: () -> Unit,
     onSize: (WidgetSize) -> Unit,
     onInstall: () -> Unit,
+    placement: @Composable (String) -> Unit = {},
     reviewsContent: (@Composable () -> Unit)? = null,
 ) {
     LazyColumn(Modifier.fillMaxSize().wrapContentWidth().widthIn(max = KareLayout.readableWidth)
@@ -109,6 +112,7 @@ fun DetailContent(
                             Text(stringResource(R.string.detail_installed), Modifier.testTag("detail-installed")
                                 .semantics { liveRegion = LiveRegionMode.Polite })
                             Text(stringResource(R.string.detail_local_only))
+                            placement(template.id)
                             Button(onClick = onLibrary, modifier = Modifier.testTag("open-library")) {
                                 Text(stringResource(R.string.detail_open_library))
                             }
@@ -131,6 +135,9 @@ fun DetailContent(
                         if (state.canInstall) TextButton(onClick = onInstall) { Text(stringResource(R.string.action_retry)) }
                     }
                 } }
+                reviewsContent?.let {
+                    item { it() }
+                }
             }
         }
     }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hush_widget_name">Kare · Hush</string>
+    <string name="hush_widget_description">Gün boyunca değişen sakin bir söz.</string>
+    <string name="hush_configuration_info">Bu örneğin dilini seçin. Gerekirse Hush Kitaplığınıza eklenir. Sözler yerel saate göre değişir; ana ekran güncellemeleri gecikebilir.</string>
+    <string name="hush_placement_guidance">Boyutlandırmak için basılı tutun. Bu örneği değiştirmek için Hush Ayarları düğmesini kullanın. Büyük yazı sığmazsa kaydırın.</string>
+    <string name="hush_language_app">Uygulama dili</string>
+    <string name="hush_language_english">İngilizce</string>
+    <string name="hush_language_turkish">Türkçe</string>
+    <string name="hush_configure">Hush Ayarları</string>
+    <string name="hush_library_missing">Sözleri görmek için Hush öğesini Kare Kitaplığınıza ekleyin.</string>
+    <string name="hush_recovery">Kayıtlı ayarlar okunamadı. Bu örneği onarmak için bir dil seçip kaydedin. Kitaplığınız değişmedi.</string>
+    <string name="hush_breathe">nefes al</string>
+    <string name="hush_pause">bir dur</string>
+    <string name="hush_notice">fark et</string>
+    <string name="hush_soften">gevşe</string>
+    <string name="hush_arrive">şimdiye gel</string>
+    <string name="hush_release">bırak</string>
+    <string name="hush_settle">sakinleş</string>
+    <string name="hush_listen">dinle</string>
+    <string name="hush_slow_down">yavaşla</string>
+    <string name="hush_be_here">burada ol</string>
+</resources>

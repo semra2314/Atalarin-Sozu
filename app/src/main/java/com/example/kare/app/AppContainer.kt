@@ -1,5 +1,9 @@
 package com.example.kare.app
 
+import com.example.kare.core.data.widget.*
+import com.example.kare.widget.ProverbWidget
+import com.example.kare.widget.HushWidget
+import java.io.File
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -29,7 +33,14 @@ class AppContainer(context: Context) {
     private val databaseDelegate = lazy { KareDatabase.open(applicationContext) }
     internal val database: KareDatabase get() = databaseDelegate.value
     val widgets: WidgetRepository by lazy { BundledWidgetRepository(catalog) }
-    val library: LibraryRepository by lazy { RoomLibraryRepository(database, catalog) }
+    private val localLibrary by lazy { RoomLibraryRepository(database, catalog) }
+    private val widgetStore by lazy { WidgetInstanceStore(File(applicationContext.noBackupFilesDir, "widget-instances")) }
+    val widgetInstances by lazy { ProverbWidgetRepository(widgetStore, localLibrary, widgets, errors) }
+    private val hushStore by lazy { HushInstanceStore(File(applicationContext.noBackupFilesDir, "widget-instances")) }
+    val hushInstances by lazy { HushWidgetRepository(hushStore, localLibrary, widgets, errors) }
+    val library: LibraryRepository by lazy {
+        WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors)
+    }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
     val preferences: com.example.kare.core.repository.UserPreferencesRepository by lazy {
         com.example.kare.core.data.preferences.SharedPreferencesUserPreferencesRepository(applicationContext)
