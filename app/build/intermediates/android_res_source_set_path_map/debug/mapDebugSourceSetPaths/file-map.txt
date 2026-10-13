@@ -1,0 +1,8 @@
+com.example.kare.app-pngs-0 C:\Users\semra\Desktop\Atalarin-Sozu\app\build\generated\res\pngs\debug
+com.example.kare.app-updated_navigation_xml-1 C:\Users\semra\Desktop\Atalarin-Sozu\app\build\generated\updated_navigation_xml\debug
+com.example.kare.app-packageDebugResources-2 C:\Users\semra\Desktop\Atalarin-Sozu\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.kare.app-packageDebugResources-3 C:\Users\semra\Desktop\Atalarin-Sozu\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.kare.app-debug-4 C:\Users\semra\Desktop\Atalarin-Sozu\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.kare.app-debug-5 C:\Users\semra\Desktop\Atalarin-Sozu\app\src\debug\res
+com.example.kare.app-main-6 C:\Users\semra\Desktop\Atalarin-Sozu\app\src\main\res
+gradleHome-0 C:\Users\semra\.gradle

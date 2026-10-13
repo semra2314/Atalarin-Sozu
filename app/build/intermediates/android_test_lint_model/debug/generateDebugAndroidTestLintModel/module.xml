@@ -1,0 +1,20 @@
+<lint-module
+    format="1"
+    dir="C:\Users\semra\Desktop\Atalarin-Sozu\app"
+    name=":app"
+    type="APP"
+    maven="kare:app:unspecified"
+    agpVersion="9.3.3"
+    buildFolder="build"
+    bootClassPath="C:\Users\semra\AppData\Local\Android\Sdk\platforms\android-36.1\android.jar;C:\Users\semra\AppData\Local\Android\Sdk\build-tools\36.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-36.1"
+    neverShrinking="true"
+    highlightGradualR8Api="false">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="debug"/>
+</lint-module>
