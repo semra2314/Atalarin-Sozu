@@ -11,7 +11,8 @@ import org.junit.runner.RunWith
 /** Exercises the real application container, bundled catalog and native back dispatch. */
 @RunWith(AndroidJUnit4::class)
 class Phase6NavigationTest {
-    @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+    @get:Rule(order = 0) val onboarding = CompletedOnboardingRule()
+    @get:Rule(order = 1) val compose = createAndroidComposeRule<MainActivity>()
 
     @Test fun searchDetailBackAndActivityRecreation() {
         compose.onNodeWithTag("nav-${R.string.discover_title}").assertIsSelected()

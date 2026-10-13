@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferences_widget_language">Hush instances set to English or Turkish keep their own language. Only “App language” follows this setting.</string>
+    <string name="preferences_read_error">Preferences could not be loaded. Retry, or continue for this session without saving settings.</string>
+    <string name="preferences_write_error">This preference could not be saved. Please try again.</string>
+    <string name="preferences_session">Continue for this session</string>
+    <string name="onboarding_language">Choose your language</string>
+    <string name="onboarding_curated_title">Ready-made widgets, beautifully done</string>
+    <string name="onboarding_curated_body">Discover a curated collection of designs for your home screen. Save your favorites to your Kare Library.</string>
+    <string name="onboarding_yours_title">Make them yours</string>
+    <string name="onboarding_yours_body">Keep your collection in your Library. Choose a category for Söz or a content language for Hush when adding a home-screen widget.</string>
+    <string name="onboarding_home_title">From Kare to your home screen</string>
+    <string name="onboarding_home_body">Install a free design in your Library, then use Add to Home Screen for supported Android widgets. Your launcher handles placement; each instance has its own configuration.</string>
+    <string name="onboarding_page">Step %1$d of %2$d</string>
+    <string name="onboarding_previous">Previous</string>
+    <string name="onboarding_skip">Skip introduction</string>
+    <string name="onboarding_finish">Enter Kare</string>
+    <string name="onboarding_account_later">No account is needed for your local Library. You can sign in later from Settings.</string>
+    <string name="settings_guest">Browsing as a guest. Your Library stays on this device.</string>
+    <string name="settings_action_failed">This action could not be completed. Please try again.</string>
+    <string name="settings_billing_deferred">Kare+ purchases are not available on Android yet. Paid designs remain locked.</string>
+    <string name="settings_about">About Kare</string>
+    <string name="settings_widget_guide">How to add a widget</string>
+    <string name="settings_widget_guide_body">Install Söz or Hush in your Kare Library, then choose Add to Home Screen. Confirm placement and save the widget configuration. If your launcher does not support direct placement, long-press an empty area of your home screen, open Widgets and choose Kare. Other catalog designs do not have an Android home-screen widget yet.</string>
+    <string name="settings_version">Version %1$s</string>
+</resources>

@@ -5,7 +5,9 @@ import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.kare.feature.settings.PreferencesHost
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -28,7 +30,7 @@ import com.example.kare.core.model.*
 import com.example.kare.core.presentation.*
 import com.example.kare.core.ui.*
 
-class ProverbConfigurationActivity : ComponentActivity() {
+class ProverbConfigurationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val id = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
@@ -43,7 +45,7 @@ class ProverbConfigurationActivity : ComponentActivity() {
                     ErrorReporter { operation, error -> Log.e("KareWidget", operation, error); Unit }, extras.createSavedStateHandle()))!!
         })[WidgetConfigurationViewModel::class.java]
         setContent {
-            KareTheme {
+            PreferencesHost(viewModel(factory = (application as KareApplication).container.viewModelFactory)) {
                 val state by vm.state.collectAsStateWithLifecycle()
                 LaunchedEffect(state.saved) {
                     if (state.saved) { setResult(RESULT_OK, result); finish() }

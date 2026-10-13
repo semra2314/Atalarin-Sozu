@@ -26,6 +26,7 @@ import com.example.kare.feature.discover.*
 import com.example.kare.feature.library.*
 import com.example.kare.feature.search.*
 import kotlinx.serialization.Serializable
+import com.example.kare.feature.settings.*
 
 sealed interface KareDestination {
     @Serializable data object Discover : KareDestination
@@ -47,7 +48,7 @@ private val mainDestinations = listOf(
 )
 
 @Composable
-fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController = rememberNavController()) {
+fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController = rememberNavController(), preferencesViewModel: PreferencesViewModel? = null) {
     val current by navController.currentBackStackEntryAsState()
     val isDetail = current?.destination?.hasRoute<KareDestination.Detail>() == true
     val isAuth = current?.destination?.hasRoute<KareDestination.SignIn>() == true ||
@@ -87,7 +88,11 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                     onSignInClick = { navController.navigate(KareDestination.SignIn) }
                 )
             }
-            composable<KareDestination.Settings> { PendingContent(R.string.settings_title) }
+            composable<KareDestination.Settings> {
+                SettingsRoute(viewModel(factory = factory), preferencesViewModel ?: viewModel(factory = factory)) {
+                    navController.navigate(KareDestination.SignIn)
+                }
+            }
             composable<KareDestination.SignIn> {
                 SignInRoute(
                     viewModel = viewModel(factory = factory),

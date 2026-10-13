@@ -4,6 +4,10 @@ import com.example.kare.core.data.widget.*
 import com.example.kare.widget.ProverbWidget
 import com.example.kare.widget.HushWidget
 import java.io.File
+import com.example.kare.core.preferences.DataStorePreferencesRepository
+import com.example.kare.core.repository.PreferencesRepository
+import com.example.kare.feature.settings.*
+import com.example.kare.feature.onboarding.OnboardingViewModel
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -41,9 +45,10 @@ class AppContainer(context: Context) {
     val library: LibraryRepository by lazy {
         WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors)
     }
+    val preferences: PreferencesRepository by lazy { DataStorePreferencesRepository(applicationContext) }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
-    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth) }
+    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences) }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
     internal fun close() { if (databaseDelegate.isInitialized()) database.close() }
@@ -54,6 +59,7 @@ class KareViewModelFactory(
     private val library: LibraryRepository,
     private val errors: ErrorReporter,
     private val auth: AuthRepository = InMemoryAuthRepository(),
+    private val preferences: PreferencesRepository? = null,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return createModel(modelClass, SavedStateHandle())
@@ -64,6 +70,9 @@ class KareViewModelFactory(
 
     private fun <T : ViewModel> createModel(modelClass: Class<T>, savedState: SavedStateHandle): T {
         val model = when (modelClass) {
+            PreferencesViewModel::class.java -> PreferencesViewModel(requireNotNull(preferences), errors)
+            OnboardingViewModel::class.java -> OnboardingViewModel(savedState)
+            SettingsViewModel::class.java -> SettingsViewModel(auth, errors)
             DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState)
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)

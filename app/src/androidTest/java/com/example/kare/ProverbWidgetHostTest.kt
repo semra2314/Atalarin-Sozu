@@ -12,6 +12,8 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.kare.core.model.ProverbSelection
 import com.example.kare.widget.*
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.flow.first
+import com.example.kare.core.preferences.widgetLanguageContext
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,6 +25,7 @@ class ProverbWidgetHostTest {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val context = instrumentation.targetContext
         val repository = (context.applicationContext as KareApplication).container.widgetInstances
+        val renderingContext = widgetLanguageContext(context, (context.applicationContext as KareApplication).container.preferences.preferences.first().language)
         val manager = AppWidgetManager.getInstance(context)
         val host = AppWidgetHost(context, 87103)
         val ids = intArrayOf(host.allocateAppWidgetId(), host.allocateAppWidgetId())
@@ -68,8 +71,8 @@ class ProverbWidgetHostTest {
                 instrumentation.runOnMainSync {
                     views.forEach { it.measure(View.MeasureSpec.makeMeasureSpec(900, View.MeasureSpec.EXACTLY),
                         View.MeasureSpec.makeMeasureSpec(1200, View.MeasureSpec.EXACTLY)); it.layout(0, 0, 900, 1200) }
-                    ready = text(views[0]).contains(context.getString(R.string.proverb_kind)) &&
-                    text(views[1]).contains(context.getString(R.string.proverb_idiom)) }
+                    ready = text(views[0]).contains(renderingContext.getString(R.string.proverb_kind)) &&
+                    text(views[1]).contains(renderingContext.getString(R.string.proverb_idiom)) }
                 ready
             }
             assertEquals(ProverbSelection.PROVERBS, repository.configuration(ids[0])!!.selection)

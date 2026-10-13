@@ -5,6 +5,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.glance.appwidget.lazy.LazyColumn
 import android.os.Bundle
+import kotlinx.coroutines.flow.first
+import com.example.kare.core.preferences.widgetPreferences
+import com.example.kare.core.preferences.widgetLanguageContext
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -27,9 +30,13 @@ class HushWidget : GlanceAppWidget() {
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         val repository = (context.applicationContext as KareApplication).container.hushInstances
         val flow = repository.observe(GlanceAppWidgetManager(context).getAppWidgetId(id))
+        val preferences = widgetPreferences(context)
+        val initialPreferences = preferences.first()
         provideContent {
+            val currentPreferences by preferences.collectAsState(initialPreferences)
+            val languageContext = remember(currentPreferences.language) { widgetLanguageContext(context, currentPreferences.language) }
             val snapshot by flow.collectAsState(HushSnapshot.Loading)
-            HushContent(context, snapshot, GlanceAppWidgetManager(context).getAppWidgetId(id))
+            HushContent(languageContext, snapshot, GlanceAppWidgetManager(context).getAppWidgetId(id))
         }
     }
     override suspend fun onDelete(context: Context, glanceId: GlanceId) {

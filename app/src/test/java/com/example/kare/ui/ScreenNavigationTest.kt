@@ -101,7 +101,7 @@ class ScreenNavigationTest {
 
     @Test fun tabsDetailIdAndBackStackPreserveSearch() {
         lateinit var nav: NavHostController
-        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> })
+        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences())
         compose.setContent { KareTheme { nav = rememberNavController(); KareApp(factory, nav) } }
         compose.onNodeWithTag("nav-${R.string.discover_title}").assertIsSelected()
         compose.onNodeWithTag("nav-${R.string.library_title}").performClick()
@@ -127,7 +127,7 @@ class ScreenNavigationTest {
 
     @Test fun typedDetailRoutePreservesReservedCharacters() {
         lateinit var nav: NavHostController
-        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> })
+        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences())
         compose.setContent { KareTheme { nav = rememberNavController(); KareApp(factory, nav) } }
         val id = "a/b ?#% Türkçe"
         compose.runOnIdle { nav.navigate(KareDestination.Detail(id)) }

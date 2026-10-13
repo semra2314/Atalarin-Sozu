@@ -14,6 +14,9 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 13 implements first-launch onboarding and Settings with typed DataStore
+preferences, native in-app locale selection and persisted appearance. Further
+widget development is explicitly deferred.
 Phase 12 adds Hush as the second free Android widget using shared placement and
 atomic state mechanics, with independent per-instance language configuration.
 Phase 11 validates Proverb compatibility and accessibility, fixing large-text guidance
@@ -28,7 +31,7 @@ Phase 5 added the Kare design/theme/font and English/Turkish localization founda
 Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
 Phase 3 added Room-backed local library persistence.
 Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
-Profile/Settings, onboarding, billing, editor and platform integrations remain deferred.
+Profile backend, billing, editor and remaining platform integrations remain deferred.
 
 Phase 1 was limited to source analysis, coordination documentation, package
 boundaries, platform-independent models, and repository contracts. Full screens,
@@ -183,7 +186,7 @@ and do not mean the associated technology or feature has been migrated.
 | `core/repository` | WidgetRepository, LibraryRepository, RepositoryException |
 | `core/data` | Catalog, serialization and Room library repository/mappers |
 | `core/database` | KareDatabase v1, internal entity/DAO; exported schema; never exposed to UI |
-| `core/preferences` | Future DataStore implementations |
+| `core/preferences` | DataStore preferences and widget app-language rendering context |
 | `core/firebase` | Future Firebase configuration and remote data sources |
 | `core/design` | Kare palettes, Material theme, typography, shapes, spacing and layout tokens |
 | `core/localization` | UI-only error/category/section/catalog-copy and bundled-art resource mappings |
@@ -263,7 +266,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 12. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -281,15 +284,15 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 12. 
 | Public profiles | PublicProfileService | Value only | Unassigned | NOT STARTED | No repository implementation/UI |
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; Proverb membership changes refresh launcher instances |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
-| DataStore | AppStorage / defaults | Reserved `core/preferences` | Unassigned | NOT STARTED | No dependency or implementation |
+| DataStore | AppStorage / defaults | Typed PreferencesRepository / DataStorePreferencesRepository | Developer 1 | COMPLETED | Phase 13: completion, language, appearance |
 | Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
 | Discover | DiscoverView / ViewModel | DiscoverRoute / DiscoverContent / ViewModel | Developer 1 | COMPLETED | Shelves/cards, loading/empty/error/retry |
 | Search | SearchView / ViewModel | SearchRoute / SearchContent / ViewModel | Developer 1 | COMPLETED | Query/categories/results, saved inputs |
 | Template detail | TemplateDetailView | DetailViewModel / DetailRoute / DetailContent | Developer 1 | COMPLETED | Free local installs, size choice, paid lock; Proverb placement added in Phase 10; billing/editor deferred |
 | Library UI | LibraryView | LibraryRoute / LibraryContent | Developer 1 | COMPLETED | Reactive ordered list, favorites/remove/reorder |
 | Profile | ProfileView / EditProfileView | Main destination placeholder only | Unassigned | NOT STARTED | No account/profile implementation |
-| Settings | SettingsView | Main destination placeholder only | Unassigned | NOT STARTED | No preference implementation |
-| Onboarding | OnboardingView / RootGate | Reserved package | Unassigned | NOT STARTED | No screen or preference flags |
+| Settings | SettingsView | SettingsRoute / SettingsViewModel / PreferencesViewModel | Developer 1 | COMPLETED | Phase 13: local preferences, existing auth route, About; billing deferred |
+| Onboarding | OnboardingView / RootGate | PreferencesHost startup gate / OnboardingViewModel | Developer 1 | COMPLETED | Phase 13: language plus three pages, durable completion |
 | Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | Content codecs ready; no editor, renderer or image processing |
 | Daily | DailyStore / DailyWidget | Reserved feature package | Unassigned | NOT STARTED | No content/source persistence |
 | Focus | FocusSession / FocusView / FocusWidget | Reserved feature package | Unassigned | NOT STARTED | No timer/audio/session logic |
@@ -315,11 +318,12 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 12. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Phase 12 COMPLETED by Developer 1 on ANDROID, from clean
-baseline `b5f0898`. Hush and shared-widget reservations are released. No Phase 13
-implementation started. Shared conflict points: widget placement/state files,
-AppContainer widget wiring, manifest, app Gradle configuration, localized widget
-resources, tests and this record. Developer 2 retains authentication/Firebase.
+Current tasks: None. Phase 13 COMPLETED by Developer 1 on `ANDROID`, baseline
+`40091a8`. Onboarding/Settings/preferences reservations are released. Further
+widget work remains deferred; Phase 14 has not started. Shared conflict hotspots:
+AppContainer/factory, MainActivity, navigation, Gradle/theme resources and this
+record. Developer 2 retains authentication/Firebase ownership. The pre-existing
+`.idea/misc.xml` JDK selection edit is preserved and excluded from Phase 13.
 
 ### Developer 2
 
@@ -465,11 +469,12 @@ Recheck API-specific constraints when implementing those features.
 
 ## Recommended next phase and parallel work
 
-Recommended Phase 13: evaluate Daily's attributed passage/source migration and
-calendar/timezone refresh contract as a separately scoped next widget. Older-API,
-second-launcher and spoken TalkBack qualification remain release gates before
-claiming broad compatibility. This recommendation is unassigned; no Phase 13 work
-is authorized or started by the Phase 12 implementation.
+Phase 13 is completed as Onboarding + Settings. The earlier Daily/third-widget
+recommendation was explicitly deferred by the user. Recommended Phase 14:
+separately scope remaining Profile/account presentation after Developer 2's
+Firebase/session contract is ready, with agreed ownership for account management.
+Older-API, second-launcher and spoken TalkBack qualification remain release gates
+before broad compatibility claims. No Phase 14 implementation is authorized here.
 
 Developer 2 continues independent authentication/Firebase work on
 `android/auth-foundation`, including its contracts, tests and
@@ -2663,9 +2668,287 @@ launchers may use different dimensions/pinning behavior and ignore newer metadat
 The production app ID, release provisioning, broader launcher/API matrix and spoken
 accessibility review remain earlier documented work, not solved by this phase.
 
-Recommended Phase 13 is the separately scoped Daily evaluation above. No next
-widget or Phase 13 implementation has started. Developer 2 can safely continue
+Historical Phase 12 recommendation (superseded by the user): a separately scoped
+Daily evaluation. At Phase 12 closure no next widget or Phase 13 had started;
+Phase 13 was subsequently reassigned to Onboarding + Settings below. Developer 2 can safely continue
 AuthRepository/AuthViewModel/Firebase/auth-screen work and auth notes, coordinating
 shared manifest, Gradle and composition-root edits. Phase 12 added no authentication
 requirements or changes to their contracts. All Phase 12 reservations are released.
 No commit, push, merge, branch operation or history rewrite was performed.
+
+
+## Phase 13 — Onboarding + Settings
+
+Status: COMPLETED. Owner: Developer 1. Branch: `ANDROID`. Completed 2026-10-13.
+Further widget implementation is explicitly deferred by the user.
+
+### Source analysis and decisions before implementation
+
+Inspected iOS `IOS` revision `41a8fbc67d2992f144383ede02c2ecfd6a73a1a1`:
+RootGate, OnboardingView/Keys, LanguagePreference, AppearancePreference,
+SettingsView, KareApp, ProfileStore, SubscriptionStore, KarePlusGate/KarePlusView.
+
+- First launch: language selection (English/Turkish), three value slides, aesthetic
+  selection (Minimal/Bold/Playful/Dark), sign-in or guest, then local username.
+  Slides describe curated widgets, customization and home-screen placement.
+  Skip bypasses slides/taste to sign-in; guest access is allowed. Completion writes
+  `hasCompletedOnboarding`, `hasOnboardedBefore`, identity and aesthetic defaults.
+  Normal subsequent launches bypass onboarding. iOS logout resets completion and
+  returns to sign-in without replaying slides.
+- Settings: identity/account editing, Kare+, add-to-home guide, language, appearance,
+  notification settings, privacy, support, logout/start-over, authenticated account
+  deletion, package version. Language supports system/tr/en; appearance supports
+  system/light/dark. Avatar files are separate from lightweight preferences.
+- Account editing/deletion and provider reauthentication belong to auth/profile.
+  Kare+ relies on verified StoreKit transactions; Android must not copy beta unlock
+  messaging or invent entitlement. Privacy/support URLs are product-owned links.
+- Android will retain language choice and three introduction pages, with honest
+  copy for the currently available catalog/library/two launcher widgets. Aesthetic
+  personalization and mandatory local username are deferred until consumed by
+  profile/editor features. Completion is guest-accessible; existing Sign In remains
+  available through Settings/Profile. No duplicate account flag will be persisted.
+- Use typed DataStore preferences, explicit startup Loading/Onboarding/Ready state,
+  native AppCompat locale APIs and the existing Kare Compose theme. Page position
+  belongs to SavedStateHandle, not permanent preferences. Sign-out does not erase
+  onboarding or local library/widget state. Settings remains a typed main route.
+- Keep explicit Hush instance languages untouched. App-language-following widgets
+  may refresh rendering, but language changes must never rewrite instance JSON.
+- Native notification settings replace iOS UIApplication settings. The Android
+  guide describes supported launcher placement; no lock-screen promise or editor
+  implementation is introduced. Billing/account deletion remain deferred.
+
+
+### Implemented architecture and platform decisions
+
+- `AppPreferences`, `AppLanguage`, `AppAppearance` and `PreferencesRepository` are
+  platform-independent. One application-context Preferences DataStore named
+  `kare_preferences` owns stable typed keys `onboarding_completed`, `language`,
+  `appearance`. Unknown enum values fall back to system; missing completion means
+  first run. Additive keys allow future evolution. No Room migration is involved.
+- PreferencesViewModel exposes Loading, Unavailable or Loaded immutable state.
+  Loaded preferences determine onboarding versus main UI. Completion becomes
+  effective only after DataStore emits the durable write. Failures retain diagnostic
+  causes in ErrorReporter and expose localized semantic read/write errors. Retry
+  and explicit session-only access avoid permanently blocking the app; session-only
+  mode disables preference writes and never pretends completion was saved.
+- OnboardingViewModel stores only page position in SavedStateHandle. Four steps:
+  language, curated catalog, Library/configuration, launcher placement. Previous,
+  next, final completion and introduction skip are supported; no permanent page
+  preference. Back steps within onboarding, and completed onboarding is not on the
+  main navigation back stack. Main tabs and existing auth/detail routes are retained.
+- AppCompat 1.7.1 and Preferences DataStore 1.1.7 are explicit dependencies. Activity
+  locale integration uses `AppCompatDelegate.setApplicationLocales`; DataStore is
+  the custom locale store (no second AppCompat auto-store). Language is selected
+  inside Kare; a separate Android system-settings locale picker is not registered
+  in this phase. Native locale switching may recreate the Activity. The root only
+  gates its initial locale application, preserving the NavHost during subsequent
+  locale changes. Unknown startup preferences never briefly show main screens.
+- MainActivity and the two existing configuration Activities use AppCompatActivity
+  and the shared PreferencesHost. Appearance selects the existing KareTheme system,
+  light or dark palette; system bar icon contrast follows it. No competing tokens.
+- Both widgets observe application preferences while rendering, including active
+  Glance sessions. Rendering uses a localized context for app-following copy. Explicit
+  Hush EN/TR configurations override that context as before. No preference change
+  writes per-instance JSON or alters Library membership, category or instance IDs.
+- Settings observes the existing public AuthRepository session and uses existing
+  Sign In navigation. Sign-out delegates to that repository without resetting local
+  preferences. The current composition root still binds InMemoryAuthRepository;
+  production Firebase/session persistence remains Developer 2 work. No auth contract,
+  ViewModel, provider or Firebase implementation is changed. Account editing/deletion
+  and onboarding username/aesthetics are deferred rather than given fake persistence.
+- Kare+ is informational and explicitly unavailable. No purchase action, entitlement
+  field or beta unlock. About uses PackageManager version/build metadata, source
+  privacy/support URLs, native notification settings and an Android placement guide.
+- English/Turkish additions reuse existing settings/language/appearance/auth keys.
+  Source xcstrings were checked for terminology. New introduction copy intentionally
+  describes implemented features instead of advertising the deferred full editor.
+- Scrollable content, 48dp minimum radio rows, native selected-state semantics,
+  semantic headings, page announcements and polite error announcements support
+  accessibility. No claim of full spoken TalkBack validation is made.
+
+Official API references: [per-app language preferences](https://developer.android.com/guide/topics/resources/app-languages)
+and [DataStore release/API guidance](https://developer.android.com/jetpack/androidx/releases/datastore).
+
+
+### Regression coverage and issues found during development
+
+New JVM coverage (`preferences/PreferencesTest`, `preferences/SettingsUiTest`):
+DataStore first-run defaults and reopening after scope shutdown; completion and
+startup transitions; reactive language/appearance; failed writes without false
+completion; failed reads, retry and explicit session-only access; cancellation;
+saved onboarding page bounds/restoration; public auth observation/sign-out failure;
+200% font onboarding and Settings controls; account callback and non-actionable
+Kare+; EN/TR key/format parity; explicit Hush language independence versus APP.
+The original navigation JVM test supplies a preferences fake for the real Settings
+route; no existing business behavior assertion was removed.
+
+New device coverage (`Phase13PreferencesTest`): real DataStore/native locale and
+appearance selection, Activity recreation, staying in Settings across native
+locale recreation, auth/Search/Library reachability, byte-for-byte preservation
+of all pre-existing widget JSON. It restores language/appearance afterward.
+`CompletedOnboardingRule` makes returning-user navigation tests explicitly complete
+onboarding through the public repository; it does not clear the package, Room or
+widget state. ProverbWidgetHostTest now derives expected localized labels from the
+saved application language rather than an instrumentation context that can retain
+a previous locale after an Activity switches language.
+
+A device test exposed a real integration bug: resetting the initial-language gate
+on each language change removed the NavHost before native Activity recreation
+could preserve its back stack. Fixed by applying the loading gate only initially.
+The unchanged navigation assertion then passed. Active widget sessions now collect
+preferences so APP-language rendering also reacts while Glance remains active;
+this is a rendering concern, not a change to versioned instance storage.
+
+### Scope boundaries and remaining limitations
+
+- Android retains three value pages but adapts their copy to implemented features.
+  No splash delay, animated iOS mockups, forced username, unused aesthetic profile,
+  Apple sign-in, lock-screen widget instructions or UIKit settings behavior.
+- Account sign-in/sign-out uses the merged public boundary; persistent production
+  authentication and deletion/profile editing remain Developer 2 work. Local
+  onboarding completion is intentionally independent of authentication/session.
+- Billing remains unavailable, paid designs remain locked. No entitlement changed.
+- Native in-app locale switching is implemented, including AppCompat support below
+  API 33, but a system-settings locale selector and cross-device preference restore
+  are not claimed as tested. Glance typography/launcher limits from Phases 8–12
+  remain. No further widget or periodic worker was added.
+- Spoken TalkBack output and OEM launcher/API combinations are not certified by this
+  phase. Structural semantics and targeted large-text tests are narrower evidence.
+
+Recommended Phase 14: separately scope the remaining Profile/account presentation
+against Developer 2's completed Firebase/session contract, including truthful
+session persistence and explicit ownership of any account-management additions.
+No Phase 14 work is started here. Developer 2 can continue authentication/Firebase,
+auth tests and AUTH_MIGRATION_NOTES independently, coordinating only shared
+AppContainer, Gradle, manifest or navigation changes before integration.
+
+
+### Complete Phase 13 file manifest
+
+Paths relative to repository root. Created (18):
+
+- `app/src/androidTest/java/com/example/kare/CompletedOnboardingRule.kt`
+- `app/src/androidTest/java/com/example/kare/Phase13PreferencesTest.kt`
+- `app/src/main/java/com/example/kare/app/AppPreferenceEffects.kt`
+- `app/src/main/java/com/example/kare/core/model/AppPreferences.kt`
+- `app/src/main/java/com/example/kare/core/preferences/DataStorePreferencesRepository.kt`
+- `app/src/main/java/com/example/kare/core/preferences/WidgetLanguageContext.kt`
+- `app/src/main/java/com/example/kare/core/repository/PreferencesRepository.kt`
+- `app/src/main/java/com/example/kare/feature/onboarding/OnboardingScreen.kt`
+- `app/src/main/java/com/example/kare/feature/onboarding/OnboardingViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/settings/PreferenceControls.kt`
+- `app/src/main/java/com/example/kare/feature/settings/PreferencesHost.kt`
+- `app/src/main/java/com/example/kare/feature/settings/PreferencesViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/settings/SettingsScreen.kt`
+- `app/src/main/java/com/example/kare/feature/settings/SettingsViewModel.kt`
+- `app/src/main/res/values-tr/preferences_strings.xml`
+- `app/src/main/res/values/preferences_strings.xml`
+- `app/src/test/java/com/example/kare/preferences/PreferencesTest.kt`
+- `app/src/test/java/com/example/kare/preferences/SettingsUiTest.kt`
+
+Modified (14):
+
+- `app/build.gradle.kts`
+- `app/src/androidTest/java/com/example/kare/Phase6NavigationTest.kt`
+- `app/src/androidTest/java/com/example/kare/ProverbWidgetHostTest.kt`
+- `app/src/main/java/com/example/kare/MainActivity.kt`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `app/src/main/java/com/example/kare/widget/HushConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/HushWidget.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/ProverbWidget.kt`
+- `app/src/main/res/values/themes.xml`
+- `app/src/test/java/com/example/kare/ui/ScreenNavigationTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+- `gradle/libs.versions.toml`
+
+The pre-existing `.idea/misc.xml` change is preserved and excluded. No auth/Firebase
+implementation or AUTH_MIGRATION_NOTES changed. No screenshots, emulator dumps,
+local secrets, generated schemas/build output or machine configuration were added.
+Temporary validation artifacts remain outside the repository. Shared conflict
+hotspots are AppContainer/factory, MainActivity, navigation, Gradle/theme resources,
+and this migration record; the widget configuration Activities/renderers have only
+preference integration changes and retain their existing state/placement contracts.
+
+
+### Final validation and actual emulator checks
+
+Final source validation after resource reuse cleanup:
+
+- `./gradlew assembleDebug`: PASS.
+- `./gradlew test`: PASS, 171 JVM tests, zero failures (11 new Phase 13 tests).
+- `./gradlew lint`: PASS, zero errors, 75 warnings. No checks were disabled or
+  suppressed. Existing unused-resource warnings decreased as Settings reused keys.
+- `./gradlew connectedDebugAndroidTest
+  -Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true`: PASS, all seven
+  device tests executed on Pixel_8 / Android 17, zero failures/skips.
+- `git diff --check`: PASS. Final documentation-only updates were checked again;
+  no production/test edits followed the passing final suite.
+
+The earlier failing device run is not treated as validation success: it exposed
+locale-switch back-stack loss and an outdated instrumentation-locale expectation.
+Both were corrected and the final complete suite above passed. Build/test/lint
+also reran after the last localization reuse changes.
+
+Actual manual environment: existing Pixel_8 AVD, Android 17/API 37, Pixel Launcher,
+1080 x 2400, density 420, system English. App languages System/English/Turkish;
+app appearances System/Light/Dark; font scales 1.0 and 2.0. No other device/API or
+launcher is claimed for Phase 13; Robolectric resource/UI tests execute at API 28.
+
+Checks performed:
+
+1. Installed the debug update without clearing application data. The new preferences
+   store was absent, providing a clean onboarding state while preserving existing
+   Library and widget data. The language step initially rendered in English.
+2. Selected Turkish through the native locale API; all three product pages and final
+   completion rendered in Turkish. Next controls and final completion were used.
+   Subsequent force-stop/relaunch opened Discover directly in Turkish, not onboarding.
+3. Opened real Settings from main navigation. English/Turkish switching retained the
+   Settings destination; the device regression test additionally recreated Activity,
+   checked selected language/appearance, and opened existing Sign In/Search/Library.
+4. Visually reviewed Turkish dark Settings at 200% text, scrolled through Account,
+   unavailable Kare+, expanded widget guidance, About and package version. All
+   actions remained reachable. Native notification settings opened correctly and
+   Back returned to Kare. Privacy/support destinations were structurally checked;
+   browser/server availability was not separately certified.
+5. Switched to English at 200% text and visually confirmed both dark and settled
+   light palettes, selected controls and system-bar icon contrast. Existing five-tab
+   labels wrap at this scale; they remain operable but a future navigation-specific
+   accessibility pass could improve their presentation without reducing text size.
+6. Opened the already-bound Hush instance 47 configuration with the real widget ID
+   at 200% text/dark appearance. Its explicit English selection, Save and Cancel
+   remained visible. Cancelled without changing configuration. Device tests also
+   exercised both Hush configurations and Proverb rendering/resize/deletion.
+7. Observed both Proverb launcher instances and Hush rendering after process restart
+   and locale/theme changes; Hush retained English content. In Library, Söz and Hush
+   remained installed and both retained Add to Home Screen actions.
+8. Existing `31.json`, `39.json`, `47.json` retained their exact before/after SHA-256
+   hashes. Device regression also asserts complete JSON byte equality around
+   preferences changes. No unrelated widget or Library data was removed.
+9. Restored application language/appearance to System and emulator font scale to
+   1.0; native app locale list is empty, density remains 420, accessibility remains
+   disabled as initially. No reboot or fresh pin/delete manual cycle was repeated
+   in this phase; those established behaviors are covered by earlier records and
+   the rerun widget device tests.
+
+Accessibility evidence: code/Compose semantics (headings, selected radio/chip state,
+48dp radio rows, polite errors/page announcements), actual scroll/tap usability and
+visual contrast at 200%. No spoken TalkBack or manual TalkBack traversal was tested.
+No comprehensive accessibility certification is implied.
+
+### Work log
+
+2026-10-13 — Phase 13, Onboarding + Settings. Owner: Developer 1. Branch: `ANDROID`.
+Inspected actual iOS gates/steps/settings/preferences/subscription boundaries and
+recorded Android scope before implementation. Added typed DataStore persistence,
+explicit startup gate, four-step onboarding, real Settings, native locale and
+appearance integration, read-only widget language rendering integration, regression
+coverage and device validation. Fixed the locale-switch navigation defect found
+by instrumentation. Reused existing resource strings and public auth interfaces.
+
+No Firebase/auth implementation, AUTH_MIGRATION_NOTES, billing, editor, new widget,
+Room schema or instance-storage format changed. Pre-existing IDE changes preserved.
+All Phase 13 ownership reservations released; Developer 2 continues independent
+Auth/Firebase work. No commit, push, merge, branch change or history rewrite occurred.
+Stop here; Phase 14 is only a recommendation, not an active task.

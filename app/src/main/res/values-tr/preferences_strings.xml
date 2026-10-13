@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferences_widget_language">İngilizce veya Türkçe olarak ayarlanan Hush örnekleri kendi dillerini korur. Yalnızca “Uygulama dili” bu ayarı izler.</string>
+    <string name="preferences_read_error">Tercihler yüklenemedi. Yeniden deneyin veya ayarları kaydetmeden bu oturum için devam edin.</string>
+    <string name="preferences_write_error">Bu tercih kaydedilemedi. Lütfen yeniden deneyin.</string>
+    <string name="preferences_session">Bu oturum için devam et</string>
+    <string name="onboarding_language">Dilini seç</string>
+    <string name="onboarding_curated_title">Özenle tasarlanmış hazır widget’lar</string>
+    <string name="onboarding_curated_body">Ana ekranın için özenle seçilmiş tasarımları keşfet. Beğendiklerini Kare kitaplığına kaydet.</string>
+    <string name="onboarding_yours_title">Sana özel olsun</string>
+    <string name="onboarding_yours_body">Koleksiyonunu kitaplığında tut. Ana ekranına widget eklerken Söz için kategori, Hush için içerik dili seç.</string>
+    <string name="onboarding_home_title">Kare’den ana ekranına</string>
+    <string name="onboarding_home_body">Ücretsiz bir tasarımı kitaplığına yükle, ardından desteklenen Android widget’larında Ana Ekrana Ekle’yi kullan. Yerleştirmeyi başlatıcın yönetir; her örneğin kendi yapılandırması vardır.</string>
+    <string name="onboarding_page">%2$d adımın %1$d. adımı</string>
+    <string name="onboarding_previous">Önceki</string>
+    <string name="onboarding_skip">Tanıtımı geç</string>
+    <string name="onboarding_finish">Kare’ye gir</string>
+    <string name="onboarding_account_later">Yerel kitaplığın için hesap gerekmez. Daha sonra Ayarlar’dan giriş yapabilirsin.</string>
+    <string name="settings_guest">Misafir olarak geziniyorsun. Kitaplığın bu cihazda kalır.</string>
+    <string name="settings_action_failed">Bu işlem tamamlanamadı. Lütfen yeniden deneyin.</string>
+    <string name="settings_billing_deferred">Kare+ satın alımları henüz Android’de kullanılamıyor. Ücretli tasarımlar kilitli kalır.</string>
+    <string name="settings_about">Kare hakkında</string>
+    <string name="settings_widget_guide">Widget nasıl eklenir</string>
+    <string name="settings_widget_guide_body">Söz veya Hush’u Kare kitaplığına yükle, ardından Ana Ekrana Ekle’yi seç. Yerleştirmeyi onayla ve widget yapılandırmasını kaydet. Başlatıcın doğrudan yerleştirmeyi desteklemiyorsa ana ekranın boş bir alanına uzun bas, Widget’lar bölümünü aç ve Kare’yi seç. Diğer katalog tasarımlarının henüz Android ana ekran widget’ı yok.</string>
+    <string name="settings_version">Sürüm %1$s</string>
+</resources>
