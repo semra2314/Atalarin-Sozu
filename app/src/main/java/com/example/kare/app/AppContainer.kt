@@ -31,8 +31,25 @@ class AppContainer(context: Context) {
     val widgets: WidgetRepository by lazy { BundledWidgetRepository(catalog) }
     val library: LibraryRepository by lazy { RoomLibraryRepository(database, catalog) }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
+    val preferences: com.example.kare.core.repository.UserPreferencesRepository by lazy {
+        com.example.kare.core.data.preferences.SharedPreferencesUserPreferencesRepository(applicationContext)
+    }
+    val publicProfile: com.example.kare.core.repository.PublicProfileRepository by lazy {
+        com.example.kare.core.data.profile.InMemoryPublicProfileRepository()
+    }
+    val profile: com.example.kare.core.repository.ProfileRepository by lazy {
+        com.example.kare.core.data.profile.LocalProfileRepository(applicationContext, auth, publicProfile)
+    }
+    val reviews: com.example.kare.core.repository.ReviewRepository by lazy {
+        com.example.kare.core.data.review.InMemoryReviewRepository(auth)
+    }
+    val avatarStore: com.example.kare.core.data.profile.ProfileAvatarStore by lazy {
+        com.example.kare.core.data.profile.ProfileAvatarStore(applicationContext)
+    }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
-    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth) }
+    val viewModelFactory: ViewModelProvider.Factory by lazy {
+        KareViewModelFactory(widgets, library, errors, auth, profile, preferences, reviews)
+    }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
     internal fun close() { if (databaseDelegate.isInitialized()) database.close() }
@@ -43,6 +60,9 @@ class KareViewModelFactory(
     private val library: LibraryRepository,
     private val errors: ErrorReporter,
     private val auth: AuthRepository = InMemoryAuthRepository(),
+    private val profile: com.example.kare.core.repository.ProfileRepository? = null,
+    private val preferences: com.example.kare.core.repository.UserPreferencesRepository? = null,
+    private val reviews: com.example.kare.core.repository.ReviewRepository? = null,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return createModel(modelClass, SavedStateHandle())
@@ -58,6 +78,23 @@ class KareViewModelFactory(
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
             LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
             AuthViewModel::class.java -> AuthViewModel(auth, errors)
+            com.example.kare.feature.profile.ProfileViewModel::class.java ->
+                com.example.kare.feature.profile.ProfileViewModel(
+                    profile ?: throw IllegalStateException("ProfileRepository not provided"),
+                    library,
+                    auth,
+                )
+            com.example.kare.feature.settings.SettingsViewModel::class.java ->
+                com.example.kare.feature.settings.SettingsViewModel(
+                    preferences ?: throw IllegalStateException("UserPreferencesRepository not provided"),
+                    auth,
+                    profile ?: throw IllegalStateException("ProfileRepository not provided"),
+                )
+            com.example.kare.feature.review.ReviewViewModel::class.java ->
+                com.example.kare.feature.review.ReviewViewModel(
+                    reviews ?: throw IllegalStateException("ReviewRepository not provided"),
+                    auth,
+                )
             else -> throw IllegalArgumentException("Unsupported ViewModel: ${modelClass.name}")
         }
         return modelClass.cast(model)!!

@@ -1667,3 +1667,31 @@ artwork and live preview rendering. Full editor, Focus/Frame/Daily/other setup,
 SharedWidgetStore/App Widget synchronization and purchase UI remain deferred. Phase 8
 is recommended to scope one free Android widget/configuration path separately from
 Developer 2's auth foundation. No commit, push, merge or Git history change was made.
+
+## Phase 8: Profile, Settings, and Reviews Migration
+
+### Scope and components implemented
+- **Domain & Models**:
+  - `UserProfile`, `AppTheme`, `AppLanguage`, `ReportReason` models in `core/model`.
+  - Bilingual profanity/objectionable content filter `ReviewFilter` (English and Turkish).
+- **Repositories & Data**:
+  - `ProfileRepository`, `UserPreferencesRepository`, `ReviewRepository`, `PublicProfileRepository` interfaces in `core/repository`.
+  - `LocalProfileRepository`, `InMemoryPublicProfileRepository`, `ProfileAvatarStore` (atomic JPEG storage and 400px downscaling) in `core/data/profile`.
+  - `SharedPreferencesUserPreferencesRepository` in `core/data/preferences`.
+  - `InMemoryReviewRepository` enforcing 1 review per user/template, moderation filtering, author reporting, and user blocking in `core/data/review`.
+- **ViewModels**:
+  - `ProfileViewModel` managing profile state, widget counts, favorites, and guest claim state.
+  - `SettingsViewModel` managing theme, language, account deletion intent, and sign-out.
+  - `ReviewViewModel` handling review submission, ratings calculation, reporting, blocking, and deletion.
+- **UI & Presentation**:
+  - `ProfileScreen`, `ProfileAvatar`, `EditProfileSheet` in `feature/profile`.
+  - `SettingsScreen`, `LanguagePickerSheet`, `AppearancePickerSheet`, `DeleteAccountDialog` in `feature/settings`.
+  - `StarRating`, `ReviewRow`, `ReviewComposerSheet`, `ReviewSection` in `feature/review`.
+  - Backward-compatible `ReviewSection` integration in `DetailScreen`.
+- **Localization**:
+  - Dedicated English and Turkish strings: `profile_strings.xml`, `settings_strings.xml`, `review_strings.xml`.
+- **Validation**:
+  - Unit tests: `ReviewRepositoryTest`, `ReviewFilterTest`, `ProfileViewModelTest`, `ReviewViewModelTest`, `SettingsViewModelTest` (all PASS).
+  - `./gradlew assembleDebug` (PASS).
+  - `./gradlew lintDebug` (PASS, 0 errors).
+

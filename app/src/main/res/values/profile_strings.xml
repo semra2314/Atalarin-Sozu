@@ -1,0 +1,20 @@
+<resources>
+    <string name="profile_edit_action">Edit</string>
+    <string name="profile_guest_claim_title">Claim Your Profile</string>
+    <string name="profile_guest_claim_subtitle">Sign in to sync your widgets, write reviews, and customize your identity.</string>
+    <string name="profile_guest_sign_in_button">Sign In</string>
+    <string name="profile_stat_widgets">Widgets</string>
+    <string name="profile_stat_made">Made</string>
+    <string name="profile_stat_favorites">Favorites</string>
+    <string name="profile_section_my_widgets">My Widgets</string>
+    <string name="profile_section_favorites">Favorites</string>
+    <string name="profile_empty_my_widgets">No widgets installed yet. Explore Discover to add widgets.</string>
+    <string name="profile_empty_favorites">No favorite widgets saved.</string>
+    <string name="profile_edit_title">Edit Profile</string>
+    <string name="profile_edit_change_photo">Change Photo</string>
+    <string name="profile_edit_remove_photo">Remove Photo</string>
+    <string name="profile_edit_name_label">Name</string>
+    <string name="profile_edit_username_label">Username</string>
+    <string name="profile_edit_save">Save</string>
+    <string name="profile_edit_cancel">Cancel</string>
+</resources>

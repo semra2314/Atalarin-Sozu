@@ -1,0 +1,20 @@
+<resources>
+    <string name="profile_edit_action">Düzenle</string>
+    <string name="profile_guest_claim_title">Profilini Sahiplen</string>
+    <string name="profile_guest_claim_subtitle">Widget\'larını eşitlemek, yorum yazmak ve kimliğini özelleştirmek için giriş yap.</string>
+    <string name="profile_guest_sign_in_button">Giriş Yap</string>
+    <string name="profile_stat_widgets">Widget</string>
+    <string name="profile_stat_made">Üretilen</string>
+    <string name="profile_stat_favorites">Favori</string>
+    <string name="profile_section_my_widgets">Widget\'larım</string>
+    <string name="profile_section_favorites">Favoriler</string>
+    <string name="profile_empty_my_widgets">Henüz yüklenmiş bir widget yok. Keşfet sekmesinden widget ekleyebilirsin.</string>
+    <string name="profile_empty_favorites">Kayıtlı favori widget bulunmuyor.</string>
+    <string name="profile_edit_title">Profili Düzenle</string>
+    <string name="profile_edit_change_photo">Fotoğrafı Değiştir</string>
+    <string name="profile_edit_remove_photo">Fotoğrafı Kaldır</string>
+    <string name="profile_edit_name_label">İsim</string>
+    <string name="profile_edit_username_label">Kullanıcı Adı</string>
+    <string name="profile_edit_save">Kaydet</string>
+    <string name="profile_edit_cancel">Vazgeç</string>
+</resources>

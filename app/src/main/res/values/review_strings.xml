@@ -1,0 +1,19 @@
+<resources>
+    <string name="reviews_title">Reviews &amp; Ratings</string>
+    <string name="reviews_write_action">Write a Review</string>
+    <string name="reviews_empty">No reviews yet. Be the first to share your thoughts!</string>
+    <string name="reviews_count_format">(%1$d)</string>
+    <string name="reviews_stars_out_of_five">%1$.1f out of 5</string>
+    <string name="reviews_your_review">Your Review</string>
+    <string name="reviews_sheet_title">Rate &amp; Review</string>
+    <string name="reviews_sheet_select_rating">Tap to rate</string>
+    <string name="reviews_sheet_text_placeholder">What do you think of this widget design?</string>
+    <string name="reviews_sheet_submit">Submit Review</string>
+    <string name="reviews_sheet_submitting">Submitting…</string>
+    <string name="reviews_action_delete">Delete review</string>
+    <string name="reviews_action_report">Report review</string>
+    <string name="reviews_action_block">Block this creator</string>
+    <string name="reviews_guest_prompt">Sign in to leave a review</string>
+    <string name="reviews_report_confirm">Review reported. Thank you for helping keep Kare safe.</string>
+    <string name="reviews_block_confirm">Creator blocked. Their reviews will no longer appear.</string>
+</resources>

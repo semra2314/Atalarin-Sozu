@@ -1,0 +1,19 @@
+<resources>
+    <string name="reviews_title">Yorumlar &amp; Puanlar</string>
+    <string name="reviews_write_action">Yorum Yaz</string>
+    <string name="reviews_empty">Henüz yorum yok. İlk değerlendirmeyi sen yap!</string>
+    <string name="reviews_count_format">(%1$d)</string>
+    <string name="reviews_stars_out_of_five">5 üzerinden %1$.1f</string>
+    <string name="reviews_your_review">Senin Yorumun</string>
+    <string name="reviews_sheet_title">Puanla ve Yorum Yap</string>
+    <string name="reviews_sheet_select_rating">Puanlamak için dokun</string>
+    <string name="reviews_sheet_text_placeholder">Bu widget tasarımı hakkında ne düşünüyorsun?</string>
+    <string name="reviews_sheet_submit">Yorumu Gönder</string>
+    <string name="reviews_sheet_submitting">Gönderiliyor…</string>
+    <string name="reviews_action_delete">Yorumu sil</string>
+    <string name="reviews_action_report">Yorumu bildir</string>
+    <string name="reviews_action_block">Bu üreticiyi engelle</string>
+    <string name="reviews_guest_prompt">Yorum bırakmak için giriş yap</string>
+    <string name="reviews_report_confirm">Yorum bildirildi. Kare\'yi güvenli tutmaya yardımcı olduğun için teşekkürler.</string>
+    <string name="reviews_block_confirm">Üretici engellendi. Yorumları artık gösterilmeyecek.</string>
+</resources>

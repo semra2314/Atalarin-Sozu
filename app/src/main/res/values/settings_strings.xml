@@ -1,0 +1,20 @@
+<resources>
+    <string name="settings_section_general">General</string>
+    <string name="settings_section_account">Account</string>
+    <string name="settings_section_support">Support &amp; Legal</string>
+    <string name="settings_how_to_add_guide">How to add a widget</string>
+    <string name="settings_privacy_policy">Privacy Policy</string>
+    <string name="settings_help_support">Help &amp; Support</string>
+    <string name="settings_sign_out">Sign Out</string>
+    <string name="settings_delete_account">Delete Account</string>
+    <string name="settings_delete_account_confirm_title">Delete Account?</string>
+    <string name="settings_delete_account_confirm_message">This action cannot be undone. All your installed widgets, reviews, and profile data will be permanently removed.</string>
+    <string name="settings_delete_account_password_prompt">Confirm your password to proceed:</string>
+    <string name="settings_delete_account_confirm_action">Delete Forever</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_lang_system">System Default</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_lang_tr">Türkçe</string>
+</resources>
