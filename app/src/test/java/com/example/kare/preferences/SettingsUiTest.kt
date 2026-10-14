@@ -48,6 +48,23 @@ class SettingsUiTest {
         compose.onNodeWithTag("settings-widget-guide").performScrollTo().performClick()
         compose.onNodeWithText("Install Söz or Hush", substring = true).performScrollTo().assertIsDisplayed()
     }
+    @Test fun authenticatedSettingsShowsIdentityAndHonestDeletionLimitWithPersistentToggleCallback() {
+        val prefs = mutableStateOf(AppPreferences())
+        var signOuts = 0
+        compose.setContent { KareTheme { SettingsContent(PreferencesUiState(StartupState.Loaded(prefs.value)),
+            AuthState.Authenticated(AuthUser("uid", "ada@example.com", "Ada")), false, "2.0 (8)",
+            {}, {}, {}, { signOuts++ }, {}, {},
+            onNotifications = { prefs.value = prefs.value.copy(notificationsEnabled = it) },
+            identity = UserProfile(displayName = "Ada", username = "ada")) } }
+        compose.onNodeWithText("@ada").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Account deletion is not available yet.", substring = true)
+            .performScrollTo().assertHasNoClickAction()
+        assertEquals(0, signOuts)
+        compose.onNodeWithTag("settings-notification-preference").performScrollTo().assertIsOn().performClick().assertIsOff()
+        assertFalse(prefs.value.notificationsEnabled)
+        compose.onNodeWithTag("settings-sign-out").performScrollTo().performClick()
+        assertEquals(1, signOuts)
+    }
     @Test fun onboardingShowsLanguageSelectionAndCompletesOnlyThroughExplicitAction() {
         var page by mutableIntStateOf(0); var completed = false
         compose.setContent {

@@ -24,6 +24,7 @@ import androidx.core.content.pm.PackageInfoCompat
 @Composable
 fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewModel, onSignIn: () -> Unit) {
     val state by preferences.state.collectAsStateWithLifecycle()
+    val identity by viewModel.identity.collectAsStateWithLifecycle()
     val account by viewModel.account.collectAsStateWithLifecycle()
     val signOutFailed by viewModel.signOutFailed.collectAsStateWithLifecycle()
     val context = LocalContext.current
@@ -33,7 +34,7 @@ fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewMode
     }
     var actionFailed by rememberSaveable { mutableStateOf(false) }
     SettingsContent(state, account, signOutFailed || actionFailed, version,
-        preferences::language, preferences::appearance, onSignIn, viewModel::signOut, preferences::retry) { action ->
+        preferences::language, preferences::appearance, onSignIn, viewModel::signOut, preferences::retry, onNotifications = preferences::notifications, identity = identity, onAction = { action ->
         val intent = when(action) {
             SettingsAction.NOTIFICATIONS -> Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
             SettingsAction.PRIVACY -> Intent(Intent.ACTION_VIEW, "https://kare.erdendereli.com/privacy".toUri())
@@ -41,7 +42,7 @@ fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewMode
         }
         try { context.startActivity(intent); actionFailed = false }
         catch (_: android.content.ActivityNotFoundException) { actionFailed = true }
-    }
+    })
 }
 
 enum class SettingsAction { NOTIFICATIONS, PRIVACY, SUPPORT }
@@ -49,8 +50,10 @@ enum class SettingsAction { NOTIFICATIONS, PRIVACY, SUPPORT }
 @Composable
 fun SettingsContent(state: PreferencesUiState, account: AuthState, actionFailed: Boolean, version: String,
     onLanguage: (AppLanguage) -> Unit, onAppearance: (AppAppearance) -> Unit,
-    onSignIn: () -> Unit, onSignOut: () -> Unit, onRetry: () -> Unit, onAction: (SettingsAction) -> Unit) {
+    onSignIn: () -> Unit, onSignOut: () -> Unit, onRetry: () -> Unit, onAction: (SettingsAction) -> Unit,
+    onNotifications: (Boolean) -> Unit = {}, identity: UserProfile = UserProfile()) {
     val prefs = (state.startup as? StartupState.Loaded)?.preferences ?: return
+    val notificationLabel = stringResource(R.string.settings_notification_preference)
     var guide by rememberSaveable { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().widthIn(max = KareLayout.readableWidth).verticalScroll(rememberScrollState())
         .padding(KareSpacing.lg).testTag("settings-content"), verticalArrangement = Arrangement.spacedBy(KareSpacing.md)) {
@@ -74,7 +77,9 @@ fun SettingsContent(state: PreferencesUiState, account: AuthState, actionFailed:
         HorizontalDivider()
         PreferenceHeading(stringResource(R.string.settings_account))
         if (account is AuthState.Authenticated) {
-            Text(account.user.displayName ?: account.user.email)
+            Text(identity.displayName.ifBlank { account.user.displayName ?: account.user.email })
+            if (identity.username.isNotBlank()) Text("@${identity.username}")
+            Text(stringResource(R.string.settings_delete_unavailable))
             TextButton(onClick = onSignOut, modifier = Modifier.testTag("settings-sign-out")) { Text(stringResource(R.string.auth_sign_out_action)) }
         } else {
             Text(stringResource(R.string.settings_guest))
@@ -86,6 +91,16 @@ fun SettingsContent(state: PreferencesUiState, account: AuthState, actionFailed:
         PreferenceHeading(stringResource(R.string.section_plus_title))
         Text(stringResource(R.string.settings_billing_deferred))
         HorizontalDivider()
+        PreferenceHeading(stringResource(R.string.settings_notification_preference))
+        Row(Modifier.fillMaxWidth(), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+            Text(stringResource(R.string.settings_notification_preference), Modifier.weight(1f))
+            Switch(checked = prefs.notificationsEnabled, onCheckedChange = onNotifications,
+                enabled = !state.saving && !state.sessionOnly,
+                modifier = Modifier.testTag("settings-notification-preference").semantics {
+                    contentDescription = notificationLabel
+                })
+        }
+        Text(stringResource(R.string.settings_notification_note), style = MaterialTheme.typography.bodySmall)
         PreferenceHeading(stringResource(R.string.settings_about))
         TextButton(onClick = { guide = !guide }, modifier = Modifier.testTag("settings-widget-guide")) { Text(stringResource(R.string.settings_widget_guide)) }
         if (guide) Text(stringResource(R.string.settings_widget_guide_body))

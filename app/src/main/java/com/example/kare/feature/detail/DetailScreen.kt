@@ -22,15 +22,43 @@ import com.example.kare.core.presentation.*
 import com.example.kare.core.ui.*
 
 @Composable
-fun DetailRoute(viewModel: DetailViewModel, onBack: () -> Unit, onLibrary: () -> Unit) {
+fun DetailRoute(
+    viewModel: DetailViewModel,
+    onBack: () -> Unit,
+    onLibrary: () -> Unit,
+    onSignIn: () -> Unit = {},
+    reviewViewModel: com.example.kare.feature.review.ReviewViewModel? = null,
+) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    DetailContent(viewModel.templateId, state, onBack, onLibrary, viewModel::reload,
-        viewModel::retryLibrary, viewModel::selectSize, viewModel::install, placement = { WidgetPlacementRoute(it) })
+    DetailContent(
+        viewModel.templateId,
+        state,
+        onBack,
+        onLibrary,
+        viewModel::reload,
+        viewModel::retryLibrary,
+        viewModel::selectSize,
+        viewModel::install,
+        placement = { WidgetPlacementRoute(it) },
+        reviewsContent = reviewViewModel?.let { rvm ->
+            { com.example.kare.feature.review.ReviewSection(viewModel.templateId, rvm, onSignIn) }
+        },
+    )
 }
 
 @Composable
-fun DetailContent(templateId: String, state: DetailUiState, onBack: () -> Unit, onLibrary: () -> Unit,
-    onRetry: () -> Unit, onRetryLibrary: () -> Unit, onSize: (WidgetSize) -> Unit, onInstall: () -> Unit, placement: @Composable (String) -> Unit = {}) {
+fun DetailContent(
+    templateId: String,
+    state: DetailUiState,
+    onBack: () -> Unit,
+    onLibrary: () -> Unit,
+    onRetry: () -> Unit,
+    onRetryLibrary: () -> Unit,
+    onSize: (WidgetSize) -> Unit,
+    onInstall: () -> Unit,
+    placement: @Composable (String) -> Unit = {},
+    reviewsContent: (@Composable () -> Unit)? = null,
+) {
     LazyColumn(Modifier.fillMaxSize().wrapContentWidth().widthIn(max = KareLayout.readableWidth)
         .fillMaxWidth().testTag("detail-$templateId"), contentPadding = PaddingValues(KareSpacing.lg),
         verticalArrangement = Arrangement.spacedBy(KareSpacing.lg)) {
@@ -107,6 +135,9 @@ fun DetailContent(templateId: String, state: DetailUiState, onBack: () -> Unit, 
                         if (state.canInstall) TextButton(onClick = onInstall) { Text(stringResource(R.string.action_retry)) }
                     }
                 } }
+                reviewsContent?.let {
+                    item { it() }
+                }
             }
         }
     }

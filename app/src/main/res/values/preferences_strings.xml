@@ -23,4 +23,7 @@
     <string name="settings_widget_guide">How to add a widget</string>
     <string name="settings_widget_guide_body">Install Söz or Hush in your Kare Library, then choose Add to Home Screen. Confirm placement and save the widget configuration. If your launcher does not support direct placement, long-press an empty area of your home screen, open Widgets and choose Kare. Other catalog designs do not have an Android home-screen widget yet.</string>
     <string name="settings_version">Version %1$s</string>
+    <string name="settings_delete_unavailable">Account deletion is not available yet. Signing out does not delete your account or data.</string>
+    <string name="settings_notification_preference">Allow notifications</string>
+    <string name="settings_notification_note">Saves your preference for future notifications. Notification delivery is not available yet; system permission is managed separately.</string>
 </resources>

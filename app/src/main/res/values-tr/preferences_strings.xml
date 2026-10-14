@@ -23,4 +23,7 @@
     <string name="settings_widget_guide">Widget nasıl eklenir</string>
     <string name="settings_widget_guide_body">Söz veya Hush’u Kare kitaplığına yükle, ardından Ana Ekrana Ekle’yi seç. Yerleştirmeyi onayla ve widget yapılandırmasını kaydet. Başlatıcın doğrudan yerleştirmeyi desteklemiyorsa ana ekranın boş bir alanına uzun bas, Widget’lar bölümünü aç ve Kare’yi seç. Diğer katalog tasarımlarının henüz Android ana ekran widget’ı yok.</string>
     <string name="settings_version">Sürüm %1$s</string>
+    <string name="settings_delete_unavailable">Hesap silme henüz kullanılamıyor. Çıkış yapmak hesabınızı veya verilerinizi silmez.</string>
+    <string name="settings_notification_preference">Bildirimlere izin ver</string>
+    <string name="settings_notification_note">Gelecekteki bildirimler için tercihinizi kaydeder. Bildirim gönderimi henüz kullanılamıyor; sistem izni ayrı yönetilir.</string>
 </resources>

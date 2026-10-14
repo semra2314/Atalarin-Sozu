@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PreferencesRepository {
     val preferences: Flow<AppPreferences>
+    suspend fun setNotificationsEnabled(enabled: Boolean)
     suspend fun completeOnboarding()
     suspend fun setLanguage(language: AppLanguage)
     suspend fun setAppearance(appearance: AppAppearance)

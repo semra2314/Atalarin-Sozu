@@ -47,8 +47,20 @@ class AppContainer(context: Context) {
     }
     val preferences: PreferencesRepository by lazy { DataStorePreferencesRepository(applicationContext) }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
+    val publicProfile: com.example.kare.core.repository.PublicProfileRepository by lazy {
+        com.example.kare.core.data.profile.InMemoryPublicProfileRepository()
+    }
+    val profile: com.example.kare.core.repository.ProfileRepository by lazy {
+        com.example.kare.core.data.profile.LocalProfileRepository(applicationContext, auth, publicProfile)
+    }
+    val reviews: com.example.kare.core.repository.ReviewRepository by lazy {
+        com.example.kare.core.data.review.InMemoryReviewRepository(auth)
+    }
+    val avatarStore: com.example.kare.core.data.profile.ProfileAvatarStore by lazy {
+        com.example.kare.core.data.profile.ProfileAvatarStore(applicationContext)
+    }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
-    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences) }
+    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences, profile, reviews) }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
     internal fun close() { if (databaseDelegate.isInitialized()) database.close() }
@@ -60,6 +72,8 @@ class KareViewModelFactory(
     private val errors: ErrorReporter,
     private val auth: AuthRepository = InMemoryAuthRepository(),
     private val preferences: PreferencesRepository? = null,
+    private val profile: com.example.kare.core.repository.ProfileRepository? = null,
+    private val reviews: com.example.kare.core.repository.ReviewRepository? = null,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return createModel(modelClass, SavedStateHandle())
@@ -72,12 +86,23 @@ class KareViewModelFactory(
         val model = when (modelClass) {
             PreferencesViewModel::class.java -> PreferencesViewModel(requireNotNull(preferences), errors)
             OnboardingViewModel::class.java -> OnboardingViewModel(savedState)
-            SettingsViewModel::class.java -> SettingsViewModel(auth, errors)
+            SettingsViewModel::class.java -> SettingsViewModel(auth, errors, profile)
             DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState)
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
             LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
             AuthViewModel::class.java -> AuthViewModel(auth, errors)
+            com.example.kare.feature.profile.ProfileViewModel::class.java ->
+                com.example.kare.feature.profile.ProfileViewModel(
+                    profile ?: throw IllegalStateException("ProfileRepository not provided"),
+                    library,
+                    auth,
+                )
+            com.example.kare.feature.review.ReviewViewModel::class.java ->
+                com.example.kare.feature.review.ReviewViewModel(
+                    reviews ?: throw IllegalStateException("ReviewRepository not provided"),
+                    auth,
+                )
             else -> throw IllegalArgumentException("Unsupported ViewModel: ${modelClass.name}")
         }
         return modelClass.cast(model)!!

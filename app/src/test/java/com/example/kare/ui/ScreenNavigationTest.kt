@@ -101,13 +101,17 @@ class ScreenNavigationTest {
 
     @Test fun tabsDetailIdAndBackStackPreserveSearch() {
         lateinit var nav: NavHostController
-        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences())
+        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences(),
+            profile = com.example.kare.core.data.profile.LocalProfileRepository(
+                org.robolectric.RuntimeEnvironment.getApplication(), com.example.kare.core.data.auth.InMemoryAuthRepository(),
+                com.example.kare.core.data.profile.InMemoryPublicProfileRepository()),
+            reviews = com.example.kare.core.data.review.InMemoryReviewRepository(com.example.kare.core.data.auth.InMemoryAuthRepository()))
         compose.setContent { KareTheme { nav = rememberNavController(); KareApp(factory, nav) } }
         compose.onNodeWithTag("nav-${R.string.discover_title}").assertIsSelected()
         compose.onNodeWithTag("nav-${R.string.library_title}").performClick()
         compose.onNodeWithText("Nothing here yet").assertExists()
         compose.onNodeWithTag("nav-${R.string.profile_title}").performClick()
-        compose.onNodeWithText("This feature is not available yet.").assertExists()
+        compose.onNodeWithText("Edit").assertExists()
         compose.onNodeWithTag("nav-${R.string.settings_title}").performClick()
         compose.onNodeWithTag("nav-${R.string.settings_title}").assertIsSelected()
         compose.onNodeWithTag("nav-${R.string.search_title}").performClick()
@@ -115,6 +119,12 @@ class ScreenNavigationTest {
         compose.waitUntil(5_000) { compose.onAllNodesWithTag("template-test").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("template-test").performScrollTo().performClick()
         compose.onNodeWithTag("detail-test").assertExists()
+        compose.onNodeWithTag("detail-test").performScrollToNode(hasText("Write a Review"))
+        compose.onNodeWithText("Write a Review").performClick()
+        compose.onNodeWithText("Sign In").performClick()
+        compose.runOnIdle { assertTrue(nav.currentBackStackEntry!!.destination.route!!.contains("SignIn")) }
+        compose.runOnIdle { nav.popBackStack() }
+        compose.onNodeWithTag("detail-test").performScrollToIndex(0)
         compose.runOnIdle { assertEquals("test", nav.currentBackStackEntry!!.toRoute<KareDestination.Detail>().templateId) }
         compose.onNodeWithText("Back").performClick()
         compose.onNodeWithTag("search-query").assertTextContains("test")
@@ -127,7 +137,11 @@ class ScreenNavigationTest {
 
     @Test fun typedDetailRoutePreservesReservedCharacters() {
         lateinit var nav: NavHostController
-        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences())
+        val factory = KareViewModelFactory(CatalogFake(), LibraryFake(), ErrorReporter { _, _ -> }, preferences = com.example.kare.preferences.FakePreferences(),
+            profile = com.example.kare.core.data.profile.LocalProfileRepository(
+                org.robolectric.RuntimeEnvironment.getApplication(), com.example.kare.core.data.auth.InMemoryAuthRepository(),
+                com.example.kare.core.data.profile.InMemoryPublicProfileRepository()),
+            reviews = com.example.kare.core.data.review.InMemoryReviewRepository(com.example.kare.core.data.auth.InMemoryAuthRepository()))
         compose.setContent { KareTheme { nav = rememberNavController(); KareApp(factory, nav) } }
         val id = "a/b ?#% Türkçe"
         compose.runOnIdle { nav.navigate(KareDestination.Detail(id)) }

@@ -280,17 +280,17 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. 
 | Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; consumed by LibraryRoute |
 | Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
 | Firebase Auth | AuthService | Separate auth foundation branch | Developer 2 | IN PROGRESS | `android/auth-foundation`; not integrated or validated by Phase 7 |
-| Reviews | ReviewService | Review value + list/submit contract only | Unassigned | NOT STARTED | No Firestore, moderation or reporting logic |
-| Public profiles | PublicProfileService | Value only | Unassigned | NOT STARTED | No repository implementation/UI |
+| Reviews | ReviewService | ReviewRepository / InMemoryReviewRepository / ReviewViewModel / Detail ReviewSection | Developer 2 | COMPLETED | Local foundation integrated; moderation/report/block/delete available; Firestore deferred |
+| Public profiles | PublicProfileService | PublicProfileRepository / InMemoryPublicProfileRepository | Developer 2 | COMPLETED | Local identity cache only; remote publication deferred |
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; Proverb membership changes refresh launcher instances |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
-| DataStore | AppStorage / defaults | Typed PreferencesRepository / DataStorePreferencesRepository | Developer 1 | COMPLETED | Phase 13: completion, language, appearance |
+| DataStore | AppStorage / defaults | Typed PreferencesRepository / DataStorePreferencesRepository | Developer 1 | COMPLETED | Phase 13 plus integration: completion, language, appearance, notification preference; legacy import |
 | Navigation | RootView / AppRoute / KareTabBar | Typed KareDestination / KareApp | Developer 1 | COMPLETED | Five main destinations, saved state, ID-only detail, native Back |
 | Discover | DiscoverView / ViewModel | DiscoverRoute / DiscoverContent / ViewModel | Developer 1 | COMPLETED | Shelves/cards, loading/empty/error/retry |
 | Search | SearchView / ViewModel | SearchRoute / SearchContent / ViewModel | Developer 1 | COMPLETED | Query/categories/results, saved inputs |
 | Template detail | TemplateDetailView | DetailViewModel / DetailRoute / DetailContent | Developer 1 | COMPLETED | Free local installs, size choice, paid lock; Proverb placement added in Phase 10; billing/editor deferred |
 | Library UI | LibraryView | LibraryRoute / LibraryContent | Developer 1 | COMPLETED | Reactive ordered list, favorites/remove/reorder |
-| Profile | ProfileView / EditProfileView | Main destination placeholder only | Unassigned | NOT STARTED | No account/profile implementation |
+| Profile | ProfileView / EditProfileView | ProfileRoute / ProfileViewModel / LocalProfileRepository / avatar store | Developer 2 | COMPLETED | Existing local editing, favorites and guest sign-in now wired into navigation; backend deferred |
 | Settings | SettingsView | SettingsRoute / SettingsViewModel / PreferencesViewModel | Developer 1 | COMPLETED | Phase 13: local preferences, existing auth route, About; billing deferred |
 | Onboarding | OnboardingView / RootGate | PreferencesHost startup gate / OnboardingViewModel | Developer 1 | COMPLETED | Phase 13: language plus three pages, durable completion |
 | Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | Content codecs ready; no editor, renderer or image processing |
@@ -318,7 +318,9 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Phase 13 COMPLETED by Developer 1 on `ANDROID`, baseline
+Current tasks: None. Merge integration COMPLETED on `ANDROID`, explicitly authorized
+by the user; the resolved merge is left staged and uncommitted for human review.
+Shared files and validation are listed in the integration record below. Phase 13 COMPLETED by Developer 1, baseline
 `40091a8`. Onboarding/Settings/preferences reservations are released. Further
 widget work remains deferred; Phase 14 has not started. Shared conflict hotspots:
 AppContainer/factory, MainActivity, navigation, Gradle/theme resources and this
@@ -331,8 +333,8 @@ Branch: `android/auth-foundation`. Status: IN PROGRESS (user-reported assignment
 Owner: Developer 2. Scope: authentication foundation, AuthRepository, AuthViewModel,
 auth models and `docs/AUTH_MIGRATION_NOTES.md`. Developer 1 must not modify these
 areas or depend on unfinished auth work. Authentication is not required for local
-free-library installation. Future integration in AppContainer/navigation must be
-coordinated before merging. Earlier Phase 5/6 no-ownership entries are historical.
+free-library installation. The user authorized the current AppContainer/navigation merge integration of
+already-existing Profile/Reviews/auth entry points. No Firebase backend changes are authorized. Earlier Phase 5/6 no-ownership entries are historical.
 
 ### Phase 1 session record
 
@@ -1696,7 +1698,6 @@ SharedWidgetStore/App Widget synchronization and purchase UI remain deferred. Ph
 is recommended to scope one free Android widget/configuration path separately from
 Developer 2's auth foundation. No commit, push, merge or Git history change was made.
 
-
 ## Phase 8 — Proverb Android home-screen widget
 
 Date: 2026-10-10. Branch: `ANDROID`. Owner: Developer 1. Status: COMPLETED.
@@ -2952,3 +2953,184 @@ Room schema or instance-storage format changed. Pre-existing IDE changes preserv
 All Phase 13 ownership reservations released; Developer 2 continues independent
 Auth/Firebase work. No commit, push, merge, branch change or history rewrite occurred.
 Stop here; Phase 14 is only a recommendation, not an active task.
+
+## Phase 13: Profile, Settings, and Reviews Migration (Developer 2 parallel record)
+
+Date: 2026-10-13. Branch: `ANDROID`. Status: COMPLETED.
+
+### Scope and components implemented
+- **Domain & Models**:
+  - `UserProfile`, `AppTheme`, `AppLanguage`, `ReportReason` models in `core/model`.
+  - Bilingual profanity/objectionable content filter `ReviewFilter` (English and Turkish).
+- **Repositories & Data**:
+  - `ProfileRepository`, `UserPreferencesRepository`, `ReviewRepository`, `PublicProfileRepository` interfaces in `core/repository`.
+  - `LocalProfileRepository`, `InMemoryPublicProfileRepository`, `ProfileAvatarStore` (atomic JPEG storage and 400px downscaling) in `core/data/profile`.
+  - `SharedPreferencesUserPreferencesRepository` in `core/data/preferences`.
+  - `InMemoryReviewRepository` enforcing 1 review per user/template, moderation filtering, author reporting, and user blocking in `core/data/review`.
+- **ViewModels**:
+  - `ProfileViewModel` managing profile state, widget counts, favorites, and guest claim state.
+  - `SettingsViewModel` managing theme, language, account deletion intent, and sign-out.
+  - `ReviewViewModel` handling review submission, ratings calculation, reporting, blocking, and deletion.
+- **UI & Presentation**:
+  - `ProfileScreen`, `ProfileAvatar`, `EditProfileSheet` in `feature/profile`.
+  - `SettingsScreen`, `LanguagePickerSheet`, `AppearancePickerSheet`, `DeleteAccountDialog` in `feature/settings`.
+  - `StarRating`, `ReviewRow`, `ReviewComposerSheet`, `ReviewSection` in `feature/review`.
+  - Backward-compatible `ReviewSection` integration in `DetailScreen`.
+- **Localization**:
+  - Dedicated English and Turkish strings: `profile_strings.xml`, `settings_strings.xml`, `review_strings.xml`.
+- **Validation**:
+  - Unit tests: `ReviewRepositoryTest`, `ReviewFilterTest`, `ProfileViewModelTest`, `ReviewViewModelTest`, `SettingsViewModelTest` (all PASS).
+  - `./gradlew assembleDebug` (PASS).
+  - `./gradlew lintDebug` (PASS, 0 errors).
+
+
+## 2026-10-14 — Merge integration (Developer 1; started 2026-10-13)
+
+Status: COMPLETED. Branch: `ANDROID`; existing merge remains uncommitted.
+Developer 2 independently implemented Profile, Settings foundation and Reviews.
+Phase 13 onboarding/application Settings was completed from an earlier ANDROID
+base. These lines were reconciled while preserving both historical records.
+Shared-file scope/risk: AppContainer, Settings screen/ViewModel, navigation,
+preferences models/repository, preference resources/tests and this record.
+DataStore is authoritative for application preferences; Profile/Reviews and auth
+contracts remain intact. Developer 2 retains Firebase ownership. No new phase.
+
+### Reconciliation decisions
+
+- AppContainer retains catalog, Room Library, auth, profile/public profile, reviews,
+  avatar store, Proverb/Hush and all ViewModel factory cases. Factory preferences
+  use the Phase 13 contract; there is only one active application preference store.
+- PreferencesViewModel continues to own startup/onboarding, language, appearance
+  and the new persisted notification preference. SettingsViewModel consumes the
+  existing auth/profile contracts for identity and sign-out with diagnostic errors.
+  Settings retains package-derived version, real privacy/support links, OS
+  notification settings, widget guidance, scrollable controls and deferred Kare+.
+- The obsolete UserPreferencesRepository, SharedPreferences implementation,
+  duplicate AppLanguage/AppTheme types and unused picker/deletion-dialog components
+  are removed. LegacyPreferencesMigration imports only legacy language/theme keys
+  once, preserves existing DataStore values and onboarding, and cleans only the
+  imported keys after success. Profile's separate local identity storage is retained;
+  it does not control application language/theme.
+- Notification preference is durable but does not grant OS permission or pretend
+  to deliver notifications. English/Turkish copy distinguishes these concepts.
+  Account deletion is explicitly unavailable. No password prompt or deletion
+  operation calls signOut; signing out is a separate, honestly labelled operation.
+- KareNavigation now uses the existing ProfileRoute/ProfileViewModel and supplies
+  DetailRoute with ReviewViewModel and its Sign In callback. Existing auth routes,
+  tab state, typed template IDs and widget placement are preserved.
+- The now-visible review list exposed a reactive gap: report/block state changes
+  were not observed until another review update. Combining all three StateFlows
+  fixes this without changing the repository contract or adding a backend.
+
+### Preserved boundaries and limitations
+
+Developer 2's Profile/Reviews histories above describe their independent work;
+obsolete Settings preference components in that historical manifest are superseded
+by this integration. Profile editing/favorites/avatar support and review composer,
+ratings, moderation, report/block/delete remain present. Public profile and Reviews
+remain in-memory; reporting/blocking are local and not transmitted to a server.
+LocalProfileRepository retains local profile preferences. Authentication remains the
+existing in-memory runtime implementation pending Developer 2's Firebase work.
+Account deletion, durable remote reviews, entitlement and billing remain deferred.
+The historical avatar description says atomic, but the existing store uses a direct
+JPEG file write; no atomicity enhancement or avatar-pipeline rewrite is claimed here.
+No auth backend, AUTH_MIGRATION_NOTES, widget state format, Room schema, onboarding
+flow or locale/theme application mechanism was changed. No new phase was started.
+
+### Integration validation and audit
+
+Final run: `./gradlew assembleDebug test lint connectedDebugAndroidTest
+-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true --console=plain`:
+BUILD SUCCESSFUL. Assemble PASS; 194 JVM tests PASS (0 skipped/failures/errors);
+lint PASS (0 errors, 101 warnings, including incoming resource/style warnings);
+8 instrumentation tests PASS on Pixel_8, Android 17/API 37. `git diff --check` PASS.
+No checks were disabled or suppressed. An initial device Back assertion ran before
+Search was visible; the isolated rerun passed, and the test now waits up to ten
+seconds for the native transition before asserting the original search text.
+The final full device suite passed. Earlier intermediate compile/test failures
+were corrected; they are not represented as passing runs.
+
+Added regression coverage: legacy preference import/cleanup and existing DataStore
+precedence; durable notification preference across repository reopening; Settings
+identity, honest deletion limit, notification callback and sign-out; live review
+report/block updates. Updated existing Settings account tests and navigation tests
+for real Profile. Device coverage now explicitly opens Profile Sign In and Detail
+review composer Sign In. Existing onboarding/startup, native English/Turkish locale,
+appearance/recreation, 200% Compose UI, Library/install/search/back navigation,
+Proverb/Hush host/recovery/state and explicit Hush-language tests were rerun.
+No additional manual launcher pin/delete/reboot or spoken TalkBack validation is
+claimed for this merge. No application data was cleared for integration validation.
+
+Final audit: no conflict markers, debug assets, screenshots, generated output,
+IDE changes, auth/Firebase edits or AUTH_MIGRATION_NOTES edits introduced. Only
+intentional migration source/test files were newly untracked before staging.
+Incoming `profile_settings_reviews_plan.md` is preserved as Developer 2's historical
+plan; five trailing-whitespace lines were normalized after the staged diff audit. Both histories are retained; no commit, push, abort, reset, branch change or
+new phase. Developer 2 can continue Firebase integration behind existing contracts;
+coordinate AppContainer/navigation changes because those remain shared hotspots.
+
+### Complete merge file manifest
+
+Paths below are relative to the repository root and compared with pre-merge HEAD.
+They include preserved incoming Developer 2 work as well as reconciliation changes.
+
+Created:
+
+- `app/src/main/java/com/example/kare/core/data/profile/InMemoryPublicProfileRepository.kt`
+- `app/src/main/java/com/example/kare/core/data/profile/LocalProfileRepository.kt`
+- `app/src/main/java/com/example/kare/core/data/profile/ProfileAvatarStore.kt`
+- `app/src/main/java/com/example/kare/core/data/review/InMemoryReviewRepository.kt`
+- `app/src/main/java/com/example/kare/core/model/ReportReason.kt`
+- `app/src/main/java/com/example/kare/core/model/UserProfile.kt`
+- `app/src/main/java/com/example/kare/core/moderation/ReviewFilter.kt`
+- `app/src/main/java/com/example/kare/core/preferences/LegacyPreferencesMigration.kt`
+- `app/src/main/java/com/example/kare/core/repository/ProfileRepository.kt`
+- `app/src/main/java/com/example/kare/core/repository/PublicProfileRepository.kt`
+- `app/src/main/java/com/example/kare/core/repository/ReviewRepository.kt`
+- `app/src/main/java/com/example/kare/feature/profile/EditProfileSheet.kt`
+- `app/src/main/java/com/example/kare/feature/profile/ProfileAvatar.kt`
+- `app/src/main/java/com/example/kare/feature/profile/ProfileScreen.kt`
+- `app/src/main/java/com/example/kare/feature/profile/ProfileViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/review/ReviewComposerSheet.kt`
+- `app/src/main/java/com/example/kare/feature/review/ReviewRow.kt`
+- `app/src/main/java/com/example/kare/feature/review/ReviewSection.kt`
+- `app/src/main/java/com/example/kare/feature/review/ReviewViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/review/StarRating.kt`
+- `app/src/main/res/values-tr/profile_strings.xml`
+- `app/src/main/res/values-tr/review_strings.xml`
+- `app/src/main/res/values-tr/settings_strings.xml`
+- `app/src/main/res/values/profile_strings.xml`
+- `app/src/main/res/values/review_strings.xml`
+- `app/src/main/res/values/settings_strings.xml`
+- `app/src/test/java/com/example/kare/core/data/review/ReviewRepositoryTest.kt`
+- `app/src/test/java/com/example/kare/core/moderation/ReviewFilterTest.kt`
+- `app/src/test/java/com/example/kare/feature/profile/ProfileViewModelTest.kt`
+- `app/src/test/java/com/example/kare/feature/review/ReviewViewModelTest.kt`
+- `app/src/test/java/com/example/kare/feature/settings/SettingsViewModelTest.kt`
+- `app/src/test/java/com/example/kare/preferences/LegacyPreferencesMigrationTest.kt`
+- `profile_settings_reviews_plan.md`
+
+Modified:
+
+- `app/src/androidTest/java/com/example/kare/Phase6NavigationTest.kt`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/core/model/AppPreferences.kt`
+- `app/src/main/java/com/example/kare/core/preferences/DataStorePreferencesRepository.kt`
+- `app/src/main/java/com/example/kare/core/repository/PreferencesRepository.kt`
+- `app/src/main/java/com/example/kare/feature/detail/DetailScreen.kt`
+- `app/src/main/java/com/example/kare/feature/settings/PreferencesViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/settings/SettingsScreen.kt`
+- `app/src/main/java/com/example/kare/feature/settings/SettingsViewModel.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `app/src/main/res/values-tr/preferences_strings.xml`
+- `app/src/main/res/values/preferences_strings.xml`
+- `app/src/test/java/com/example/kare/preferences/PreferencesTest.kt`
+- `app/src/test/java/com/example/kare/preferences/SettingsUiTest.kt`
+- `app/src/test/java/com/example/kare/ui/ScreenNavigationTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+Removed from the incoming merge before activation (not present in pre-merge HEAD):
+`SharedPreferencesUserPreferencesRepository.kt`, `UserPreferencesRepository.kt`,
+standalone duplicate `AppLanguage.kt`, `AppTheme.kt`, `AppearancePickerSheet.kt`,
+`LanguagePickerSheet.kt`, and `DeleteAccountDialog.kt`. Their useful preference
+behavior is integrated into the existing DataStore controls; fake deletion is not.

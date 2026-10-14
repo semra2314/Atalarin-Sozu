@@ -45,6 +45,7 @@ class PreferencesViewModel(private val repository: PreferencesRepository, privat
         val prefs = (mutable.value.startup as? StartupState.Loaded)?.preferences ?: AppPreferences()
         mutable.update { it.copy(startup = StartupState.Loaded(prefs.copy(onboardingCompleted = true)), error = PreferenceError.READ, sessionOnly = true) }
     }
+    fun notifications(enabled: Boolean) = write { repository.setNotificationsEnabled(enabled) }
     fun completeOnboarding() = write { repository.completeOnboarding() }
     fun language(value: AppLanguage) = write { repository.setLanguage(value) }
     fun appearance(value: AppAppearance) = write { repository.setAppearance(value) }

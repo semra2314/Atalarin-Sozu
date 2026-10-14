@@ -20,6 +20,7 @@ class FakePreferences(initial: AppPreferences = AppPreferences()) : PreferencesR
     val value = MutableStateFlow(initial)
     var failure: Exception? = null
     override val preferences: Flow<AppPreferences> get() = flow { failure?.let { throw it }; emitAll(value) }
+    override suspend fun setNotificationsEnabled(enabled: Boolean) { failure?.let { throw it }; value.value = value.value.copy(notificationsEnabled = enabled) }
     override suspend fun completeOnboarding() { failure?.let { throw it }; value.value = value.value.copy(onboardingCompleted = true) }
     override suspend fun setLanguage(language: AppLanguage) { failure?.let { throw it }; value.value = value.value.copy(language = language) }
     override suspend fun setAppearance(appearance: AppAppearance) { failure?.let { throw it }; value.value = value.value.copy(appearance = appearance) }
@@ -44,8 +45,9 @@ class PreferencesTest {
         assertEquals(AppPreferences(), repository.preferences.first())
         repository.setLanguage(AppLanguage.TURKISH)
         repository.setAppearance(AppAppearance.DARK)
+        repository.setNotificationsEnabled(false)
         repository.completeOnboarding()
-        val expected = AppPreferences(true, AppLanguage.TURKISH, AppAppearance.DARK)
+        val expected = AppPreferences(true, AppLanguage.TURKISH, AppAppearance.DARK, false)
         assertEquals(expected, repository.preferences.first())
         scope.coroutineContext[Job]!!.cancelAndJoin()
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)

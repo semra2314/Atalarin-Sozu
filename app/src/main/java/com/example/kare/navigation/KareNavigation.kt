@@ -83,9 +83,10 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                 SearchRoute(viewModel(factory = factory)) { navController.navigate(KareDestination.Detail(it)) }
             }
             composable<KareDestination.Profile> {
-                PendingContent(
-                    title = R.string.profile_title,
-                    onSignInClick = { navController.navigate(KareDestination.SignIn) }
+                com.example.kare.feature.profile.ProfileRoute(
+                    viewModel(factory = factory),
+                    onNavigateToSignIn = { navController.navigate(KareDestination.SignIn) },
+                    onNavigateToTemplate = { navController.navigate(KareDestination.Detail(it)) },
                 )
             }
             composable<KareDestination.Settings> {
@@ -114,7 +115,8 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                 )
             }
             composable<KareDestination.Detail> {
-                DetailRoute(viewModel(factory = factory), onBack = { navController.popBackStack() }, onLibrary = {
+                DetailRoute(viewModel(factory = factory), reviewViewModel = viewModel(factory = factory),
+                    onSignIn = { navController.navigate(KareDestination.SignIn) }, onBack = { navController.popBackStack() }, onLibrary = {
                     navController.popBackStack()
                     navController.navigate(KareDestination.Library) {
                         popUpTo(navController.graph.findStartDestination().id) { saveState = true }
@@ -123,22 +125,6 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                     }
                 })
             }
-        }
-    }
-}
-
-@Composable
-private fun PendingContent(title: Int, onSignInClick: (() -> Unit)? = null) {
-    Column(Modifier.fillMaxSize().padding(KareSpacing.lg), verticalArrangement = Arrangement.spacedBy(KareSpacing.lg)) {
-        ScreenTitle(stringResource(title))
-        Text(stringResource(R.string.feature_pending))
-        if (title == R.string.profile_title && onSignInClick != null) {
-            Spacer(Modifier.height(KareSpacing.sm))
-            AuthButton(
-                text = stringResource(R.string.auth_sign_in_action),
-                onClick = onSignInClick,
-                testTag = "profile-go-to-sign-in"
-            )
         }
     }
 }

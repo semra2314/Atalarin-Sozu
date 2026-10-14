@@ -1,0 +1,20 @@
+<resources>
+    <string name="settings_section_general">Genel</string>
+    <string name="settings_section_account">Hesap</string>
+    <string name="settings_section_support">Destek &amp; Yasal</string>
+    <string name="settings_how_to_add_guide">Widget nasıl eklenir?</string>
+    <string name="settings_privacy_policy">Gizlilik Politikası</string>
+    <string name="settings_help_support">Yardım &amp; Destek</string>
+    <string name="settings_sign_out">Çıkış Yap</string>
+    <string name="settings_delete_account">Hesabı Sil</string>
+    <string name="settings_delete_account_confirm_title">Hesap Silinsin mi?</string>
+    <string name="settings_delete_account_confirm_message">Bu işlem geri alınamaz. Kayıtlı tüm widget\'larınız, yorumlarınız ve profil verileriniz kalıcı olarak silinecektir.</string>
+    <string name="settings_delete_account_password_prompt">Onaylamak için şifrenizi girin:</string>
+    <string name="settings_delete_account_confirm_action">Kalıcı Olarak Sil</string>
+    <string name="settings_theme_system">Sistem</string>
+    <string name="settings_theme_light">Açık</string>
+    <string name="settings_theme_dark">Koyu</string>
+    <string name="settings_lang_system">Sistem Varsayılanı</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_lang_tr">Türkçe</string>
+</resources>

@@ -7,4 +7,5 @@ data class AppPreferences(
     val onboardingCompleted: Boolean = false,
     val language: AppLanguage = AppLanguage.SYSTEM,
     val appearance: AppAppearance = AppAppearance.SYSTEM,
+    val notificationsEnabled: Boolean = true,
 )

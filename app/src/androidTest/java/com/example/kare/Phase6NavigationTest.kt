@@ -25,18 +25,37 @@ class Phase6NavigationTest {
         compose.onNodeWithTag("template-t-aurora").performScrollTo().performClick()
         compose.onNodeWithTag("detail-t-aurora").assertExists()
         pressBack()
+        compose.waitUntil(10_000) {
+            compose.onAllNodesWithTag("search-query").fetchSemanticsNodes().isNotEmpty()
+        }
         compose.onNodeWithTag("search-query").assertTextContains("Aurora")
         compose.activityRule.scenario.recreate()
         compose.onNodeWithTag("search-query").assertTextContains("Aurora")
         compose.onNodeWithTag("nav-${R.string.library_title}").performClick()
         compose.onNodeWithTag("nav-${R.string.library_title}").assertIsSelected()
         compose.onNodeWithTag("nav-${R.string.profile_title}").performClick()
-        compose.onNodeWithText(compose.activity.getString(R.string.feature_pending)).assertExists()
+        compose.onNodeWithText(compose.activity.getString(R.string.profile_edit_action)).assertExists()
         compose.onNodeWithTag("nav-${R.string.settings_title}").performClick()
         compose.onNodeWithTag("nav-${R.string.settings_title}").assertIsSelected()
         pressBack()
         compose.onNodeWithTag("nav-${R.string.discover_title}").assertIsSelected()
     }
+    @Test fun integratedProfileAndReviewsExposeExistingAuthRoutes() {
+        compose.onNodeWithTag("nav-${R.string.profile_title}").performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.profile_guest_sign_in_button)).performScrollTo().performClick()
+        compose.onNodeWithTag("sign-in-screen").assertExists()
+        pressBack()
+        compose.onNodeWithTag("nav-${R.string.search_title}").performClick()
+        compose.onNodeWithTag("search-query").performTextInput("Aurora")
+        compose.onNodeWithTag("search-query").performImeAction()
+        compose.waitUntil(10_000) { compose.onAllNodesWithTag("template-t-aurora").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("template-t-aurora").performScrollTo().performClick()
+        compose.onNodeWithTag("detail-t-aurora").performScrollToNode(hasText(compose.activity.getString(R.string.reviews_write_action)))
+        compose.onNodeWithText(compose.activity.getString(R.string.reviews_write_action)).performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.profile_guest_sign_in_button)).performClick()
+        compose.onNodeWithTag("sign-in-screen").assertExists()
+    }
+
     private fun detailNode(tag: String): SemanticsNodeInteraction {
         compose.onNodeWithTag("detail-t-aurora").performScrollToNode(hasTestTag(tag))
         return compose.onNodeWithTag(tag)
