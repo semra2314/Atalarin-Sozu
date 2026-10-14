@@ -40,6 +40,13 @@ android {
     }
     testOptions {
         unitTests.isIncludeAndroidResources = true
+        unitTests.all {
+            it.maxHeapSize = "384m"
+            it.maxParallelForks = 1
+            it.jvmArgs("-Xshare:off")
+            it.systemProperty("user.language", "en")
+            it.systemProperty("user.country", "US")
+        }
     }
     buildFeatures {
         compose = true

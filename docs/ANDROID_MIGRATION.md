@@ -3134,3 +3134,25 @@ Removed from the incoming merge before activation (not present in pre-merge HEAD
 standalone duplicate `AppLanguage.kt`, `AppTheme.kt`, `AppearancePickerSheet.kt`,
 `LanguagePickerSheet.kt`, and `DeleteAccountDialog.kt`. Their useful preference
 behavior is integrated into the existing DataStore controls; fake deletion is not.
+
+---
+
+### 2026-10-14 — Onboarding Visual Enhancements & Windows Host Build Fixes
+
+**Owner:** Developer 2 (Semra)  
+**Branch:** `ANDROID`  
+**Status:** COMPLETED
+
+- **Onboarding Visual Overhaul:** Enhanced `app/src/main/java/com/example/kare/feature/onboarding/OnboardingScreen.kt` to match Kare's design language (`KareDesign`, `KareShapes`). Added custom hero visual cards for each step:
+  - Slide 1: Dual widget card preview (Atasözü and Hush cards) with elevated container styling.
+  - Slide 2: Visual palette dots and typography preview badge.
+  - Slide 3: Glance home screen widget mockup with interactive instructions.
+  - Bottom Bar: Smooth animated pill page indicators replacing basic dots.
+  - Preserved all test tags (`onboarding-page-*`, `onboarding-next`, `onboarding-previous`, `onboarding-skip`), click contracts, and accessibility semantics.
+- **Environment & Build Fixes:**
+  - Resolved Conscrypt JNI UnsatisfiedLinkError under Windows Turkish locale (`tr_TR`) by configuring `-Duser.language=en -Duser.country=US` on `unitTests.all` in `app/build.gradle.kts`.
+  - Added `-Xshare:off` and `maxParallelForks = 1` in `unitTests.all` and tuned `gradle.properties` daemon memory to avoid pagefile/virtual memory exhaustion on constrained Windows hosts.
+- **Validation:**
+  - `assembleDebug`: PASS (clean build in 5s).
+  - `SettingsUiTest` (Onboarding flows, 200% font accessibility, navigation tags): PASS.
+
