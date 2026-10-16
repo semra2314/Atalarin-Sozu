@@ -19,16 +19,16 @@ import com.example.kare.core.presentation.LoadState
 import com.example.kare.core.ui.*
 
 @Composable
-fun LibraryRoute(viewModel: LibraryViewModel, onTemplateClick: (String) -> Unit) {
+fun LibraryRoute(viewModel: LibraryViewModel, onEdit: (String) -> Unit = {}, onTemplateClick: (String) -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     LibraryContent(state, viewModel::retryObservation, viewModel::setFavoritesOnly,
-        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick, placement = { WidgetPlacementRoute(it) })
+        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick, placement = { WidgetPlacementRoute(it) }, onEdit = onEdit)
 }
 
 @Composable
 fun LibraryContent(state: LibraryUiState, onRetry: () -> Unit, onFavoritesOnly: (Boolean) -> Unit,
     onFavoriteToggle: (String) -> Unit, onRemove: (String) -> Unit, onReorder: (List<String>) -> Unit,
-    onDismissAction: () -> Unit, onTemplateClick: (String) -> Unit, placement: @Composable (String) -> Unit = {}) {
+    onDismissAction: () -> Unit, onTemplateClick: (String) -> Unit, placement: @Composable (String) -> Unit = {}, onEdit: (String) -> Unit = {}) {
     var pendingRemoval by rememberSaveable { mutableStateOf<String?>(null) }
     val all = (state.widgets as? LoadState.Loaded)?.value.orEmpty()
     val busy = state.action is LibraryActionState.Running
@@ -75,6 +75,9 @@ fun LibraryContent(state: LibraryUiState, onRetry: () -> Unit, onFavoritesOnly: 
                         }
                         Column(Modifier.padding(horizontal = KareSpacing.md)) {
                             placement(widget.templateId)
+                            if (com.example.kare.feature.editor.EditorCapabilities.forWidget(widget) != com.example.kare.feature.editor.EditorCapability.UNSUPPORTED) {
+                                TextButton(enabled = !busy, onClick = { onEdit(widget.templateId) }, modifier = Modifier.testTag("edit-${widget.templateId}")) { Text(stringResource(R.string.editor_edit)) }
+                            }
                             TextButton(enabled = !busy, onClick = { onFavoriteToggle(widget.templateId) },
                                 modifier = Modifier.testTag("favorite-${widget.templateId}")) {
                                 Text(stringResource(if (widget.isFavorite) R.string.favorite_remove else R.string.favorite_add))

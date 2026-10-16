@@ -1,0 +1,33 @@
+<resources>
+    <string name="editor_title">Editor</string>
+    <string name="editor_edit">Edit design</string>
+    <string name="editor_unsupported">This design needs an advanced or dedicated editor. Your saved content is unchanged.</string>
+    <string name="editor_preview_note">Local Library preview. Text outside the preview may be clipped; all text is saved. This design cannot be placed on the home screen yet.</string>
+    <string name="editor_text">Text</string>
+    <string name="editor_font">Font</string>
+    <string name="editor_serif">Serif · Fraunces</string>
+    <string name="editor_sans">Sans serif</string>
+    <string name="editor_mono">Monospace</string>
+    <string name="editor_font_fallback">The saved iOS Rounded font is previewed with Android sans serif. Its saved identifier is preserved until you choose another font.</string>
+    <string name="editor_size">Text size</string>
+    <string name="editor_size_value">%1$d reference points</string>
+    <string name="editor_alignment">Text alignment</string>
+    <string name="editor_start">Start</string>
+    <string name="editor_center">Center</string>
+    <string name="editor_end">End</string>
+    <string name="editor_text_color">Text color</string>
+    <string name="editor_background">Solid background color</string>
+    <string name="editor_white">White</string>
+    <string name="editor_ink">Ink</string>
+    <string name="editor_coral">Coral</string>
+    <string name="editor_peach">Peach</string>
+    <string name="editor_blue">Blue</string>
+    <string name="editor_saved">Saved to Library</string>
+    <string name="editor_save">Save</string>
+    <string name="editor_reset">Reset to saved design</string>
+    <string name="editor_unsaved">Unsaved changes</string>
+    <string name="editor_unsaved_body">Save your changes or discard them before leaving.</string>
+    <string name="editor_save_exit">Save and exit</string>
+    <string name="editor_discard">Discard and exit</string>
+    <string name="editor_keep">Keep editing</string>
+</resources>

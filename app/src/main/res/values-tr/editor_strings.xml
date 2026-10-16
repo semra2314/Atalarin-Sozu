@@ -1,0 +1,33 @@
+<resources>
+    <string name="editor_title">Düzenleyici</string>
+    <string name="editor_edit">Tasarımı düzenle</string>
+    <string name="editor_unsupported">Bu tasarım gelişmiş veya özel bir düzenleyici gerektiriyor. Kayıtlı içeriğiniz değiştirilmedi.</string>
+    <string name="editor_preview_note">Yerel Kitaplık önizlemesi. Önizleme dışındaki metin kesilebilir; metnin tamamı kaydedilir. Bu tasarım henüz ana ekrana eklenemez.</string>
+    <string name="editor_text">Metin</string>
+    <string name="editor_font">Yazı tipi</string>
+    <string name="editor_serif">Serif · Fraunces</string>
+    <string name="editor_sans">Sans serif</string>
+    <string name="editor_mono">Eş aralıklı</string>
+    <string name="editor_font_fallback">Kayıtlı iOS Rounded yazı tipi Android sans serif ile önizlenir. Başka bir yazı tipi seçene kadar kayıtlı kimliği korunur.</string>
+    <string name="editor_size">Metin boyutu</string>
+    <string name="editor_size_value">%1$d referans punto</string>
+    <string name="editor_alignment">Metin hizalama</string>
+    <string name="editor_start">Başlangıç</string>
+    <string name="editor_center">Orta</string>
+    <string name="editor_end">Son</string>
+    <string name="editor_text_color">Metin rengi</string>
+    <string name="editor_background">Düz arka plan rengi</string>
+    <string name="editor_white">Beyaz</string>
+    <string name="editor_ink">Mürekkep</string>
+    <string name="editor_coral">Mercan</string>
+    <string name="editor_peach">Şeftali</string>
+    <string name="editor_blue">Mavi</string>
+    <string name="editor_saved">Kitaplığa kaydedildi</string>
+    <string name="editor_save">Kaydet</string>
+    <string name="editor_reset">Kayıtlı tasarıma dön</string>
+    <string name="editor_unsaved">Kaydedilmemiş değişiklikler</string>
+    <string name="editor_unsaved_body">Çıkmadan önce değişikliklerinizi kaydedin veya silin.</string>
+    <string name="editor_save_exit">Kaydet ve çık</string>
+    <string name="editor_discard">Değişiklikleri sil ve çık</string>
+    <string name="editor_keep">Düzenlemeye devam et</string>
+</resources>

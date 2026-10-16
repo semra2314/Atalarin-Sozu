@@ -36,6 +36,7 @@ sealed interface KareDestination {
     @Serializable data object Settings : KareDestination
     @Serializable data object SignIn : KareDestination
     @Serializable data object SignUp : KareDestination
+    @Serializable data class Editor(val templateId: String) : KareDestination
     @Serializable data class Detail(val templateId: String) : KareDestination
 }
 private data class MainDestination(val route: KareDestination, val title: Int, val icon: ImageVector)
@@ -53,7 +54,7 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
     val isDetail = current?.destination?.hasRoute<KareDestination.Detail>() == true
     val isAuth = current?.destination?.hasRoute<KareDestination.SignIn>() == true ||
         current?.destination?.hasRoute<KareDestination.SignUp>() == true
-    val hideBottomBar = isDetail || isAuth
+    val hideBottomBar = isDetail || isAuth || current?.destination?.hasRoute<KareDestination.Editor>() == true
 
     Scaffold(bottomBar = {
         if (!hideBottomBar) NavigationBar {
@@ -77,7 +78,7 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                 DiscoverRoute(viewModel(factory = factory)) { navController.navigate(KareDestination.Detail(it)) }
             }
             composable<KareDestination.Library> {
-                LibraryRoute(viewModel(factory = factory)) { navController.navigate(KareDestination.Detail(it)) }
+                LibraryRoute(viewModel(factory = factory), onEdit = { navController.navigate(KareDestination.Editor(it)) }) { navController.navigate(KareDestination.Detail(it)) }
             }
             composable<KareDestination.Search> {
                 SearchRoute(viewModel(factory = factory)) { navController.navigate(KareDestination.Detail(it)) }
@@ -113,6 +114,9 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                     onSignUpSuccess = { navController.popBackStack() },
                     onBack = { navController.popBackStack() }
                 )
+            }
+            composable<KareDestination.Editor> {
+                com.example.kare.feature.editor.EditorRoute(viewModel(factory = factory)) { navController.popBackStack() }
             }
             composable<KareDestination.Detail> {
                 DetailRoute(viewModel(factory = factory), reviewViewModel = viewModel(factory = factory),

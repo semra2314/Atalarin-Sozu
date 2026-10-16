@@ -87,6 +87,8 @@ class KareViewModelFactory(
             PreferencesViewModel::class.java -> PreferencesViewModel(requireNotNull(preferences), errors)
             OnboardingViewModel::class.java -> OnboardingViewModel(savedState)
             SettingsViewModel::class.java -> SettingsViewModel(auth, errors, profile)
+            com.example.kare.feature.editor.EditorViewModel::class.java ->
+                com.example.kare.feature.editor.EditorViewModel(savedState["templateId"] ?: "", library, errors)
             DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState)
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)

@@ -14,6 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 14 adds a limited local Library editor with live preview and durable content
+saves. Advanced canvas editing and generic launcher synchronization remain deferred.
 Phase 13 implements first-launch onboarding and Settings with typed DataStore
 preferences, native in-app locale selection and persisted appearance. Further
 widget development is explicitly deferred.
@@ -31,7 +33,7 @@ Phase 5 added the Kare design/theme/font and English/Turkish localization founda
 Phase 4 added application dependency wiring and Discover/Search/Library ViewModels.
 Phase 3 added Room-backed local library persistence.
 Phase 2 added the bundled catalog, explicit JSON adapters and repository tests.
-Profile backend, billing, editor and remaining platform integrations remain deferred.
+Profile backend, billing, advanced editor capabilities and remaining platform integrations remain deferred.
 
 Phase 1 was limited to source analysis, coordination documentation, package
 boundaries, platform-independent models, and repository contracts. Full screens,
@@ -194,7 +196,7 @@ and do not mean the associated technology or feature has been migrated.
 | `navigation` | Typed KareDestination routes, root scaffold and saved main-destination navigation |
 | `feature/discover`, `feature/search` | Catalog ViewModels/StateFlow, route containers and stateless screen content |
 | `feature/library`, `feature/detail` | LibraryViewModel and reactive screen; DetailViewModel handles catalog lookup and free installation |
-| `feature/editor` | Future editing state, actions and canvas |
+| `feature/editor` | Limited single-layer draft, capability checks, ViewModel, Compose preview and local save |
 | `feature/profile`, `feature/settings`, `feature/onboarding` | Future identity/preferences/first-run UI |
 | `feature/daily`, `feature/focus`, `feature/frame` | Future live-widget setup/session UI |
 | `widget` | Future Android providers, rendering, actions and configuration |
@@ -266,7 +268,7 @@ Intentional foundation deviations:
 
 Statuses describe the scope named in each row, not a claim of complete app
 parity. `COMPLETED` foundation rows have no hidden backend implementation.
-Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. Developer 2 owns authentication foundation on
+Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. Developer 2 owns authentication foundation on
 `android/auth-foundation`; see Current work for isolation boundaries.
 
 | Area | iOS reference | Android implementation | Owner | Status | Notes |
@@ -293,7 +295,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. 
 | Profile | ProfileView / EditProfileView | ProfileRoute / ProfileViewModel / LocalProfileRepository / avatar store | Developer 2 | COMPLETED | Existing local editing, favorites and guest sign-in now wired into navigation; backend deferred |
 | Settings | SettingsView | SettingsRoute / SettingsViewModel / PreferencesViewModel | Developer 1 | COMPLETED | Phase 13: local preferences, existing auth route, About; billing deferred |
 | Onboarding | OnboardingView / RootGate | PreferencesHost startup gate / OnboardingViewModel | Developer 1 | COMPLETED | Phase 13: language plus three pages, durable completion |
-| Editor | WidgetEditorView / WidgetContent | Payload values only | Unassigned | NOT STARTED | Content codecs ready; no editor, renderer or image processing |
+| Editor | WidgetEditorView / WidgetContent | EditorViewModel, draft, capability registry and Compose preview | Developer 1 | COMPLETED | Phase 14 limited single-layer foundation; advanced editor and generic launcher provider deferred |
 | Daily | DailyStore / DailyWidget | Reserved feature package | Unassigned | NOT STARTED | No content/source persistence |
 | Focus | FocusSession / FocusView / FocusWidget | Reserved feature package | Unassigned | NOT STARTED | No timer/audio/session logic |
 | Frame | FramePhotoStore / FrameWidget | Reserved feature package | Unassigned | NOT STARTED | No photo picker/storage |
@@ -318,23 +320,20 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 13. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: None. Merge integration COMPLETED on `ANDROID`, explicitly authorized
-by the user; the resolved merge is left staged and uncommitted for human review.
-Shared files and validation are listed in the integration record below. Phase 13 COMPLETED by Developer 1, baseline
-`40091a8`. Onboarding/Settings/preferences reservations are released. Further
-widget work remains deferred; Phase 14 has not started. Shared conflict hotspots:
-AppContainer/factory, MainActivity, navigation, Gradle/theme resources and this
-record. Developer 2 retains authentication/Firebase ownership. The pre-existing
-`.idea/misc.xml` JDK selection edit is preserved and excluded from Phase 13.
+Current tasks: Phase 14 Widget Editor Foundation COMPLETED on 2026-10-16. Owner: Developer 1.
+Implementation reservations released; changes remain uncommitted for review.
+Baseline `fdcac91` includes merged Phase 13 and onboarding hero/indicator polish;
+working tree was clean. Scope: portable editor capability/draft, ViewModel, preview,
+Library entry/navigation, local save, tests and this record. Shared hotspots are
+AppContainer factory, KareNavigation and LibraryScreen; minimal additions only.
+No Gradle/manifest changes planned. No backend, preferences or onboarding edits.
 
 ### Developer 2
 
-Branch: `android/auth-foundation`. Status: IN PROGRESS (user-reported assignment).
-Owner: Developer 2. Scope: authentication foundation, AuthRepository, AuthViewModel,
-auth models and `docs/AUTH_MIGRATION_NOTES.md`. Developer 1 must not modify these
-areas or depend on unfinished auth work. Authentication is not required for local
-free-library installation. The user authorized the current AppContainer/navigation merge integration of
-already-existing Profile/Reviews/auth entry points. No Firebase backend changes are authorized. Earlier Phase 5/6 no-ownership entries are historical.
+Owner: Developer 2. All Firebase/backend work remains independently assigned:
+Auth, Firestore, Profile/PublicProfile/Reviews backends, account deletion and cloud
+configuration/integration. No changes to those implementations or AUTH_MIGRATION_NOTES
+are authorized in Phase 14. Coordinate shared composition/navigation/doc files.
 
 ### Phase 1 session record
 
@@ -3156,3 +3155,198 @@ behavior is integrated into the existing DataStore controls; fake deletion is no
   - `assembleDebug`: PASS (clean build in 5s).
   - `SettingsUiTest` (Onboarding flows, 200% font accessibility, navigation tags): PASS.
 
+
+## Phase 14 — Widget Editor Foundation
+
+Started 2026-10-15; completed 2026-10-16. Developer 1. ANDROID. Status: COMPLETED.
+
+### Source inspection and scope decision (before implementation)
+
+Read IOS WidgetEditorView (blob 391a32427e57dd6c88c6fc0f5578b060c9a1e882),
+WidgetContent, WidgetTheme, LibraryStore, SharedWidgetStore, InstalledWidget,
+LibraryView and DesignSystem/Components/CustomWidgetView. The editor has Text,
+Style, Background, Photos and Stickers tabs; multiline layers, weights, sizes,
+spacing/alignment/colors, gradients, scrim, photo crop/downscale, emoji/SF Symbols,
+image stickers, transforms, duplicate/delete, sharing and size previews. Local
+state is in the SwiftUI screen, not a separate editor ViewModel. Save updates
+InstalledWidget.contentData via LibraryStore, then writes an atomic per-design
+App Group payload and reloads WidgetKit; first save shows placement guidance.
+WidgetTheme is the template visual recipe; editor text/style/background and canvas
+layers belong to WidgetContent. The renderer uses normalized positions and a 329pt
+reference width, rendering photos, text layers, then stickers. Library routes
+customizable designs to Editor and fixed/live designs to their own setup flows.
+
+Android Phase 14 edits one existing text layer with a color background, preserving
+its ID/position/width and all unedited content values. Sunset and Pastel are real
+free compatible catalog examples. Photos, stickers, multiple layers, rotation,
+text plates/scrim and advanced effects are unsupported, never silently stripped.
+Custom Widget currently includes a sticker and is therefore deferred too.
+Existing background gradients can be previewed/preserved; palette selection sets
+an explicit solid background. No gradient editing controls. WidgetTheme remains
+unchanged (including corner radius); application theme/locale are separate.
+Save uses existing atomic updateContent and existing JSON column/codecs; no schema
+or repository contract change is needed. There is no generic Android launcher
+provider, so no launcher sync is invented. Proverb/Hush instance stores are untouched.
+
+Build environment finding: initial assembleDebug passed unchanged. Concurrent test/lint
+failed in lintAnalyzeDebug with `Metaspace` under the inherited 256 MiB cap. Local
+validation will use command-line `-Dorg.gradle.jvmargs=-Xmx2g
+-XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8`; checked-in Gradle constraints remain
+unchanged. A new test fixture suspend-call compile error was also corrected.
+
+
+### Implementation and architectural decisions — 2026-10-16
+
+- Library exposes Edit design only through centralized EditorCapabilities. The
+  typed Editor destination carries templateId, the unique installed-record key.
+  EditorViewModel loads the latest installed copy; catalog templates stay immutable.
+  Existing dynamic launcher types Proverb and Hush are explicitly unsupported even
+  if customizable metadata is incorrect. Supported single-layer payloads are
+  classified LIMITED; GENERIC is reserved, not an entitlement or blanket permission.
+- Route collection is lifecycle-aware. Immutable Loading, Ready, Unsupported and
+  Failed states separate loading from errors. Ready contains the persisted snapshot,
+  draft, saving, saved and semantic error. Equality determines dirty state; reverting
+  values clears it. Save errors preserve the draft; diagnostics use ErrorReporter
+  and coroutine cancellation propagates through the existing error mapper.
+- EditorDraft wraps the existing portable WidgetContent with explicit copy mappings.
+  Controls change multiline text, text RGB color, solid background RGB color, font
+  family, 8–60 reference-point size and start/center/end alignment. RGB values remain
+  six hexadecimal digits; Compose Color/FontFamily/TextAlign never enter storage.
+  Invalid colors, non-finite/out-of-range dimensions and malformed payloads fail
+  safely. Advanced payload structures are unsupported rather than destructively
+  simplified. Existing IDs, positions, width, weight and line spacing are retained.
+- Compose preview maps current draft values immediately. It preserves background
+  gradient direction until a solid palette color is chosen, normalized text position,
+  width and saved corner radius. Fonts are existing Fraunces, system sans and system
+  monospace. iOS Rounded uses a disclosed sans fallback while preserving its ID until
+  explicitly changed. No fonts were added. Native font metrics differ from SwiftUI.
+- Save calls LibraryRepository.updateContent through the existing wrapper and Room
+  implementation. Existing serialized content columns/adapters and transaction remain
+  authoritative; no schema, migration, contract or serialization changes. WidgetTheme
+  stays read-only, distinct from editable content styling and application appearance.
+  Library Flow updates after save; reopening/restarting restores saved content.
+- Clean Back exits. Dirty Back offers keep editing, discard and exit, or save and
+  exit; exit waits for successful persistence. Reset restores the saved snapshot.
+  Ordinary Activity recreation retains the ViewModel; unsaved drafts are not promised
+  across process death. Saved data is durable. Concurrent editor conflict resolution
+  is not added; independent saves retain existing last-write behavior.
+- No generic launcher provider currently consumes these designs. Editor saves do not
+  write launcher JSON or implicitly synchronize Proverb/Hush. Their configuration,
+  rotation, explicit Hush language, pinning and placement remain unchanged. Unlike
+  iOS SharedWidgetStore mirroring/reload, Android synchronization is deferred until a
+  compatible provider and explicit Library-to-instance relationship are designed.
+
+### Accessibility, localization and deferred scope
+
+Editor controls are scrollable with IME padding, multiline input, 48dp selection
+controls, selected semantics, heading semantics, named color choices and polite
+save/error announcements. Selection is not conveyed by color alone. English and
+Turkish each add 31 editor strings with matching keys/format arguments. The preview
+uses a bounded canvas: long text may clip visually, but is never truncated in stored
+content; this limitation is visible in localized guidance. Controls remain reachable
+at 200% font scale. User-selected color combinations are not automatically contrast
+corrected. No spoken TalkBack or manual TalkBack traversal certification is claimed.
+
+Deferred: photos/crop/assets, stickers, multiple/movable layers, canvas transforms,
+advanced gradients/borders/shadows, custom font download, animations/audio, Frame/
+Focus editing, creation/publishing/sharing, generic launcher rendering and synchronization.
+No new launcher widget, Firebase, billing, entitlement or cloud persistence was added.
+
+### Automated validation
+
+Final full run on unchanged implementation:
+
+`./gradlew assembleDebug test lint connectedDebugAndroidTest
+-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8"
+-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true --console=plain`
+
+- assembleDebug: PASS.
+- JVM: 204 tests, zero failures/errors/skips (10 new editor tests).
+- lint: PASS, zero errors, 102 warnings. The added PluralsCandidate advisory for
+  "%1$d reference points" is not suppressed: the editor range is 8–60, so a singular
+  quantity cannot occur. Existing warnings remain; no checks were disabled.
+- Device: 9 tests PASS, zero failures/errors/skips, including one new editor test.
+- git diff --check: PASS; rerun after this closing documentation update.
+
+The local memory override addressed the measured lint Metaspace failure; checked-in
+Windows JVM/test constraints, Gradle files and manifest remain unchanged. No expensive
+suite was repeated during documentation-only closure after the successful full run.
+
+New tests cover real catalog capability classification and dynamic exclusions,
+loading/missing/corrupt data, text/style edits, reverting dirty state, delayed and
+failed saves, discard, reopen, file-backed Room save/Flow/reopen and immutable catalog/
+theme preservation. Compose tests cover draft preview text/color, large fonts, dirty
+Back choices, Library eligibility and bilingual resource parity. The device test uses
+real Room/AppContainer and typed Library navigation, save/reopen/Activity recreation,
+unsaved Back and launcher-state snapshot preservation. It restores its test fixture.
+Existing onboarding polish/startup, preferences/locale/theme, Settings, Profile,
+Sign In/Sign Up, Detail Reviews, Discover/Search/Library and Proverb/Hush suites pass.
+
+### Actual manual device validation
+
+Environment: Pixel_8 AVD, Android 17/API 37, Pixel Launcher, English, light appearance,
+1080×2400. No older physical/emulated Android or other launcher was tested in this
+phase. Existing Robolectric coverage does not imply older-device validation.
+
+1. Installed the real free Sunset catalog template through Search/Detail, opened
+   Library → Edit design, changed text to "Phase14 persistence" and observed immediate
+   preview updates. Selected sans serif and saved.
+2. Checked unsaved native Back confirmation and keep-editing behavior. Reopened after
+   force-stop/relaunch and confirmed persisted text/font. At 200% font scale, visually
+   inspected preview, scrolled all controls and reached palette/save/reset.
+3. Chose Ink solid background, saved, restored font scale to 1.0, force-stopped and
+   relaunched again. Editor showed saved white text, Ink background and sans selection.
+   Clean Back returned normally. Removed only the manually added Sunset test record;
+   existing Söz membership was preserved. No application data was cleared.
+4. Launcher configuration directory was empty before the final manual widget check;
+   an existing Hush launcher instance displayed its missing-state recovery prompt.
+   Added Söz through the existing native placement/configuration flow (real ID 55),
+   selected Proverbs and observed actual proverb, meaning/example and action rendering.
+5. Reconfigured the existing missing-state Hush instance 47 through Configure Hush,
+   explicitly selected English, saved and observed the actual word "pause" alongside
+   the still-rendering Söz instance. Final files are 55.json and 47.json. These writes
+   came from intentional existing configuration flows, not the editor. No prior valid
+   instance configuration was overwritten. Both functional instances remain available.
+6. Font scale is restored to 1.0. No accessibility service, density or app-data reset
+   was introduced. Screenshots/logs are outside the repository. Reboot, fresh deletion
+   and spoken TalkBack were not repeated manually; existing widget device regression
+   tests cover refresh/resize/isolation/deletion, and earlier phases record reboot.
+
+### Complete Phase 14 file manifest
+
+Created:
+
+- `app/src/main/java/com/example/kare/feature/editor/EditorDraft.kt`
+- `app/src/main/java/com/example/kare/feature/editor/EditorViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/editor/EditorPreview.kt`
+- `app/src/main/java/com/example/kare/feature/editor/EditorScreen.kt`
+- `app/src/main/res/values/editor_strings.xml`
+- `app/src/main/res/values-tr/editor_strings.xml`
+- `app/src/test/java/com/example/kare/editor/EditorViewModelTest.kt`
+- `app/src/test/java/com/example/kare/editor/EditorPersistenceTest.kt`
+- `app/src/test/java/com/example/kare/editor/EditorUiTest.kt`
+- `app/src/androidTest/java/com/example/kare/Phase14EditorTest.kt`
+
+Modified:
+
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryScreen.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+### Work log, ownership and next scope
+
+2026-10-16 — Developer 1 completed Phase 14 on ANDROID from fdcac91, preserving
+merged Phase 13 and onboarding visual polish. Implemented limited local editing,
+preview, explicit save/discard, integration and focused tests; closed manual checks
+and documentation without further production changes. No auth/backend, preference,
+widget-infrastructure, schema, build configuration or AUTH_MIGRATION_NOTES changes.
+No commit, push, merge, branch change, reset or history rewrite occurred.
+
+Recommended Phase 15, subject to separate authorization: a bounded generic text
+launcher provider consuming saved compatible Library designs, with explicit instance
+binding/synchronization and isolation tests before expanding the canvas editor.
+No Phase 15 work has begun. Developer 2 can continue all Firebase/Auth/Firestore,
+Profile/PublicProfile/Reviews backend and account-deletion work independently. While
+these changes remain uncommitted, coordinate AppContainer, KareNavigation,
+LibraryScreen and this migration record; avoid overlapping editor files/resources.
