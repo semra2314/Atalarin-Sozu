@@ -12,6 +12,7 @@ import android.os.Build
 import android.util.Log
 import java.util.UUID
 import com.example.kare.core.model.LauncherWidgetType
+import com.example.kare.core.model.InstalledWidget
 
 /** Transient launcher requests, never Library membership or persisted placement claims. */
 enum class PlacementResult { REQUESTED, UNSUPPORTED, UNAVAILABLE }
@@ -19,16 +20,19 @@ enum class PlacementResult { REQUESTED, UNSUPPORTED, UNAVAILABLE }
 interface WidgetPlacementManager {
     fun supportsPinning(): Boolean
     fun request(type: LauncherWidgetType): Boolean
+    fun request(type: LauncherWidgetType, installedId: String?): Boolean = request(type)
 }
 
 class WidgetPlacementCoordinator(private val manager: WidgetPlacementManager) {
     fun hasWidget(templateId: String) = LauncherWidgetType.forTemplate(templateId) != null
 
-    fun request(templateId: String): PlacementResult {
-        if (!hasWidget(templateId)) return PlacementResult.UNAVAILABLE
+    fun request(templateId: String): PlacementResult = requestType(LauncherWidgetType.forTemplate(templateId), templateId)
+    fun request(widget: InstalledWidget): PlacementResult = requestType(LauncherWidgetType.forWidget(widget), widget.templateId)
+    private fun requestType(type: LauncherWidgetType?, installedId: String): PlacementResult {
+        if(type == null) return PlacementResult.UNAVAILABLE
         return try {
             if (!manager.supportsPinning()) PlacementResult.UNSUPPORTED
-            else if (manager.request(LauncherWidgetType.forTemplate(templateId)!!)) PlacementResult.REQUESTED
+            else if (manager.request(type, installedId)) PlacementResult.REQUESTED
             else PlacementResult.UNAVAILABLE
         } catch (error: RuntimeException) {
             if (error is CancellationException) throw error
@@ -36,6 +40,7 @@ class WidgetPlacementCoordinator(private val manager: WidgetPlacementManager) {
             PlacementResult.UNAVAILABLE
         }
     }
+
 }
 
 /** API 26 is also the application's minimum SDK. No launcher positioning or ID allocation. */
@@ -44,11 +49,13 @@ class AndroidWidgetPlacementManager(context: Context) : WidgetPlacementManager {
     private val manager = AppWidgetManager.getInstance(this.context)
     override fun supportsPinning() = manager.isRequestPinAppWidgetSupported
 
-    override fun request(type: LauncherWidgetType): Boolean {
+    override fun request(type: LauncherWidgetType): Boolean = request(type, null)
+    override fun request(type: LauncherWidgetType, installedId: String?): Boolean {
         // Pinning skips android:configure. The success callback supplies the real appWidgetId.
         // Unique, explicit, one-shot intents keep simultaneous requests independent. Mutability
         // is required for the system-supplied ID; the Activity validates its provider before use.
         val intent = Intent(context, WidgetCapability.forType(type).configuration)
+            .putExtra(EditableConfigurationActivity.INSTALLED_ID, installedId)
             .setAction(AppWidgetManager.ACTION_APPWIDGET_CONFIGURE)
             .setData("kare-widget-placement:${UUID.randomUUID()}".toUri())
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -78,6 +85,7 @@ data class WidgetCapability(
     companion object {
         fun forType(type: LauncherWidgetType): WidgetCapability = when (type) {
             LauncherWidgetType.PROVERB -> WidgetCapability(ProverbReceiver::class.java, ProverbConfigurationActivity::class.java, com.example.kare.R.string.proverb_widget_name)
+            LauncherWidgetType.GENERIC_EDITABLE -> WidgetCapability(EditableReceiver::class.java, EditableConfigurationActivity::class.java, com.example.kare.R.string.editable_widget_name)
             LauncherWidgetType.HUSH -> WidgetCapability(HushReceiver::class.java, HushConfigurationActivity::class.java, com.example.kare.R.string.hush_widget_name)
         }
     }

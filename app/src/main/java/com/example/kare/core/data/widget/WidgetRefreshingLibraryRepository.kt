@@ -10,11 +10,22 @@ class WidgetRefreshingLibraryRepository(
     private val delegate: LibraryRepository,
     private val refresh: suspend () -> Unit,
     private val errors: ErrorReporter,
+    private val syncEditable: suspend (String) -> Unit = {},
 ) : LibraryRepository by delegate {
     override suspend fun install(template: WidgetTemplate, size: WidgetSize): InstalledWidget =
-        delegate.install(template, size).also { if (LauncherWidgetType.forTemplate(template.id) != null) notifyWidgets() }
+        delegate.install(template, size).also { if (LauncherWidgetType.forTemplate(template.id) != null) notifyWidgets(); notifyEditable(template.id) }
     override suspend fun remove(templateId: String): InstalledWidget? =
-        delegate.remove(templateId).also { if (LauncherWidgetType.forTemplate(templateId) != null) notifyWidgets() }
+        delegate.remove(templateId).also { if (LauncherWidgetType.forTemplate(templateId) != null) notifyWidgets(); notifyEditable(templateId) }
+    override suspend fun updateContent(templateId: String, content: WidgetContent) {
+        delegate.updateContent(templateId, content)
+        notifyEditable(templateId)
+    }
+    private suspend fun notifyEditable(id: String) {
+        try { syncEditable(id) } catch (error: Exception) {
+            if (error is CancellationException) throw error
+            errors.report("editable.refresh", error)
+        }
+    }
     private suspend fun notifyWidgets() {
         try { refresh() }
         catch (error: Exception) {

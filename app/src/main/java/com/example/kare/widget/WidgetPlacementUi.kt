@@ -16,12 +16,12 @@ import com.example.kare.R
 
 /** Route-level platform composition; stateless feature content receives only a UI slot. */
 @Composable
-fun WidgetPlacementRoute(templateId: String) {
+fun WidgetPlacementRoute(templateId: String, installed: com.example.kare.core.model.InstalledWidget? = null) {
     val context = LocalContext.current.applicationContext
     val coordinator = remember(context) { WidgetPlacementCoordinator(AndroidWidgetPlacementManager(context)) }
     var result by rememberSaveable(templateId) { mutableStateOf<PlacementResult?>(null) }
-    WidgetPlacementContent(coordinator.hasWidget(templateId), result,
-        onPlace = { result = coordinator.request(templateId) }, onDismiss = { result = null })
+    WidgetPlacementContent(if(installed != null) com.example.kare.core.model.LauncherWidgetType.forWidget(installed) != null else coordinator.hasWidget(templateId), result,
+        onPlace = { result = if(installed != null) coordinator.request(installed) else coordinator.request(templateId) }, onDismiss = { result = null })
 }
 
 @Composable

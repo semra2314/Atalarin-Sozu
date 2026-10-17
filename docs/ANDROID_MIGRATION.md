@@ -14,6 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 15 adds a generic editable launcher provider with explicit Library-to-instance
+synchronization, preserving specialized Söz/Hush providers.
 Phase 14 adds a limited local Library editor with live preview and durable content
 saves. Advanced canvas editing and generic launcher synchronization remain deferred.
 Phase 13 implements first-launch onboarding and Settings with typed DataStore
@@ -302,7 +304,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Aurora | AuroraWidget | None | Unassigned | NOT STARTED | Native clock/update design needed |
 | Proverb | ProverbLibrary / ProverbWidget | Glance ProverbWidget, 400 source entries | Developer 1 | COMPLETED | Phase 8 reference widget; independent content selection |
 | Other live widgets | Exhale / Countdown / Progress | None | Unassigned | NOT STARTED | Models, setup, renderers and actions deferred |
-| Android App Widgets | actual-widgetsExtension | Glance receiver, configuration Activity and instance repository | Developer 1 | COMPLETED | Proverb and Hush; further providers deferred |
+| Android App Widgets | actual-widgetsExtension | Specialized Proverb/Hush plus generic Editable provider | Developer 1 | COMPLETED | Phase 15: Library-bound static designs, explicit synchronization and recovery |
 | Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
 | Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
@@ -320,20 +322,18 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 14 Widget Editor Foundation COMPLETED on 2026-10-16. Owner: Developer 1.
-Implementation reservations released; changes remain uncommitted for review.
-Baseline `fdcac91` includes merged Phase 13 and onboarding hero/indicator polish;
-working tree was clean. Scope: portable editor capability/draft, ViewModel, preview,
-Library entry/navigation, local save, tests and this record. Shared hotspots are
-AppContainer factory, KareNavigation and LibraryScreen; minimal additions only.
-No Gradle/manifest changes planned. No backend, preferences or onboarding edits.
+Current tasks: Phase 15 Editable Launcher Provider COMPLETED on 2026-10-17. Developer 1.
+Changes remain uncommitted for review; implementation reservation released.
+Baseline 1e24f8d includes completed Phase 14; working tree clean. Shared changes
+reserved: AppContainer, placement/capability routing, Library placement slot,
+manifest/resources and this record. No backend/auth or build configuration changes.
 
 ### Developer 2
 
 Owner: Developer 2. All Firebase/backend work remains independently assigned:
 Auth, Firestore, Profile/PublicProfile/Reviews backends, account deletion and cloud
 configuration/integration. No changes to those implementations or AUTH_MIGRATION_NOTES
-are authorized in Phase 14. Coordinate shared composition/navigation/doc files.
+are authorized in Phase 15. Coordinate shared composition/navigation/doc files.
 
 ### Phase 1 session record
 
@@ -3350,3 +3350,250 @@ No Phase 15 work has begun. Developer 2 can continue all Firebase/Auth/Firestore
 Profile/PublicProfile/Reviews backend and account-deletion work independently. While
 these changes remain uncommitted, coordinate AppContainer, KareNavigation,
 LibraryScreen and this migration record; avoid overlapping editor files/resources.
+
+
+## Phase 15 — Editable Launcher Provider and Explicit Synchronization
+
+Started 2026-10-16; closed 2026-10-17. Developer 1. ANDROID. Status: COMPLETED.
+
+### Inspection and decisions before implementation
+
+Inspected IOS 41a8fbc: actual-widgets/actual_widgetsBundle.swift (KareProvider),
+KareSelection.swift, SharedWidgetStore, InstalledWidget and portable content/theme.
+SelectDesignIntent stores the design ID; each timeline reads its per-design App
+Group payload with policy .never. Editor save and deletion reload the provider.
+The source falls back to the most recent design if the selected one is missing.
+Android will instead show explicit recovery, never silently bind another design.
+
+Android Room and LibraryRepository guarantee one installed copy per templateId.
+Use that existing key, without schema changes. Per-instance versioned atomic JSON
+contains only the binding, not copied editor content. Store it in a separate typed
+subdirectory under noBackupFilesDir; cross-device ID restoration is not promised.
+Extend existing placement and provider metadata, using shared portable editor
+capability rules. Keep Proverb/Hush specialized. Configuration selects a compatible
+installed design; pin callback can preselect the app-requested ID, but only a real
+provider-validated appWidgetId is saved after confirmation. Editor stays platform
+neutral: the Library decorator commits Room first, then an explicit coordinator
+updates only generic instances bound to that key. Deletion shows unavailable state;
+launcher deletion removes only the binding. No polling or new background framework.
+
+### Implementation decisions
+
+- Shared portable eligibility and validation moved from feature/editor into
+  core/model/EditableContentSupport, with editor typealiases preserving callers.
+  LauncherWidgetType.forWidget uses that same rule; it never treats a raw generic
+  template ID as sufficient proof of compatible installed content. Sunset/Pastel
+  qualify, while Söz/Hush continue through their specialized ID mappings and complex
+  payloads remain unsupported. No entitlement is introduced.
+- EditableBindingStore reuses AtomicWidgetStateStore with a typed version-1 codec:
+  `{version:1,type:"editable",installedId:"p-sunset"}` in
+  `no_backup/editable-instances/<appWidgetId>.json`.
+  appWidgetId is the file key allocated by Android, not an invented template-derived
+  ID. Room remains the only customized-content source. One template has one Library
+  copy today; multiple-copy support would require a separate identity migration.
+- EditableWidgetRepository resolves the binding and validates the installed payload.
+  Missing binding, missing Library record and invalid/unsupported data produce safe
+  states. No fallback to another design. Configuration can explicitly overwrite a
+  broken binding after choosing an eligible Library record. No Library deletion or
+  specialized-state mutation occurs during repair or launcher-instance deletion.
+- Existing pinning coordinator receives the installed domain snapshot from Library
+  state and selects provider metadata centrally. Mutable one-shot callbacks carry
+  the requested installed key and receive the real Android ID. The configuration
+  Activity validates the ID/provider, preselects the requested design, then persists
+  only on Save. Picker-originated placement offers the same list. Cancel creates no
+  binding. Request acceptance is still only REQUESTED, never confirmed placement.
+  Existing unsupported-launcher/manual guidance is reused. Generic placement is
+  intentionally exposed in Library; Detail retains its existing specialized actions.
+- EditableConfigurationViewModel owns loading, selection, saving and semantic errors;
+  the Activity is only the native provider/result boundary and Compose host. No
+  second editor or direct Compose persistence. Selected controls are at least 48dp,
+  scrollable with app locale/theme integration, and errors have polite announcements.
+- WidgetRefreshingLibraryRepository commits updateContent, install or remove, then
+  calls EditableWidgetSyncCoordinator with the stable installed key. The coordinator
+  enumerates only EditableReceiver IDs and updates matching valid bindings. One corrupt
+  binding cannot prevent another instance updating. Refresh errors are logged without
+  misrepresenting an already-committed Room write as failed. EditorViewModel remains
+  unchanged and contains no launcher API. No event bus, polling or extra coroutine scope.
+- Deleting Library data refreshes linked instances to an unavailable/reconfigure
+  state; they are not forcibly removed. Reinstalling the same template reconnects its
+  existing key and refreshes it. Deleting a launcher instance removes only its binding.
+  Room deletion/favorites/reorder contracts and schema are unchanged.
+
+### Rendering and platform differences
+
+EditableWidget uses Glance SizeMode.Exact and native accessible text, independently
+of Compose EditorPreview. RGB hex, font and alignment are explicitly mapped after
+shared validation. Invalid values show deterministic recovery rather than leaking
+exceptions or silently persisting replacements. A bounded transient bitmap draws
+only the portable gradient/solid background; no bitmap is persisted or used to flatten
+text. The editor's 329 reference scale is adapted to available launcher dimensions.
+
+Glance uses system serif for the Fraunces ID, sans for Standard/Rounded, and monospace;
+portable IDs stay unchanged. Semibold/heavy use native bold. Native line metrics,
+fixed centered placement/available width and launcher clipping differ from the
+normalized Compose canvas. Alignment, font size, text/color and backgrounds remain
+functional; advanced positional editing is still deferred. Long text/short widgets
+and larger fonts use a scrolling text area with at most 100 rendered lines, never
+truncating persisted text. A separate dark action strip keeps white refresh/configure/
+open actions readable regardless of design colors. User-selected text contrast is
+not automatically corrected.
+
+Default minimum is 180×180dp; resize minimum is 160×140dp, both axes, target 3×3 cells,
+maximum hints 600×600dp. The 160dp resize width was selected after Pixel rejected a
+narrower two-column layout with the initial 180dp minimum; three 48dp actions fit.
+Launcher grid rules and ignored metadata on older APIs still control actual sizes.
+No periodic refresh is required for static designs (updatePeriodMillis=0). Saves,
+configuration, explicit Refresh, resize and platform recreation request updates.
+A process death between Room commit and refresh may delay the launcher until another
+update/Refresh; no durable event queue or exactly-once delivery is claimed. Bindings
+are intentionally excluded from backup; cross-device launcher ID restore requires
+reconfiguration. No blind stale-ID remapping.
+
+Android API reference consulted: [Build UI with Glance](https://developer.android.com/develop/ui/compose/glance/build-ui).
+Custom app fonts are not supported by Glance text; SizeMode.Exact reacts to available
+widget sizes. No Glance/dependency upgrade was needed.
+
+
+### Validation and regression coverage
+
+Final full run after the measured resize adjustment:
+
+`./gradlew assembleDebug test lint connectedDebugAndroidTest
+-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8"
+-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true --console=plain`
+
+- assembleDebug PASS; 211 JVM tests PASS; 10 device tests PASS. Zero failures,
+  errors or skipped tests in the final reports.
+- lint PASS: zero errors, 108 warnings. Compared with Phase 14's 102, five new
+  provider-metadata warnings describe attributes ignored on older APIs and one
+  advises a bitmap KTX helper. No rules were disabled or suppressed. The existing
+  PendingIntent background-start deprecation remains. No dependency/Gradle changes.
+- The same local JVM memory override as Phase 14 was used; shared Windows-host
+  constraints remain unchanged. An intermediate compilation ambiguity from moving
+  capability symbols was fixed with distinct core names and feature typealiases.
+- git diff --check PASS. Final continuation changed documentation only; passing
+  code/test validation was retained, not needlessly rerun. The final diff audit was
+  rerun after documentation.
+
+Seven new JVM tests cover actual catalog eligibility, typed binding codec/version,
+reopening, independent deletion, content/color/font/alignment mapping, missing or
+corrupt/unsupported states, repair, targeted multi-instance synchronization,
+Library removal, placement-request/fallback semantics and English/Turkish keys.
+One new instrumentation test uses Android-allocated IDs and AppWidgetHost views:
+configuration preselection, native rendered text, both instances updating after
+Room saves, 160×180/300×140/500×500dp layouts, damaged binding isolation, repair,
+launcher deletion and untouched specialized configuration snapshots. Test-owned
+records are cleaned up; a pre-existing Sunset record is never removed and its
+original content is restored.
+
+Existing Phase 14 save/reopen/Room/preview tests and onboarding/startup, Settings,
+locale/appearance, Profile/Auth, Reviews/Detail, Discover/Search/Library and specialized
+Proverb/Hush tests all remain passing. No backend implementation was changed.
+
+### Actual Pixel Launcher validation
+
+Pixel_8 AVD, Android 17/API 37, Pixel Launcher, English, 1080×2400. Normal font scale
+1.0 and light appearance; temporary scale 2.0 and dark system appearance were restored
+to 1.0/light. No app data was cleared and no unrelated launcher items were removed.
+
+- Installed real Sunset through Search/Detail, opened Library Edit design, changed
+  text/font and saved. Library Add to Home Screen opened native confirmation; its
+  callback opened existing-pattern configuration with Sunset preselected. Save bound
+  real launcher instance 72, which displayed customized text and the saved gradient.
+- Force-stopped/relaunched Kare, reopened the saved editor, changed text and selected
+  Ink background. Save updated the already-placed instance without placement again.
+- Added instance 73 through the same native flow. Another editor save updated both
+  instances with the same text and centered alignment. Manual keyboard automation
+  appended one test phrase into existing text; both widgets correctly reflected the
+  exact saved value, rather than the intended replacement phrase. No persisted text
+  was truncated or silently rewritten.
+- Resized 72 shorter, then to two columns after the metadata correction; widened 73
+  to four columns. Visually inspected both, their separate sizes and visible actions.
+  At 200% font, the short text area clipped its viewport while preserving its scroll
+  container and full accessibility text; action targets remained visible. This does
+  not certify full long-document scrolling or spoken TalkBack.
+- Opened configuration at 200% text with dark appearance: guidance, selected design,
+  Save, Open Kare and Cancel remained readable/reachable. Cancel did not change the
+  binding. English/Turkish resource parity is automated; a separate Turkish manual
+  launcher walkthrough was not performed in this phase.
+- Deliberately corrupted only new test binding 72, requested Refresh and observed
+  localized recovery. Instance 73 remained functional. Choose design → Sunset → Save
+  repaired 72 using the real configuration UI.
+- Removed resized/repaired instance 72 using Pixel Launcher. After its Undo grace
+  period, only 72.json disappeared; 73.json and the Library source remained intact.
+- Performed an actual emulator reboot. Verification was interrupted by an automatic
+  approval-review usage-limit failure, then resumed on 2026-10-17. Without launching
+  Kare first, inspected the launcher and binding 73.json; a fresh Refresh rendered
+  the saved Room content. Hush and Söz also rendered after reboot on the adjacent page.
+- Picker search for Kare showed all three providers: Kare · Söz, Kare · Hush and
+  Kare · My design. Their existing launcher pages coexist; they were not consolidated
+  onto one page or migrated between providers.
+- Specialized instances 47 (Hush) and 55 (Söz) retained identical SHA-256 hashes before
+  and after editor saves, generic placement, corruption/repair, deletion and reboot.
+  Hush's visible prompt changed with time as expected, retaining explicit English.
+  Other stale launcher items from older development sessions were left untouched.
+- Remaining manual fixture: Sunset in Library, generic instance 73. Instance 72 was
+  deleted. Existing specialized instances are preserved. Logs/screenshots are outside
+  the repository. No new generated/debug/IDE files were added to versioned sources.
+
+Evidence is visual rendering, hierarchy/selection assertions and native host tests;
+no spoken TalkBack validation, second launcher or older-device execution is claimed.
+Unsupported pinning is fake-tested; no unsupported launcher was installed. Initial
+pin cancellation was not repeated manually; request-only semantics and absence of
+premature binding are covered by tests, and configuration Cancel was exercised.
+
+### Complete Phase 15 file manifest
+
+Created:
+
+- `app/src/androidTest/java/com/example/kare/EditableWidgetHostTest.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/EditableWidgetRepository.kt`
+- `app/src/main/java/com/example/kare/core/model/EditableContentSupport.kt`
+- `app/src/main/java/com/example/kare/widget/EditableConfigurationActivity.kt`
+- `app/src/main/java/com/example/kare/widget/EditableConfigurationViewModel.kt`
+- `app/src/main/java/com/example/kare/widget/EditableWidget.kt`
+- `app/src/main/res/values-tr/editable_widget_strings.xml`
+- `app/src/main/res/values/editable_widget_strings.xml`
+- `app/src/main/res/xml/editable_widget_info.xml`
+- `app/src/test/java/com/example/kare/widget/EditableWidgetTest.kt`
+
+Modified:
+
+- `app/src/main/AndroidManifest.xml`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/core/data/widget/WidgetRefreshingLibraryRepository.kt`
+- `app/src/main/java/com/example/kare/core/model/LauncherWidgetType.kt`
+- `app/src/main/java/com/example/kare/feature/editor/EditorDraft.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryScreen.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetPlacement.kt`
+- `app/src/main/java/com/example/kare/widget/WidgetPlacementUi.kt`
+- `app/src/main/res/values-tr/editor_strings.xml`
+- `app/src/main/res/values/editor_strings.xml`
+- `docs/ANDROID_MIGRATION.md`
+
+### Work log, remaining limits and next phase
+
+2026-10-17 — Developer 1 closed Phase 15 on ANDROID from 1e24f8d. Inspected real
+KareProvider/AppIntent/App Group behavior, implemented portable shared capability,
+versioned reference bindings, native configuration, Glance rendering and explicit
+post-commit synchronization. Fixed Pixel's narrow-size metadata limitation, added
+focused regression coverage and completed reboot/isolation checks. No code changes
+were needed during final continuation. All requested implementation remains local.
+
+Limitations: one installed copy per template; no cross-device binding migration;
+no durable synchronization event queue; no custom Glance font parity or arbitrary
+canvas position matching; no automatic contrast correction; bounded rendered text;
+no generic placement shortcut in Detail (Library is the supported entry point).
+Corrupt Library serialization may also prevent the configuration list loading;
+recovery safely reports errors rather than silently altering data. Advanced editor
+payloads remain unsupported. Billing, entitlement and Firebase are untouched.
+
+Recommended Phase 16, only after separate authorization: focused generic-renderer
+parity/accessibility hardening (long text, normalized positioning/width, additional
+launcher/API coverage), before extending the editor to image/canvas payloads.
+No Phase 16 work started. Developer 2 retains all Firebase/Auth/Firestore/Profile/
+PublicProfile/Reviews/account-deletion/backend ownership. Shared hotspots while
+uncommitted: AppContainer, manifest, LibraryScreen, capability/placement routing,
+WidgetRefreshingLibraryRepository, editor copy resources and this document.
+Auth backend files and AUTH_MIGRATION_NOTES were not modified. No commit, push,
+pull, merge, reset, rebase, branch operation or history rewrite was performed.

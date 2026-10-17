@@ -2,7 +2,7 @@
     <string name="editor_title">Düzenleyici</string>
     <string name="editor_edit">Tasarımı düzenle</string>
     <string name="editor_unsupported">Bu tasarım gelişmiş veya özel bir düzenleyici gerektiriyor. Kayıtlı içeriğiniz değiştirilmedi.</string>
-    <string name="editor_preview_note">Yerel Kitaplık önizlemesi. Önizleme dışındaki metin kesilebilir; metnin tamamı kaydedilir. Bu tasarım henüz ana ekrana eklenemez.</string>
+    <string name="editor_preview_note">Kütüphane önizlemesi. Uzun metin burada kırpılabilir; metnin tamamı kaydedilir. Bu tasarımı kütüphaneden ana ekranına ekleyebilirsin. Ana ekranda yazı tipleri ve yerleşim farklı olabilir.</string>
     <string name="editor_text">Metin</string>
     <string name="editor_font">Yazı tipi</string>
     <string name="editor_serif">Serif · Fraunces</string>

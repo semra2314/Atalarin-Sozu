@@ -22,7 +22,7 @@ import com.example.kare.core.ui.*
 fun LibraryRoute(viewModel: LibraryViewModel, onEdit: (String) -> Unit = {}, onTemplateClick: (String) -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     LibraryContent(state, viewModel::retryObservation, viewModel::setFavoritesOnly,
-        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick, placement = { WidgetPlacementRoute(it) }, onEdit = onEdit)
+        { viewModel.toggleFavorite(it) }, { viewModel.remove(it) }, { viewModel.reorder(it) }, viewModel::clearAction, onTemplateClick, placement = { id -> WidgetPlacementRoute(id, (state.widgets as? LoadState.Loaded)?.value?.firstOrNull { it.templateId == id }) }, onEdit = onEdit)
 }
 
 @Composable

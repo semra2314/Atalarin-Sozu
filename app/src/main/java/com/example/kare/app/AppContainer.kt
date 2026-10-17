@@ -42,8 +42,17 @@ class AppContainer(context: Context) {
     val widgetInstances by lazy { ProverbWidgetRepository(widgetStore, localLibrary, widgets, errors) }
     private val hushStore by lazy { HushInstanceStore(File(applicationContext.noBackupFilesDir, "widget-instances")) }
     val hushInstances by lazy { HushWidgetRepository(hushStore, localLibrary, widgets, errors) }
+    val editableInstances by lazy {
+        EditableWidgetRepository(EditableBindingStore(File(applicationContext.noBackupFilesDir, "editable-instances")), localLibrary, errors)
+    }
+    private val editableSync by lazy {
+        EditableWidgetSyncCoordinator(editableInstances,
+            { android.appwidget.AppWidgetManager.getInstance(applicationContext).getAppWidgetIds(
+                android.content.ComponentName(applicationContext, com.example.kare.widget.EditableReceiver::class.java)) },
+            { com.example.kare.widget.EditableWidget.refresh(applicationContext, it) }, errors)
+    }
     val library: LibraryRepository by lazy {
-        WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors)
+        WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors, editableSync::sync)
     }
     val preferences: PreferencesRepository by lazy { DataStorePreferencesRepository(applicationContext) }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }

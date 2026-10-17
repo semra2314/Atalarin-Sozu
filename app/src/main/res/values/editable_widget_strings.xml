@@ -1,0 +1,10 @@
+<resources>
+    <string name="editable_widget_name">Kare · My design</string>
+    <string name="editable_widget_description">A saved editable design from your Library.</string>
+    <string name="editable_configuration_info">Choose a saved Library design. Saving edits updates every home-screen instance linked to it. Removing the design from Library makes those instances unavailable. Long-press the widget to resize.</string>
+    <string name="editable_configure">Choose design</string>
+    <string name="editable_no_designs">Install Sunset or Pastel in Kare, then return to choose your saved design.</string>
+    <string name="editable_missing_binding">Choose a Library design to configure this widget.</string>
+    <string name="editable_missing_library">This design is no longer in Library. Open Kare or choose another design.</string>
+    <string name="editable_unavailable">This design could not be loaded. Open Kare or choose a compatible design.</string>
+</resources>

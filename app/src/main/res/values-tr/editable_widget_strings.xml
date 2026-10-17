@@ -1,0 +1,10 @@
+<resources>
+    <string name="editable_widget_name">Kare · Tasarımım</string>
+    <string name="editable_widget_description">Kütüphanendeki kayıtlı, düzenlenebilir bir tasarım.</string>
+    <string name="editable_configuration_info">Kütüphaneden kayıtlı bir tasarım seç. Düzenlemeleri kaydettiğinde bu tasarıma bağlı tüm ana ekran widget’ları güncellenir. Tasarımı kütüphaneden kaldırırsan bu widget’lar kullanılamaz. Boyutlandırmak için widget’a uzun bas.</string>
+    <string name="editable_configure">Tasarım seç</string>
+    <string name="editable_no_designs">Kare’de Sunset veya Pastel’i kütüphanene ekle, ardından kayıtlı tasarımını seçmek için geri dön.</string>
+    <string name="editable_missing_binding">Bu widget’ı yapılandırmak için kütüphaneden bir tasarım seç.</string>
+    <string name="editable_missing_library">Bu tasarım artık kütüphanede yok. Kare’yi aç veya başka bir tasarım seç.</string>
+    <string name="editable_unavailable">Bu tasarım yüklenemedi. Kare’yi aç veya uyumlu bir tasarım seç.</string>
+</resources>

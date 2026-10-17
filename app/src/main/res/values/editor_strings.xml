@@ -2,7 +2,7 @@
     <string name="editor_title">Editor</string>
     <string name="editor_edit">Edit design</string>
     <string name="editor_unsupported">This design needs an advanced or dedicated editor. Your saved content is unchanged.</string>
-    <string name="editor_preview_note">Local Library preview. Text outside the preview may be clipped; all text is saved. This design cannot be placed on the home screen yet.</string>
+    <string name="editor_preview_note">Library preview. Long text may be clipped here; all text is saved. Add this design to your home screen from Library. Launcher fonts and layout may differ.</string>
     <string name="editor_text">Text</string>
     <string name="editor_font">Font</string>
     <string name="editor_serif">Serif · Fraunces</string>
