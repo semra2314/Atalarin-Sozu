@@ -26,6 +26,7 @@ import com.example.kare.MainActivity
 import com.example.kare.R
 import com.example.kare.core.data.widget.EditableSnapshot
 import com.example.kare.core.model.WidgetContent
+import com.example.kare.core.model.EditableRendering
 import com.example.kare.core.preferences.*
 import kotlinx.coroutines.flow.first
 
@@ -73,7 +74,7 @@ class RefreshEditable : ActionCallback {
     }
 }
 
-internal fun editableArgb(hex: String): Int = (0xFF000000L or hex.toLong(16)).toInt()
+internal fun editableArgb(hex: String): Int = EditableRendering.argb(hex)
 internal fun editableFont(font: WidgetContent.FontStyle): FontFamily = when(font) {
     WidgetContent.FontStyle.SERIF -> FontFamily.Serif
     WidgetContent.FontStyle.MONOSPACED -> FontFamily.Monospace
@@ -108,7 +109,7 @@ private fun EditableContent(context: Context, id: Int, snapshot: EditableSnapsho
     val content = widget?.content
     val text = content?.texts?.single()
     val bitmap = remember(content?.background, content?.gradientDirection, size) { content?.let { background(it, size.width.value, size.height.value) } }
-    val modifier = GlanceModifier.fillMaxSize().appWidgetBackground().cornerRadius(20.dp)
+    val modifier = GlanceModifier.fillMaxSize().appWidgetBackground().cornerRadius(EditableRendering.radius(widget?.theme?.cornerRadius).dp)
     Column(if(bitmap != null) modifier.background(ImageProvider(bitmap)) else modifier.background(Color(0xFF1D1D1F))) {
         val message = text?.text ?: context.getString(when(snapshot) {
             EditableSnapshot.MissingBinding -> R.string.editable_missing_binding
@@ -118,16 +119,27 @@ private fun EditableContent(context: Context, id: Int, snapshot: EditableSnapsho
         val style = TextStyle(
             color = ColorProvider(text?.let { Color(editableArgb(it.colorHex)) } ?: Color.White),
             fontFamily = text?.let { editableFont(it.fontStyle) } ?: FontFamily.SansSerif,
-            fontSize = (text?.let { (it.fontSize * (minOf(size.width.value, size.height.value) / 329f)).toFloat().coerceAtLeast(8f) } ?: 16f).sp,
+            fontSize = (text?.let { EditableRendering.textSize(it.fontSize, size.width.value, size.height.value) } ?: 16f).sp,
             fontWeight = if(text?.fontWeight == WidgetContent.Weight.REGULAR) FontWeight.Normal else FontWeight.Bold,
             textAlign = text?.let { editableAlignment(it.alignment) } ?: TextAlign.Center)
+        val insets = text?.let { EditableRendering.horizontalInsets(it, size.width.value) } ?: (12f to 12f)
+        val rtl = context.resources.configuration.layoutDirection == android.view.View.LAYOUT_DIRECTION_RTL
+        val textArea = GlanceModifier.fillMaxWidth().defaultWeight()
+            .padding(start = (if (rtl) insets.second else insets.first).dp, end = (if (rtl) insets.first else insets.second).dp, top = 12.dp, bottom = 12.dp)
+        // Native RemoteViews cannot place a measured text layer at arbitrary normalized y.
+        // Preserve its nearest vertical anchor; scrolling always starts at the first line.
+        val anchor = when {
+            text != null && text.y <= 1.0 / 3 -> Alignment.TopStart
+            text != null && text.y >= 2.0 / 3 -> Alignment.BottomStart
+            else -> Alignment.CenterStart
+        }
         // Long/large text scrolls; actions have their own high-contrast, fixed-height row.
         if (size.height.value < 240 || context.resources.configuration.fontScale > 1.3f || message.length > 100 || text == null) {
-            LazyColumn(GlanceModifier.fillMaxWidth().defaultWeight().padding(12.dp)) {
+            LazyColumn(textArea) {
                 item { Text(message, GlanceModifier.fillMaxWidth(), style, maxLines = 100) }
             }
         } else {
-            Box(GlanceModifier.fillMaxWidth().defaultWeight().padding(12.dp), contentAlignment = Alignment.Center) {
+            Box(textArea, contentAlignment = anchor) {
                 Text(message, GlanceModifier.fillMaxWidth(), style, maxLines = 100)
             }
         }

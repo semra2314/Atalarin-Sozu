@@ -5,6 +5,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.dp
 import com.example.kare.core.design.KareTheme
 import com.example.kare.feature.editor.*
 import org.junit.*
@@ -43,7 +44,7 @@ class EditorUiTest {
         val state = mutableStateOf(EditorState.Ready(widget, initial, initial))
         compose.setContent { KareTheme { EditorContent(state.value,
             { change -> state.value = state.value.copy(draft = change(state.value.draft)) }, {}, {}, {}, {}) } }
-        compose.onAllNodesWithText("Coral")[0].performScrollTo().performClick().assertIsSelected()
+        compose.onAllNodesWithText("Coral")[0].performScrollTo().performClick().assertIsSelected().assertHeightIsAtLeast(48.dp)
         assertEquals("D44A33", state.value.draft.primary.colorHex)
         val layouts = mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
         compose.onNodeWithTag("editor-preview-text").performScrollTo().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult) { it(layouts) }

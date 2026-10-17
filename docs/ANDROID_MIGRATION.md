@@ -322,18 +322,20 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 15 Editable Launcher Provider COMPLETED on 2026-10-17. Developer 1.
-Changes remain uncommitted for review; implementation reservation released.
-Baseline 1e24f8d includes completed Phase 14; working tree clean. Shared changes
-reserved: AppContainer, placement/capability routing, Library placement slot,
-manifest/resources and this record. No backend/auth or build configuration changes.
+Current tasks: Phase 16 Renderer Fidelity and Accessibility Hardening COMPLETED.
+Owner: Developer 1. Completed 2026-10-17 from e54f7de (Phase 15 committed); clean
+working tree verified at start. Changes remain uncommitted for review. Completed scope: portable rendering interpretation,
+EditorPreview, generic EditableWidget rendering/recovery, focused JVM/device tests,
+and this record. Shared-file conflict risk is primarily this document; no planned
+AppContainer, navigation, manifest, Gradle, or backend changes. Developer 2 must
+coordinate overlapping edits to these uncommitted renderer files. Active implementation reservation is released.
 
 ### Developer 2
 
 Owner: Developer 2. All Firebase/backend work remains independently assigned:
 Auth, Firestore, Profile/PublicProfile/Reviews backends, account deletion and cloud
 configuration/integration. No changes to those implementations or AUTH_MIGRATION_NOTES
-are authorized in Phase 15. Coordinate shared composition/navigation/doc files.
+are authorized in Phase 16. Coordinate shared composition/navigation/doc files.
 
 ### Phase 1 session record
 
@@ -3597,3 +3599,195 @@ uncommitted: AppContainer, manifest, LibraryScreen, capability/placement routing
 WidgetRefreshingLibraryRepository, editor copy resources and this document.
 Auth backend files and AUTH_MIGRATION_NOTES were not modified. No commit, push,
 pull, merge, reset, rebase, branch operation or history rewrite was performed.
+
+## Phase 16 — Editable Renderer Fidelity and Accessibility Hardening
+
+Status: COMPLETED. Developer 1. ANDROID. 2026-10-17. Baseline e54f7de.
+
+Inspection before implementation found that Glance discarded the saved text width
+and position (notably Sunset x=0.36, y=0.32, width=0.72), used a fixed 20dp radius
+instead of the saved 22dp theme, and enforced an 8sp minimum absent from Compose.
+Pastel uses x/y=0.5, width=0.85 and the preserved rounded font ID. Recovery already
+handles malformed serialized data and bindings; numeric/theme rendering fallbacks
+and per-instance update failures need focused regression coverage. No new widget,
+persistence format, backend, or editor controls are authorized.
+
+Available environment: Pixel_8, Android 17/API 37, Pixel Launcher; only API 37.1
+system image installed. TalkBack package is present, initially disabled. Additional
+launcher/API coverage is not claimed.
+
+### Fidelity decisions and changes
+
+No persistence/schema/provider routing changes. Portable `EditableRendering` now
+owns RGB-to-ARGB interpretation, defensive invalid-color Ink fallback, radius
+normalization (default 22dp, finite nonnegative values capped at 60dp), and the
+329-point reference scale with an 8sp rendering minimum. Both consumers use these
+values. Invalid saved text colors still fail validation into recovery; the defensive
+color fallback is not a data repair and never rewrites storage. Invalid numeric
+radius values safely fall back; malformed serialized theme JSON fails into recovery.
+Content background/text colors remain authoritative, rather than the older theme
+foreground/background copies. No user-selected colors are changed.
+
+Glance now retains the saved horizontal text bounds. Sunset's 0.72 width at x=0.36
+starts at the physical left edge and ends at 72% width; Pastel's 0.85 width is centered.
+Physical insets are exchanged for start/end padding in RTL while TextAlign Start/End
+continues to follow layout direction. EN/TR are LTR; RTL was structurally reviewed,
+not device-tested. Native short-text placement uses top/center/bottom anchors from
+saved y thirds. Scrolling starts at the first line. This is an explicit approximation,
+not exact canvas positioning and not a new position editor.
+
+| Aspect | Compose preview | Glance launcher | Classification |
+|---|---|---|---|
+| Content/colors | Saved text, six-digit RGB, solid/gradient | Same saved content/colors; bounded background-only bitmap | Shared semantics; no text bitmap |
+| Serif | Bundled Fraunces | System serif; portable ID retained | Platform limitation |
+| Standard/rounded/mono | System sans for standard/rounded; monospace | Same family categories | Rounded fallback retained, not rewritten |
+| Weight | Normal/SemiBold/Bold/Black | Regular normal; other weights bold | Native Glance limitation |
+| Size | min(canvas dimensions)/329, minimum 8sp | Same formula using launcher dimensions | Shared interpretation; different actual canvas size |
+| Line metrics | Explicit 1.2 multiplier plus saved spacing | Native TextView metrics | Platform limitation; wrapping can differ |
+| Horizontal placement | Exact normalized x/width | Clipped physical edge insets derived from x/width | Fixed avoidable full-width divergence |
+| Vertical placement | Exact normalized center y | Nearest top/center/bottom anchor; scroll mode starts at top | Deliberate approximation |
+| Padding/actions | Canvas, no launcher actions | 12dp vertical padding and separate 48dp action strip | Intentional accessible launcher adaptation |
+| Shape | Saved normalized radius | Same radius request; launcher may enforce its own mask | Fixed 20dp divergence; host limitation remains |
+| Long text | Canvas clips overflow; full text field remains editable | Scrollable area for short widgets, large scale or >100 characters; at most 100 rendered lines | Render-only limit; persisted data unchanged |
+| Effects | Existing portable single text/gradient subset | Same subset with native text | No photos/layers/glass/advanced effects introduced |
+
+Sunset default white text has weak contrast at the orange/pink gradient ends
+(approximately 2.08:1 / 2.83:1; purple end 5.87:1). Pastel dark purple text against
+its gradient endpoints is approximately 7.79:1 / 6.38:1. Recovery/action white-on-Ink
+is approximately 16.83:1. Curated palette combinations can be poor: white-on-peach
+1.34:1, white-on-blue 1.92:1, white-on-coral 4.35:1, and same-color choices 1:1.
+This audit does not certify arbitrary edited designs. Saved colors are intentionally
+preserved; contrast advice/guardrails remain future product work.
+
+### Recovery, synchronization and accessibility audit
+
+Existing repository recovery and sync architecture proved sufficient; no repository,
+Room, binding format, coordinator, ViewModel, or placement code was changed.
+Focused tests now corrupt real Room theme/content JSON independently and verify the
+other bound design still resolves. Existing tests cover missing/unsupported designs,
+corrupt/version-mismatched bindings, repair, missing Library membership, and isolated
+deletion. A renderer-only malformed color fallback and invalid-radius normalization
+are tested without silently repairing persisted values.
+
+Repeated-save regression injects an update failure for one instance: Room/delegate
+save completes first, another matching instance still updates, Pastel and specialized
+providers are untouched. Three saves produce exactly the matching update calls.
+No global polling, event bus, durable queue or update-all path was added. A crash
+between commit and update still requires a subsequent update/Refresh; durable retry
+remains deferred. Stale provider IDs cannot be guessed/remapped; only active generic
+IDs are synchronization candidates, with per-ID errors isolated.
+
+Editor controls have localized labels; font/alignment/color chips expose selected
+state, color selection includes names, and chips/slider have 48dp minimum height.
+Material buttons retain minimum interactive sizing. The existing generic configuration
+chips are 48dp and the content scrolls. Save/error announcements remain polite live
+regions; headings are semantic headings. Launcher actions use 48dp boxes with localized
+labels and decorative icon descriptions omitted. The color-chip size assertion now
+checks the actual Compose semantic node. No broad accessibility redesign was needed.
+
+TalkBack was enabled temporarily on Pixel_8. Its green focus rectangle was visually
+observed on the configuration heading. Automated swipe traversal did not reliably
+establish a full path, and spoken output was not verified. Selected states/labels
+were inspected structurally and exercised in Compose tests, not certified through
+speech. Full manual spoken editor → placement → recovery coverage remains release QA.
+TalkBack was disabled afterward and its original null enabled-service setting restored.
+
+### Automated validation
+
+Executed on unchanged shared Gradle defaults, with a command-line local override:
+
+`JAVA_HOME=/Applications/Android Studio.app/Contents/jbr/Contents/Home ./gradlew
+assembleDebug test lint connectedDebugAndroidTest
+-Dorg.gradle.jvmargs="-Xmx2g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8"
+-Pandroid.injected.androidTest.leaveApksInstalledAfterRun=true --console=plain`
+
+- Final full run: BUILD SUCCESSFUL; log `/tmp/kare-p16-final.log` (local evidence,
+  not a repository artifact).
+- assembleDebug: PASS.
+- JVM: 215 tests, zero failures/errors/skips (four additional focused test methods).
+- connectedDebugAndroidTest: 10 tests, zero failures/errors/skips on Pixel_8 API 37.
+- lint: zero errors, 108 existing warnings, unchanged count from Phase 15.
+- git diff --check: PASS after implementation and documentation.
+- EN/TR editor (31 keys) and editable-widget (8 keys) resource parity/format contracts
+  verified; no new strings or resource changes needed.
+
+Added coverage: geometry/default normalization; empty/whitespace/multiline Turkish
+and 16,000-character text preserved exactly; repeated sync failure isolation; real
+Room corrupt theme/content recovery. Extended color semantics test with 48dp check.
+Extended the existing real AppWidgetHost test to bind Pastel separately, render
+Turkish plus a long unbroken word in Sunset, and restore bindings without touching
+specialized state. Existing host size tests executed at 160×180, 300×140 and 500×500dp.
+Existing Phase 14 save/reopen/recreate/dirty-Back tests, Phase 13 preferences/startup,
+Phase 6 navigation, Hush integration and Proverb host/accessibility tests passed.
+Profile/Reviews/Auth production code is unchanged; existing JVM coverage passed.
+No new backend behavior or full backend/device-account validation is claimed.
+
+### Actual device and launcher validation
+
+Pixel_8 emulator-5554, Android 17/API 37, Pixel Launcher, 1080×2400, density 420,
+English UI. Only API 37.1 image and Pixel_8 AVD were installed; no alternate launcher
+or older API was executed. JVM Robolectric SDK 28 is not an older-device compatibility
+claim. Screenshots stayed under `/tmp/kare-p16-*`, never in the repository.
+
+| Check | Actual result |
+|---|---|
+| Sunset Editor → save → launcher | Edited real installed Sunset to “Phase sixteen saved Sunset”; Save and exit confirmation persisted and updated existing ID 73 |
+| Pastel installation/placement | Installed real catalog Pastel (Small) via Search/Detail; Library pin action opened Pixel confirmation, then existing config; selected Pastel saved real ID 91 |
+| Separate design rendering | Pastel gradient/dark-purple “hi :)” and customized Ink/white Sunset rendered together, with all actions visible |
+| Font scale | Launcher visually checked at 130%, 150%, 200%; text rewrapped safely and actions remained separate; config inspected at 200% light and dark, with all choices/actions readable |
+| Editor large font | Existing 200% Compose regression passed; no additional full manual editor traversal at every font scale claimed |
+| Resize | Pastel 3×3 → 2×2 narrow/short → 4×3 wide on Pixel; text/actions usable and binding preserved. Exact host-size regression also passed |
+| Corrupt binding | Wrote invalid JSON only to new test ID 91; Refresh showed localized recovery, Sunset stayed rendered; Choose design opened config and normal Save repaired 91 |
+| Process restart | Background `am kill` followed by widget refresh/recovery worked; no force-stop behavior claimed |
+| Reboot | Actual adb reboot completed; IDs 73/91 resolved and rendered after boot; Hush 47 (English) and Söz 55 (Proverbs) rendered correctly on adjacent launcher page |
+| Specialized independence | 47.json retained explicit English; 55.json retained Proverbs before/after corruption, reboot and generic deletion |
+| Deletion | Removed repaired/resized Pastel ID 91 using Pixel Remove; only 91.json disappeared; 73 remained; configuration still listed Sunset and Pastel, proving Library retention |
+| Two instances of one Library item | Real AppWidgetHost regression executed with two Sunset instances and synchronized saves; one rebound to Pastel independently. No third persistent manual fixture added |
+| Missing Library/invalid serialized payload | Focused JVM/Room and existing host tests; not destructive manual corruption of the user's Library |
+| Locale | EN visual review and Turkish text in real host test; EN/TR resource contracts checked. A full Turkish-device UI tour was not repeated |
+| Settings restored | font_scale=1.0, system night mode=no, accessibility_enabled=0, enabled services=null; density untouched; no app-data clearing |
+
+The new Pastel launcher test instance was removed. Its installed Library item remains
+available. Existing Sunset test content now reads “Phase sixteen saved Sunset”; old
+unrelated launcher fixtures were not removed. No temporary screenshots/debug strings
+or emulator files were added to source control.
+
+### Complete Phase 16 file manifest
+
+Created:
+
+- `app/src/main/java/com/example/kare/core/model/EditableRendering.kt`
+
+Modified:
+
+- `app/src/main/java/com/example/kare/feature/editor/EditorPreview.kt`
+- `app/src/main/java/com/example/kare/widget/EditableWidget.kt`
+- `app/src/test/java/com/example/kare/widget/EditableWidgetTest.kt`
+- `app/src/test/java/com/example/kare/editor/EditorPersistenceTest.kt`
+- `app/src/test/java/com/example/kare/editor/EditorUiTest.kt`
+- `app/src/androidTest/java/com/example/kare/EditableWidgetHostTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+
+### Closure, limitations and next work
+
+2026-10-17 — Developer 1 completed Phase 16 on ANDROID from e54f7de. Corrected
+avoidable width/radius/minimum-size divergence, centralized portable interpretation,
+added focused recovery/sync tests, and validated real resize/recovery/reboot/isolation.
+No schema, backend, dependency, manifest, navigation or specialized-provider changes.
+All changes remain uncommitted. No Phase 17 implementation started.
+
+Remaining limitations: approximate vertical placement, native typography/line metrics,
+100-line launcher display ceiling, launcher mask/grid variation, arbitrary user contrast,
+no cross-device restore, no durable post-save retry, and no full spoken TalkBack or
+alternate-launcher/older-device execution. Full manual Pastel editor restyling and
+repeating every Söz/Hush picker/pinning/deletion permutation were not performed in
+this phase; their existing automated suites passed and both survived actual reboot.
+
+Recommended Phase 17 (separate authorization): release compatibility/accessibility QA
+on one older supported Android device and another launcher, with a human spoken
+TalkBack pass and product decisions on contrast guidance/vertical fidelity. Do not
+use this recommendation as authorization for another widget or advanced editor.
+Developer 2 retains all Firebase/Auth/Firestore/Profile/PublicProfile/Reviews/account
+backend ownership. Those files and AUTH_MIGRATION_NOTES were untouched. Conflict
+hotspots are the two renderers, shared EditableRendering interpretation, their tests,
+and this migration record; AppContainer/navigation/Gradle/manifest are unchanged.

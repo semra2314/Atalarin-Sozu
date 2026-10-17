@@ -125,4 +125,47 @@ class EditableWidgetTest {
         assertEquals(LauncherWidgetType.GENERIC_EDITABLE to "p-sunset", requested)
         assertTrue(directory.listFiles()!!.isEmpty())
     }
+
+    @Test fun portableSizingPreservesTemplateGeometryAndNormalizesOnlyRendering() {
+        val sunset = widget("p-sunset").content!!.texts.single()
+        val pastel = widget("p-pastel").content!!.texts.single()
+        val (left, right) = EditableRendering.horizontalInsets(sunset, 300f)
+        assertEquals(0f, left, .01f); assertEquals(84f, right, .01f)
+        val centered = EditableRendering.horizontalInsets(pastel, 300f)
+        assertEquals(centered.first, centered.second, .01f)
+        assertEquals(8f, EditableRendering.textSize(8.0, 160f, 140f), .01f)
+        assertTrue(EditableRendering.textSize(30.0, 500f, 500f) > EditableRendering.textSize(30.0, 160f, 140f))
+        assertEquals(22f, EditableRendering.radius(Double.NaN), .01f)
+        assertEquals(60f, EditableRendering.radius(900.0), .01f)
+        assertEquals(0xFF1D1D1F.toInt(), editableArgb("not a color"))
+        assertEquals(0xFF1D1D1F.toInt(), editableArgb("#FFFFFF"))
+    }
+
+    @Test fun emptyMultilineTurkishAndLongTextRemainUnmodified() = runBlocking {
+        repository.bind(11, "p-sunset")
+        val row = library.rows.value.first()
+        for (value in listOf("", "  ", "İyi akşamlar\nçığ öşü", "longword".repeat(2000))) {
+            val content = row.content!!.copy(texts = listOf(row.content.texts.single().copy(text = value)))
+            library.updateContent(row.templateId, content)
+            assertEquals(value, (repository.snapshot(11) as EditableSnapshot.Ready).widget.content!!.texts.single().text)
+        }
+    }
+
+    @Test fun updateFailureCannotUndoSaveOrBlockOtherBindingsAcrossRepeatedSaves() = runBlocking {
+        repository.bind(11, "p-sunset"); repository.bind(12, "p-sunset"); repository.bind(13, "p-pastel")
+        val updates = mutableListOf<Int>()
+        val sync = EditableWidgetSyncCoordinator(repository, { intArrayOf(11, 12, 13) }, {
+            updates += it
+            if (it == 11) error("Host unavailable")
+        }, errors)
+        val decorated = WidgetRefreshingLibraryRepository(library, { fail("Specialized provider refreshed") }, errors, sync::sync)
+        val original = library.widget("p-sunset")!!.content!!
+        repeat(3) { index ->
+            val content = original.copy(texts = listOf(original.texts.single().copy(text = "Version $index")))
+            decorated.updateContent("p-sunset", content)
+            assertEquals(content, library.widget("p-sunset")!!.content)
+        }
+        assertEquals(listOf(11, 12, 11, 12, 11, 12), updates)
+        assertEquals(widget("p-pastel").content, library.widget("p-pastel")!!.content)
+    }
 }

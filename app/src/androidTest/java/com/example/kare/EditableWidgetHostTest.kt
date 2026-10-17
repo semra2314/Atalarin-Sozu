@@ -30,6 +30,7 @@ class EditableWidgetHostTest {
         val context = instrumentation.targetContext
         val container = (context.applicationContext as KareApplication).container
         val original = container.library.widget("p-sunset")
+        val originalPastel = container.library.widget("p-pastel")
         val template = container.widgets.template("p-sunset")
         val installed = container.library.install(template, template.primarySize)
         val host = AppWidgetHost(context, 87115)
@@ -47,12 +48,12 @@ class EditableWidgetHostTest {
             while(System.currentTimeMillis() < end) { if(check()) return; Thread.sleep(100) }
             fail("Expected widget state did not arrive")
         }
-        fun rendered(expected: String) {
+        fun rendered(expected: String, second: String = expected) {
             await {
                 var ready = false
                 instrumentation.runOnMainSync {
                     views.forEach { it.measure(View.MeasureSpec.makeMeasureSpec(900, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(1200, View.MeasureSpec.EXACTLY)); it.layout(0,0,900,1200) }
-                    ready = views.all { text(it).contains(expected) }
+                    ready = text(views[0]).contains(expected) && text(views[1]).contains(second)
                 }
                 ready
             }
@@ -89,6 +90,19 @@ class EditableWidgetHostTest {
             container.library.updateContent("p-sunset",edited("Second saved version")); rendered("Second saved version")
             listOf(160 to 180, 300 to 140, 500 to 500).forEach { (w,h) -> resize(ids[0],w,h); EditableWidget.refresh(context,ids[0]); rendered("Second saved version") }
             assertEquals("p-sunset",container.editableInstances.binding(ids[1])!!.installedId)
+            val pastel = container.widgets.template("p-pastel")
+            container.library.install(pastel, pastel.primarySize)
+            container.editableInstances.bind(ids[1], "p-pastel")
+            EditableWidget.refresh(context, ids[1])
+            val pastelWords = container.library.widget("p-pastel")!!.content!!.texts.single().text
+            val longText = "İyi akşamlar, çığ, öşü.\n" + "unbrokenword".repeat(30)
+            container.library.updateContent("p-sunset", edited(longText))
+            rendered("İyi akşamlar", pastelWords)
+            assertEquals(longText, container.library.widget("p-sunset")!!.content!!.texts.single().text)
+            assertEquals("p-pastel", container.editableInstances.binding(ids[1])!!.installedId)
+            container.editableInstances.bind(ids[1], "p-sunset")
+            EditableWidget.refresh(context, ids[1])
+
             // Never remove a pre-existing user installation (metadata must survive testing).
             if (original == null) {
                 container.library.remove("p-sunset")
@@ -109,6 +123,7 @@ class EditableWidgetHostTest {
             instrumentation.runOnMainSync { host.stopListening() }
             ids.forEach { container.editableInstances.delete(it) }
             if(original == null) container.library.remove("p-sunset") else original.content?.let { container.library.updateContent("p-sunset",it) }
+            if(originalPastel == null) container.library.remove("p-pastel")
         }
     }
 }
