@@ -14,6 +14,8 @@ Create a native Android version of Kare with functional, data, visual, and
 architectural parity where practical. This is not a literal Swift-to-Kotlin
 translation. Platform behavior must use appropriate native Android solutions.
 
+Phase 17 validates existing widgets on API 34 and API 37 without production changes.
+Phase 16 hardens portable renderer fidelity, recovery and accessibility.
 Phase 15 adds a generic editable launcher provider with explicit Library-to-instance
 synchronization, preserving specialized Söz/Hush providers.
 Phase 14 adds a limited local Library editor with live preview and durable content
@@ -313,7 +315,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phases 10/12; Proverb and Hush registry; launcher remains authoritative |
 | Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
 | Hush launcher widget | HushWidget / HushWidgetView | Typed state, localized hourly prompts, native configuration and shared placement | Developer 1 | COMPLETED | Phase 12; independent instances, resize, process death and deletion validated on Pixel |
-| Widget compatibility/accessibility | Widget placement and configuration | Focused API 37 device and API 28 Robolectric validation | Developer 1 | COMPLETED | Phase 11; older real devices, other launchers and spoken TalkBack remain unverified |
+| Widget compatibility/accessibility | Widget placement and configuration | API 37 and API 34 device/launcher QA | Developer 1 | COMPLETED | Phase 17: both Pixel Launcher versions; real API 34 reboot, pinning, resize, recovery and 200% flow; other launchers/spoken TalkBack remain release QA |
 | Tests | WidgyTests / WidgyUITests | Foundation + catalog/serialization tests | Developer 1 | COMPLETED | Phase 6 adds Compose/navigation and saved-input tests; see final validation below |
 
 ## Current work
@@ -322,20 +324,19 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 16 Renderer Fidelity and Accessibility Hardening COMPLETED.
-Owner: Developer 1. Completed 2026-10-17 from e54f7de (Phase 15 committed); clean
-working tree verified at start. Changes remain uncommitted for review. Completed scope: portable rendering interpretation,
-EditorPreview, generic EditableWidget rendering/recovery, focused JVM/device tests,
-and this record. Shared-file conflict risk is primarily this document; no planned
-AppContainer, navigation, manifest, Gradle, or backend changes. Developer 2 must
-coordinate overlapping edits to these uncommitted renderer files. Active implementation reservation is released.
+Current tasks: Phase 17 COMPLETED (2026-10-18), Developer 1, from 0b33c3d.
+Compatibility QA passed on API 37 and a new isolated API 34 emulator, both Pixel
+Launcher. No production/test changes were required. Only this migration record is
+uncommitted; implementation reservations are released. See Phase 17 for exact manual,
+automated and unverified coverage. Phase 18 has not started. Preserve Developer 2
+entries when integrating documentation; no backend ownership was taken over.
 
 ### Developer 2
 
 Owner: Developer 2. All Firebase/backend work remains independently assigned:
 Auth, Firestore, Profile/PublicProfile/Reviews backends, account deletion and cloud
 configuration/integration. No changes to those implementations or AUTH_MIGRATION_NOTES
-are authorized in Phase 16. Coordinate shared composition/navigation/doc files.
+are authorized in Phase 17. Coordinate shared composition/navigation/doc files.
 
 ### Phase 1 session record
 
@@ -3791,3 +3792,195 @@ Developer 2 retains all Firebase/Auth/Firestore/Profile/PublicProfile/Reviews/ac
 backend ownership. Those files and AUTH_MIGRATION_NOTES were untouched. Conflict
 hotspots are the two renderers, shared EditableRendering interpretation, their tests,
 and this migration record; AppContainer/navigation/Gradle/manifest are unchanged.
+
+## Phase 17 — Cross-Device / Cross-Launcher Compatibility and Final Widget QA
+
+Status: COMPLETED. Developer 1. Branch: `ANDROID`. Baseline: `0b33c3d`.
+Started 2026-10-17; closed 2026-10-18. The baseline working tree was clean and
+Phase 16 was present. No reproducible application compatibility defect was found;
+no production or test code was changed. This is bounded compatibility QA, not a
+claim of universal launcher compatibility or accessibility certification.
+
+### Environments and execution matrix
+
+- Baseline: existing Pixel_8, Android 17/API 37 (37.1 SDK image), arm64,
+  `emulator-5554`, Pixel Launcher version 17, versionCode 907, 1080×2400,
+  density 420. Existing Library/widget fixtures were preserved.
+- Secondary: one isolated `Kare_QA_API34` AVD using the Pixel 8 hardware profile,
+  Android 14/API 34, arm64, `emulator-5556`, official Google APIs image revision 14,
+  fingerprint `google/sdk_gphone64_arm64/emu64a:14/UE1A.230829.050/12077443:userdebug/dev-keys`.
+  Pixel Launcher version 14/versionCode 907, 1080×2400, density 420. Official SDK
+  command-line tools and this image were installed locally; no project dependency,
+  minimum SDK, shared Gradle setting or existing AVD was changed.
+- Both images contain Pixel Launcher. Settings FallbackHome is not an alternate
+  launcher. No OEM/third-party/AOSP Launcher3 validation was performed. No random
+  launcher software was downloaded. Cross-API evidence is not cross-launcher evidence.
+
+`Device` below means actual instrumented AppWidgetHost/UI execution; `manual`
+means launcher/UI operations observed through ADB hierarchy/screenshots. Phase 16
+results are identified explicitly rather than represented as fresh Phase 17 checks.
+
+| Environment | Sunset | Pastel | Söz | Hush | Placement | Resize | Reboot |
+|---|---|---|---|---|---|---|---|
+| API 37 / Pixel Launcher 17 | PASS device; existing launcher inspected | PASS device | PASS device | PASS device | Existing coordinator tests PASS; manual permutations not repeated | PASS device | Phase 16 PASS; not repeated in Phase 17 |
+| API 34 / Pixel Launcher 14 | PASS manual + device | PASS manual + device | PASS manual + device | PASS manual + device | Native pin Sunset/Pastel/Söz PASS; manual-picker Hush PASS | Pastel native width changes PASS; device size cases PASS | Actual reboot: all four rendered and bindings survived |
+
+### Actual secondary-device flow
+
+1. Clean installation launched real onboarding; language page and curated page
+   rendered, then the supported Skip introduction action entered Discover.
+   Subsequent application restart did not reopen onboarding. Search, Detail and
+   Library were used to install real catalog Sunset/Pastel with a supported size.
+2. At **200% system font scale**, Library → Sunset Editor → change text/font →
+   scroll to Save → Library placement → native pin confirmation → configuration
+   → Save completed. Editor text/font/alignment/palette controls and Save remained
+   reachable by scrolling. Configuration guidance and actions remained usable.
+   The preview immediately reflected the draft; no font-scale reduction was used
+   to complete this path. System scale was restored to 1.0 afterward.
+3. Sunset launcher ID **10** rendered `API34 Sunset saved`. Pastel was edited to
+   `API34 Pastel`, placed as ID **11**, and rendered its own saved content. Reopening
+   each editor restored its saved draft. Later saves changed the existing launcher
+   views to `API34 Pastel synchronized` and multiline `API34 Sunset synchronized`
+   followed by `A longer second line for the real launcher`, without replacing
+   either launcher instance.
+4. Cancelling the first Pastel native pin confirmation left only the honest
+   **Placement requested** dialog and manual guidance. Only `10.json` existed;
+   no speculative ID/binding was created. A later confirmed request allocated 11
+   and opened the existing configuration Activity. The installed design was
+   preselected; configuration persisted only the real launcher ID binding.
+5. Söz was placed from Library as **12**, configured to Proverbs, rendered Turkish
+   proverb/meaning/example content, and refreshed. The native picker listed all
+   three Kare providers and their previews. Hush was added from that picker as
+   **13**, configured explicitly to Turkish, and rendered `fark et`, later `burada ol`.
+   Its refresh action worked. This exercises the manual-placement route directly.
+6. All four instances coexisted on separate pages of the same launcher. The generic
+   bindings retained `p-sunset`/`p-pastel`; Söz retained `proverbs`; Hush retained
+   `turkish`. No state collision or cross-provider change was observed.
+7. Pastel's real launcher width changed from 714 px to 462 px, then 966 px
+   (observed view bounds), with its 900 px height unchanged. Text and three actions
+   remained inside the widget and binding 11 remained intact. Attempts to reduce
+   height did not change the observed native bounds; **do not count those attempts
+   as a successful short-height launcher test**. Hush also retained its minimum
+   observed native bounds during attempted shrinking. The existing device host
+   tests separately executed generic 160×180, 300×140 and 500×500 dp sizes and
+   specialized size changes on this API. Native tall/minimum-grid permutations
+   for every family remain release QA.
+8. App Dark mode + Türkçe visibly changed Settings and generic configuration to
+   readable Turkish/dark UI. Saved generic text/colors and explicit Hush language
+   stayed unchanged. Widget action labels reflected app locale on refresh; already
+   rendered RemoteViews may retain prior labels until refreshed. System language
+   and System appearance were restored through Settings. Light/system rendering
+   was observed in the initial flow; appearance/locale recreation also passed the
+   existing device preference regression test.
+9. Only QA binding `11.json` was deliberately replaced with malformed JSON, with
+   its prior value backed up outside the repository. Refresh showed the localized
+   recoverable message and Choose design/Open Kare actions. The other three JSON
+   files remained valid. Choose design → Pastel → Save repaired it through the
+   normal UI. No launcher crash or Library deletion occurred.
+10. Kare was force-stopped and explicitly relaunched; onboarding completion held.
+    Pixel Launcher was separately force-stopped and restarted without clearing
+    data. Traversing all four pages showed the saved generic content and dynamic
+    Söz/Hush content. Force-stop is not used as a claim that Android continues
+    background updates while an app is stopped.
+11. The **API 34 emulator was actually rebooted**. After boot completion/unlock,
+    files 10/11/12/13 remained, and all four pages rendered their proper content.
+    An early pre-unlock `run-as` probe could not access credential-protected data;
+    after boot/unlock it was available normally. No cross-device restore claim.
+12. The resized, repaired Pastel instance was removed with the launcher's Remove
+    gesture. Only `11.json` disappeared; 10/12/13 remained. Pastel still appeared in
+    Library with Edit/Add to Home Screen actions. Specialized deletion and multiple
+    same-provider instances were covered by the existing device suites rather than
+    repeating every launcher deletion permutation manually.
+
+### Accessibility, locale and recovery evidence
+
+- Baseline installed TalkBack was temporarily enabled. A visible green focus outline
+  on Editor Back was observed, and meaningful control labels were inspected. A
+  swipe did not establish reliable sequential traversal. There was no verified
+  listening/audio observation of spoken output; **spoken TalkBack and a complete
+  TalkBack end-to-end path were not validated**. A hierarchy or green focus border
+  is not proof of an announcement. Baseline accessibility settings were restored
+  to disabled/no enabled service. Secondary accessibility remained disabled.
+- Existing semantics/code and tests provide named Edit/Save/Discard/placement and
+  recovery actions, heading semantics, selected chips, labeled palette/font/
+  alignment controls, polite errors/save status, and 48 dp controls. Native picker
+  and widget action labels were inspected in hierarchies. Full assistive-technology
+  focus order, decorative announcement behavior and spoken selected-state wording
+  remain a human release check; no certification is implied.
+- English/Turkish text-resource audit found **346 keys in each locale**, no missing
+  keys and no matching-format-placeholder discrepancies. Turkish Settings,
+  configuration, Söz characters and Hush content rendered correctly. Existing
+  instrumentation exercised long/unbroken Turkish text in actual generic views;
+  manual Sunset exercised multiline text. Persisted content was not translated,
+  truncated or recolored by application preference changes.
+- Missing binding/Library, unsupported binding, invalid content/theme and repeated
+  save/update failure are covered by the existing focused JVM/Room tests. Actual
+  API 34 host tests exercised corrupt binding repair, independent generic bindings,
+  missing Library recovery when using a fresh installation, deletion isolation,
+  and preservation of specialized state. No parallel recovery system was added.
+- Unsupported pinning remains a focused fake/platform test: capability false,
+  rejected request/exception and cancellation are safe, localized guidance exists,
+  and no premature binding or false placement-success flag is stored. Both tested
+  Pixel Launchers support pinning; a genuinely unsupported launcher was not executed.
+
+### Automated validation and runtime audit
+
+- `./gradlew assembleDebug`: PASS on unchanged production code.
+- `./gradlew test`: PASS, **215 JVM tests**, zero failures/errors.
+- `./gradlew lint`: PASS, zero errors and **108 pre-existing warnings**.
+- `connectedDebugAndroidTest`: **10/10 PASS on Pixel_8/API 37**, then **10/10 PASS
+  on Kare_QA_API34/API 34**, zero skipped/failing tests. Runs used explicit
+  `ANDROID_SERIAL` and logs identified the actual target; the second run reported
+  only Kare_QA_API34. Existing tests cover editor persistence/unsaved Back, navigation,
+  startup/preferences, actual generic rendering/synchronization/recovery, Söz
+  configuration/accessibility and Hush independent-language coexistence/deletion.
+- Local command-line Gradle override only: `-Xmx2g -XX:MaxMetaspaceSize=1g` and
+  `-Dfile.encoding=UTF-8`; shared low-memory settings were unchanged. Instrumentation
+  used `android.injected.androidTest.leaveApksInstalledAfterRun=true` for later QA.
+- These Phase 17 runs preceded the remaining manual checks; no code/resources/tests
+  changed afterward, so expensive suites were not redundantly rerun at closure.
+- Runtime logs/crash buffers showed no app/launcher fatal exception or ANR in the
+  inspected windows. Expected `KareWidget` diagnostics were emitted by deliberate
+  corrupt-state tests (`widget.configure.load`, `editable.configuration.recover`).
+  No observed refresh loop or persistent jank; this was a sanity review, not a
+  performance benchmark or long-duration soak. Firebase was not altered to silence logs.
+- SDK setup emitted an older command-line-tool/XML-version warning; image install,
+  emulator boot and tests succeeded. This was host tooling, not an application defect.
+- `git diff --check`: PASS at closure. No generated screenshot, SDK image, temporary
+  script, log, IDE file or emulator artifact was introduced into the repository.
+
+### Changes, ownership, limitations and next phase
+
+**Complete Phase 17 file manifest**
+
+- Created repository files: none.
+- Modified: `docs/ANDROID_MIGRATION.md` only.
+- Production changes/fixes: none; no reproducible application defect justified one.
+- Tests added/changed: none; existing regression tests covered the exercised paths.
+- Local QA artifacts are outside Git. The isolated API 34 AVD remains available for
+  future QA. It contains test Library items and remaining launcher IDs 10/12/13;
+  baseline Pixel_8 data was not cleared. Temporary app language/theme, system font
+  scale and baseline accessibility settings were restored.
+
+2026-10-18 — Developer 1 closed Phase 17 on ANDROID from 0b33c3d. Expanded actual
+execution from API 37 to API 34, validated native pinning/cancellation/manual picker,
+200% Editor-to-placement, both editable save/sync flows, dark Turkish configuration,
+corrupt binding repair, native width changes, process/launcher restart, real reboot
+and isolated deletion. Preserved all Phase 1–16 implementation and Developer 2 work.
+
+Remaining release QA: another launcher/OEM and physical device; API 26–33/35–36
+execution (not inferred from API 34/37); spoken TalkBack and complete focus traversal;
+all native minimum/short/tall grid combinations; exhaustive specialized pinning/
+deletion permutations; long-duration update scheduling and battery restrictions.
+The documented renderer typography/vertical-position/overflow limits, arbitrary user
+contrast and lack of cross-device restore/durable post-save retry remain unchanged.
+No test result here establishes universal Android compatibility.
+
+Recommended Phase 18, requiring separate authorization: close the remaining release
+accessibility/OEM-launcher QA with a human spoken TalkBack pass and a real secondary
+launcher/device before choosing the next product feature. No Phase 18 work started.
+Developer 2 can continue all Firebase/Auth/Firestore/Profile/PublicProfile/Reviews/
+account backend work independently. AUTH_MIGRATION_NOTES and backend files were not
+modified. The only uncommitted conflict hotspot from Phase 17 is this migration
+record; preserve both developers' chronological entries. Implementation ownership
+reservations are released. No commit, push, merge or branch/history operation occurred.
