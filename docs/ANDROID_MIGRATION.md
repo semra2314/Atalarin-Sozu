@@ -307,8 +307,8 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Proverb | ProverbLibrary / ProverbWidget | Glance ProverbWidget, 400 source entries | Developer 1 | COMPLETED | Phase 8 reference widget; independent content selection |
 | Other live widgets | Exhale / Countdown / Progress | None | Unassigned | NOT STARTED | Models, setup, renderers and actions deferred |
 | Android App Widgets | actual-widgetsExtension | Specialized Proverb/Hush plus generic Editable provider | Developer 1 | COMPLETED | Phase 15: Library-bound static designs, explicit synchronization and recovery |
-| Kare+ | SubscriptionStore / gates | Price metadata only | Unassigned | NOT STARTED | No entitlement or paywall implementation |
-| Google Play Billing | StoreKit 2 | None | Unassigned | NOT STARTED | No product IDs or purchase flows |
+| Kare+ | SubscriptionStore / gates | Membership UI, semantic entitlements and reactive access policy | Developer 1 | COMPLETED | Phase 18 foundation; real Play products/testing pending |
+| Google Play Billing | StoreKit 2 | Billing 9.1.0 adapter, SUBS/INAPP, query/restore/acknowledgement | Developer 1 | COMPLETED | Client-only verifier; Play Console IDs not configured, no real transaction tested |
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
 | Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
 | Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
@@ -324,19 +324,21 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 
 Branch: `ANDROID` (verified; no branch changes authorized).
 
-Current tasks: Phase 17 COMPLETED (2026-10-18), Developer 1, from 0b33c3d.
-Compatibility QA passed on API 37 and a new isolated API 34 emulator, both Pixel
-Launcher. No production/test changes were required. Only this migration record is
-uncommitted; implementation reservations are released. See Phase 17 for exact manual,
-automated and unverified coverage. Phase 18 has not started. Preserve Developer 2
-entries when integrating documentation; no backend ownership was taken over.
+Current tasks: none. Phase 18 Kare+ / Google Play Billing foundation COMPLETED
+2026-10-19 by Developer 1 on ANDROID from bedbf32. Implementation reservations are
+released; all changes remain uncommitted for review. Play Console provisioning and
+real transaction QA are external follow-up, not completed production billing setup.
+See the Phase 18 record for full manifest, validation and security limitations.
+Shared-file conflict hotspots remain AppContainer, MainActivity, navigation,
+Detail/Library access policy, Settings, dependency catalog and this record.
+Developer 2 Firebase/backend ownership remains unchanged.
 
 ### Developer 2
 
 Owner: Developer 2. All Firebase/backend work remains independently assigned:
 Auth, Firestore, Profile/PublicProfile/Reviews backends, account deletion and cloud
 configuration/integration. No changes to those implementations or AUTH_MIGRATION_NOTES
-are authorized in Phase 17. Coordinate shared composition/navigation/doc files.
+are authorized in Phase 18. Coordinate shared composition/navigation/doc files.
 
 ### Phase 1 session record
 
@@ -3984,3 +3986,299 @@ account backend work independently. AUTH_MIGRATION_NOTES and backend files were 
 modified. The only uncommitted conflict hotspot from Phase 17 is this migration
 record; preserve both developers' chronological entries. Implementation ownership
 reservations are released. No commit, push, merge or branch/history operation occurred.
+
+## Phase 18 — Kare+ / Google Play Billing foundation
+
+Status: COMPLETED (foundation; Play Console provisioning and real transaction QA remain outstanding).
+Owner: Developer 1. Branch: `ANDROID`. Started 2026-10-18 from `bedbf32`; continued
+2026-10-19. This explicitly authorized product phase supersedes Phase 17's suggested
+next QA task; remaining release QA is still recorded above. No Firebase/backend
+work is included. Developer 2 retains all Firebase/Auth/Firestore/Profile/Public
+Profile/Reviews/account-deletion/backend ownership.
+
+### Source inspection and product decision
+
+Re-inspected IOS revision `41a8fbc67d2992f144383ede02c2ecfd6a73a1a1`:
+`SubscriptionStore.swift`, `KarePlusView.swift`, `KarePlusGate.swift` and
+`WidgetUnlockSheet.swift`. The actual StoreKit implementation has live subscriptions,
+verified current entitlements, transaction-update observation, revocation/expiration
+checks, transaction finishing, and explicit AppStore restore. Cancellation is not an
+error; pending transactions do not unlock. Kare+ UI offers yearly, monthly and
+lifetime plans with StoreKit prices. Its App Group entitlement mirror is specific
+to the iOS extension and is not copied to Android.
+
+| iOS product | Actual App Store identifier | Phase 18 Android equivalent |
+|---|---|---|
+| Monthly Kare+ | `com.erdendereli.Widgy.kareplus.monthly` | SUBS product/offer |
+| Yearly Kare+ | `com.erdendereli.Widgy.kareplus.yearly` | SUBS product/offer |
+| Lifetime Kare+ | `com.erdendereli.Widgy.kareplus.lifetime` | Non-consumable INAPP purchase |
+
+The iOS store also maps `t-exhale`, `t-countdown`, `t-progress`, `p-momentum`,
+`p-neon`, `p-gratitude`, `p-mono` to individual non-consumables with the prefix
+`com.erdendereli.Widgy.widget.` and matching name suffixes. Those grant one widget;
+Kare+ grants all paid templates. Individual-widget purchases are deferred on Android;
+Phase 18 implements membership only. No consumables, subscription replacement/
+upgrade flow, installment plans, rentals or preorders are implemented.
+
+**No Google Play product IDs were supplied or found.** `BillingProductCatalog`
+centralizes nullable monthly/yearly/lifetime configuration, currently all null.
+These are deliberately unconfigured values, not invented IDs or the App Store IDs.
+The application shows an unavailable/not-configured state and cannot launch a
+purchase without real queried offers. No fake price, discount, purchase or entitlement
+is substituted. Configure distinct subscription products here, or adapt this central
+catalog deliberately if Play Console chooses one product with multiple base plans.
+
+### Architecture and lifecycle
+
+`KarePlusContent → KarePlusViewModel → BillingRepository → PlayBillingGateway → BillingClient`
+
+`queried purchases → EntitlementVerifier → PlayEntitlementRepository → StateFlow → PremiumAccessPolicy`
+
+- Official `com.android.billingclient:billing:9.1.0`, verified against the official
+  [release notes](https://developer.android.com/google/play/billing/release-notes)
+  and [integration guide](https://developer.android.com/google/play/billing/integrate).
+  No third-party wrapper or Firebase dependency was added.
+- One application-context BillingClient is owned by AppContainer. Coroutine scope
+  and connection lifetime are application-level; an Activity wrapper exists only
+  for the launch call and is never stored in long-lived billing state. Test teardown
+  closes the client and scope. MainActivity foreground and Kare+ opening query Play.
+- Connection is serialized, SDK automatic reconnection is enabled, operations have
+  bounded waits, and retry is foreground/user-driven rather than a tight loop.
+  Cancellation propagates. Raw debug messages and purchase tokens are not logged;
+  response codes provide diagnostics. Domain purchase `toString` omits tokens.
+- SUBS and INAPP details are queried separately. SDK ProductDetails and offer tokens
+  stay inside the adapter. A selected offer is refreshed before launch; changed
+  display terms require reloading rather than silently purchasing different terms.
+- Portable products expose offer key, product ID/type, title/description, base plan,
+  offer ID and all Play-provided formatted pricing phases. No currency conversion or
+  locally invented price occurs. Purchases expose IDs, token, state, acknowledgement,
+  auto-renew flag and purchase time, not raw SDK objects.
+- Entitlements explicitly represent Unknown/Loading/Free/Premium/Pending/Error.
+  Premium grants include Google Play source, product ID, local verification level,
+  renewal flag and check time. No `premium=true` preference or persistent SDK object
+  is written to DataStore/Room. Room schema and widget-state formats are unchanged.
+
+### Verification, purchase, restore and offline policy
+
+`LocalPlayEntitlementVerifier` accepts only configured IDs in PURCHASED state with a
+nonblank token. This is **client interpretation of Play-reported ownership, not
+cryptographic or secure server-side token verification**. A compromised client can
+bypass it. The `EntitlementVerifier` boundary can later call a separately authorized
+backend and return verified grants without changing the UI/access policy. No Developer
+API, service account, secret, RTDN, Cloud Function or backend storage is implemented.
+
+The purchase sheet launch result alone never grants access. Purchase callbacks trigger
+an authoritative full purchase query because callbacks are partial updates. Completed
+eligible purchases are verified before acknowledgement; successful acknowledgements
+are deduplicated during the process lifetime. Failures remain locked and retry through
+restore/refresh. Pending purchases are never acknowledged or granted. Cancellation is
+a neutral action state. Already-owned results query existing ownership. Foreground
+re-query can resolve an interrupted/lost callback without leaving the UI permanently
+in Purchasing or inventing success.
+
+Restore really queries both active SUBS and INAPP purchases. No ownership produces
+Free/NothingToRestore, pending remains Pending, query failure is semantic/retryable.
+Process restart begins Unknown and reconstructs ownership from Play; no durable
+entitlement cache exists. On a failed ownership query, premium access is conservative
+(Error/locked) until a successful retry. Free functionality and all installed Library
+records remain available; nothing is deleted or rewritten on billing failure/expiry.
+A product-details failure does not erase successfully queried ownership.
+
+A subscription still returned as purchased can grant access with autoRenewing=false:
+renewal cancellation is not immediate expiration. Missing/non-owned or suspended
+purchases do not grant access. Client APIs do not provide a trusted exact expiry time;
+none is invented. Offline grace periods, secure revocation/expiry verification,
+background acknowledgement retries, cross-store/account entitlement transfer, plan
+replacement and server verification remain future work. Retry currently requires a
+foreground/open/restore event; production QA must verify acknowledgement deadlines.
+
+### UI, access policy and feature isolation
+
+- Typed `KareDestination.KarePlus` is reachable from Settings and locked Template
+  Detail. It has a dedicated ViewModel and stateless scrollable content.
+- Plans use actual Play strings/pricing phases, selected semantics and 48dp controls.
+  Status/error/action updates have polite live regions. Pending/active/busy states
+  disable inappropriate purchase actions. Restore/retry remain explicit. Subscription
+  management instructions point users to Google Play; no fake account management UI.
+- `PremiumAccessPolicy` uses catalog price metadata, not scattered paid-template IDs.
+  Detail and Library installation use the same policy. Detail observes entitlement
+  changes reactively and enables install without reopening. The obsolete always-locked
+  `InstallationAccess` helper is removed. Existing installed paid copies are retained;
+  their data is not destructively revoked. Future premium feature execution needs to
+  consume this policy at its own boundary.
+- Kare+ unlocks catalog access, not unimplemented Android launcher/editor capabilities.
+  Proverb, Hush and generic Sunset/Pastel providers remain unchanged and free. No
+  purchase state is copied into their instance configuration.
+- Google Play identity is independent of Kare Auth. Billing has no AuthUser/Firebase
+  dependency. Auth/Profile/Reviews repositories and screens are preserved. Settings
+  only replaces the obsolete deferred-purchase notice with a real Kare+ entry point.
+- New English/Turkish billing strings include access, purchase, pending, restore,
+  failures, plan periods, renewal terms and unavailable configuration. Indexed format
+  placeholders may change order for Turkish grammar; tests compare their contracts.
+  There are no hardcoded production user-facing billing strings or prices.
+
+### Play Console work still required
+
+The current Android application ID is `com.example.kare` (versionName 1.0/versionCode 1).
+Before real purchase QA, confirm the final package and Play Console app identity;
+provision active monthly/yearly subscriptions with base plans/eligible offers and a
+non-consumable lifetime product if retained; insert their actual IDs centrally;
+configure regions/prices; configure license testers and an internal test track;
+prepare the correctly signed build and matching test-account installation. None of
+this external provisioning, publishing or uploading was performed here. No signing
+keys, service-account files or secrets were created. A debug sideload without product
+configuration cannot establish real purchase success. Real purchase, pending payment,
+refund/revocation, renewal/expiry and acknowledgement QA require the Play test setup.
+
+### Tests and validation
+
+New fake-gateway JVM coverage exercises product loading/missing/unavailable states,
+Play price preservation, purchased/pending/no ownership, verifier rejection, blank
+tokens/unknown IDs, acknowledgement failure/retry/deduplication, cancellation,
+already-owned flow, duplicate update/full ownership queries, interrupted callback
+recovery, restore errors, process-style re-query, free access, reactive Detail unlock,
+Library retention and Kare+ ViewModel behavior. Tests never instantiate BillingClient
+or make a real purchase. Compose tests cover selected offer, Play price display,
+purchase/restore callbacks at 200% font, pending/configuration-disabled purchase and
+EN/TR key/format parity. Existing Settings and Detail tests now exercise the real
+Kare+ entry and reactive unlock instead of the obsolete disabled purchase UI.
+
+A new device test opens Kare+ from Settings through real navigation/the unconfigured
+adapter, checks purchase remains disabled, invokes restore and returns to free Library
+and Search. It does not inject successful ownership or claim a real transaction.
+Final counts, device results and manual observations are recorded below at closure.
+
+### Complete Phase 18 file manifest
+
+Created:
+
+- `app/src/androidTest/java/com/example/kare/Phase18BillingTest.kt`
+- `app/src/main/java/com/example/kare/core/billing/BillingContracts.kt`
+- `app/src/main/java/com/example/kare/core/billing/BillingModels.kt`
+- `app/src/main/java/com/example/kare/core/data/billing/AndroidPlayBillingGateway.kt`
+- `app/src/main/java/com/example/kare/core/data/billing/DefaultBillingRepository.kt`
+- `app/src/main/java/com/example/kare/core/data/billing/PlayEntitlementRepository.kt`
+- `app/src/main/java/com/example/kare/feature/plus/KarePlusScreen.kt`
+- `app/src/main/java/com/example/kare/feature/plus/KarePlusViewModel.kt`
+- `app/src/main/res/values-tr/strings_billing.xml`
+- `app/src/main/res/values/strings_billing.xml`
+- `app/src/test/java/com/example/kare/billing/BillingFoundationTest.kt`
+- `app/src/test/java/com/example/kare/billing/BillingGatingTest.kt`
+- `app/src/test/java/com/example/kare/billing/KarePlusUiTest.kt`
+
+Modified:
+
+- `app/build.gradle.kts`
+- `app/src/main/java/com/example/kare/MainActivity.kt`
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`
+- `app/src/main/java/com/example/kare/feature/detail/DetailScreen.kt`
+- `app/src/main/java/com/example/kare/feature/detail/DetailViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/library/LibraryViewModel.kt`
+- `app/src/main/java/com/example/kare/feature/settings/SettingsScreen.kt`
+- `app/src/main/java/com/example/kare/navigation/KareNavigation.kt`
+- `app/src/test/java/com/example/kare/feature/detail/DetailUiTest.kt`
+- `app/src/test/java/com/example/kare/preferences/SettingsUiTest.kt`
+- `docs/ANDROID_MIGRATION.md`
+- `gradle/libs.versions.toml`
+
+Deleted (obsolete always-locked access helper, replaced by PremiumAccessPolicy):
+
+- `app/src/main/java/com/example/kare/core/presentation/InstallationAccess.kt`
+
+### Closing decisions, manual findings and remaining work
+
+2026-10-19 — Developer 1 integration decisions:
+
+- Keep subscriptions plus lifetime because these are actual iOS Kare+ products;
+  defer individual-widget purchases, consumables and upgrade/downgrade UX.
+- Keep local Play verification behind an interchangeable verifier. No persistent
+  entitlement boolean/cache, Firebase identity dependency or server claim is added.
+- Manual QA reproduced a stale Restoring label after leaving during a restore.
+  Cancellation now clears transient action/loading state and returns ownership to
+  Unknown while propagating cancellation. A focused test cancels an in-flight query
+  and proves that the next opening/query recovers. This is not a purchase failure.
+- Preserve all free-widget state, Room schema, onboarding, app preference and backend
+  contracts. Entitlement failures never delete Library content.
+
+Manual validation used Pixel_8, Android 17/API 37, Pixel Launcher (`emulator-5554`).
+The debug build was reinstalled after Gradle instrumented-test package cleanup; its
+fresh onboarding was completed through the existing skip path. Do not interpret this
+as preserving a previous manual launcher layout through test-package uninstall.
+Settings → Kare+ worked as a guest. Real Play connection/query failed in this
+unprovisioned environment; the screen remained locked, showed semantic localized
+errors, allowed restore/retry and returned to normal app navigation. Logs reported
+Billing-unavailable/API-support and SDK reconnection response codes (3/-1), not a
+successful transaction. No production product/price/ownership was fabricated.
+
+English/light and Turkish/dark Kare+ content were inspected. At 200% system font,
+Turkish descriptions/terms wrapped, purchase/restore/retry controls stayed reachable
+through scrolling, and no critical text was cropped. Screenshots remained in `/tmp`,
+not Git. Font scale was restored to 1.0 and application language/appearance to System.
+Selected plan semantics, 48dp controls, headings and polite status/error announcements
+were structurally/Compose-tested. No spoken TalkBack or real Play purchase-sheet
+accessibility validation was performed. Google Play itself must supply the final
+localized plan/price presentation once products are provisioned.
+
+Only API 37 was executed for Phase 18 device validation. Phase 17's API 34 widget
+results remain historical, not evidence of Billing purchase compatibility. No new
+launcher resize/reboot matrix was repeated for this independent product layer.
+Existing device regressions exercise Proverb/Hush/generic-host isolation, Editor,
+preferences/navigation and Library behavior; full real backend/Auth/Review behavior
+is outside this phase. No Firebase implementation was changed.
+
+Remaining limitations: unconfigured Play product IDs; no real transaction or Play
+Console test-track execution; client-only trust; no exact client expiry timestamps;
+no secure refund/revocation service, cross-platform entitlement transfer or durable
+background acknowledgement retry; no individual-widget purchase or subscription
+replacement flow. Non-month/year/week periods currently display Play's ISO period
+code in the pricing explanation and require product-specific localization review if
+such offers are enabled. Existing app-wide accessibility/OEM QA gaps remain.
+
+Recommended Phase 19 (not started): provision agreed Google Play products/base plans,
+license testers and an internal test build, then exercise real purchase/cancellation/
+pending/acknowledgement/restore/renewal/revocation scenarios. Separately coordinate a
+secure verifier contract with Developer 2 before any production backend entitlement
+work. Developer 2 may continue Firebase/Auth/Firestore/Profile/PublicProfile/Reviews/
+account-deletion work independently; Billing does not require any of it.
+
+Conflict hotspots while this work remains uncommitted: AppContainer's added billing
+fields/factory parameters, MainActivity foreground refresh, typed navigation,
+Detail/Library installation policy, Settings entry point, Gradle dependency catalog
+and this migration record. Preserve those additions when integrating backend changes;
+no broad composition refactor was made. Auth backend files and AUTH_MIGRATION_NOTES
+were not modified. No Git branch/history/publish operation was performed.
+
+### Final automated validation and work log
+
+2026-10-19 — Phase 18 closed by Developer 1 on ANDROID. Inspected actual StoreKit
+products, implemented the official Play adapter and portable purchase/entitlement
+boundaries, integrated Kare+ and reactive installation gating, added cancellation
+recovery and completed test/device/error-path validation. Prior phase history and
+Developer 2 backend code were preserved.
+
+Final run after the cancellation fix:
+
+- `./gradlew assembleDebug`: PASS.
+- `./gradlew test`: PASS, 237 JVM/Robolectric tests, zero failures/errors/skips.
+  Phase 18 adds 22 focused tests and updates two existing UI tests.
+- `./gradlew lint`: PASS, 0 errors / 111 warnings. Existing dependency/SDK,
+  widget-attribute, icon, unused-resource and KTX suggestions remain. Two newly
+  unused historical strings (`detail_purchase_unavailable`, `settings_billing_deferred`)
+  are retained in the old resource files; neither is rendered by the new UI.
+  No lint suppression, compiler weakening or unrelated dependency update was used.
+- `ANDROID_SERIAL=emulator-5554 ./gradlew connectedDebugAndroidTest`: PASS,
+  11 tests on Pixel_8/API 37 only, zero failures/skips. Includes the new real-adapter
+  unavailable-state/navigation test and existing widget/Editor/preferences regressions.
+  The connected API 34 emulator was not selected and is not included in this result.
+- Local command-line override only: JBR from Android Studio, `-Xmx2g`,
+  `-XX:MaxMetaspaceSize=1g`, UTF-8. Shared Gradle memory settings are unchanged.
+- The final debug APK was reinstalled after instrumented-test cleanup; emulator
+  font scale confirmed 1.0. No app-data-clear command was issued. Test-runner package
+  cleanup means old manual launcher fixtures should not be assumed retained on API 37.
+- Real Google Play transaction: NOT TESTED; no products/test account/Play-distributed
+  build configured. Fake tests do not establish a real payment or secure verification.
+- `git diff --check`: PASS. Final artifact audit found only the listed phase files;
+  no screenshots, logs, emulator artifacts, secrets, IDE files or backend changes.
+
+No Phase 19 implementation was started. No commit, push, merge, pull, reset, rebase,
+branch operation or history rewrite was performed.

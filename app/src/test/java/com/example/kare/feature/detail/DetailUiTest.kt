@@ -43,12 +43,19 @@ class DetailUiTest {
         node("open-library").performClick(); assertEquals(1, opens)
         compose.onNodeWithTag("detail-install").assertDoesNotExist()
     }
-    @Test fun paidStateNeverExposesEnabledInstall() {
+    @Test fun paidStateRoutesToKarePlusAndUnlocksReactively() {
         val paid = template.copy(price = WidgetTemplate.Price.Paid(BigDecimal.ONE, "USD"))
-        compose.setContent { KareTheme { DetailContent(template.id, loaded.copy(template = LoadState.Loaded(paid)), {}, {}, {}, {}, {}, {}) } }
+        val state = mutableStateOf(loaded.copy(template = LoadState.Loaded(paid), selectedSize = WidgetSize.SMALL))
+        var opens = 0
+        compose.setContent { KareTheme { DetailContent(template.id, state.value, {}, {}, {}, {}, {}, {}, onKarePlus = { opens++ }) } }
         text("Paid widget · Locked").assertExists()
-        node("purchase-unavailable").assertIsNotEnabled()
+        node("open-kare-plus").assertIsEnabled().performClick()
+        assertEquals(1, opens)
         compose.onNodeWithTag("detail-install").assertDoesNotExist()
+        compose.runOnIdle { state.value = state.value.copy(entitlement = com.example.kare.core.billing.EntitlementState.Premium(
+            listOf(com.example.kare.core.billing.EntitlementGrant("test.monthly", verification = com.example.kare.core.billing.VerificationLevel.LOCAL_PLAY, autoRenewing = true, checkedAtMillis = 1)))) }
+        node("detail-install").assertIsEnabled()
+        compose.onNodeWithTag("open-kare-plus").assertDoesNotExist()
     }
     @Test fun notFoundRetryAndInstallFailureAreLocalized() {
         val state = mutableStateOf(DetailUiState(template = LoadState.Failed(UiError.NOT_FOUND)))

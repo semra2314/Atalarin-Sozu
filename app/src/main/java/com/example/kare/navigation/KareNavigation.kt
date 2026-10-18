@@ -34,6 +34,7 @@ sealed interface KareDestination {
     @Serializable data object Search : KareDestination
     @Serializable data object Profile : KareDestination
     @Serializable data object Settings : KareDestination
+    @Serializable data object KarePlus : KareDestination
     @Serializable data object SignIn : KareDestination
     @Serializable data object SignUp : KareDestination
     @Serializable data class Editor(val templateId: String) : KareDestination
@@ -54,7 +55,7 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
     val isDetail = current?.destination?.hasRoute<KareDestination.Detail>() == true
     val isAuth = current?.destination?.hasRoute<KareDestination.SignIn>() == true ||
         current?.destination?.hasRoute<KareDestination.SignUp>() == true
-    val hideBottomBar = isDetail || isAuth || current?.destination?.hasRoute<KareDestination.Editor>() == true
+    val hideBottomBar = current?.destination?.hasRoute<KareDestination.KarePlus>() == true || isDetail || isAuth || current?.destination?.hasRoute<KareDestination.Editor>() == true
 
     Scaffold(bottomBar = {
         if (!hideBottomBar) NavigationBar {
@@ -91,7 +92,7 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                 )
             }
             composable<KareDestination.Settings> {
-                SettingsRoute(viewModel(factory = factory), preferencesViewModel ?: viewModel(factory = factory)) {
+                SettingsRoute(viewModel(factory = factory), preferencesViewModel ?: viewModel(factory = factory), onKarePlus = { navController.navigate(KareDestination.KarePlus) }) {
                     navController.navigate(KareDestination.SignIn)
                 }
             }
@@ -115,11 +116,15 @@ fun KareApp(factory: ViewModelProvider.Factory, navController: NavHostController
                     onBack = { navController.popBackStack() }
                 )
             }
+            composable<KareDestination.KarePlus> {
+                com.example.kare.feature.plus.KarePlusRoute(viewModel(factory = factory)) { navController.popBackStack() }
+            }
             composable<KareDestination.Editor> {
                 com.example.kare.feature.editor.EditorRoute(viewModel(factory = factory)) { navController.popBackStack() }
             }
             composable<KareDestination.Detail> {
                 DetailRoute(viewModel(factory = factory), reviewViewModel = viewModel(factory = factory),
+                    onKarePlus = { navController.navigate(KareDestination.KarePlus) },
                     onSignIn = { navController.navigate(KareDestination.SignIn) }, onBack = { navController.popBackStack() }, onLibrary = {
                     navController.popBackStack()
                     navController.navigate(KareDestination.Library) {

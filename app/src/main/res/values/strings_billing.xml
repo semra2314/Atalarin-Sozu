@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="plus_benefits">Kare+ unlocks every paid template in the catalog.</string>
+    <string name="plus_platform_scope">Launcher and editor support varies by template. Kare+ does not add unsupported Android features.</string>
+    <string name="plus_checking">Checking Google Play purchases…</string>
+    <string name="plus_free">No active Kare+ purchase. Free features remain available.</string>
+    <string name="plus_active">Kare+ is active</string>
+    <string name="plus_unlocked">Unlocked with Kare+</string>
+    <string name="plus_pending">Payment is pending. Kare+ unlocks only after Google Play confirms payment.</string>
+    <string name="plus_access_unavailable">Kare+ access could not be confirmed. Your Library is kept on this device.</string>
+    <string name="plus_month">month</string>
+    <string name="plus_year">year</string>
+    <string name="plus_week">week</string>
+    <string name="plus_once_price">%1$s · one payment</string>
+    <string name="plus_recurring_price">%1$s per %2$s · renews automatically</string>
+    <string name="plus_finite_price">%1$s per %2$s for %3$d billing periods, then the next price shown</string>
+    <string name="plus_prepaid_price">%1$s for %2$s · does not renew automatically</string>
+    <string name="plus_purchase">Continue with Google Play</string>
+    <string name="plus_restore">Restore purchases</string>
+    <string name="plus_purchasing">Waiting for Google Play…</string>
+    <string name="plus_cancelled">Purchase cancelled. No access was changed.</string>
+    <string name="plus_restoring">Restoring purchases…</string>
+    <string name="plus_restored">Kare+ purchase restored</string>
+    <string name="plus_nothing">No active Kare+ purchase was found on this Google Play account.</string>
+    <string name="plus_success">Kare+ purchase confirmed</string>
+    <string name="plus_terms">Google Play handles payment. Recurring plans renew until cancelled; prepaid plans and lifetime purchases do not auto-renew. Review all prices and terms in Google Play before confirming.</string>
+    <string name="plus_manage">Manage or cancel subscriptions in Google Play → Payments &amp; subscriptions → Subscriptions. Cancelling renewal may leave access active for the remaining paid period.</string>
+    <string name="plus_not_configured">Kare+ plans are not configured for Google Play yet. Purchases are unavailable in this build.</string>
+    <string name="plus_unavailable">Google Play Billing is unavailable on this device or account.</string>
+    <string name="plus_product_missing">This plan is unavailable or has changed. Reload plans and try again.</string>
+    <string name="plus_network">Could not reach Google Play. Check your connection and try again.</string>
+    <string name="plus_purchase_failed">Purchase could not be started. Try again.</string>
+    <string name="plus_ack_failed">Purchase confirmation could not finish. Restore purchases to retry.</string>
+    <string name="plus_restore_failed">Purchases could not be restored. Try again when Google Play is available.</string>
+    <string name="plus_verification_failed">This purchase could not be verified. Kare+ remains locked.</string>
+    <string name="plus_open">Explore Kare+</string>
+</resources>

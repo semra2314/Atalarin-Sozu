@@ -30,6 +30,7 @@ class LibraryViewModel(
     private val repository: LibraryRepository,
     private val catalog: WidgetRepository,
     private val errors: ErrorReporter,
+    private val entitlements: com.example.kare.core.billing.EntitlementRepository? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(LibraryUiState())
     val state = mutableState.asStateFlow()
@@ -66,7 +67,7 @@ class LibraryViewModel(
     @MainThread
     fun install(templateId: String, size: WidgetSize): Boolean = mutate(LibraryAction(LibraryOperation.INSTALL, templateId)) {
         val template = catalog.template(templateId)
-        if (template.installationAccess() != InstallationAccess.FREE) throw RepositoryException.Unavailable("paid installation")
+        if (!com.example.kare.core.billing.PremiumAccessPolicy.allows(template, entitlements?.entitlement?.value ?: com.example.kare.core.billing.EntitlementState.Unknown)) throw RepositoryException.Unavailable("paid installation")
         repository.install(template, size)
     }
 

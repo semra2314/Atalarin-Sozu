@@ -14,6 +14,7 @@ import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.kare.widget.WidgetPlacementRoute
+import com.example.kare.core.billing.PremiumAccessPolicy
 import com.example.kare.R
 import com.example.kare.core.design.*
 import com.example.kare.core.localization.*
@@ -28,6 +29,7 @@ fun DetailRoute(
     onLibrary: () -> Unit,
     onSignIn: () -> Unit = {},
     reviewViewModel: com.example.kare.feature.review.ReviewViewModel? = null,
+    onKarePlus: () -> Unit = {},
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     DetailContent(
@@ -40,6 +42,7 @@ fun DetailRoute(
         viewModel::selectSize,
         viewModel::install,
         placement = { WidgetPlacementRoute(it) },
+        onKarePlus = onKarePlus,
         reviewsContent = reviewViewModel?.let { rvm ->
             { com.example.kare.feature.review.ReviewSection(viewModel.templateId, rvm, onSignIn) }
         },
@@ -58,6 +61,7 @@ fun DetailContent(
     onInstall: () -> Unit,
     placement: @Composable (String) -> Unit = {},
     reviewsContent: (@Composable () -> Unit)? = null,
+    onKarePlus: () -> Unit = {},
 ) {
     LazyColumn(Modifier.fillMaxSize().wrapContentWidth().widthIn(max = KareLayout.readableWidth)
         .fillMaxWidth().testTag("detail-$templateId"), contentPadding = PaddingValues(KareSpacing.lg),
@@ -70,6 +74,7 @@ fun DetailContent(
                 val template = loaded.value
                 val copy = catalogCopy(template.id)
                 val installed = (state.installed as? LoadState.Loaded)?.value
+                val allowed = PremiumAccessPolicy.allows(template, state.entitlement)
                 val busy = state.action == InstallState.Installing
                 item { ScreenTitle(copy?.let { stringResource(it.name) } ?: template.name) }
                 item {
@@ -103,7 +108,7 @@ fun DetailContent(
                     }
                 }
                 item { Text(stringResource(R.string.detail_size_note), style = MaterialTheme.typography.bodySmall) }
-                item { Text(stringResource(if (template.price.isFree) R.string.price_free else R.string.detail_locked)) }
+                item { Text(stringResource(if (template.price.isFree) R.string.price_free else if (allowed) R.string.plus_unlocked else R.string.detail_locked)) }
                 when (val membership = state.installed) {
                     LoadState.Loading -> item { LoadingContent() }
                     is LoadState.Failed -> item { ErrorContent(membership.error, onRetryLibrary) }
@@ -119,9 +124,9 @@ fun DetailContent(
                         }
                     }
                 }
-                if (!template.price.isFree) item {
-                    Button(onClick = {}, enabled = false, modifier = Modifier.testTag("purchase-unavailable")) {
-                        Text(stringResource(R.string.detail_purchase_unavailable))
+                if (!allowed) item {
+                    Button(onClick = onKarePlus, modifier = Modifier.testTag("open-kare-plus")) {
+                        Text(stringResource(R.string.plus_open))
                     }
                 } else if (installed == null) item {
                     Button(onClick = onInstall, enabled = state.canInstall, modifier = Modifier.testTag("detail-install")) {

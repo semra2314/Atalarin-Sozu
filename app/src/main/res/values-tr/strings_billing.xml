@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="plus_benefits">Kare+, katalogdaki tüm ücretli şablonların kilidini açar.</string>
+    <string name="plus_platform_scope">Ana ekran ve düzenleyici desteği şablona göre değişir. Kare+, desteklenmeyen Android özelliklerini eklemez.</string>
+    <string name="plus_checking">Google Play satın alımları kontrol ediliyor…</string>
+    <string name="plus_free">Etkin Kare+ satın alımı yok. Ücretsiz özellikler kullanılabilir.</string>
+    <string name="plus_active">Kare+ etkin</string>
+    <string name="plus_unlocked">Kare+ ile açıldı</string>
+    <string name="plus_pending">Ödeme bekleniyor. Kare+, yalnızca Google Play ödemeyi onayladıktan sonra açılır.</string>
+    <string name="plus_access_unavailable">Kare+ erişimi doğrulanamadı. Kitaplığın bu cihazda korunur.</string>
+    <string name="plus_month">ay</string>
+    <string name="plus_year">yıl</string>
+    <string name="plus_week">hafta</string>
+    <string name="plus_once_price">%1$s · tek ödeme</string>
+    <string name="plus_recurring_price">%2$s başına %1$s · otomatik yenilenir</string>
+    <string name="plus_finite_price">%3$d fatura dönemi boyunca %2$s başına %1$s, ardından gösterilen sonraki fiyat</string>
+    <string name="plus_prepaid_price">%2$s için %1$s · otomatik yenilenmez</string>
+    <string name="plus_purchase">Google Play ile devam et</string>
+    <string name="plus_restore">Satın alımları geri yükle</string>
+    <string name="plus_purchasing">Google Play bekleniyor…</string>
+    <string name="plus_cancelled">Satın alım iptal edildi. Erişim değiştirilmedi.</string>
+    <string name="plus_restoring">Satın alımlar geri yükleniyor…</string>
+    <string name="plus_restored">Kare+ satın alımı geri yüklendi</string>
+    <string name="plus_nothing">Bu Google Play hesabında etkin Kare+ satın alımı bulunamadı.</string>
+    <string name="plus_success">Kare+ satın alımı onaylandı</string>
+    <string name="plus_terms">Ödemeyi Google Play işler. Yinelenen planlar iptal edilene kadar yenilenir; ön ödemeli planlar ve ömür boyu satın alımlar otomatik yenilenmez. Onaylamadan önce Google Play’de tüm fiyatları ve koşulları incele.</string>
+    <string name="plus_manage">Abonelikleri Google Play → Ödemeler ve abonelikler → Abonelikler bölümünden yönet veya iptal et. Yenilemeyi iptal etmek, kalan ücretli süre boyunca erişimi sonlandırmayabilir.</string>
+    <string name="plus_not_configured">Kare+ planları henüz Google Play için yapılandırılmadı. Bu sürümde satın alım yapılamaz.</string>
+    <string name="plus_unavailable">Google Play faturalandırması bu cihazda veya hesapta kullanılamıyor.</string>
+    <string name="plus_product_missing">Bu plan kullanılamıyor veya değişti. Planları yeniden yükleyip tekrar dene.</string>
+    <string name="plus_network">Google Play’e ulaşılamadı. Bağlantını kontrol edip tekrar dene.</string>
+    <string name="plus_purchase_failed">Satın alım başlatılamadı. Tekrar dene.</string>
+    <string name="plus_ack_failed">Satın alım onayı tamamlanamadı. Tekrar denemek için satın alımları geri yükle.</string>
+    <string name="plus_restore_failed">Satın alımlar geri yüklenemedi. Google Play kullanılabilir olduğunda tekrar dene.</string>
+    <string name="plus_verification_failed">Bu satın alım doğrulanamadı. Kare+ kilitli kalır.</string>
+    <string name="plus_open">Kare+ seçeneklerini gör</string>
+</resources>

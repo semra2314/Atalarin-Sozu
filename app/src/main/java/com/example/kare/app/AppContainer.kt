@@ -4,6 +4,8 @@ import com.example.kare.core.data.widget.*
 import com.example.kare.widget.ProverbWidget
 import com.example.kare.widget.HushWidget
 import java.io.File
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.cancel
 import com.example.kare.core.preferences.DataStorePreferencesRepository
 import com.example.kare.core.repository.PreferencesRepository
 import com.example.kare.feature.settings.*
@@ -54,6 +56,19 @@ class AppContainer(context: Context) {
     val library: LibraryRepository by lazy {
         WidgetRefreshingLibraryRepository(localLibrary, { ProverbWidget.refreshAll(applicationContext); HushWidget.refreshAll(applicationContext) }, errors, editableSync::sync)
     }
+    private val billingScope = kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.SupervisorJob() + kotlinx.coroutines.Dispatchers.Main.immediate)
+    private val playGatewayDelegate = lazy { com.example.kare.core.data.billing.AndroidPlayBillingGateway(applicationContext) }
+    private val playGateway get() = playGatewayDelegate.value
+    val entitlements by lazy { com.example.kare.core.data.billing.PlayEntitlementRepository(playGateway,
+        com.example.kare.core.data.billing.LocalPlayEntitlementVerifier(com.example.kare.core.billing.BillingProductCatalog.products),
+        com.example.kare.core.billing.BillingProductCatalog.products) }
+    val billing by lazy { com.example.kare.core.data.billing.DefaultBillingRepository(playGateway, entitlements,
+        com.example.kare.core.billing.BillingProductCatalog.products, billingScope) }
+    private var billingRefresh: kotlinx.coroutines.Job? = null
+    fun refreshBilling() {
+        if (billingRefresh?.isActive == true) return
+        billingRefresh = billingScope.launch { billing.refresh() }
+    }
     val preferences: PreferencesRepository by lazy { DataStorePreferencesRepository(applicationContext) }
     val auth: AuthRepository by lazy { InMemoryAuthRepository() }
     val publicProfile: com.example.kare.core.repository.PublicProfileRepository by lazy {
@@ -69,10 +84,14 @@ class AppContainer(context: Context) {
         com.example.kare.core.data.profile.ProfileAvatarStore(applicationContext)
     }
     private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
-    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences, profile, reviews) }
+    val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences, profile, reviews, billing, entitlements) }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
-    internal fun close() { if (databaseDelegate.isInitialized()) database.close() }
+    internal fun close() {
+        billingScope.cancel()
+        if (playGatewayDelegate.isInitialized()) playGateway.close()
+        if (databaseDelegate.isInitialized()) database.close()
+    }
 }
 
 class KareViewModelFactory(
@@ -83,6 +102,8 @@ class KareViewModelFactory(
     private val preferences: PreferencesRepository? = null,
     private val profile: com.example.kare.core.repository.ProfileRepository? = null,
     private val reviews: com.example.kare.core.repository.ReviewRepository? = null,
+    private val billing: com.example.kare.core.billing.BillingRepository? = null,
+    private val entitlements: com.example.kare.core.billing.EntitlementRepository? = null,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return createModel(modelClass, SavedStateHandle())
@@ -93,15 +114,16 @@ class KareViewModelFactory(
 
     private fun <T : ViewModel> createModel(modelClass: Class<T>, savedState: SavedStateHandle): T {
         val model = when (modelClass) {
+            com.example.kare.feature.plus.KarePlusViewModel::class.java -> com.example.kare.feature.plus.KarePlusViewModel(requireNotNull(billing), requireNotNull(entitlements))
             PreferencesViewModel::class.java -> PreferencesViewModel(requireNotNull(preferences), errors)
             OnboardingViewModel::class.java -> OnboardingViewModel(savedState)
             SettingsViewModel::class.java -> SettingsViewModel(auth, errors, profile)
             com.example.kare.feature.editor.EditorViewModel::class.java ->
                 com.example.kare.feature.editor.EditorViewModel(savedState["templateId"] ?: "", library, errors)
-            DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState)
+            DetailViewModel::class.java -> DetailViewModel(savedState["templateId"] ?: "", widgets, library, errors, savedState, entitlements)
             DiscoverViewModel::class.java -> DiscoverViewModel(widgets, errors)
             SearchViewModel::class.java -> SearchViewModel(widgets, errors, savedState)
-            LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors)
+            LibraryViewModel::class.java -> LibraryViewModel(library, widgets, errors, entitlements)
             AuthViewModel::class.java -> AuthViewModel(auth, errors)
             com.example.kare.feature.profile.ProfileViewModel::class.java ->
                 com.example.kare.feature.profile.ProfileViewModel(

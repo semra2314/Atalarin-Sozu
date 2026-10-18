@@ -58,6 +58,7 @@ room {
 }
 
 dependencies {
+    implementation(libs.play.billing)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.glance.appwidget)

@@ -10,6 +10,10 @@ import androidx.activity.enableEdgeToEdge
 import com.example.kare.navigation.KareApp
 
 class MainActivity : AppCompatActivity() {
+    override fun onResume() {
+        super.onResume()
+        (application as KareApplication).container.refreshBilling()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -27,16 +27,17 @@ import org.robolectric.annotation.*
 @LooperMode(LooperMode.Mode.PAUSED)
 class SettingsUiTest {
     @get:Rule val compose = createComposeRule()
-    @Test fun selectionAccountGuideAndDeferredBillingRemainAccessibleAtLargeFont() {
+    @Test fun selectionAccountGuideAndBillingEntryRemainAccessibleAtLargeFont() {
         val prefs = mutableStateOf(AppPreferences(true, AppLanguage.ENGLISH, AppAppearance.DARK))
         var signIn = 0
+        var plus = 0
         compose.setContent {
             val density = LocalDensity.current
             CompositionLocalProvider(LocalDensity provides Density(density.density, 2f)) {
                 KareTheme(darkTheme = true) { SettingsContent(PreferencesUiState(StartupState.Loaded(prefs.value)),
                     AuthState.Unauthenticated, false, "1.0 (1)",
                     { prefs.value = prefs.value.copy(language = it) }, { prefs.value = prefs.value.copy(appearance = it) },
-                    { signIn++ }, {}, {}, {}) }
+                    { signIn++ }, {}, {}, {}, onKarePlus = { plus++ }) }
             }
         }
         compose.onNodeWithTag("appearance-DARK").performScrollTo().assertIsSelected()
@@ -44,7 +45,8 @@ class SettingsUiTest {
         compose.onNodeWithTag("language-TURKISH").performScrollTo().performClick().assertIsSelected()
         compose.onNodeWithTag("settings-sign-in").performScrollTo().performClick()
         assertEquals(1, signIn)
-        compose.onNodeWithText("Kare+ purchases are not available on Android yet. Paid designs remain locked.").performScrollTo().assertIsDisplayed().assertHasNoClickAction()
+        compose.onNodeWithTag("settings-kare-plus").performScrollTo().performClick()
+        assertEquals(1, plus)
         compose.onNodeWithTag("settings-widget-guide").performScrollTo().performClick()
         compose.onNodeWithText("Install Söz or Hush", substring = true).performScrollTo().assertIsDisplayed()
     }

@@ -22,7 +22,7 @@ import com.example.kare.core.model.*
 import androidx.core.content.pm.PackageInfoCompat
 
 @Composable
-fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewModel, onSignIn: () -> Unit) {
+fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewModel, onKarePlus: () -> Unit = {}, onSignIn: () -> Unit) {
     val state by preferences.state.collectAsStateWithLifecycle()
     val identity by viewModel.identity.collectAsStateWithLifecycle()
     val account by viewModel.account.collectAsStateWithLifecycle()
@@ -34,7 +34,7 @@ fun SettingsRoute(viewModel: SettingsViewModel, preferences: PreferencesViewMode
     }
     var actionFailed by rememberSaveable { mutableStateOf(false) }
     SettingsContent(state, account, signOutFailed || actionFailed, version,
-        preferences::language, preferences::appearance, onSignIn, viewModel::signOut, preferences::retry, onNotifications = preferences::notifications, identity = identity, onAction = { action ->
+        preferences::language, preferences::appearance, onSignIn, viewModel::signOut, preferences::retry, onNotifications = preferences::notifications, identity = identity, onKarePlus = onKarePlus, onAction = { action ->
         val intent = when(action) {
             SettingsAction.NOTIFICATIONS -> Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
             SettingsAction.PRIVACY -> Intent(Intent.ACTION_VIEW, "https://kare.erdendereli.com/privacy".toUri())
@@ -51,7 +51,7 @@ enum class SettingsAction { NOTIFICATIONS, PRIVACY, SUPPORT }
 fun SettingsContent(state: PreferencesUiState, account: AuthState, actionFailed: Boolean, version: String,
     onLanguage: (AppLanguage) -> Unit, onAppearance: (AppAppearance) -> Unit,
     onSignIn: () -> Unit, onSignOut: () -> Unit, onRetry: () -> Unit, onAction: (SettingsAction) -> Unit,
-    onNotifications: (Boolean) -> Unit = {}, identity: UserProfile = UserProfile()) {
+    onNotifications: (Boolean) -> Unit = {}, identity: UserProfile = UserProfile(), onKarePlus: () -> Unit = {}) {
     val prefs = (state.startup as? StartupState.Loaded)?.preferences ?: return
     val notificationLabel = stringResource(R.string.settings_notification_preference)
     var guide by rememberSaveable { mutableStateOf(false) }
@@ -89,7 +89,7 @@ fun SettingsContent(state: PreferencesUiState, account: AuthState, actionFailed:
             modifier = Modifier.semantics { liveRegion = androidx.compose.ui.semantics.LiveRegionMode.Polite })
         HorizontalDivider()
         PreferenceHeading(stringResource(R.string.section_plus_title))
-        Text(stringResource(R.string.settings_billing_deferred))
+        Button(onClick = onKarePlus, modifier = Modifier.testTag("settings-kare-plus")) { Text(stringResource(R.string.plus_open)) }
         HorizontalDivider()
         PreferenceHeading(stringResource(R.string.settings_notification_preference))
         Row(Modifier.fillMaxWidth(), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {

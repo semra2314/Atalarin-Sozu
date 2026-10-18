@@ -5,6 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kare.core.model.*
+import com.example.kare.core.billing.*
 import com.example.kare.core.presentation.*
 import com.example.kare.core.repository.*
 import kotlinx.coroutines.*
@@ -20,12 +21,13 @@ data class DetailUiState(
     val template: LoadState<WidgetTemplate> = LoadState.Loading,
     val installed: LoadState<InstalledWidget?> = LoadState.Loading,
     val selectedSize: WidgetSize? = null,
+    val entitlement: EntitlementState = EntitlementState.Unknown,
     val action: InstallState = InstallState.Idle,
 ) {
     val canInstall: Boolean get() {
         val value = (template as? LoadState.Loaded)?.value ?: return false
         val membership = installed as? LoadState.Loaded ?: return false
-        return value.installationAccess() == InstallationAccess.FREE && membership.value == null &&
+        return PremiumAccessPolicy.allows(value, entitlement) && membership.value == null &&
             selectedSize in value.supportedSizes && action != InstallState.Installing
     }
 }
@@ -36,6 +38,7 @@ class DetailViewModel(
     private val library: LibraryRepository,
     private val errors: ErrorReporter,
     private val savedState: SavedStateHandle = SavedStateHandle(),
+    private val entitlements: EntitlementRepository? = null,
 ) : ViewModel() {
     private val mutableState = MutableStateFlow(DetailUiState())
     val state = mutableState.asStateFlow()
@@ -43,7 +46,12 @@ class DetailViewModel(
     private var observation: Job? = null
     private var generation = 0L
 
-    init { reload(); retryLibrary() }
+    init {
+        reload(); retryLibrary()
+        entitlements?.let { source -> viewModelScope.launch {
+            source.entitlement.collect { access -> mutableState.update { it.copy(entitlement = access) } }
+        } }
+    }
 
     @MainThread
     fun reload() {
@@ -102,7 +110,7 @@ class DetailViewModel(
         val current = state.value
         if (current.action == InstallState.Installing) return
         val template = (current.template as? LoadState.Loaded)?.value ?: return
-        if (template.installationAccess() != InstallationAccess.FREE) {
+        if (!PremiumAccessPolicy.allows(template, entitlements?.entitlement?.value ?: current.entitlement)) {
             mutableState.update { it.copy(action = InstallState.Failed(UiError.UNAVAILABLE)) }
             return
         }
