@@ -284,10 +284,10 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Catalog serialization | Codable models | Explicit JSON adapters and Swift fixtures | Developer 1 | COMPLETED | Associated values, dates, images and legacy content; no Firestore adapters |
 | Application wiring | AppEnvironment | KareApplication / AppContainer / factory | Developer 1 | COMPLETED | Real repositories; no DI framework |
 | Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; consumed by LibraryRoute |
-| Firebase configuration | KareApp | None | Unassigned | NOT STARTED | Project/Android app registration and rules need verification |
-| Firebase Auth | AuthService | Separate auth foundation branch | Developer 2 | IN PROGRESS | `android/auth-foundation`; not integrated or validated by Phase 7 |
-| Reviews | ReviewService | ReviewRepository / InMemoryReviewRepository / ReviewViewModel / Detail ReviewSection | Developer 2 | COMPLETED | Local foundation integrated; moderation/report/block/delete available; Firestore deferred |
-| Public profiles | PublicProfileService | PublicProfileRepository / InMemoryPublicProfileRepository | Developer 2 | COMPLETED | Local identity cache only; remote publication deferred |
+| Firebase configuration | KareApp | Google Services plugin 4.4.2, Firebase BOM 33.9.0 + fallback | Developer 2 | IN PROGRESS | Google Services and Crashlytics plugins configured with offline fallback in AppContainer |
+| Firebase Auth | AuthService | FirebaseAuthRepository / AuthViewModel | Developer 2 | IN PROGRESS | Production FirebaseAuthRepository with reactive authState flow and offline fallback |
+| Reviews | ReviewService | FirestoreReviewRepository / ReviewViewModel / Detail ReviewSection | Developer 2 | IN PROGRESS | Production FirestoreReviewRepository matching iOS reviews/{templateID}_{uid} collection, moderation, and reports |
+| Public profiles | PublicProfileService | FirestorePublicProfileRepository / LocalProfileRepository | Developer 2 | IN PROGRESS | Production FirestorePublicProfileRepository matching profiles/{uid} collection |
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; Proverb membership changes refresh launcher instances |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
 | DataStore | AppStorage / defaults | Typed PreferencesRepository / DataStorePreferencesRepository | Developer 1 | COMPLETED | Phase 13 plus integration: completion, language, appearance, notification preference; legacy import |
@@ -311,7 +311,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Google Play Billing | StoreKit 2 | Billing 9.1.0 adapter, SUBS/INAPP, query/restore/acknowledgement | Developer 1 | COMPLETED | Client-only verifier; Play Console IDs not configured, no real transaction tested |
 | Localization | App Localizable.xcstrings | English/Turkish resources and UI mappings | Developer 1 | COMPLETED | Phase 5: 86 strings + count plural; Phase 6 adds 52 strings per locale; full app translation deferred |
 | Design system | Theme / AppFont / components | core/design + Material theme | Developer 1 | COMPLETED | Phase 5 tokens/three Fraunces weights reused by Phase 6 screens/components |
-| Crashlytics | KareApp / FirebaseCrashlytics | None | Unassigned | NOT STARTED | SDK and collection policy deferred |
+| Crashlytics | KareApp / FirebaseCrashlytics | FirebaseCrashlytics in ErrorReporter | Developer 2 | IN PROGRESS | Crashlytics SDK and operation tagging wired via ErrorReporter with safe fallback |
 | App-side widget placement | SetUpOnHomeView / TemplateDetailView | Shared placement coordinator, native pin callback and manual fallback | Developer 1 | COMPLETED | Phases 10/12; Proverb and Hush registry; launcher remains authoritative |
 | Proverb hardening | WidgetKit layout/configuration | Exact-size Glance layout, recovery, picker and accessibility pass | Developer 1 | COMPLETED | Phase 9; reboot, resize, large-font and deletion checked; spoken TalkBack limitations recorded |
 | Hush launcher widget | HushWidget / HushWidgetView | Typed state, localized hourly prompts, native configuration and shared placement | Developer 1 | COMPLETED | Phase 12; independent instances, resize, process death and deletion validated on Pixel |
@@ -4280,5 +4280,44 @@ Final run after the cancellation fix:
 - `git diff --check`: PASS. Final artifact audit found only the listed phase files;
   no screenshots, logs, emulator artifacts, secrets, IDE files or backend changes.
 
-No Phase 19 implementation was started. No commit, push, merge, pull, reset, rebase,
-branch operation or history rewrite was performed.
+## Phase 19: Firebase Backend Foundation (Authentication, Cloud Firestore, Crashlytics)
+
+**Owner:** Developer 2 (Semra)  
+**Branch:** `ANDROID`  
+**Status:** IN PROGRESS  
+**Date:** 2026-10-21  
+
+### Objective
+
+Deliver production Firebase integrations for the Kare Android application matching the iOS reference architecture:
+1. Firebase Authentication: Implement production `FirebaseAuthRepository` implementing `AuthRepository`.
+2. Cloud Firestore Reviews: Implement production `FirestoreReviewRepository` matching the iOS `reviews/{templateID}_{uid}` document model with moderation, report submission, and author blocking.
+3. Cloud Firestore Public Profiles: Implement `FirestorePublicProfileRepository` matching the `profiles/{uid}` document model.
+4. Firebase Crashlytics: Integrate Crashlytics non-fatal exception and operation tagging into `ErrorReporter`.
+5. Clean architectural isolation and runtime resilience: Provide an automatic detection and graceful fallback mechanism in `AppContainer` so offline development, CI, and test runners operate seamlessly when `google-services.json` or live Firebase servers are absent.
+
+### Files Created
+- `app/src/main/java/com/example/kare/core/data/auth/FirebaseAuthRepository.kt`: Production Auth repository backed by `FirebaseAuth`.
+- `app/src/main/java/com/example/kare/core/data/review/FirestoreReviewRepository.kt`: Production Review repository backed by `FirebaseFirestore`.
+- `app/src/main/java/com/example/kare/core/data/profile/FirestorePublicProfileRepository.kt`: Production PublicProfile repository backed by `FirebaseFirestore`.
+- `app/src/test/java/com/example/kare/auth/FirebaseAuthRepositoryTest.kt`: Unit tests for input validation and contract compliance.
+- `app/google-services.json`: Git-ignored development configuration template satisfying the Google Services Gradle plugin.
+- `firestore.rules` and `firebase.json`: Firestore security rules (reviews, profiles, reports) for deployment to the Firebase project.
+
+### Files Modified
+- `gradle/libs.versions.toml`: Added `firebaseBom (33.9.0)`, `firebase-auth`, `firebase-firestore`, `firebase-crashlytics`, and `google-services`/`firebase-crashlytics` plugins.
+- `build.gradle.kts`: Applied Google Services and Crashlytics plugins with `apply false`.
+- `app/build.gradle.kts`: Applied plugins and declared Firebase BOM and SDK dependencies.
+- `app/src/main/java/com/example/kare/app/AppContainer.kt`: Firebase is treated as unavailable when the configured project id is a placeholder; wired `FirebaseAuthRepository`, `FirestoreReviewRepository`, `FirestorePublicProfileRepository`, and Crashlytics into the composition root with dynamic fallback.
+- `gradle.properties`: Increased Gradle JVM daemon memory settings to prevent OutOfMemoryError: Metaspace.
+
+### Validation
+- Earlier run (before the placeholder-detection and report-auth changes): `compileDebugSources`, `compileDebugUnitTestSources`, auth and review unit tests PASS.
+- Final run after those changes: NOT RUN. `assembleDebug` / `testDebugUnitTest` failed with JVM out-of-memory (Windows error 1455, insufficient paging file); environmental blocker, not a code result.
+- `lint`: NOT RUN.
+- Real Firebase project, real `google-services.json`, deployed rules and end-to-end sign-up/review flow: NOT TESTED.
+
+### Remaining work
+- Register the Firebase project and Android app, provide the real `app/google-services.json` (git-ignored), enable Email/Password auth, create Firestore and deploy `firestore.rules`.
+- Persist blocked users (currently session-local) and verify report/delete flows against real Firestore.
+- Run `./gradlew assembleDebug test lint`, then mark the Firebase rows COMPLETED.

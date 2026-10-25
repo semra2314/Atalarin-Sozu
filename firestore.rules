@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Reviews: public read; one document per user and template (`{templateId}_{uid}`).
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create, update: if request.auth != null
+        && request.resource.data.authorId == request.auth.uid
+        && reviewId.matches('.*_' + request.auth.uid)
+        && request.resource.data.stars is int
+        && request.resource.data.stars >= 1 && request.resource.data.stars <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 1000;
+      allow delete: if request.auth != null && resource.data.authorId == request.auth.uid;
+    }
+
+    // Public profiles: public read; only the owner writes.
+    match /profiles/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Reports: signed-in users may file reports as themselves; never readable by clients.
+    match /reports/{reportId} {
+      allow create: if request.auth != null
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.text is string
+        && request.resource.data.text.size() <= 1000;
+      allow read, update, delete: if false;
+    }
+  }
+}

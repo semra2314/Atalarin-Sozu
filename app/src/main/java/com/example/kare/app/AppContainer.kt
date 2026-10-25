@@ -69,21 +69,54 @@ class AppContainer(context: Context) {
         if (billingRefresh?.isActive == true) return
         billingRefresh = billingScope.launch { billing.refresh() }
     }
+    private val isFirebaseAvailable: Boolean by lazy {
+        try {
+            val app = com.google.firebase.FirebaseApp.getApps(applicationContext).firstOrNull()
+                ?: com.google.firebase.FirebaseApp.initializeApp(applicationContext)
+            // The git-ignored template google-services.json uses a "placeholder" project id; treat it as unconfigured.
+            app != null && !app.options.projectId.orEmpty().contains("placeholder", ignoreCase = true)
+        } catch (_: Throwable) {
+            false
+        }
+    }
     val preferences: PreferencesRepository by lazy { DataStorePreferencesRepository(applicationContext) }
-    val auth: AuthRepository by lazy { InMemoryAuthRepository() }
+    val auth: AuthRepository by lazy {
+        if (isFirebaseAvailable) {
+            com.example.kare.core.data.auth.FirebaseAuthRepository()
+        } else {
+            InMemoryAuthRepository()
+        }
+    }
     val publicProfile: com.example.kare.core.repository.PublicProfileRepository by lazy {
-        com.example.kare.core.data.profile.InMemoryPublicProfileRepository()
+        if (isFirebaseAvailable) {
+            com.example.kare.core.data.profile.FirestorePublicProfileRepository()
+        } else {
+            com.example.kare.core.data.profile.InMemoryPublicProfileRepository()
+        }
     }
     val profile: com.example.kare.core.repository.ProfileRepository by lazy {
         com.example.kare.core.data.profile.LocalProfileRepository(applicationContext, auth, publicProfile)
     }
     val reviews: com.example.kare.core.repository.ReviewRepository by lazy {
-        com.example.kare.core.data.review.InMemoryReviewRepository(auth)
+        if (isFirebaseAvailable) {
+            com.example.kare.core.data.review.FirestoreReviewRepository(authRepository = auth)
+        } else {
+            com.example.kare.core.data.review.InMemoryReviewRepository(auth)
+        }
     }
     val avatarStore: com.example.kare.core.data.profile.ProfileAvatarStore by lazy {
         com.example.kare.core.data.profile.ProfileAvatarStore(applicationContext)
     }
-    private val errors = ErrorReporter { operation, error -> Log.e("Kare", operation, error); Unit }
+    private val errors = ErrorReporter { operation, error ->
+        Log.e("Kare", operation, error)
+        if (isFirebaseAvailable) {
+            try {
+                val crashlytics = com.google.firebase.crashlytics.FirebaseCrashlytics.getInstance()
+                crashlytics.setCustomKey("operation", operation)
+                crashlytics.recordException(error)
+            } catch (_: Throwable) { }
+        }
+    }
     val viewModelFactory: ViewModelProvider.Factory by lazy { KareViewModelFactory(widgets, library, errors, auth, preferences, profile, reviews, billing, entitlements) }
 
     /** Test teardown only. Android process death owns production cleanup; no onTerminate assumption. */
