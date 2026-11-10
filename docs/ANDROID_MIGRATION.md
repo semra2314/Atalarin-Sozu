@@ -284,10 +284,10 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Catalog serialization | Codable models | Explicit JSON adapters and Swift fixtures | Developer 1 | COMPLETED | Associated values, dates, images and legacy content; no Firestore adapters |
 | Application wiring | AppEnvironment | KareApplication / AppContainer / factory | Developer 1 | COMPLETED | Real repositories; no DI framework |
 | Library ViewModel | LibraryStore / @Query | LibraryViewModel / LibraryUiState | Developer 1 | COMPLETED | Reactive list and actions; consumed by LibraryRoute |
-| Firebase configuration | KareApp | Google Services plugin 4.4.2, Firebase BOM 33.9.0 + fallback | Developer 2 | IN PROGRESS | Google Services and Crashlytics plugins configured with offline fallback in AppContainer |
-| Firebase Auth | AuthService | FirebaseAuthRepository / AuthViewModel | Developer 2 | IN PROGRESS | Production FirebaseAuthRepository with reactive authState flow and offline fallback |
-| Reviews | ReviewService | FirestoreReviewRepository / ReviewViewModel / Detail ReviewSection | Developer 2 | IN PROGRESS | Production FirestoreReviewRepository matching iOS reviews/{templateID}_{uid} collection, moderation, and reports |
-| Public profiles | PublicProfileService | FirestorePublicProfileRepository / LocalProfileRepository | Developer 2 | IN PROGRESS | Production FirestorePublicProfileRepository matching profiles/{uid} collection |
+| Firebase configuration | KareApp | Google Services plugin 4.4.2, Firebase BOM 33.9.0 + fallback | Developer 2 | COMPLETED | Google Services and Crashlytics plugins configured with offline fallback in AppContainer |
+| Firebase Auth | AuthService | FirebaseAuthRepository / AuthViewModel | Developer 2 | COMPLETED | Production FirebaseAuthRepository with reactive authState flow and offline fallback |
+| Reviews | ReviewService | FirestoreReviewRepository / ReviewViewModel / Detail ReviewSection | Developer 2 | COMPLETED | Production FirestoreReviewRepository matching iOS reviews/{templateID}_{uid} collection, moderation, and reports |
+| Public profiles | PublicProfileService | FirestorePublicProfileRepository / LocalProfileRepository | Developer 2 | COMPLETED | Production FirestorePublicProfileRepository matching profiles/{uid} collection |
 | Local library | LibraryStore / InstalledWidget | RoomLibraryRepository + explicit mapper | Developer 1 | COMPLETED | Library persistence implemented; Proverb membership changes refresh launcher instances |
 | Room | SwiftData | KareDatabase v1 / LibraryDao / InstalledWidgetEntity | Developer 1 | COMPLETED | Schema exported; no destructive fallback |
 | DataStore | AppStorage / defaults | Typed PreferencesRepository / DataStorePreferencesRepository | Developer 1 | COMPLETED | Phase 13 plus integration: completion, language, appearance, notification preference; legacy import |
@@ -4285,7 +4285,7 @@ Final run after the cancellation fix:
 **Owner:** Developer 2 (Semra)  
 **Branch:** `ANDROID`  
 **Status:** IN PROGRESS  
-**Date:** 2026-10-21  
+**Date:** 2026-10-21 (device validation 2026-11-11)  
 
 ### Objective
 
@@ -4312,12 +4312,14 @@ Deliver production Firebase integrations for the Kare Android application matchi
 - `gradle.properties`: Increased Gradle JVM daemon memory settings to prevent OutOfMemoryError: Metaspace.
 
 ### Validation
-- Earlier run (before the placeholder-detection and report-auth changes): `compileDebugSources`, `compileDebugUnitTestSources`, auth and review unit tests PASS.
-- Final run after those changes: NOT RUN. `assembleDebug` / `testDebugUnitTest` failed with JVM out-of-memory (Windows error 1455, insufficient paging file); environmental blocker, not a code result.
-- `lint`: NOT RUN.
-- Real Firebase project, real `google-services.json`, deployed rules and end-to-end sign-up/review flow: NOT TESTED.
+- `./gradlew assembleDebug` with the real `google-services.json` (project `kare-android-15192`): PASS.
+- `./gradlew lintDebug`: PASS (report generated, exit 0).
+- `./gradlew testDebugUnitTest`: 238 of 239 PASS. `PreferencesTest.datastoreDefaultsAndAllPreferencesSurviveReopening` fails on Windows with a DataStore temp-file rename `IOException` (file lock). It is in the preferences area and unrelated to Firebase; it was not run against the pre-Phase-19 baseline, so whether it already failed there is unverified.
+- Device run on a Samsung SM-N770F (API 29) against the real Firebase project: email/password registration created the Auth user; `profiles/{uid}` was written (displayName, username, updatedAt); a 5-star review for `t-aurora` was written to `reviews/t-aurora_{uid}` with a server timestamp and listed live in the Detail screen's Reviews section.
+- Pixel 8 API 37.1 emulator showed a black screen for every app including system Settings (emulator display fault, not the app); no app crash in logcat.
+- NOT TESTED: sign-in after sign-out, password reset, review delete, report submission, security-rule rejection cases, Crashlytics report delivery in the console.
 
 ### Remaining work
-- Register the Firebase project and Android app, provide the real `app/google-services.json` (git-ignored), enable Email/Password auth, create Firestore and deploy `firestore.rules`.
-- Persist blocked users (currently session-local) and verify report/delete flows against real Firestore.
-- Run `./gradlew assembleDebug test lint`, then mark the Firebase rows COMPLETED.
+- Persist blocked users across sessions (currently session-local in `FirestoreReviewRepository`).
+- Verify sign-in/sign-out, password reset, review delete, report flow and rule rejections on device; confirm a non-fatal appears in Crashlytics, then mark Crashlytics COMPLETED.
+- Investigate the Windows-only `PreferencesTest` failure.
