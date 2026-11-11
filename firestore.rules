@@ -21,6 +21,13 @@ service cloud.firestore {
       allow write: if request.auth != null && request.auth.uid == userId;
     }
 
+    // Blocked authors: private to the blocking user.
+    match /users/{userId}/blocks/{blockedId} {
+      allow read, write: if request.auth != null
+        && request.auth.uid == userId
+        && blockedId != userId;
+    }
+
     // Reports: signed-in users may file reports as themselves; never readable by clients.
     match /reports/{reportId} {
       allow create: if request.auth != null

@@ -4319,7 +4319,11 @@ Deliver production Firebase integrations for the Kare Android application matchi
 - Pixel 8 API 37.1 emulator showed a black screen for every app including system Settings (emulator display fault, not the app); no app crash in logcat.
 - NOT TESTED: sign-in after sign-out, password reset, review delete, report submission, security-rule rejection cases, Crashlytics report delivery in the console.
 
+### Update 2026-11-11: persistent blocking
+- `FirestoreReviewRepository` now stores blocks in `users/{uid}/blocks/{authorId}` (private per account via `firestore.rules`). Blocked and reported ids are reactive, so the review list updates immediately and follows sign-in/sign-out. Reporting now requires sign-in.
+- Validation: `assembleDebug` PASS; unit tests 238/239 (same Windows-only `PreferencesTest` failure). No unit test covers the Firestore repository; device test pending.
+- Profile photo upload to the public profile is deferred by decision (avatar stays local).
+
 ### Remaining work
-- Persist blocked users across sessions (currently session-local in `FirestoreReviewRepository`).
-- Verify sign-in/sign-out, password reset, review delete, report flow and rule rejections on device; confirm a non-fatal appears in Crashlytics, then mark Crashlytics COMPLETED.
+- Verify persistent blocking (implemented 2026-11-11 in `users/{uid}/blocks/{authorId}`, rules added to `firestore.rules`, compiled but not yet device-tested), report flow, password reset and rule rejections on device; confirm a non-fatal appears in Crashlytics, then mark Crashlytics COMPLETED.
 - Investigate the Windows-only `PreferencesTest` failure.

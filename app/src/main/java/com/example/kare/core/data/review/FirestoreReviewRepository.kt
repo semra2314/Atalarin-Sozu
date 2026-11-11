@@ -1,20 +1,23 @@
 package com.example.kare.core.data.review
 
+import com.example.kare.core.model.AuthState
 import com.example.kare.core.model.ReportReason
 import com.example.kare.core.model.Review
 import com.example.kare.core.moderation.ReviewFilter
 import com.example.kare.core.repository.AuthRepository
 import com.example.kare.core.repository.ReviewRepository
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import java.time.Instant
-import java.util.concurrent.ConcurrentHashMap
 import kotlin.coroutines.cancellation.CancellationException
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.tasks.await
 
 /**
@@ -23,8 +26,9 @@ import kotlinx.coroutines.tasks.await
  * Implements the iOS Firestore schema:
  * - Reviews collection: `reviews/{templateID}_{uid}`
  * - Reports collection: `reports/{reportID}`
+ * - Blocked authors: `users/{uid}/blocks/{authorId}`, private to the blocking user
  * - Enforces 1 review per user per template, content moderation via [ReviewFilter],
- *   real-time query observation, and user blocking.
+ *   real-time query observation, and persistent per-account user blocking.
  */
 class FirestoreReviewRepository(
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance(),
@@ -32,32 +36,46 @@ class FirestoreReviewRepository(
     private val reviewFilter: ReviewFilter = ReviewFilter,
 ) : ReviewRepository {
 
-    private val blockedUserIds = ConcurrentHashMap.newKeySet<String>()
-    private val reportedReviewIds = ConcurrentHashMap.newKeySet<String>()
+    private val reportedReviewIds = MutableStateFlow<Set<String>>(emptySet())
 
-    override fun observeReviews(templateId: String): Flow<List<Review>> = callbackFlow {
-        val collection = firestore.collection(REVIEWS_COLLECTION)
-            .whereEqualTo("templateId", templateId)
-
-        val registration = collection.addSnapshotListener { snapshot, error ->
-            if (error != null) {
-                close(error)
-                return@addSnapshotListener
-            }
-
-            if (snapshot != null) {
-                val reviews = snapshot.documents.mapNotNull { doc ->
-                    doc.toReview()
-                }
-                .filter { it.id !in reportedReviewIds }
-                .filter { it.authorId == null || it.authorId !in blockedUserIds }
-                .sortedByDescending { it.createdAt }
-
-                trySend(reviews)
-            }
+    /** Blocked author ids of the signed-in account; empty for guests. Follows sign-in and sign-out. */
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun observeBlockedAuthors(): Flow<Set<String>> =
+        authRepository.authState.flatMapLatest { state ->
+            val uid = (state as? AuthState.Authenticated)?.user?.id
+            if (uid == null) flowOf(emptySet()) else observeBlocksOf(uid)
         }
 
+    private fun observeBlocksOf(uid: String): Flow<Set<String>> = callbackFlow {
+        val registration = blocksCollection(uid).addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                // Blocking is a convenience filter; keep showing reviews if the list cannot be read.
+                trySend(emptySet())
+                return@addSnapshotListener
+            }
+            trySend(snapshot?.documents?.mapTo(HashSet()) { it.id } ?: emptySet())
+        }
         awaitClose { registration.remove() }
+    }
+
+    override fun observeReviews(templateId: String): Flow<List<Review>> {
+        val reviews = callbackFlow {
+            val registration = firestore.collection(REVIEWS_COLLECTION)
+                .whereEqualTo("templateId", templateId)
+                .addSnapshotListener { snapshot, error ->
+                    if (error != null) {
+                        close(error)
+                        return@addSnapshotListener
+                    }
+                    if (snapshot != null) {
+                        trySend(snapshot.documents.mapNotNull { it.toReview() })
+                    }
+                }
+            awaitClose { registration.remove() }
+        }
+        return combine(reviews, observeBlockedAuthors(), reportedReviewIds) { all, blocked, reported ->
+            all.visible(blocked, reported)
+        }
     }
 
     override suspend fun getReviews(templateId: String): List<Review> {
@@ -68,9 +86,7 @@ class FirestoreReviewRepository(
                 .await()
 
             snapshot.documents.mapNotNull { it.toReview() }
-                .filter { it.id !in reportedReviewIds }
-                .filter { it.authorId == null || it.authorId !in blockedUserIds }
-                .sortedByDescending { it.createdAt }
+                .visible(loadBlockedAuthors(), reportedReviewIds.value)
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -128,7 +144,7 @@ class FirestoreReviewRepository(
     ): Result<Unit> = runCatching {
         val reporter = authRepository.currentUser
             ?: throw IllegalStateException("Must be signed in to report a review")
-        reportedReviewIds.add(reviewId)
+        reportedReviewIds.value = reportedReviewIds.value + reviewId
 
         val reportData = hashMapOf(
             "reviewId" to reviewId,
@@ -145,12 +161,36 @@ class FirestoreReviewRepository(
     }
 
     override suspend fun blockUser(authorId: String): Result<Unit> = runCatching {
-        blockedUserIds.add(authorId)
+        val user = authRepository.currentUser
+            ?: throw IllegalStateException("Must be signed in to block a user")
+        require(authorId.isNotBlank() && authorId != user.id) { "Invalid author to block" }
+
+        blocksCollection(user.id)
+            .document(authorId)
+            .set(mapOf("blockedAt" to FieldValue.serverTimestamp()))
+            .await()
     }
 
-    override suspend fun isBlocked(authorId: String): Boolean {
-        return blockedUserIds.contains(authorId)
+    override suspend fun isBlocked(authorId: String): Boolean = authorId in loadBlockedAuthors()
+
+    private suspend fun loadBlockedAuthors(): Set<String> {
+        val uid = authRepository.currentUser?.id ?: return emptySet()
+        return try {
+            blocksCollection(uid).get().await().documents.mapTo(HashSet()) { it.id }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            emptySet()
+        }
     }
+
+    private fun blocksCollection(uid: String) =
+        firestore.collection(USERS_COLLECTION).document(uid).collection(BLOCKS_COLLECTION)
+
+    private fun List<Review>.visible(blocked: Set<String>, reported: Set<String>): List<Review> =
+        filter { it.id !in reported }
+            .filter { it.authorId == null || it.authorId !in blocked }
+            .sortedByDescending { it.createdAt }
 
     private fun com.google.firebase.firestore.DocumentSnapshot.toReview(): Review? {
         val templateId = getString("templateId") ?: return null
@@ -180,5 +220,7 @@ class FirestoreReviewRepository(
     private companion object {
         const val REVIEWS_COLLECTION = "reviews"
         const val REPORTS_COLLECTION = "reports"
+        const val USERS_COLLECTION = "users"
+        const val BLOCKS_COLLECTION = "blocks"
     }
 }
