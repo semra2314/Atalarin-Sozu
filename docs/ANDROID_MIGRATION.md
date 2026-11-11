@@ -300,7 +300,7 @@ Owner `Unassigned` means no active reservation. Developer 1 completed Phase 14. 
 | Settings | SettingsView | SettingsRoute / SettingsViewModel / PreferencesViewModel | Developer 1 | COMPLETED | Phase 13: local preferences, existing auth route, About; billing deferred |
 | Onboarding | OnboardingView / RootGate | PreferencesHost startup gate / OnboardingViewModel | Developer 1 | COMPLETED | Phase 13: language plus three pages, durable completion |
 | Editor | WidgetEditorView / WidgetContent | EditorViewModel, draft, capability registry and Compose preview | Developer 1 | COMPLETED | Phase 14 limited single-layer foundation; advanced editor and generic launcher provider deferred |
-| Daily | DailyStore / DailyWidget | Reserved feature package | Unassigned | NOT STARTED | No content/source persistence |
+| Daily | DailyStore / DailyWidget | Domain, corpus, store and repository (no UI yet) | Developer 2 | IN PROGRESS | Phase 20 data layer done; Glance widget, receiver, configuration UI and registration pending |
 | Focus | FocusSession / FocusView / FocusWidget | Reserved feature package | Unassigned | NOT STARTED | No timer/audio/session logic |
 | Frame | FramePhotoStore / FrameWidget | Reserved feature package | Unassigned | NOT STARTED | No photo picker/storage |
 | Aurora | AuroraWidget | None | Unassigned | NOT STARTED | Native clock/update design needed |
@@ -4327,3 +4327,35 @@ Deliver production Firebase integrations for the Kare Android application matchi
 ### Remaining work
 - Verify persistent blocking (implemented 2026-11-11 in `users/{uid}/blocks/{authorId}`, rules added to `firestore.rules`, compiled but not yet device-tested), report flow, password reset and rule rejections on device; confirm a non-fatal appears in Crashlytics, then mark Crashlytics COMPLETED.
 - Investigate the Windows-only `PreferencesTest` failure.
+
+## Phase 20: Daily Widget Data Layer
+
+**Owner:** Developer 2 (Semra); Developer 1 confirmed they are not working on Daily.
+**Branch:** `ANDROID`
+**Status:** IN PROGRESS
+**Date:** 2026-11-11
+
+### Scope
+Data layer only, in new files to avoid shared-file conflicts. The Glance widget, receiver, configuration
+activity, manifest/XML entries, strings, preview layout, placement registry and `AppContainer` wiring are
+the remaining shared-file work and are not started.
+
+### Files Created
+- `core/model/Daily.kt`: `DailySource` (BIBLE, POETRY), `DailyConfiguration`, `DailyPassage`, `DailySnapshot`.
+- `core/data/widget/DailyPassages.kt`: starter public-domain corpus (KJV, poets who died before 1900) and `dailyPassage(date, source)`.
+- `core/data/widget/DailyInstanceStore.kt`: versioned atomic per-instance store, rejects other widget types.
+- `core/data/widget/DailyWidgetRepository.kt`: configure/observe/delete with the same failure semantics as Hush.
+- `test/.../widget/DailyStateTest.kt`: selection, corpus cycling, independent instances, deletion, corrupt/foreign/future state.
+
+### Decisions and open issues
+- Day index is the device-local epoch day modulo corpus size; parity with the iOS counter is not verified.
+- Quran and Stoic sources are deferred: translation licensing is not verified. Proverbs reuse is undecided.
+- Corpus is 8 Bible + 5 poetry passages typed from memory; it needs a proofreading pass against the cited editions and expansion before release.
+- Midnight refresh strategy (AlarmManager/WorkManager vs `updatePeriodMillis`) is undecided.
+
+### Validation
+- `DailyStateTest` run alone: PASS. Full suite, `assembleDebug` and `lint` not re-run after this phase.
+
+### Remaining work
+Glance widget and receiver, configuration activity, manifest/XML/strings/preview, placement registry,
+`AppContainer` wiring, midnight refresh, localization, device QA.
